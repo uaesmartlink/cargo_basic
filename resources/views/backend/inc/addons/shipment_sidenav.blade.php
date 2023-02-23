@@ -37,7 +37,7 @@ $user_type = Auth::user()->user_type;
                                     </a>
                                 </li>
                             @endif
-                            
+
                         @endif
 
                         @if( in_array($user_type,['admin','customer']) || in_array('1107', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
@@ -71,7 +71,7 @@ $user_type = Auth::user()->user_type;
                             </li>
                         @endif
 
-                        
+
                         @if( in_array($user_type,['admin','customer','captain','branch']) || in_array('1108', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
 
                             <li class="menu-item {{ areActiveRoutes(['admin.shipments.index','admin.shipments.show',])}}" aria-haspopup="true">
@@ -265,7 +265,9 @@ $addon = \App\Addon::where('unique_identifier', 'spot-cargo-shipment-addon')->fi
                             </li>
                         @endif
 
-                        <!--Branches-->
+                        {{-- Hide For Demo --}}
+
+                        {{-- <!--Branches-->
                         @if(Auth::user()->user_type == 'admin' || in_array('1006', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                             <li class="menu-item menu-item-submenu  {{ areActiveRoutes(['admin.branchs.index','admin.branchs.update','admin.branchs.create','admin.branchs.show'])}}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -305,7 +307,7 @@ $addon = \App\Addon::where('unique_identifier', 'spot-cargo-shipment-addon')->fi
                                     </ul>
                                 </div>
                             </li>
-                        @endif
+                        @endif --}}
 
                         <!--Drivers-->
                         @if(in_array($user_type,['admin','branch']) || in_array('1007', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
