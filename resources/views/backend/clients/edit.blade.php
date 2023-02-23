@@ -93,7 +93,9 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <input type="hidden" name="Client[branch_id]" value="1" >
+                {{-- Hide For Demo --}}
+                {{-- <div class="form-group">
                     <label>{{translate('Branch')}}:</label>
                     <select class="form-control kt-select2 branch" id="select-how" name="Client[branch_id]">
                         <option></option>
@@ -102,7 +104,7 @@
                         @endforeach
 
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="form-group" id="kt_repeater_1">
                     <div data-repeater-list="address">
@@ -188,7 +190,7 @@
                         @empty
                             <div data-repeater-item class="data-repeater-item-count">
 
-                                <div class="row">       
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{translate('Country')}}:</label>
@@ -228,7 +230,7 @@
                                 <input type="text" class="form-control" required placeholder="{{translate('Address')}}" name="Client[address]">
                                 <input type="hidden" name='Client[addressess_id]'>
 
-                                @if($checked_google_map->value == 1 )       
+                                @if($checked_google_map->value == 1 )
                                     <div class="mt-2 location-client">
                                         <label>{{translate('Location')}}:</label>
                                         <input type="text" class="form-control address address-client " name="client_street_address_map" placeholder="{{translate('Client Location')}}" name="client[street_address_map]"  rel="client" value="" />
@@ -238,7 +240,7 @@
 
                                         <div class="mt-2 col-sm-12 map_canvas map-client" style="width:100%;height:300px;"></div>
                                         <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
-                                    </div>     
+                                    </div>
                                 @endif
 
                                 <div class="mt-3 mb-3 row">
@@ -496,7 +498,7 @@
             });
         });
     @endforeach
-    
+
     $('.address-client').each(function(){
         var address = $(this);
         address.geocomplete({

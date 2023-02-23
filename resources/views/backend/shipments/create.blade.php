@@ -164,7 +164,9 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-6">
+                            <input type="hidden" name="Shipment[branch_id]" value="1" >
+                            {{-- Hide For Demo --}}
+                            {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Branch')}}:</label>
                                     <select class="form-control kt-select2 select-branch" name="Shipment[branch_id]">
@@ -179,7 +181,7 @@
 
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-6">
                                 @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
                                 <div class="form-group">
@@ -230,7 +232,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Phone')}}:</label>
-                                    
+
                                     @if($auth_user->user_type == "customer")
                                         @php
                                             $client_phone = \App\Client::select('responsible_mobile')->where('id', $auth_user->userClient->client_id)->first();

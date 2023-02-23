@@ -108,7 +108,8 @@
                         <label>{{translate('Columns')}}:</label>
                         <select class="form-control selectpicker" name="columns[]" multiple required>
                             <option value="type" selected>type</option>
-                            <option value="branch_id" selected>branch_id</option>
+                            {{-- Hide For Demo --}}
+                            {{-- <option value="branch_id" selected>branch_id</option> --}}
                             <option value="shipping_date" selected>shipping_date</option>
                             <option value="client_phone" selected>client_phone</option>
                             <option value="client_address" selected>client_address</option>
@@ -186,7 +187,8 @@
                     <td>{{translate('Pickup = 1 / Drop off = 2')}}</td>
                     <td>{{translate('1 / 2')}}</td>
                 </tr>
-                <tr>
+                {{-- Hide For Demo --}}
+                {{-- <tr>
                     <td>{{translate('branch_id')}}</td>
                     <td>
                         <span class="badge badge-danger">{{translate('Required')}}</span>
@@ -195,7 +197,6 @@
                         <p data-toggle="modal" data-target="#branchs">
                             <u><b>{{translate('Click To Get The ID')}}</b></u>
                         </p>
-
                         <!-- The Modal -->
                         <div class="modal" id="branchs">
                             <div class="modal-dialog">
@@ -245,7 +246,7 @@
                             {{$branch->id}} /
                         @endforeach
                     </td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <td>{{translate('shipping_date')}}</td>
                     <td>
@@ -520,10 +521,10 @@
                         <span class="badge badge-danger">{{translate('Required')}}</span>
                     </td>
                     <td>
-                        <p data-toggle="modal" data-target="#payments">    
+                        <p data-toggle="modal" data-target="#payments">
                             <u><b>{{translate('Click To Get The ID')}}</b></u>
                         </p>
-                        
+
                         <!-- The Modal -->
                         <div class="modal" id="payments">
                             <div class="modal-dialog">

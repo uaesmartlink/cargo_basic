@@ -108,8 +108,9 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
+                <input type="hidden" name="Client[branch_id]" value="1" >
+                {{-- Hide For Demo --}}
+                {{-- <div class="form-group">
                     <label>{{translate('Branch')}}:</label>
                     <select class="form-control kt-select2 branch" id="branch_id" name="Client[branch_id]">
                         <option></option>
@@ -118,14 +119,14 @@
                         @endforeach
 
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="form-group" id="kt_repeater_1">
                     <div data-repeater-list="address">
-                        
+
                         <div data-repeater-item class="data-repeater-item-count">
 
-                            <div class="row">       
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{translate('Country')}}:</label>
@@ -160,12 +161,12 @@
 
                             </div>
 
-                            
+
 
                             <label>{{translate('Address')}}:</label>
                             <input type="text" class="form-control" placeholder="{{translate('Address')}}" required name="address">
-                            
-                            @if($checked_google_map->value == 1 )       
+
+                            @if($checked_google_map->value == 1 )
                                 <div class="mt-2 location-client">
                                     <label>{{translate('Location')}}:</label>
                                     <input type="text" class="form-control address address-client " name="client_street_address_map" placeholder="{{translate('Client Location')}}" name="client[street_address_map]"  rel="client" value="" />
@@ -175,7 +176,7 @@
 
                                     <div class="mt-2 col-sm-12 map_canvas map-client" style="width:100%;height:300px;"></div>
                                     <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
-                                </div>     
+                                </div>
                             @endif
 
                             <div class="mt-3 mb-3 row">
@@ -252,7 +253,7 @@
 
 
                                 <div class="row">
-                                    
+
                                     @if($is_def_mile_or_fees == 1)
                                         <div class="def_mile_costs form-group col-md-4">
                                             <label>{{translate('Default Mile Cost')}}({{currency_symbol()}}):</label>
@@ -264,7 +265,7 @@
                                             <input type="number" min="0" class="form-control" placeholder="{{translate('Default Shipping Cost')}}" value="{{\App\ShipmentSetting::getVal('def_shipping_cost')}}" name="Client[def_shipping_cost]">
                                         </div>
                                     @endif
-                                    
+
 
                                     <div class="form-group col-md-4">
                                         <label>{{translate('Default Tax')}}%:</label>
@@ -473,7 +474,7 @@
                 });
             @endif
 
-            
+
             $(this).slideDown();
 
             changeCountry();

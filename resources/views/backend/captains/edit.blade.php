@@ -47,14 +47,14 @@
                                 <option @if($captain->type == 3) selected @endif value="3">{{translate('Pickup & Delivery')}}</option>
                                 <option @if($captain->type == 1) selected @endif value="1">{{translate('Pickup')}}</option>
                                 <option @if($captain->type == 2) selected @endif value="2">{{translate('Delivery')}}</option>
-                                
+
                             </select>
                         </div>
                     </div>
                 </div>
 
 
-           
+
 
 
 
@@ -86,14 +86,15 @@
                         </div>
                     </div>
                 </div>
-           
+
 
                 <div class="form-group">
                     <label>{{translate('National ID')}}:</label>
                     <input type="text" class="form-control" placeholder="{{translate('Here')}}" value="{{$captain->national_id}}" name="Captain[national_id]">
                 </div>
-
-                <div class="form-group">
+                <input type="hidden" name="Captain[branch_id]" value="1" >
+                {{-- Hide For Demo --}}
+                {{-- <div class="form-group">
                     <label>{{translate('Branch')}}:</label>
                     <select class="form-control kt-select2 branch" id="select-how" name="Captain[branch_id]">
                         <option></option>
@@ -102,7 +103,7 @@
                         @endforeach
 
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="form-group mb-0 text-right">
                     <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
@@ -170,7 +171,7 @@
                     }
 
                 },
-                
+
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),

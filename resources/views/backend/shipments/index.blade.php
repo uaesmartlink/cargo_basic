@@ -67,7 +67,7 @@
                     </span>{{translate('Actions')}}</button>
                 <!--begin::Dropdown Menu-->
                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                    <!--begin::Navigation--> 
+                    <!--begin::Navigation-->
                     <ul class="py-2 navi flex-column navi-hover">
                         <li class="pb-2 navi-header font-weight-bolder text-uppercase font-size-sm text-primary">{{translate('Choose an option:')}}</li>
                         <li class="navi-item">
@@ -233,7 +233,9 @@
                                 </div>
                             </div>
 
-                            @if($auth_user->user_type != "branch")
+                            <input type="hidden" name="branch_id" value="1" >
+                            {{-- Hide For Demo --}}
+                            {{-- @if($auth_user->user_type != "branch")
                                 <div class="my-2 col-md-4 mb-2">
                                     <div class="d-flex align-items-center">
                                         <label class="mb-0 mr-3 d-none d-md-block">{{translate('Branch')}}:</label>
@@ -245,7 +247,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            @endif
+                            @endif --}}
 
                         </div>
                     </div>
@@ -309,7 +311,7 @@
                             $client_id = $shipment->client_id;
                         @endphp
                     @endif
-                    
+
                     <tr>
                         <td>
                             @if($shipment->mission_id)
@@ -320,7 +322,7 @@
                         </td>
                         <td width="3%"><a href="{{route('admin.shipments.show', ['shipment'=>$shipment->id])}}">{{ ($key+1) + ($shipments->currentPage() - 1)*$shipments->perPage() }}</a></td>
                         <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$shipment->id])}}">{{$shipment->code}}</a></td>
-                    
+
                         @if($status == "all") <td>{{$shipment->getStatus()}}</td> @endif
                         <td>{{$shipment->type}}</td>
                         @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
@@ -342,7 +344,7 @@
                         <td class="text-center">
                             {{$shipment->created_at->format('Y-m-d')}}
                         </td>
-                        @if($status != "all") 
+                        @if($status != "all")
                             <td class="text-center">
                                 <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.shipments.print', ['shipment'=>$shipment->id, 'invoice'])}}" title="{{ translate('Show') }}">
                                     <i class="las la-print"></i>
@@ -357,7 +359,7 @@
                                     </a>
                                 @endif
 
-                            </td> 
+                            </td>
                         @endif
                     </tr>
 
@@ -708,7 +710,7 @@
             }
         });
     });
-    
+
     function openCaptainModel(element, e) {
         var selected = [];
         var selected_payment_method = [];
@@ -726,7 +728,7 @@
             selected_branch_hidden.push($(this).data('branchid'));
             mission_id.push($(this).data('missionid'));
         });
-        if (selected.length != 0) 
+        if (selected.length != 0)
         {
             if(mission_id[0] == ""){
 
@@ -735,7 +737,7 @@
 
                 if (selected.length == 1 || sum == check_sum) {
 
-                    selected_payment_method.forEach((element, index) => { 
+                    selected_payment_method.forEach((element, index) => {
                         if(selected_payment_method[0] == selected_payment_method[index]){
                             count_payment_method++;
                         }
@@ -759,7 +761,7 @@
                 }else{
                     Swal.fire("{{translate('Select shipments of the same client to Assign')}}", "", "error");
                 }
-                
+
             }else{
                 Swal.fire("{{translate('This Shipment Already In Mission')}}", "", "error");
             }
@@ -795,14 +797,14 @@
             mission_id.push($(this).data('missionid'));
         });
 
-        if (selected.length != 0) 
+        if (selected.length != 0)
         {
             if(mission_id[0] == ""){
                 // var sum = selected.reduce(function(acc, val) { return acc + val; },0);
                 // var check_sum = selected[0] * selected.length;
 
                 if (selected.length != 0) {
-                    selected_payment_method.forEach((element, index) => { 
+                    selected_payment_method.forEach((element, index) => {
                         if(selected_payment_method[0] == selected_payment_method[index]){
                             count_payment_method++;
                         }
@@ -837,7 +839,7 @@
             Swal.fire("{{translate('Please Select Shipments')}}", "", "error");
         }
 
-        
+
     }
 
     function openTransferShipmentCaptainModel(element, e) {
@@ -859,7 +861,7 @@
             mission_id.push($(this).data('missionid'));
         });
 
-        if (selected.length != 0) 
+        if (selected.length != 0)
         {
             if(mission_id[0] == ""){
                 var sum = selected.reduce(function(acc, val) { return acc + val; },0);
@@ -867,7 +869,7 @@
 
                 if (selected.length == 1 || sum == check_sum ) {
 
-                    selected_payment_method.forEach((element, index) => { 
+                    selected_payment_method.forEach((element, index) => {
                         if(selected_payment_method[0] == selected_payment_method[index]){
                             count_payment_method++;
                         }
@@ -895,7 +897,7 @@
             }else{
                 Swal.fire("{{translate('This Shipment Already In Mission')}}", "", "error");
             }
-            
+
         }else{
             Swal.fire("{{translate('Please Select Shipments')}}", "", "error");
         }
@@ -912,7 +914,7 @@
     }
 
     $(document).ready(function() {
-        
+
         $('.action-caller').on('click', function(e) {
             e.preventDefault();
             var selected = [];

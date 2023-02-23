@@ -77,8 +77,9 @@
                     <label>{{translate('National ID')}}:</label>
                     <input type="text" class="form-control" placeholder="{{translate('National ID')}}" name="Captain[national_id]">
                 </div>
-
-                <div class="form-group">
+                <input type="hidden" name="Captain[branch_id]" value="1" >
+                {{-- Hide For Demo --}}
+                {{-- <div class="form-group">
                     <label>{{translate('Branch')}}:</label>
                     <select class="form-control kt-select2 branch" id="branch_id" name="Captain[branch_id]">
                         <option></option>
@@ -87,7 +88,7 @@
                         @endforeach
 
                     </select>
-                </div>
+                </div> --}}
 
                 {!! hookView('branch_addon',$currentView) !!}
 

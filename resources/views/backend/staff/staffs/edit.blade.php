@@ -46,7 +46,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
+                <input type="hidden" name="branch_id" value="1" >
+                {{-- Hide For Demo --}}
+                {{-- <div class="form-group row">
                     <label class="col-sm-3 col-from-label">{{translate('Branch')}}:</label>
                     <div class="col-sm-9">
                         <select class="form-control kt-select2 branch" id="branch_id" name="branch_id">
@@ -56,7 +58,7 @@
 
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-group mb-0 text-right">
                     <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                 </div>

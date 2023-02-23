@@ -127,7 +127,7 @@
                         <div class="tab-content mt-5" id="myTabTables11">
                             <!--begin::Table-->
                             <div class="table-responsive">
-                            
+
                                 <table class="table mb-0 aiz-table">
                                     <thead>
                                         <tr>

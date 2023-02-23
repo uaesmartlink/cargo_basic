@@ -25,7 +25,7 @@
                                     <th>{{translate('Status')}}</th>
                                     <th>{{translate('Type')}}</th>
                                     <th>{{translate('Customer')}}</th>
-                                    <th>{{translate('Branch')}}</th>
+                                    {{-- <th>{{translate('Branch')}}</th> --}}
 
                                     <th>{{translate('Shipping Cost')}}</th>
                                     <th>{{translate('Payment Method')}}</th>
@@ -53,12 +53,13 @@
                                             {{$shipment->client->name}}
                                         @endif
                                     </td>
-                                    @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
+                                    {{-- Hide For Demo --}}
+                                    {{-- @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
                                         <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
                                     @else
                                         <td>{{$shipment->branch->name}}</td>
-                                    @endif
-                                    
+                                    @endif --}}
+
                                     <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
                                     <td>{{$shipment->pay->name}}</td>
                                     <td>{{$shipment->shipping_date}}</td>
@@ -150,7 +151,7 @@
                                     <th>{{translate('Status')}}</th>
                                     <th>{{translate('Type')}}</th>
                                     <th>{{translate('Customer')}}</th>
-                                    <th>{{translate('Branch')}}</th>
+                                    {{-- <th>{{translate('Branch')}}</th> --}}
                                     <th>{{translate('Shipping Cost')}}</th>
                                     <th>{{translate('Payment Method')}}</th>
                                     <th>{{translate('Shipping Date')}}</th>
@@ -178,11 +179,12 @@
                                                 {{$shipment->client->name}}
                                             @endif
                                         </td>
-                                        @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
+                                        {{-- Hide For Demo --}}
+                                        {{-- @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
                                             <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
                                         @else
                                             <td>{{$shipment->branch->name}}</td>
-                                        @endif
+                                        @endif --}}
                                         <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
                                         <td>{{$shipment->pay->name}}</td>
                                         <td>{{$shipment->shipping_date}}</td>
@@ -335,7 +337,7 @@
                                     <th>{{translate('Status')}}</th>
                                     <th>{{translate('Type')}}</th>
                                     <th>{{translate('Customer')}}</th>
-                                    <th>{{translate('Branch')}}</th>
+                                    {{-- <th>{{translate('Branch')}}</th> --}}
                                     <th>{{translate('Shipping Cost')}}</th>
                                     <th>{{translate('Payment Method')}}</th>
                                     <th>{{translate('Shipping Date')}}</th>
@@ -357,7 +359,7 @@
                                         <td>{{$shipment->getStatus()}}</td>
                                         <td>{{$shipment->type}}</td>
                                         <td><a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a></td>
-                                        <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
+                                        {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
                                         <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
                                         <td>{{$shipment->pay->name}}</td>
                                         <td>{{$shipment->shipping_date}}</td>
@@ -396,7 +398,7 @@
                                 <th>{{translate('Status')}}</th>
                                 <th>{{translate('Type')}}</th>
                                 <th>{{translate('Customer')}}</th>
-                                <th>{{translate('Branch')}}</th>
+                                {{-- <th>{{translate('Branch')}}</th> --}}
 
                                 <th>{{translate('Shipping Cost')}}</th>
                                 <th>{{translate('Payment Method')}}</th>
@@ -418,7 +420,7 @@
                                 <td>{{$shipment->getStatus()}}</td>
                                 <td>{{$shipment->type}}</td>
                                 <td><a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a></td>
-                                <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
+                                {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
 
                                 <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
                                 <td>{{$shipment->pay->name}}</td>

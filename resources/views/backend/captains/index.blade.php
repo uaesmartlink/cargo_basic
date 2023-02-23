@@ -24,25 +24,25 @@
             <thead>
                 <tr>
                     <th  width="3%">#</th>
-                    <th >{{translate('Name')}}</th>   
-                    <th >{{translate('Email')}}</th>               
+                    <th >{{translate('Name')}}</th>
+                    <th >{{translate('Email')}}</th>
                     <th >{{translate('Phone')}}</th>
-                    <th >{{translate('Branch')}}</th>
-                    
+                    {{-- <th >{{translate('Branch')}}</th> --}}
+
                     <th class="text-center">{{translate('Options')}}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($captains as $key => $captain)
-                    
+
                         <tr>
                             <td  width="3%">{{ ($key+1) + ($captains->currentPage() - 1)*$captains->perPage() }}</td>
                             <td width="20%">{{$captain->name}}</td>
                             <td width="20%">{{$captain->email}}</td>
-                            
+
                             <td width="20%">{{$captain->responsible_mobile}}</td>
-                            <td><a href="{{route('admin.branchs.show',$captain->branch_id)}}">{{$captain->branch->name}}</a></td>
-                           
+                            {{-- <td><a href="{{route('admin.branchs.show',$captain->branch_id)}}">{{$captain->branch->name}}</a></td> --}}
+
                             <td class="text-center">
                                     <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.captains.show', $captain->id)}}" title="{{ translate('Show') }}">
 		                                <i class="las la-eye"></i>
@@ -55,7 +55,7 @@
 		                            </a>
 		                        </td>
                         </tr>
-               
+
                 @endforeach
             </tbody>
         </table>

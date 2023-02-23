@@ -47,6 +47,8 @@ class ShipmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    var $my_branch_id = 1;
     public function index(Request $request )
     {
         $shipments = new Shipment();
@@ -100,9 +102,9 @@ class ShipmentController extends Controller
             if (isset($_GET['client_status']) && !empty($_GET['client_status'])) {
                 $shipments = $shipments->whereIn('client_status', $_GET['client_status']);
             }
-            
+
         }
-        
+
         $auth_user = Auth::user();
         if(isset($auth_user))
         {
@@ -167,7 +169,7 @@ class ShipmentController extends Controller
         if ($type != null) {
             $shipments = $shipments->where('type', $type);
         }
-        
+
         if (isset($_GET)) {
             if (isset($_GET['code']) && !empty($_GET['code'])) {
 
@@ -204,7 +206,7 @@ class ShipmentController extends Controller
             if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
                 $shipments = $shipments->where('order_id', $_GET['order_id']);
             }
-            
+
             if (isset($_GET['sort_by']) && !empty($_GET['sort_by'])) {
                 if($_GET['sort_by'] == Shipment::OLDEST)
                 {
@@ -235,9 +237,9 @@ class ShipmentController extends Controller
     public function createPickupMission(Request $request, $type)
     {
         try {
-            
+
             if($request->is('api/*')){
-              
+
                 $token = $request->header('token');
                 if(isset($token))
                 {
@@ -246,10 +248,10 @@ class ShipmentController extends Controller
                     {
                         return response()->json('Not Authorized');
                     }
-                    
+
                 }else{
                     return response()->json('Not Authorizedd');
-                }      
+                }
             }else{
                 $auth_user = Auth::user(); // In case auth user is client . confirm client user id = auth id
             }
@@ -268,7 +270,7 @@ class ShipmentController extends Controller
             if (!$model->save()) {
                 throw new \Exception();
             }
-            
+
             $code = '';
             for($n = 0; $n < ShipmentSetting::getVal('mission_code_count'); $n++){
                 $code .= '0';
@@ -276,11 +278,11 @@ class ShipmentController extends Controller
             $code   =   substr($code, 0, -strlen($model->id));
             $model->code = $code.$model->id;
             $model->code = ShipmentSetting::getVal('mission_prefix').$code.$model->id;
-            
+
             if (!$model->save()) {
                 throw new \Exception();
             }
-            
+
             //change shipment status to requested
             $action = new StatusManagerHelper();
             $response = $action->change_shipment_status($request->checked_ids, Shipment::REQUESTED_STATUS, $model->id);
@@ -288,9 +290,9 @@ class ShipmentController extends Controller
             //Calaculate Amount
             $helper = new TransactionHelper();
             $helper->calculate_mission_amount($model->id);
-            
+
             foreach ($request->checked_ids as $shipment_id) {
-                if ($model->id != null && ShipmentMission::check_if_shipment_is_assigned_to_mission($shipment_id, Mission::PICKUP_TYPE) == 0) 
+                if ($model->id != null && ShipmentMission::check_if_shipment_is_assigned_to_mission($shipment_id, Mission::PICKUP_TYPE) == 0)
                 {
                     $shipment = Shipment::find($shipment_id);
                     $shipment_mission = new ShipmentMission();
@@ -302,11 +304,11 @@ class ShipmentController extends Controller
                     }
                 }
             }
-            
+
             event(new ShipmentAction( Shipment::REQUESTED_STATUS,$request->checked_ids));
-           
+
             event(new CreateMission($model));
-            
+
             DB::commit();
             if($request->is('api/*')){
                  return $model;
@@ -448,7 +450,7 @@ class ShipmentController extends Controller
     {
         try {
             if($request->is('api/*')){
-              
+
                 $token = $request->header('token');
                 if(isset($token))
                 {
@@ -457,10 +459,10 @@ class ShipmentController extends Controller
                     {
                         return response()->json('Not Authorized');
                     }
-                    
+
                 }else{
                     return response()->json('Not Authorizedd');
-                }      
+                }
             }else{
                 $auth_user = Auth::user(); // In case auth user is client . confirm client user id = auth id
             }
@@ -694,11 +696,11 @@ class ShipmentController extends Controller
                     return response()->json('Not Authorized');
                 }
                 $notification = $user->notifications()->select('data','created_at')->where('notifiable_type','App\User')->where('notifiable_id', $user->id)->get();
-                
+
                 return response()->json($notification);
             }else{
                 return response()->json('Not Authorizedd');
-            }      
+            }
         }
     }
 
@@ -719,7 +721,7 @@ class ShipmentController extends Controller
                 return response()->json($shipment);
             }else{
                 return response()->json('Not Authorizedd');
-            }      
+            }
         }
     }
 
@@ -804,7 +806,7 @@ class ShipmentController extends Controller
             return back();
         }
     }
-	
+
     public function getConfirmationTypeMission(Request $request)
     {
         if($request->is('api/*')){
@@ -818,10 +820,10 @@ class ShipmentController extends Controller
                     return response()->json('Not Authorized');
                 }
                 $confirmType = ShipmentSetting::where('key', 'def_shipment_conf_type')->first();
-                return response()->json($confirmType);    
+                return response()->json($confirmType);
             }else{
                 return response()->json('Not Authorizedd');
-            }      
+            }
         }
     }
 
@@ -852,12 +854,12 @@ class ShipmentController extends Controller
                         break;
                     case Mission::RETURN_TYPE:
                         $mission = $this->createReturnMission($request,$request->type);
-                        break;                
+                        break;
                 }
                 return response()->json($mission);
             }else{
                 return response()->json('Not Authorizedd');
-            }      
+            }
         }
     }
 
@@ -915,13 +917,13 @@ class ShipmentController extends Controller
 
         $def_insurance_gram = $client_costs->def_insurance_gram ? $client_costs->def_insurance_gram : ShipmentSetting::getCost('def_insurance_gram');
         $def_insurance = $client_costs->def_insurance ? $client_costs->def_insurance : ShipmentSetting::getCost('def_insurance');
-        
+
 
         $def_tax_gram = $client_costs->def_tax_gram ? $client_costs->def_tax_gram : ShipmentSetting::getCost('def_tax_gram');
         $def_tax = $client_costs->def_tax ? $client_costs->def_tax : ShipmentSetting::getCost('def_tax');
-                
-        
-        
+
+
+
 
         if ($covered_cost != null) {
 
@@ -930,7 +932,7 @@ class ShipmentController extends Controller
             //     $extra = Package::find($pack['package_id'])->cost;
             //     $package_extras += $extra;
             // }
-                
+
             if($weight > 1){
                 if(\App\ShipmentSetting::getVal('is_def_mile_or_fees')=='2')
                 {
@@ -1125,7 +1127,7 @@ class ShipmentController extends Controller
                 return response()->json('invalid or Expired Api Key');
             }
         }
-        
+
         if (!$model->save()) {
             return response()->json(['message' => new \Exception()] );
         }
@@ -1154,7 +1156,7 @@ class ShipmentController extends Controller
                 }
             }
         }
-        
+
         event(new AddShipment($model));
 
         return $model;
@@ -1560,20 +1562,20 @@ class ShipmentController extends Controller
 
         $path = $request->file('shipments_file')->getRealPath();
         $data = array_map('str_getcsv', file($path));
-        
+
         if($data[0] != $request->columns){
             flash(translate('This file you are trying to import is not the file that you should upload'))->error();
             return back();
         }
-        
+
         if(!in_array('type',$request->columns) || !in_array('client_address',$request->columns) || !in_array('branch_id',$request->columns) || !in_array('shipping_date',$request->columns) || !in_array('reciver_name',$request->columns) || !in_array('reciver_phone',$request->columns) || !in_array('reciver_address',$request->columns) || !in_array('from_country_id',$request->columns) || !in_array('to_country_id',$request->columns) || !in_array('from_state_id',$request->columns) || !in_array('to_state_id',$request->columns) || !in_array('payment_type',$request->columns) || !in_array('payment_method_id',$request->columns) || !in_array('package_id',$request->columns) ){
             flash(translate('Make Sure All Required Parameters In CSV'))->error();
             return back();
         }
-        
+
         try {
             unset($data[0]);
-            
+
             $auth_user = Auth::user();
             foreach ($data as $row) {
 
@@ -1651,9 +1653,9 @@ class ShipmentController extends Controller
                         }else{
                             $new_package[$request->columns[$i]] = $row[$i];
                         }
-                        
+
                     }
-                    
+
                 }
 
                 $request['Shipment'] = $new_shipment;
@@ -1694,7 +1696,7 @@ class ShipmentController extends Controller
     }
     public function ChangeStatusByBarcode(Request $request)
     {
-        
+
         $shipment = Shipment::where('barcode',$request->barcode)->first();
         if($shipment)
         {
@@ -1712,14 +1714,14 @@ class ShipmentController extends Controller
                         flash(translate("Status Changed Successfully!"))->success();
                         return back();
                     }
-                    
+
                 }else{
                     flash(translate("Can't Change This Shipment ".$request->barcode))->error();
                     return back();
                 }
 
             }elseif(Auth::user()->user_type == 'admin' || in_array('1109', $staff_permission) ){
-                
+
                 if( $shipment->status_id == Shipment::RECIVED_STATUS)
                 {
                     $to = Shipment::APPROVED_STATUS;
@@ -1740,7 +1742,7 @@ class ShipmentController extends Controller
                         flash(translate("Status Changed Successfully!"))->success();
                         return back();
                     }
-                    
+
                 }else
                 {
                     flash(translate("Can't Change This Shipment ".$request->barcode))->error();
@@ -1765,6 +1767,6 @@ class ShipmentController extends Controller
 
         return Excel::download( new ShipmentsExportExcel($status) , $excelName );
     }
-    
+
 
 }

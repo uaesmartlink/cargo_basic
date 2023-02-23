@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <h1 class="h3">{{translate('Shipments Report')}}</h1>
         </div>
-       
+
     </div>
 </div>
 
@@ -24,7 +24,7 @@
                 {{$page_name}}
             </h3>
         </div>
-       
+
     </div>
 
     <div class="card-body">
@@ -33,11 +33,11 @@
         @csrf
         <div class="mb-7">
             <div class="row align-items-center">
-                
+
                     <div class="col-lg-12 col-xl-12">
                         <div class="row align-items-center">
-                            
-                            
+
+
                                     @if($user_type == 'customer')
                                         @php
                                             $user  = App\Client::where('id',Auth::user()->userClient->client_id)->first();
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     @endif
-                                
+
                             <div @if($user_type == 'customer') class="my-2 col-md-8 my-md-0" @else class="my-2 col-md-4 my-md-0" @endif>
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Type')}}:</label>
@@ -71,11 +71,12 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="row align-items-center">
-                            
-                            <div class="my-2 col-md-4 my-md-5">
+                            <input type="hidden" name="branch_id" value="1" >
+                            {{-- Hide For Demo --}}
+                            {{-- <div class="my-2 col-md-4 my-md-5">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Branch')}}:</label>
                                     <select name="branch_id" class="form-control branch" id="kt_datatable_search_type">
@@ -85,7 +86,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="my-2 col-md-4 my-md-5">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
@@ -99,7 +100,7 @@
                             </div>
                         </div>
                         <div class="row align-items-center">
-                            
+
                             <div class="my-2 col-md-4 my-md-5">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('From Date')}}:</label>
@@ -118,7 +119,7 @@
                         <button type="submit" class="px-6 btn btn-light-primary font-weight-bold">{{translate('Get Report')}}</button>
                         <input type="submit" class="px-6 btn btn-light-primary font-weight-bold" name="excel" value="{{translate('Export Excel Sheet')}}" />
                     </div>
-                
+
             </div>
             </form>
 
@@ -127,7 +128,7 @@
             <table class="table mb-0 aiz-table">
                 <thead>
                     <tr>
-                       
+
                         <th width="3%">#</th>
                         <th>{{translate('Code')}}</th>
                         <th>{{translate('Status')}}</th>
@@ -145,7 +146,7 @@
                         <th>{{translate('Mission')}}</th>
                         @endif
                         <th class="text-center">{{translate('Created At')}}</th>
-                      
+
                     </tr>
                 </thead>
                 <tbody>
@@ -187,7 +188,7 @@
                         <td class="text-center">
                         {{$shipment->created_at->format('Y-m-d')}}
                         </td>
-                       
+
                     </tr>
 
                     @endforeach
@@ -195,12 +196,12 @@
                 </tbody>
             </table>
 
-     
+
 
         </form>
         </div>
         <!--end::Search Form-->
-      
+
     </div>
 </div>
 {!! hookView('shipment_addon',$currentView) !!}
@@ -219,7 +220,7 @@ $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
             todayBtn: true,
             todayHighlight: true,
-          
+
         });
     function openCaptainModel(element, e) {
         var selected = [];
@@ -236,7 +237,7 @@ $('.datepicker').datepicker({
             Swal.fire("{{translate('Please Select Shipments')}}", "", "error");
         }else if(selected.length > 1)
         {
-            
+
             Swal.fire("{{translate('Select shipments of the same client to Assign')}}", "", "error");
         }
     }
@@ -256,7 +257,7 @@ $('.datepicker').datepicker({
             Swal.fire("{{translate('Please Select Shipments')}}", "", "error");
         }else if(selected.length > 1)
         {
-            
+
             Swal.fire("{{translate('Select shipments of the same client to Assign')}}", "", "error");
         }
     }
