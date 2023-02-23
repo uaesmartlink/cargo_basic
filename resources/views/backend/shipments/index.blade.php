@@ -274,7 +274,7 @@
                     <th>{{translate('Code')}}</th>
                     @if($status == "all") <th>{{translate('Status')}}</th> @endif
                     <th>{{translate('Type')}}</th>
-                    @if($auth_user->user_type != "branch") <th>{{translate('Branch')}}</th> @endif
+                    {{-- @if($auth_user->user_type != "branch") <th>{{translate('Branch')}}</th> @endif --}}
 
                     <th>{{translate('Shipping Cost')}}</th>
                     <th>{{translate('Payment Method')}}</th>
@@ -325,11 +325,12 @@
 
                         @if($status == "all") <td>{{$shipment->getStatus()}}</td> @endif
                         <td>{{$shipment->type}}</td>
-                        @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
+                        {{-- Hide For Demo --}}
+                        {{-- @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
                             <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
                         @else
                             <td>{{$shipment->branch->name}}</td>
-                        @endif
+                        @endif --}}
 
                         <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
                         <td>{{$shipment->pay->name ?? ""}}</td>
