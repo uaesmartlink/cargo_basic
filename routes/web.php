@@ -121,7 +121,7 @@ Route::post('/subsubcategories/get_attributes_by_subsubcategory', 'SubSubCategor
 
 //Home Page
 Route::group(['middleware'=>'ThemeChanger'], function() {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@admin_dashboard')->name('home');
     Route::get('/shipment-calc', 'ShipmentController@shipmentCalc')->name('shipment-calc');
 });
 
