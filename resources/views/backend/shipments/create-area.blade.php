@@ -19,7 +19,8 @@
 
         <form class="form-horizontal" action="{{ route('admin.areas.store') }}" id="kt_form_1" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            {{-- Hide For Demo --}}
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{translate('From Country')}}:</label>
@@ -32,7 +33,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">

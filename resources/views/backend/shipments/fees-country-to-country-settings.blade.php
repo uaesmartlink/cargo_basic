@@ -131,8 +131,8 @@
             <thead>
                 <tr>
                     <th width="3%">#</th>
-                    <th>{{translate('From Country')}}</th>
-                    <th>{{translate('To Country')}}</th>
+                    {{-- <th>{{translate('From Country')}}</th>
+                    <th>{{translate('To Country')}}</th> --}}
                     <th>{{translate('From Region')}}</th>
                     <th>{{translate('To Region')}}</th>
                     <th>{{translate('From Area')}}</th>
@@ -151,8 +151,8 @@
 
                 <tr>
                     <td width="3%">{{ ($key+1) + ($costs->currentPage() - 1)*$costs->perPage() }}</td>
-                    <td>{{$cost->from_country->name}}</td>
-                    <td>{{$cost->to_country->name}}</td>
+                    {{-- <td>{{$cost->from_country->name}}</td>
+                    <td>{{$cost->to_country->name}}</td> --}}
                     <td>{{$cost->from_state->name}}</td>
                     <td>{{$cost->to_state->name}}</td>
                     <td>@if(isset($cost->from_area->name)) {{$cost->from_area->name}} @endif</td>

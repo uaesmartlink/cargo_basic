@@ -147,8 +147,8 @@
             var label_returned_cost=' Returned Cost';
             var input_name = "shipping_cost";
             var input_returned_name = "return_cost";
-            
-            
+
+
             if( {{$is_def_mile_or_fees}} =='2'){
                 $('#placeholder_cost').append(cost_block(label_shipping_cost,label_returned_cost,input_name,input_returned_name,v.from_country,v.to_country,v.from_country_id,v.to_country_id,v.from_state,v.to_state,v.from_state_id,v.to_state_id,v.shipping_cost,v.tax,v.return_cost,v.insurance));
             }else if( {{$is_def_mile_or_fees}} =='1'){
@@ -190,6 +190,6 @@
     {
         $('.return_cost').val($(element).val());
     }
-    
+
 </script>
 @endsection

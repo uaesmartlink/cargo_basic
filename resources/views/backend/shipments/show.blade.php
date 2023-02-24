@@ -150,14 +150,15 @@ $d = new DNS1D();
                 </div>
 
                 <div class="pt-6 d-flex justify-content-between">
-                    <div class="d-flex flex-column flex-root">
+                    {{-- Hide Country For Demo --}}
+                    {{-- <div class="d-flex flex-column flex-root">
                             <span class="mb-4 text-dark font-weight-bold">{{translate('From Country')}}</span>
                             <span class="text-muted font-weight-bolder font-size-lg">@if(isset($shipment->from_country->name)){{$shipment->from_country->name}} @endif </span>
                     </div>
                     <div class="d-flex flex-column flex-root">
                             <span class="mb-4 text-dark font-weight-bold">{{translate('To Country')}}</span>
                             <span class="text-muted font-weight-bolder font-size-lg">@if(isset($shipment->to_country->name)){{$shipment->to_country->name}} @endif </span>
-                    </div>
+                    </div> --}}
                     <div class="d-flex flex-column flex-root">
                             <span class="mb-4 text-dark font-weight-bold">{{translate('From Region')}}</span>
                             <span class="text-muted font-weight-bolder font-size-lg">@if(isset($shipment->from_state->name)){{$shipment->from_state->name}} @endif </span>

@@ -20,7 +20,8 @@
         <form class="form-horizontal" action="{{ route('admin.areas.update',['area'=>$area->id]) }}" id="kt_form_1" method="POST" enctype="multipart/form-data">
             @csrf
             {{ method_field('PATCH') }}
-            <div class="row">
+            {{-- Hide Country For Demo --}}
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{translate('From Country')}}:</label>
@@ -33,7 +34,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
