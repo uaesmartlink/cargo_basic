@@ -973,6 +973,7 @@
 
 
     // $('#change-country-client-address').change(function() {
+    initStetes();
     function initStetes(){
         // var id = $(this).val();
         var id = 231;
