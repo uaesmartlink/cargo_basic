@@ -164,9 +164,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <input type="hidden" name="Shipment[branch_id]" value="1" >
-                            {{-- Hide For Demo --}}
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6 d-none">
                                 <div class="form-group">
                                     <label>{{translate('Branch')}}:</label>
                                     <select class="form-control kt-select2 select-branch" name="Shipment[branch_id]">
@@ -181,7 +179,7 @@
 
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="col-md-6">
                                 @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
                                 <div class="form-group">
@@ -210,13 +208,14 @@
                             </div>
 
                         </div>
+                        <hr>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group client-select">
                                     <label>{{translate('Client/Sender')}}:</label>
                                     @if($auth_user->user_type == "customer")
                                         <input type="text" placeholder="" class="form-control" name="" value="{{$auth_user->name}}" disabled>
-                                        <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
+                                        <input type="hidden" name="Shipment[client_id]" value="{{$user_client}}">
                                     @else
                                         <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]">
                                             <option></option>
@@ -229,6 +228,29 @@
 
                                 </div>
                             </div>
+                            <div class="p-3 mb-4 col-md-12" id="show_client_div" style="border: 1px solid #e4e6ef; display:none">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{translate('Commercial Name')}}:</label>
+                                            <input type="text" id="name" class="form-control" placeholder="{{translate('Commercial Name')}}" name="Client[name]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{translate('Owner Phone')}}:</label>
+                                            <input type="text" class="form-control" placeholder="{{translate('Owner Phone')}}" name="Client[mobile]">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mt-8">
+                                            <button type="button" class="btn btn-primary mx-4" onclick="AddNewClient()">{{translate('Save')}}</button>
+                                            <button type="button" class="btn btn-secondary" onclick="closeClientDiv()">{{translate('Close')}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Phone')}}:</label>
@@ -244,31 +266,28 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Address')}}:</label>
                                     <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address">
-                                        <option value=""></option>
-
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="p-3 mb-4 col-md-12"  id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
+                            <div class="p-3 mb-4 col-md-12" id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
                                     <div class="row">
-                                        <input type="hidden" id="change-country-client-address" name="country_id" value="231">
-                                        {{-- Hide Country For Demo --}}
-                                        {{-- <div class="col-md-6">
+
+                                        <div class="col-md-6" style="display: none;">
                                             <div class="form-group">
                                                 <label>{{translate('Country')}}:</label>
                                                 <select id="change-country-client-address" name="country_id" class="form-control select-country">
                                                     <option value=""></option>
                                                     @foreach($countries as $country)
-                                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                                    <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -279,16 +298,14 @@
                                                 </select>
                                             </div>
                                         </div>
-
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label>{{translate('Area')}}:</label>
-                                        <select name="area_id" style="display: block !important;" class="form-control select-area">
-                                            <option value=""></option>
-
-                                        </select>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{translate('Area')}}:</label>
+                                                <select name="area_id" style="display: block !important;" class="form-control select-area">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
 
 
@@ -314,6 +331,37 @@
                                     </div>
                             </div>
 
+                            <div class="col-md-6" style="display: none;">
+                                <div class="form-group">
+                                    <label>{{translate('From Country')}}:</label>
+                                    <select id="change-country" name="Shipment[from_country_id]" class="form-control select-country">
+                                        <option value=""></option>
+                                        @foreach($countries as $country)
+                                        <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('From Region')}}:</label>
+                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('From Area')}}:</label>
+                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area">
+                                        <option value=""></option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Receiver Name')}}:</label>
@@ -350,43 +398,14 @@
                                     </div>
                                 </div>
                             @endif
-
-                        </div>
-                        <hr>
-                        <input type="hidden" id="change-country" name="Shipment[from_country_id]" value="231">
-                        <input type="hidden" id="change-country-to" name="Shipment[to_country_id]" value="231">
-                        {{-- Hide Country For Demo --}}
-                        {{-- <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('From Country')}}:</label>
-                                    <select id="change-country" name="Shipment[from_country_id]" class="form-control select-country">
-                                        <option value=""></option>
-                                        @foreach($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display: none;">
                                 <div class="form-group">
                                     <label>{{translate('To Country')}}:</label>
                                     <select id="change-country-to" name="Shipment[to_country_id]" class="form-control select-country">
                                         <option value=""></option>
                                         @foreach($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                        <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
                                         @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('From Region')}}:</label>
-                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state">
-                                        <option value=""></option>
-
                                     </select>
                                 </div>
                             </div>
@@ -395,20 +414,6 @@
                                     <label>{{translate('To Region')}}:</label>
                                     <select id="change-state-to" name="Shipment[to_state_id]" class="form-control select-state">
                                         <option value=""></option>
-
-                                    </select>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('From Area')}}:</label>
-                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area">
-                                        <option value=""></option>
-
                                     </select>
                                 </div>
                             </div>
@@ -417,12 +422,9 @@
                                     <label>{{translate('To Area')}}:</label>
                                     <select name="Shipment[to_area_id]" class="form-control select-area">
                                         <option value=""></option>
-
                                     </select>
                                 </div>
-
                             </div>
-
                         </div>
                         <hr>
                         <div class="row">
@@ -450,7 +452,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row" style="display:none">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Order ID')}}:</label>
@@ -493,12 +495,21 @@
 
                         <div id="kt_repeater_1">
                             <div class="row" id="kt_repeater_1">
-                                <h2 class="text-left">{{translate('Package Info')}}:</h2>
+                                <h2 class="text-left d-flex" style="justify-content: space-between;width: 100%;">
+                                    <div>
+                                        {{translate('Shipment Info')}}:
+                                    </div>
+                                    <div class="mx-8" style="display:none;">
+                                        <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+                                            <i class="la la-plus"></i>{{translate('Add')}}
+                                        </a>
+                                    </div>
+                                </h2>
                                 <div data-repeater-list="Package" class="col-lg-12">
-                                    <div data-repeater-item class="row align-items-center" style="margin-top: 15px;padding-bottom: 15px;padding-top: 15px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
+                                    <div data-repeater-item class="row align-items-center my-8" style="padding-bottom: 15px;padding-top: 15px;border:1px solid #ccc;">
                                         <div class="col-md-3">
-                                            <label>{{translate('Package Type')}}:</label>
-                                            <select class="form-control kt-select2 package-type-select" name="package_id">
+                                            <label>{{translate('Delivery time')}}:</label>
+                                            <select id="package_id" class="form-control kt-select2 package-type-select" name="package_id">
                                                 <option></option>
                                                 @foreach($packages as $package)
                                                 <option @if(\App\ShipmentSetting::getVal('def_package_type')==$package->id) selected @endif value="{{$package->id}}">{{$package->name}}</option>
@@ -508,50 +519,45 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label>{{translate('description')}}:</label>
-                                            <input type="text" placeholder="{{translate('description')}}" class="form-control" name="description">
+                                            <input id="description" type="text" placeholder="{{translate('description')}}" class="form-control"  name="description">
                                             <div class="mb-2 d-md-none"></div>
                                         </div>
-                                        {{-- <div class="col-md-3">
+                                        <div class="col-md-3">
 
                                             <label>{{translate('Quantity')}}:</label>
 
                                             <input class="kt_touchspin_qty" placeholder="{{translate('Quantity')}}" type="number" min="1" name="qty" class="form-control" value="1" />
                                             <div class="mb-2 d-md-none"></div>
 
-                                        </div> --}}
-
-                                        {{-- <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-3" style="display: none;">
 
                                             <label>{{translate('Weight')}}:</label>
 
                                             <input type="number" min="1" placeholder="{{translate('Weight')}}" name="weight" class="form-control weight-listener kt_touchspin_weight" onchange="calcTotalWeight()" value="1" />
                                             <div class="mb-2 d-md-none"></div>
 
-                                        </div> --}}
+                                        </div>
 
-                                        <input type="hidden" name="qty" value="1">
-                                        <input type="hidden" name="weight" value="1">
-                                        <input type="hidden" name="length" value="1">
-                                        <input type="hidden" name="width" value="1">
-                                        <input type="hidden" name="height" value="1">
-                                        {{-- <div class="col-md-12" style="margin-top: 10px;">
+                                        <div class="col-md-12" style="margin-top: 10px;display: none;">
                                             <label>{{translate('Dimensions [Length x Width x Height] (cm):')}}:</label>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="display: none;">
+
                                             <input class="dimensions_r" type="number" min="1" class="form-control" placeholder="{{translate('Length')}}" name="length" value="1" />
 
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="display: none;">
 
                                             <input class="dimensions_r" type="number" min="1" class="form-control" placeholder="{{translate('Width')}}" name="width" value="1" />
 
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="display: none;">
 
                                             <input class="dimensions_r" type="number" min="1" class="form-control " placeholder="{{translate('Height')}}" name="height" value="1" />
 
                                         </div>
-                                        <div class="row">
+                                        <div class="row" style="padding-top: 30px; display:none;">
                                             <div class="col-md-12">
                                                 <div>
                                                     <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger delete_item">
@@ -559,50 +565,32 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="form-group row">
-                                <div class="">
-                                    <label class="text-right col-form-label">{{translate('Add')}}</label>
-                                    <div>
-                                        <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
-                                            <i class="la la-plus"></i>{{translate('Add')}}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                            <hr>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{translate('Amount to be Collected')}}:</label>
                                         <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" value="0" name="Shipment[amount_to_be_collected]" />
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{translate('Delivery Time')}}:</label>
-                                        <select class="form-control kt-select2 delivery-time" id="delivery_time" name="Shipment[delivery_time]">
-                                            @foreach($deliveryTimes as $deliveryTime)
-                                                <option value="{{$deliveryTime->name}}">{{translate($deliveryTime->name)}}</option>
-                                            @endforeach
+                                        <!-- <label>{{translate('Delivery Time')}}:</label> -->
+                                        <select class="form-control kt-select2 delivery-time" id="delivery_time" name="Shipment[delivery_time]" style="display:none;">
+                                            <option value="24hours">24 hours</option>
                                         </select>
+
                                     </div>
                                 </div>
-                                <input type="hidden" name="Shipment[total_weight]" value="1" id="kt_touchspin_4">
-                                {{-- <div class="col-md-6">
+                                <div class="col-md-6" style="display: none;">
                                     <div class="form-group">
                                         <label>{{translate('Total Weight')}}:</label>
                                         <input id="kt_touchspin_4" placeholder="{{translate('Total Weight')}}" type="text" min="1" class="form-control total-weight" value="1" name="Shipment[total_weight]" />
                                     </div>
-                                </div> --}}
-
+                                </div>
                             </div>
 
 
@@ -669,7 +657,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translate('Close')}}</button>
-                                        <button type="submit" class="btn btn-primary">{{translate('Save')}}</button>
+                                        <button type="submit" id="confirm" class="btn btn-primary"  data-dismiss="modal">{{translate('Confirm Shipment')}}</button>
+                                        <button type="button" class="btn btn-primary" onclick="checkForm('kt_form_1')">Check</button>
                                     </div>
                                 </div>
                             </div>
@@ -688,6 +677,9 @@
 <script src="//maps.googleapis.com/maps/api/js?libraries=places&key={{$checked_google_map->key}}"></script>
 
 <script type="text/javascript">
+
+    let state_to_change = null;
+    let area_to_change = null;
 
     // Map Address For Receiver
     $('.address-receiver').each(function(){
@@ -736,24 +728,25 @@
     });
 
     {{-- function haversine_distance() {
-      var R = 3958.8; // Radius of the Earth in miles
-      var rlat1 = $("input[data-client=lat]").val() * (Math.PI/180); // Convert degrees to radians
-      var rlat2 = $("input[data-receiver=lat]").val() * (Math.PI/180); // Convert degrees to radians
-      var difflat = rlat2-rlat1; // Radian difference (latitudes)
-      var difflon = ($("input[data-receiver=lng]").val()-$("input[data-client=lng]").val()) * (Math.PI/180); // Radian difference (longitudes)
+    var R = 3958.8; // Radius of the Earth in miles
+    var rlat1 = $("input[data-client=lat]").val() * (Math.PI/180); // Convert degrees to radians
+    var rlat2 = $("input[data-receiver=lat]").val() * (Math.PI/180); // Convert degrees to radians
+    var difflat = rlat2-rlat1; // Radian difference (latitudes)
+    var difflon = ($("input[data-receiver=lng]").val()-$("input[data-client=lng]").val()) * (Math.PI/180); // Radian difference (longitudes)
 
-      var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-      return d;
+    var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+    return d;
 
-      var distance = haversine_distance();
-      console.log(distance);
+    var distance = haversine_distance();
+    console.log(distance);
     } --}}
 
     // Get Addressess After Select Client
     function selectIsTriggered()
     {
-         getAdressess(document.getElementById("client-id").value);
+        getAdressess(document.getElementById("client-id").value);
     }
+
 
     // Ajax Get Address With Cliet Id
     function getAdressess(client_id)
@@ -761,7 +754,24 @@
         var id = client_id;
 
         $.get("{{route('admin.shipments.get-addressess-ajax')}}?client_id=" + id, function(data) {
-            if(data.length != 0){
+
+            if(data.length == 1){
+                console.log("Hello");
+                console.log(data);
+                console.log(data[0]);
+                console.log(data[0]['address']);
+                console.log("Hello");
+                $('select[name ="Shipment[client_address]"]').empty();
+                $('select[name ="Shipment[client_address]"]').append('<option value="' + data[0]['id'] + '" selected>' + data[0]['address'] + '</option>');
+                $.get("{{route('client.get.one.address')}}?address_id=" + data[0]['id'], function(addressData) {
+                    $("#change-country").val(addressData[0]['country_id']).change();
+                    state_to_change = addressData[0]['state_id'];
+                    if(addressData[0]['area_id'] != null || addressData[0]['area_id'] != ""){
+                        area_to_change = addressData[0]['area_id'];
+                    }
+                });
+            }
+            else if(data.length != 0){
                 $('select[name ="Shipment[client_address]"]').empty();
                 $('select[name ="Shipment[client_address]"]').append('<option value=""></option>');
                 for (let index = 0; index < data.length; index++) {
@@ -811,16 +821,51 @@
         var id = $(this).val();
         $.get("{{route('client.get.one.address')}}?address_id=" + id, function(data) {
             $("#change-country").val(data[0]['country_id']).change();
-            setTimeout(function(){
-                $("#change-state-from").val(data[0]['state_id']).change();
-                if(data[0]['area_id'] != null || data[0]['area_id'] != ""){
-                    setTimeout(function(){
-                        $("#from_area_id").val(data[0]['area_id']).change();
-                     }, 800);
-                }
-             }, 800);
+            state_to_change = data[0]['state_id'];
+            if(data[0]['area_id'] != null || data[0]['area_id'] != ""){
+                area_to_change = data[0]['area_id'];
+            }
+            // setTimeout(function(){
+            //     $("#change-state-from").val(data[0]['state_id']).change();
+            //     if(data[0]['area_id'] != null || data[0]['area_id'] != ""){
+            //         setTimeout(function(){
+            //             $("#from_area_id").val(data[0]['area_id']).change();
+            //          }, 800);
+            //     }
+            //  }, 800);
         });
     });
+
+    // Ajax Add New Client
+    function AddNewClient()
+    {
+        var client_name     = $('input[name ="Client[name]"]').val();
+        var client_phone    = $('input[name ="Client[mobile]"]').val();
+        var branch_id       = $('select[name ="Shipment[branch_id]"]').val();
+        var created_by      = {{ Auth::user()->id }};
+        var created_by_type = "{{ Auth::user()->user_type }}";
+
+        if(client_name != "" && client_phone != "" && branch_id != "")
+        {
+            $.post( "{{ route('client.add.new.client') }}",
+            {
+                client_name: client_name,
+                client_phone: client_phone,
+                branch_id: branch_id,
+                created_by: created_by,
+                created_by_type: created_by_type,
+            } , function(data){
+                $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + '" data-phone="' + data['responsible_mobile'] + '" selected>' + data['responsible_name'] + '</option>');
+                $('input[name ="Client[name]"]').val("");
+                $('input[name ="Client[mobile]"]').val("");
+                $('input[name ="Shipment[client_phone]"]').val(data['responsible_mobile']);
+                closeClientDiv();
+                selectIsTriggered();
+            });
+        }else{
+            Swal.fire("{{translate('Please Enter All Reqired Fields')}}", "", "error");
+        }
+    }
 
     // Ajax Add New Address For Client
     function AddNewClientAddress()
@@ -855,12 +900,16 @@
                     area: area
                 } , function(data){
                     $('select[name ="Shipment[client_address]"]').empty();
+                    var last_id = 0;
                     for (let index = 0; index < data.length; index++) {
                         const element = data[index];
+                        last_id = element['id'];
                         $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + '">' + element['address'] + '</option>');
                     }
                     document.getElementsByName("client_address")[0].value            = "";
                     document.getElementsByName("client_street_address_map")[0].value = "";
+                    $('select[name ="Shipment[client_address]"]').val(last_id).change();
+                    closeAddressDiv();
                 });
             }else{
                 Swal.fire("{{translate('Please Enter All Reqired Fields')}}", "", "error");
@@ -877,14 +926,18 @@
                     area: area
                 } , function(data){
                     $('select[name ="Shipment[client_address]"]').empty();
+                    var last_id = 0;
                     for (let index = 0; index < data.length; index++) {
                         const element = data[index];
+                        last_id = element['id'];
                         $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + '">' + element['address'] + '</option>');
                     }
                     document.getElementsByName("client_address")[0].value            = "";
                     var country = $('select[name ="country_id"]').val();
                     var state = $('select[name ="state_id"]').val();
                     var area = $('select[name ="area_id"]').val();
+                    $('select[name ="Shipment[client_address]"]').val(last_id).change();
+                    closeAddressDiv();
                 });
             }else{
                 Swal.fire("{{translate('Please Enter All Reqired Fields')}}", "", "error");
@@ -892,9 +945,10 @@
         @endif
     }
 
-
     function openAddressDiv()
     {
+        $('select[name ="Shipment[client_address]"]').val('').change();
+        $('select[name ="Shipment[client_address]"]').select2("close");
         $( "#show_address_div" ).slideDown( "slow", function() {
             // Animation complete.
         });
@@ -905,6 +959,22 @@
             // Animation complete.
         });
     }
+
+    function openClientDiv()
+    {
+        $('select[name ="Shipment[client_id]"]').val('').change();
+        $('select[name ="Shipment[client_id]"]').select2("close");
+        $( "#show_client_div" ).slideDown( "slow", function() {
+            // Animation complete.
+        });
+    }
+    function closeClientDiv()
+    {
+        $( "#show_client_div" ).slideUp( "slow", function() {
+            // Animation complete.
+        });
+    }
+
 
     var inputs = document.getElementsByTagName('input');
 
@@ -925,7 +995,7 @@
         })
     @if($user_type == 'admin' || in_array('1005', $staff_permission) )
         .on('select2:open', () => {
-            $(".select2-results:not(:has(a))").append(`<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.clients.create')}}?redirect=admin.shipments.create"
+            $(".select2-results:not(:has(a))").append(`<li style='list-style: none; padding: 10px;'><a style="width: 100%" onclick="openClientDiv()"
                 class="btn btn-primary" >+ {{translate('Add New Client')}}</a>
                 </li>`);
         });
@@ -944,19 +1014,6 @@
         placeholder: "Payment Type",
     });
 
-
-
-    $('.delivery-time').select2({
-        placeholder: "Delivery Time",
-    })
-    @if($user_type == 'admin' || in_array('1110', $staff_permission) )
-        .on('select2:open', () => {
-            $(".select2-results:not(:has(a))").append(`<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.deliveryTime.create')}}?redirect=admin.shipments.create"
-                class="btn btn-primary" >+ {{translate('Add Delivery Time')}}</a>
-                </li>`);
-        });
-    @endif
-
     $('.select-branch').select2({
             placeholder: "Select Branch",
     })
@@ -969,11 +1026,8 @@
     @endif
 
 
-    // $('#change-country-client-address').change(function() {
-    initStetes();
-    function initStetes(){
-        // var id = $(this).val();
-        var id = 231;
+    $('#change-country-client-address').change(function() {
+        var id = $(this).val();
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="state_id"]').empty();
             $('select[name ="state_id"]').append('<option value=""></option>');
@@ -985,14 +1039,9 @@
 
 
         });
-    }
-    // );
-
-    // $('#change-country').change(function() {
-    initStateFrom();
-    function initStateFrom(){
-        // var id = $(this).val();
-        var id = 231;
+    });
+    $('#change-country').change(function() {
+        var id = $(this).val();
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="Shipment[from_state_id]"]').empty();
             $('select[name ="Shipment[from_state_id]"]').append('<option value=""></option>');
@@ -1001,17 +1050,17 @@
 
                 $('select[name ="Shipment[from_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
-
-
+            if(state_to_change)
+            {
+                $("#change-state-from").val(state_to_change).change();
+                state_to_change = null;
+            }
         });
-    }
-    // );
+    });
 
-    // $('#change-country-to').change(function() {
-    initStatesTo();
-    function initStatesTo(){
-        // var id = $(this).val();
-        var id = 231;
+    $('#change-country-to').change(function() {
+        var id = $(this).val();
+
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="Shipment[to_state_id]"]').empty();
             $('select[name ="Shipment[to_state_id]"]').append('<option value=""></option>');
@@ -1022,8 +1071,7 @@
 
 
         });
-    }
-    // );
+    });
 
     $('#change-state-client-address').change(function() {
         var id = $(this).val();
@@ -1039,6 +1087,26 @@
 
         });
     });
+    $('#package_id').change(function(){
+        var name = $(this).val();
+        var delivery_time = document.getElementById("delivery_time")[0];
+        console.log(name);
+        if(name == '1'){
+            delivery_time.value = "24hours";
+            delivery_time.text = "24 hours";
+        }else if(name == '3'){
+            delivery_time.value = "12hours";
+            delivery_time.text = "12 hours";
+
+        }else if(name == '4'){
+            delivery_time.value = "5hours";
+            delivery_time.text = "5 hours";
+        }else{
+            delivery_time.value = "3hours";
+            delivery_time.text = "3 hours";
+        }
+    });
+
     $('#change-state-from').change(function() {
         var id = $(this).val();
 
@@ -1050,7 +1118,11 @@
                 $('select[name ="Shipment[from_area_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
 
-
+            if(area_to_change)
+            {
+                $("#from_area_id").val(area_to_change).change();
+                area_to_change = null;
+            }
         });
     });
     $('#change-state-to').change(function() {
@@ -1070,7 +1142,6 @@
 
     function get_estimation_cost() {
         var total_weight = document.getElementById('kt_touchspin_4').value;
-        // total_weight = 1;
         var select_packages = document.getElementsByClassName('package-type-select');
 
         var from_country_id = document.getElementsByName("Shipment[from_country_id]")[0].value;
@@ -1079,6 +1150,8 @@
         var to_state_id = document.getElementsByName("Shipment[to_state_id]")[0].value;
         var from_area_id = document.getElementsByName("Shipment[from_area_id]")[0].value;
         var to_area_id = document.getElementsByName("Shipment[to_area_id]")[0].value;
+
+
         @if($user_type == 'customer')
             var client_id = {{$user_client}};
         @else
@@ -1095,6 +1168,8 @@
                 return 0;
             }
         }
+
+
         var request_data = { _token : '{{ csrf_token() }}',
                                 package_ids : package_ids,
                                 total_weight : total_weight,
@@ -1106,6 +1181,7 @@
                                 to_area_id : to_area_id,
                                 client_id : client_id,
                             };
+        console.log(request_data);
         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
 
             if({{$is_def_mile_or_fees}} =='2')
@@ -1140,7 +1216,7 @@
         $('.select-country').select2({
             placeholder: "Select country",
             language: {
-              noResults: function() {
+            noResults: function() {
                 @if($user_type == 'admin' || in_array('1105', $staff_permission) )
                     return `<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.shipments.covered_countries')}}?redirect=admin.shipments.create"
                     class="btn btn-primary" >Manage {{translate('Countries')}}</a>
@@ -1148,17 +1224,17 @@
                 @else
                     return ``;
                 @endif
-              },
+            },
             },
             escapeMarkup: function(markup) {
-              return markup;
+            return markup;
             },
         });
 
         $('.select-state').select2({
             placeholder: "Select state",
             language: {
-              noResults: function() {
+            noResults: function() {
                 @if($user_type == 'admin' || in_array('1105', $staff_permission) )
                     return `<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.shipments.covered_countries')}}?redirect=admin.shipments.create"
                     class="btn btn-primary" >Manage {{translate('States')}}</a>
@@ -1166,10 +1242,10 @@
                 @else
                     return ``;
                 @endif
-              },
+            },
             },
             escapeMarkup: function(markup) {
-              return markup;
+            return markup;
             },
         });
 
@@ -1180,7 +1256,7 @@
         $('.select-area').select2({
             placeholder: "Select Area",
             language: {
-              noResults: function() {
+            noResults: function() {
                 @if($user_type == 'admin' || in_array('1105', $staff_permission) )
                     return `<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.areas.create')}}?redirect=admin.shipments.create"
                     class="btn btn-primary" >Manage {{translate('Areas')}}</a>
@@ -1188,10 +1264,10 @@
                 @else
                     return ``;
                 @endif
-              },
+            },
             },
             escapeMarkup: function(markup) {
-              return markup;
+            return markup;
             },
         });
 
@@ -1318,17 +1394,17 @@
             maxboostedstep: 10000000,
             prefix: '{{currency_symbol()}}'
         });
-        // $('#kt_touchspin_4').TouchSpin({
-        //     buttondown_class: 'btn btn-secondary',
-        //     buttonup_class: 'btn btn-secondary',
+        $('#kt_touchspin_4').TouchSpin({
+            buttondown_class: 'btn btn-secondary',
+            buttonup_class: 'btn btn-secondary',
 
-        //     min: 1,
-        //     max: 1000000000,
-        //     stepinterval: 50,
-        //     maxboostedstep: 10000000,
-        //     initval: 1,
-        //     prefix: 'Kg'
-        // });
+            min: 1,
+            max: 1000000000,
+            stepinterval: 50,
+            maxboostedstep: 10000000,
+            initval: 1,
+            prefix: 'Kg'
+        });
         $('.kt_touchspin_weight').TouchSpin({
             buttondown_class: 'btn btn-secondary',
             buttonup_class: 'btn btn-secondary',
@@ -1379,13 +1455,13 @@
                             }
                         }
                     },
-                    // "Shipment[branch_id]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
+                    "Shipment[branch_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
                     "Shipment[client_id]": {
                         validators: {
                             callback: {
@@ -1409,10 +1485,16 @@
                             }
                         }
                     },
-                    "Shipment[client_phone]": {
+                    "Shipment[reciver_phone]": {
                         validators: {
                             notEmpty: {
                                 message: '{{translate("This is required!")}}'
+                            },
+                            chackPhoneReciver:{
+                                message: '{{translate("unvalid phone")}}',
+                                callback: function(input) {
+                                    return input.value.search(/((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})/) >= 0;
+                                },
                             }
                         }
                     },
@@ -1430,34 +1512,34 @@
                             }
                         }
                     },
-                    // "Shipment[tax]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
-                    // "Shipment[insurance]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
-                    // "Shipment[shipping_cost]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
-                    // "Shipment[delivery_time]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
+                    "Shipment[tax]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[insurance]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[shipping_cost]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[delivery_time]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
                     "Shipment[delivery_time]": {
                         validators: {
                             notEmpty: {
@@ -1472,20 +1554,20 @@
                             }
                         }
                     },
-                    // "Shipment[from_country_id]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
-                    // "Shipment[to_country_id]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
+                    "Shipment[from_country_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[to_country_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
                     "Shipment[from_state_id]": {
                         validators: {
                             notEmpty: {
@@ -1521,11 +1603,18 @@
                             }
                         }
                     },
-                    "Shipment[reciver_phone]": {
+                    "Shipment[client_phone]": {
                         validators: {
-                            notEmpty: {
+                        notEmpty: {
                                 message: '{{translate("This is required!")}}'
+                            },
+                            chackPhoneClient:{
+                                message: '{{translate("unvalid phone")}}',
+                                callback: function(input) {
+                                    return input.value.search(/((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})/) >= 0;
+                                },
                             }
+
                         }
                     },
                     "Shipment[reciver_address]": {
@@ -1535,13 +1624,13 @@
                             }
                         }
                     },
-                    "Package[0][package_id]": {
+                    "Package[0][description]": {
                         validators: {
                             notEmpty: {
                                 message: '{{translate("This is required!")}}'
                             }
                         }
-                    }
+                    },
 
                 },
 
@@ -1556,17 +1645,27 @@
                     // Submit the form when all fields are valid
                     defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
                     icon: new FormValidation.plugins.Icon({
-                        valid: 'fa fa-check',
+                        valid: '',
                         invalid: 'fa fa-times',
                         validating: 'fa fa-refresh',
                     }),
-					 alias: new FormValidation.plugins.Alias({
+                    alias: new FormValidation.plugins.Alias({
                         // The required validator is infact treated as notEmpty validator
-                        chackPhone: 'callback',
+                        chackPhoneClient: 'callback',
+                        chackPhoneReciver: 'callback',
                     }),
                 }
             }
         );
     });
+
+    function checkForm(myfrm) {
+        var printdata = document.getElementById(myfrm);
+        console.log(printdata);
+        newwin = window.open("");
+        newwin.document.write(printdata.outerHTML);
+        newwin.print();
+        newwin.close();
+    }
 </script>
 @endsection
