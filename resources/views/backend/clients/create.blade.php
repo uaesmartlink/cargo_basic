@@ -641,7 +641,7 @@
 							  chackPhone:{
                                 message: '{{translate("unvalid phone")}}',
                                 callback: function(input) {
-                                    return input.value.search(/((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})/) >= 0;
+                                    return input.value.search(/^((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})$/) >= 0;
                                 },
                             }
 
