@@ -521,17 +521,16 @@
         console.log("Hello");
         var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
-            $('select[name ="state_id"]').empty();
-            $('select[name ="state_id"]').append('<option value=""></option>');
+            $('select[name ="address[0][\"state_id\"]"]').empty();
+            $('select[name ="address[0][\"state_id\"]"]').append('<option value=""></option>');
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 console.log(element['name']);
-                $('select[name ="state_id"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+                $('select[name ="address[0][\"state_id\"]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
-
-
         });
     }
+
     function changeState()
     {
         $('.change-state-client-address').change(function() {
