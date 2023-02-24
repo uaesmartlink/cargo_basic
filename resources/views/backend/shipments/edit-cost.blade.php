@@ -19,7 +19,10 @@
         <form class="form-horizontal" action="{{ route('admin.costs.update',['cost'=>$cost->id]) }}" id="kt_form_1" method="POST" enctype="multipart/form-data">
             @csrf
             {{ method_field('PATCH') }}
-            <div class="row">
+            <input type="hidden" name="Cost[from_country_id]" value="231">
+            <input type="hidden" name="Cost[to_country_id]" value="231">
+            {{-- Hide Country For Demo --}}
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{translate('From Country')}}:</label>
@@ -49,13 +52,13 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{translate('From Region')}}:</label>
                         <select name="Cost[from_state_id]" class="form-control select-state">
-                           
+
                             @foreach(\App\State::where('country_id',$cost->from_country_id)->get() as $state)
                             <option @if($cost->from_state_id == $state->id) selected @endif value="{{$state->id}}">{{$state->name}}</option>
                             @endforeach
@@ -66,7 +69,7 @@
                     <div class="form-group">
                         <label>{{translate('To Region')}}:</label>
                         <select name="Cost[to_state_id]" class="form-control select-state">
-                            
+
                             @foreach(\App\State::where('country_id',$cost->to_country_id)->get() as $state)
                             <option @if($cost->to_state_id == $state->id) selected @endif value="{{$state->id}}">{{$state->name}}</option>
                             @endforeach
@@ -122,8 +125,8 @@
     });
     @if( \App\ShipmentSetting::getVal('fees_type')  == 2)
     $('#change-country').change(function() {
-        var id = $(this).val();
-
+        // var id = $(this).val();
+        var id = 231;
         $('.select-country-to').select2({
             placeholder: $(this).find(":selected").text(),
         });
@@ -145,14 +148,14 @@
     });
     @elseif( \App\ShipmentSetting::getVal('fees_type')  == 4)
     $('#change-country').change(function() {
-        var id = $(this).val();
+        // var id = $(this).val();
+        var id = 231;
 
 
-        
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[from_state_id]"]').empty();
-           
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
 
@@ -165,13 +168,13 @@
     $('#change-country-to').change(function() {
         var id = $(this).val();
 
-      
 
-        
+
+
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[to_state_id]"]').empty();
-           
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 $('select[name ="Cost[to_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
@@ -236,7 +239,7 @@
                     },
 
                 },
-                
+
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),

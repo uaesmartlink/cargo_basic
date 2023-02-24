@@ -163,7 +163,8 @@
                                 </div>
                             </div>
 
-                            <div class="my-2 col-md-4 my-md-0">
+                            <input type="hidden" name="from_country_id" value="231">
+                            {{-- <div class="my-2 col-md-4 my-md-0">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('From Country')}}:</label>
                                     <select name="from_country_id" id="change-country" class="form-control kt-select2 select-from-country">
@@ -173,7 +174,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="my-2 col-md-4 mb-2">
                                 <div class="d-flex align-items-center">
@@ -190,8 +191,8 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="my-2 col-md-4 mb-2">
+                            <input type="hidden" name="to_country_id" value="231">
+                            {{-- <div class="my-2 col-md-4 mb-2">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('To Country')}}:</label>
                                     <select name="to_country_id" id="change-country-to" class="form-control kt-select2 select-to-country">
@@ -201,7 +202,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="my-2 col-md-4 my-md-0">
                                 <div class="d-flex align-items-center">
@@ -669,7 +670,8 @@
     $('.select-sort').select2();
 
     $('#change-country').change(function() {
-        var id = $(this).val();
+        // var id = $(this).val();
+        var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="from_region_id"]').append('<option>Select Region</option>');
             for (let index = 0; index < data.length; index++) {
@@ -681,7 +683,8 @@
 
 
     $('#change-country-to').change(function() {
-        var id = $(this).val();
+        // var id = $(this).val();
+        var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="to_region_id"]').append('<option>Select Region</option>');
             for (let index = 0; index < data.length; index++) {

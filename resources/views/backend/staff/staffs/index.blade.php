@@ -27,9 +27,9 @@
                     <th>{{translate('Name')}}</th>
                     <th>{{translate('Email')}}</th>
                     <th>{{translate('Phone')}}</th>
-                    @if(Auth::user()->user_type != 'branch')
+                    {{-- @if(Auth::user()->user_type != 'branch')
                         <th>{{translate('Branch')}}</th>
-                    @endif
+                    @endif --}}
                     <th>{{translate('Role')}}</th>
                     <th width="10%">{{translate('Options')}}</th>
                 </tr>
@@ -42,9 +42,10 @@
                             <td>{{$staff->user->name}}</td>
                             <td>{{$staff->user->email}}</td>
                             <td>{{$staff->user->phone}}</td>
-                            @if(Auth::user()->user_type != 'branch')
+                            {{-- Hide For Demo --}}
+                            {{-- @if(Auth::user()->user_type != 'branch')
                                 <td>{{$staff->branch->name}}</td>
-                            @endif
+                            @endif --}}
                             <td>{{$staff->role->getTranslation('name')}}</td>
                             <td class="text-right">
 		                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('staffs.edit', encrypt($staff->id))}}" title="{{ translate('Edit') }}">

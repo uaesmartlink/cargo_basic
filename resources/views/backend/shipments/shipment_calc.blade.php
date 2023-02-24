@@ -12,7 +12,7 @@
 	if(!$is_def_mile_or_fees){
         $is_def_mile_or_fees = 0;
     }
-    
+
     // is_def_mile_or_fees if result 1 for mile if result 2 for fees
 
 @endphp
@@ -456,7 +456,9 @@
                                                         <div class="tab-content" id="myTabContent">
                                                             <div class="tab-pane fade show active" id="location" role="tabpanel" aria-labelledby="location-tab">
                                                                 <label class="chbs-form-label-group">{{translate('details')}}</label>
-                                                                <div @if( $is_def_mile_or_fees =='2') style="display:flex;" @endif>
+                                                                <input type="hidden" name="Shipment[from_country_id]" value="231">
+                                                                <input type="hidden" name="Shipment[to_country_id]" value="231">
+                                                                {{-- <div @if( $is_def_mile_or_fees =='2') style="display:flex;" @endif>
                                                                     <div class="chbs-form-field" @if( $is_def_mile_or_fees =='2') style="width:50%" @endif>
                                                                         <div class="error" id="error_from_country">{{translate('Enter a valid Country')}}</div>
                                                                         <label style="padding-left: 4px;">{{translate('From Country')}}:</label>
@@ -481,7 +483,7 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                                 <div @if( $is_def_mile_or_fees =='2') style="display:flex;" @endif>
                                                                     <div class="chbs-form-field" @if( $is_def_mile_or_fees =='2') style="width:50%" @endif>
                                                                         <label style="padding-left: 4px;">{{translate('From Region')}}:</label>
@@ -496,7 +498,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                
+
                                                             </div>
 
                                                             <div class="tab-pane fade" id="pickup" role="tabpanel" aria-labelledby="pickup-tab">
@@ -518,7 +520,7 @@
                                                                         <label>{{translate('Total Weight')}}:</label>
                                                                         <input autocomplete="off" id="total_weight" placeholder="{{translate('Total Weight')}}" type="number" min="1" class="total-weight" value="1" name="Shipment[total_weight]" />
                                                                     </div>
-                                                                    
+
                                                                 </div>
 
                                                             </div>
@@ -556,7 +558,7 @@
 
                                                 <div id="result" style="box-shadow:0px 18px 19px -20px rgb(0 0 0 / 10%)">
                                                     <div style="border-left: 1px solid #eaecee;display:flex">
-                                                        
+
                                                         @if( $is_def_mile_or_fees =='1')
                                                             <div class="chbs-meta">
                                                                 <span class="chbs-meta-icon-route">
@@ -622,8 +624,8 @@
                                                                     <span class="chbs-meta-count" id="total_cost">{{currency_symbol()}}0</span>
                                                                 </div>
                                                             </div>
-                                                        @endif              
-                                                    
+                                                        @endif
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -755,9 +757,10 @@
                     return false;
                 })
             });
-            
+
             $('#change-country').change(function() {
-                var id = $(this).val();
+                // var id = $(this).val();
+                var id = 231;
                 $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
                     $('select[name ="Shipment[from_state_id]"]').empty();
                     for (let index = 0; index < data.length; index++) {
@@ -770,7 +773,7 @@
 
             $('#change-country-to').change(function() {
                 var id = $(this).val();
-
+                var id = 231;
                 $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
                     $('select[name ="Shipment[to_state_id]"]').empty();
                     for (let index = 0; index < data.length; index++) {
@@ -910,16 +913,16 @@
                         var from_country_id = document.getElementsByName("Shipment[from_country_id]")[0].value;
                         var to_country_id   = document.getElementsByName("Shipment[to_country_id]")[0].value;
                         var from_state_id   = document.getElementsByName("Shipment[from_state_id]")[0].value;
-                        var to_state_id     = document.getElementsByName("Shipment[to_state_id]")[0].value;   
+                        var to_state_id     = document.getElementsByName("Shipment[to_state_id]")[0].value;
 
-                        var request_data = { _token : '{{ csrf_token() }}', 
-                                package_ids     : package_ids, 
-                                total_weight    : total_weight, 
-                                from_country_id : from_country_id, 
-                                to_country_id   : to_country_id, 
-                                from_state_id   : from_state_id, 
-                                to_state_id     : to_state_id, 
-                            }; 
+                        var request_data = { _token : '{{ csrf_token() }}',
+                                package_ids     : package_ids,
+                                total_weight    : total_weight,
+                                from_country_id : from_country_id,
+                                to_country_id   : to_country_id,
+                                from_state_id   : from_state_id,
+                                to_state_id     : to_state_id,
+                            };
 
                         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
                             if( {{$is_def_mile_or_fees}} =='1'){
@@ -930,19 +933,19 @@
                                 document.getElementById("insurance").innerHTML = response.insurance;
                                 document.getElementById("total_cost").innerHTML = response.total_cost;
                             }
-                            
+
                         });
                 }
 
                 $('#to_places').change(function(){
                     var from_places_value = $('#from_places').val();
                     if( from_places_value == "" || from_places_value == null ){
-                        validateInput('error_pickup');                        
+                        validateInput('error_pickup');
                     }else{
                         calc_waiting_meil();
                         setTimeout(function(){ finishCalculate() }, 500);
                     }
-                    
+
                 });
 
                 $('#from_places').change(function(){
@@ -953,7 +956,7 @@
                         calc_waiting_meil();
                         setTimeout(function(){ finishCalculate() }, 500);
                     }
-                    
+
                 });
 
                 $('#change-country').on('change', function() {
@@ -969,7 +972,7 @@
                             calc_waiting_fees();
                             setTimeout(function(){ finishCalculate() }, 500);
                         }
-                        
+
                     }
                 });
 
@@ -986,7 +989,7 @@
                             setTimeout(function(){ finishCalculate() }, 500);
                         }
                     }
-                    
+
                 });
 
                 $('#change-state-from').change(function(){
@@ -994,7 +997,7 @@
                         calc_waiting_meil();
                         setTimeout(function(){ finishCalculate() }, 500);
                     }else if( {{$is_def_mile_or_fees}} =='2'){
-                        
+
                         calc_waiting_fees();
                         setTimeout(function(){ ajaxShipmentCost() }, 500);
                     }
@@ -1007,7 +1010,7 @@
                     }else if( {{$is_def_mile_or_fees}} =='2'){
                         calc_waiting_fees();
                         setTimeout(function(){ ajaxShipmentCost() }, 500);
-                    }  
+                    }
                 });
 
 
@@ -1030,12 +1033,12 @@
                         validateInput('error_weight_country');
                     }
                 });
-                
+
 
                 function validateInput(id)
                 {
                     $("#"+id).fadeIn(300);
-                    setTimeout(function(){ 
+                    setTimeout(function(){
                         $("#"+id).fadeOut(300);
                     }, 5000);
                 }

@@ -32,7 +32,7 @@
                         </select>
                     </div>
                 </div>
-               
+
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -46,7 +46,7 @@
                         </select>
                     </div>
                 </div>
-              
+
 
             </div>
             <div class="row">
@@ -56,12 +56,12 @@
                         <input type="text" class="form-control" value="{{$area->name}}" name="Area[name]">
                     </div>
                 </div>
-              
+
 
             </div>
-          
+
             <div class="row">
-              
+
                 <div class="form-group mb-0 text-left col-md-4">
                     <label>{{translate('Save')}}:</label>
                     <div>
@@ -102,12 +102,12 @@
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Area[state_id]"]').empty();
-            
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
 
                 $('select[name ="Area[state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
-                
+
             }
 
 
@@ -138,9 +138,9 @@
                             }
                         }
                     }
-                    
+
                 },
-                
+
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),

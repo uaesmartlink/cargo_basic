@@ -134,7 +134,7 @@
                         <th>{{translate('Status')}}</th>
                         <th>{{translate('Type')}}</th>
                         <th>{{translate('Customer')}}</th>
-                        <th>{{translate('Branch')}}</th>
+                        {{-- <th>{{translate('Branch')}}</th> --}}
 
                         <th>{{translate('Shipping Cost')}}</th>
                         <th>{{translate('Payment Method')}}</th>
@@ -163,12 +163,12 @@
                         @else
                             <td>{{$shipment->client->name}}</td>
                         @endif
-
-                        @if($user_type == 'admin' || in_array('1006', $staff_permission)  )
+                        {{-- Hide For Demo --}}
+                        {{-- @if($user_type == 'admin' || in_array('1006', $staff_permission)  )
                             <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
                         @else
                             <td>{{$shipment->branch->name}}</td>
-                        @endif
+                        @endif --}}
 
                         <td>{{$shipment->shipping_cost}}</td>
                         <td>{{$shipment->pay->name ?? ""}}</td>

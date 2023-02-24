@@ -131,7 +131,7 @@
                         <div class="tab-content mt-5" id="myTabTables11">
                             <!--begin::Table-->
                             <div class="table-responsive">
-                            
+
                                 <table class="table mb-0 aiz-table">
                                     <thead>
                                         <tr>
@@ -141,7 +141,7 @@
                                             <th>{{translate('Status')}}</th>
                                             <th>{{translate('Type')}}</th>
                                             <th>{{translate('Customer')}}</th>
-                                            <th>{{translate('Branch')}}</th>
+                                            {{-- <th>{{translate('Branch')}}</th> --}}
 
                                             <th>{{translate('Shipping Cost')}}</th>
                                             <th>{{translate('Payment Method')}}</th>
@@ -163,7 +163,8 @@
                                             <td>{{$shipment->getStatus()}}</td>
                                             <td>{{$shipment->type}}</td>
                                             <td><a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a></td>
-                                            <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
+                                            {{-- Hide For Demo --}}
+                                            {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
 
                                             <td>{{format_price($shipment->shipping_cost)}}</td>
                                             <td>{{$shipment->pay->name ?? ""}}</td>

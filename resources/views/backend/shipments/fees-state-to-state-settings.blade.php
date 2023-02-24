@@ -19,7 +19,9 @@
 
         <form class="form-horizontal" action="{{ route('admin.costs.store') }}" id="kt_form_1" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            <input type="hidden" name="Cost[from_country_id]" value="231">
+            <input type="hidden" name="Cost[to_country_id]" value="231">
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{translate('From Country')}}:</label>
@@ -40,7 +42,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -133,11 +135,11 @@
 
 
                     <td class="text-center">
-                        
+
                         <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.costs.edit', $cost->id)}}" title="{{ translate('Edit') }}">
                             <i class="las la-edit"></i>
                         </a>
-                       
+
                     </td>
                 </tr>
 
@@ -166,8 +168,8 @@
         placeholder: "Select a state"
     });
     $('#change-country').change(function() {
-        var id = $(this).val();
-
+        // var id = $(this).val();
+        var id = 231;
         $('.select-country-to').select2({
             placeholder: $(this).find(":selected").text(),
         });
@@ -242,7 +244,7 @@
                     },
 
                 },
-                
+
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),

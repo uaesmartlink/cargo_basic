@@ -100,14 +100,15 @@ $d = new DNS1D();
                         <span class="mb-2 font-weight-bolder">{{translate('Shipment type')}}</span>
                         <span class="opacity-70">{{$shipment->type}}</span>
                     </div>
-                    <div class="d-flex flex-column flex-root">
+
+                    {{-- <div class="d-flex flex-column flex-root">
                         <span class="mb-2 font-weight-bolder">{{translate('Current branch')}}</span>
                         @if(Auth::user()->user_type == 'admin' || in_array('1006', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                             <a class="opacity-70" href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a>
                         @else
                             <span class="text-danger font-weight-boldest font-size-lg">{{$shipment->branch->name}}</span>
                         @endif
-                    </div>
+                    </div> --}}
                     <div class="d-flex flex-column flex-root">
                         <span class="mb-2 font-weight-bolder">{{translate('Created date')}}</span>
                         <span class="opacity-70">{{$shipment->created_at->format('d-m-Y h:i:s')}}</span>

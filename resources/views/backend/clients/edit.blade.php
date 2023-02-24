@@ -113,7 +113,9 @@
                             <div data-repeater-item class="data-repeater-item-count">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <input type="hidden" name="country_id" value="231">
+                                    {{-- Hide Country For Demo --}}
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{translate('Country')}}:</label>
                                             <select name="country_id" class="change-country-client-address form-control select-country">
@@ -128,7 +130,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -191,7 +193,9 @@
                             <div data-repeater-item class="data-repeater-item-count">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <input type="hidden" name="country_id" value="231">
+                                    {{-- Hide Country Fro Demo --}}
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{translate('Country')}}:</label>
                                             <select name="country_id" class="change-country-client-address form-control select-country">
@@ -201,7 +205,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -569,7 +573,8 @@
     function changeCountry()
     {
         $('.change-country-client-address').change(function() {
-            var id = $(this).parent().find( ".change-country-client-address" ).val();
+            // var id = $(this).parent().find( ".change-country-client-address" ).val();
+            var id = 231;
             var row = $(this).closest(".row");
             var state_input = row.find(".change-state-client-address");
             var state_name  = state_input.attr("name");

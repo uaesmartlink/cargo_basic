@@ -256,8 +256,9 @@
 
                             <div class="p-3 mb-4 col-md-12" id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
                                     <div class="row">
-
-                                        <div class="col-md-6">
+                                        <input type="hidden" name="country_id" value="231">
+                                        {{-- Hide Country For Demo --}}
+                                        {{-- <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{translate('Country')}}:</label>
                                                 <select id="change-country-client-address" name="country_id" class="form-control select-country">
@@ -267,7 +268,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -352,7 +353,10 @@
 
                         </div>
                         <hr>
-                        <div class="row">
+                        <input type="hidden" name="Shipment[from_country_id]" value="231">
+                        <input type="hidden" name="Shipment[to_country_id]" value="231">
+                        {{-- Hide Country For Demo --}}
+                        {{-- <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('From Country')}}:</label>
@@ -375,7 +379,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -968,8 +972,10 @@
     @endif
 
 
-    $('#change-country-client-address').change(function() {
-        var id = $(this).val();
+    // $('#change-country-client-address').change(function() {
+    function initStetes(){
+        // var id = $(this).val();
+        var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="state_id"]').empty();
             $('select[name ="state_id"]').append('<option value=""></option>');
@@ -981,9 +987,14 @@
 
 
         });
-    });
-    $('#change-country').change(function() {
-        var id = $(this).val();
+    }
+    // );
+
+    // $('#change-country').change(function() {
+    initStateFrom();
+    function initStateFrom(){
+        // var id = $(this).val();
+        var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="Shipment[from_state_id]"]').empty();
             $('select[name ="Shipment[from_state_id]"]').append('<option value=""></option>');
@@ -995,11 +1006,14 @@
 
 
         });
-    });
+    }
+    // );
 
-    $('#change-country-to').change(function() {
-        var id = $(this).val();
-
+    // $('#change-country-to').change(function() {
+    initStatesTo();
+    function initStatesTo(){
+        // var id = $(this).val();
+        var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="Shipment[to_state_id]"]').empty();
             $('select[name ="Shipment[to_state_id]"]').append('<option value=""></option>');
@@ -1010,7 +1024,8 @@
 
 
         });
-    });
+    }
+    // );
 
     $('#change-state-client-address').change(function() {
         var id = $(this).val();

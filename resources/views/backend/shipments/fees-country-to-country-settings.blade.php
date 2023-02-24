@@ -19,7 +19,10 @@
 
         <form class="form-horizontal" action="{{ route('admin.costs.store') }}" id="kt_form_1" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            <input type="hidden" name="Cost[from_country_id]" value="231">
+            <input type="hidden" name="Cost[to_country_id]" value="231">
+            {{-- Hide Country For Demo --}}
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{translate('From Country')}}:</label>
@@ -42,7 +45,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -161,11 +164,11 @@
 
 
                     <td class="text-center">
-                        
+
                         <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.costs.edit', $cost->id)}}" title="{{ translate('Edit') }}">
                             <i class="las la-edit"></i>
                         </a>
-                       
+
                     </td>
                 </tr>
 
@@ -196,16 +199,16 @@
     $('.select-area').select2({
         placeholder: "Select Area"
     });
-    
+
     $('#change-country').change(function() {
-        var id = $(this).val();
+        // var id = $(this).val();
+        var id = 231;
 
 
-        
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[from_state_id]"]').empty();
-           
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
 
@@ -216,12 +219,12 @@
         });
     });
     $('#change-country-to').change(function() {
-        var id = $(this).val();
-
+        // var id = $(this).val();
+        var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[to_state_id]"]').empty();
-           
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 $('select[name ="Cost[to_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
@@ -236,7 +239,7 @@
         $.get("{{route('admin.shipments.get-areas-ajax')}}?state_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[from_area_id]"]').empty();
-           
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 $('select[name ="Cost[from_area_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
@@ -251,7 +254,7 @@
         $.get("{{route('admin.shipments.get-areas-ajax')}}?state_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[to_area_id]"]').empty();
-           
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 $('select[name ="Cost[to_area_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
@@ -274,8 +277,8 @@
           return markup;
         },
     });
-    
-    
+
+
 
     $(document).ready(function() {
         FormValidation.formValidation(
@@ -339,7 +342,7 @@
                     },
 
                 },
-                
+
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),

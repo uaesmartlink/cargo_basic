@@ -127,7 +127,9 @@
                         <div data-repeater-item class="data-repeater-item-count">
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <input type="hidden" name="country_id" value="231">
+                                {{-- Hide Country Fro Demo --}}
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{translate('Country')}}:</label>
                                         <select name="country_id" class="change-country-client-address form-control select-country">
@@ -137,7 +139,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-6">
                                     <div class="form-group">

@@ -116,8 +116,8 @@
                             <option value="reciver_name" selected>reciver_name</option>
                             <option value="reciver_phone" selected>reciver_phone</option>
                             <option value="reciver_address" selected>reciver_address</option>
-                            <option value="from_country_id" selected>from_country_id</option>
-                            <option value="to_country_id" selected>to_country_id</option>
+                            {{-- <option value="from_country_id" selected>from_country_id</option> --}}
+                            {{-- <option value="to_country_id" selected>to_country_id</option> --}}
                             <option value="from_state_id" selected>from_state_id</option>
                             <option value="to_state_id" selected>to_state_id</option>
                             <option value="from_area_id" selected>from_area_id</option>
@@ -347,7 +347,8 @@
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
+                {{-- Hide Country For Demo --}}
+                {{-- <tr>
                     <td>{{translate('from_country_id')}}</td>
                     <td>
                         <span class="badge badge-danger">{{translate('Required')}}</span>
@@ -418,7 +419,7 @@
                     <td>
                         {{translate('ID')}} ({{translate('Example')}}: 1)
                     </td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <td>{{translate('from_state_id')}}</td>
                     <td>
