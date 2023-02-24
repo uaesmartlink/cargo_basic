@@ -29,6 +29,9 @@
                     <input id="email-field" type="text" class="form-control" placeholder="{{translate('Email')}}" name="Client[email]">
                 </div>
 
+
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -47,7 +50,7 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="Client[responsible_branch_id]" value="1">
+
                 <!-- <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -61,7 +64,20 @@
                 </div>
             </div> -->
 
-
+				 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ translate('OwnerName') }}:</label>
+                            <input type="text" class="form-control" id="owner_name" placeholder="{{ translate('OwnerName') }}" name="Client[responsible_name]">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ translate('OwnerPhone') }}:</label>
+                            <input type="text" class="form-control" placeholder="{{ translate('OwnerPhone') }}" name="Client[responsible_mobile]">
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-6">
@@ -77,56 +93,45 @@
                         </div>
                     </div>
                 </div>
+                <!--
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>{{translate('Owner Name')}}:</label>
-                            <input type="text" class="form-control" id="owner_name" placeholder="{{translate('Owner Name')}}" name="Client[responsible_name]">
+                            <label>{{-- translate('FollowupName') --}} :</label>
+                            <input type="text" class="form-control" id="followup_name" placeholder="{{-- translate('FollowupName') --}}" name="Client[follow_up_name]">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>{{translate('Owner Phone')}}:</label>
-                            <input type="text" class="form-control" placeholder="{{translate('Owner Phone')}}" name="Client[responsible_mobile]">
+                            <label>{{-- translate('FollowupPhone') --}}:</label>
+                            <input type="text" class="form-control" placeholder="{{-- translate('FollowupPhone') --}}" name="Client[follow_up_mobile]">
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{{translate('Followup Name')}} :</label>
-                            <input type="text" class="form-control" id="followup_name" placeholder="{{translate('Followup Name')}}" name="Client[follow_up_name]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{{translate('Followup Phone')}}:</label>
-                            <input type="text" class="form-control" placeholder="{{translate('Followup Phone')}}" name="Client[follow_up_mobile]">
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="Client[branch_id]" value="1" >
-                {{-- Hide For Demo --}}
-                {{-- <div class="form-group">
-                    <label>{{translate('Branch')}}:</label>
+
+                <div class="form-group">
+                    <label>{{-- translate('Branch') --}}:</label>
                     <select class="form-control kt-select2 branch" id="branch_id" name="Client[branch_id]">
                         <option></option>
-                        @foreach($branchs as $branch)
+                     {{--  @foreach($branchs as $branch)
                         <option value="{{$branch->id}}">{{$branch->name}}</option>
                         @endforeach
+                         --}}
 
                     </select>
-                </div> --}}
-
+                </div>
+                -->
+                <input type="hidden" id="branch_id" name="Client[branch_id]" value="1"/>
                 <div class="form-group" id="kt_repeater_1">
                     <div data-repeater-list="address">
 
                         <div data-repeater-item class="data-repeater-item-count">
 
-                            <div class="row">
-                                <input type="hidden" name="country_id" value="231">
-                                {{-- Hide Country Fro Demo --}}
-                                {{-- <div class="col-md-6">
+                            <div class="row myRow">
+                            <input type="hidden" name="country_id" value="231">
+                                {{--
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{translate('Country')}}:</label>
                                         <select name="country_id" class="change-country-client-address form-control select-country">
@@ -136,13 +141,13 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div> --}}
-
-                                <div class="col-md-6">
+                                </div>
+                                --}}
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{translate('Region')}}:</label>
                                         <select  name="state_id" class="change-state-client-address form-control select-state">
-                                            <option value=""></option>
+											<option value=""></option>
 
                                         </select>
                                     </div>
@@ -217,7 +222,7 @@
                     </select>
                 </div>
 
-                <div class="mt-5 card">
+                <div class="mt-5 card" style="display:none;" >
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Missions Costs')}}</h5>
                     </div>
@@ -240,7 +245,7 @@
                     </div>
                 </div>
 
-                <div class="mt-5 card">
+                <div class="mt-5 card" style="display:none;">
                     <div class="card-header">
                         <h5 class="mb-0 h6">
                                 {{translate('Default Costs For The First kg')}}
@@ -295,7 +300,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-5 card">
+                <div class="mt-5 card" style="display: none;">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Extra Costs For Kg')}}</h5>
                     </div>
@@ -341,7 +346,7 @@
                     </div>
                 </div>
 
-                <div class="mt-5 card">
+                <div class="mt-5 card" >
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Extra Fees for Package Types')}}</h5>
                     </div>
@@ -384,11 +389,10 @@
 
 
                         </div>
+                    </div>
                 </div>
-
-                <div class="mb-0 text-right form-group">
-                    <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
-                </div>
+            <div class="mb-0 text-right form-group">
+                <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
             </div>
         </form>
 
@@ -476,8 +480,7 @@
 
             $(this).slideDown();
 
-            // changeCountry();
-            initStetes();
+            changeCountry();
             changeState();
             selectPlaceholder();
         },
@@ -491,9 +494,9 @@
 
     function changeCountry()
     {
-        $('.change-country-client-address').change(function() {
-            var id = $(this).parent().find( ".change-country-client-address" ).val();
-            var row = $(this).closest(".row");
+
+            var id = 231;
+            var row = $(".myRow" );
             var state_input = row.find(".change-state-client-address");
             var state_name  = state_input.attr("name");
 
@@ -508,25 +511,8 @@
 
 
             });
-        });
     }
-    // changeCountry();
-
-    initStetes();
-    function initStetes(){
-        // var id = $(this).val();
-        console.log("Hello");
-        var id = 231;
-        $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
-            $('select[name ="address[0][state_id]"]').empty();
-            $('select[name ="address[0][state_id]"]').append('<option value=""></option>');
-            for (let index = 0; index < data.length; index++) {
-                const element = data[index];
-                console.log(element['name']);
-                $('select[name ="address[0][state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
-            }
-        });
-    }
+    changeCountry();
 
     function changeState()
     {
@@ -568,23 +554,6 @@
             },
         });
 
-        $('.select-country').select2({
-            placeholder: "Select country",
-            language: {
-              noResults: function() {
-                @if($user_type == 'admin' || in_array('1105', $staff_permission) )
-                    return `<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.shipments.covered_countries')}}?redirect=admin.shipments.create"
-                    class="btn btn-primary" >Manage {{translate('Countries')}}</a>
-                    </li>`;
-                @else
-                    return ``;
-                @endif
-              },
-            },
-            escapeMarkup: function(markup) {
-              return markup;
-            },
-        });
 
         $('.select-state').select2({
             placeholder: "Select state",
@@ -609,7 +578,7 @@
 
     $(document).ready(function() {
 
-        FormValidation.formValidation(
+        const fv = FormValidation.formValidation(
             document.getElementById('kt_form_1'), {
                 fields: {
                     "Client[name]": {
@@ -668,16 +637,17 @@
                         validators: {
                             notEmpty: {
                                 message: '{{translate("This is required!")}}'
+                            },
+							  chackPhone:{
+                                message: '{{translate("unvalid phone")}}',
+                                callback: function(input) {
+                                    return input.value.search(/((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})/) >= 0;
+                                },
                             }
+
                         }
                     },
-                    "Client[branch_id]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("Client Branch is required!")}}'
-                            }
-                        }
-                    },
+
                     "address": {
                         validators: {
                             notEmpty: {
@@ -685,6 +655,8 @@
                             }
                         }
                     }
+
+
                 },
 
 
@@ -709,6 +681,7 @@
                 }
             }
         );
+
     });
 </script>
 @endsection
