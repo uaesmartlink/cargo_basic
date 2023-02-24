@@ -1379,13 +1379,13 @@
                             }
                         }
                     },
-                    // "Shipment[branch_id]": {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: '{{translate("This is required!")}}'
-                    //         }
-                    //     }
-                    // },
+                    "Shipment[branch_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
                     "Shipment[client_id]": {
                         validators: {
                             callback: {
@@ -1541,7 +1541,8 @@
                                 message: '{{translate("This is required!")}}'
                             }
                         }
-                    }\
+                    }
+
                 },
 
 
