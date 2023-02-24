@@ -513,7 +513,7 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    <input type="hidden" name="Shipment[total_weight]" value="1">
+                                                                    <input type="hidden" name="Shipment[total_weight]" value="1" id="total_weight">
                                                                     {{-- <div class="chbs-form-field" style="width:50%">
                                                                         <div class="error" id="error_weight">{{translate('Enter a valid Weight')}}</div>
                                                                         <div class="error" id="error_weight_country">{{translate('Enter a valid Country')}}</div>

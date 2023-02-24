@@ -595,7 +595,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <input type="hidden" name="Shipment[total_weight]" value="1">
+                                <input type="hidden" name="Shipment[total_weight]" value="1" id="kt_touchspin_4">
                                 {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{translate('Total Weight')}}:</label>
@@ -1070,6 +1070,7 @@
 
     function get_estimation_cost() {
         var total_weight = document.getElementById('kt_touchspin_4').value;
+        // total_weight = 1;
         var select_packages = document.getElementsByClassName('package-type-select');
 
         var from_country_id = document.getElementsByName("Shipment[from_country_id]")[0].value;
