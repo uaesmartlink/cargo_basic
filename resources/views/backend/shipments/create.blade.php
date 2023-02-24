@@ -67,9 +67,9 @@
         font-weight: bold !important;
     }
 
-    .select2-container {
+    /* .select2-container {
         display: block !important;
-    }
+    } */
 </style>
 <div class="mx-auto col-lg-12">
     <div class="card">
