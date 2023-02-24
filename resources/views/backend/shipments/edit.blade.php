@@ -239,7 +239,12 @@
                                             <input type="text" value="{{$pack->description}}" class="form-control" name="description">
                                             <div class="mb-2 d-md-none"></div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <input type="hidden" name="qty" value="1">
+                                        <input type="hidden" name="weight" value="1">
+                                        <input type="hidden" name="length" value="1">
+                                        <input type="hidden" name="width" value="1">
+                                        <input type="hidden" name="height" value="1">
+                                        {{-- <div class="col-md-3">
 
                                             <label>{{translate('Quantity')}}:</label>
 
@@ -288,11 +293,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <div class="">
                                     <label class="text-right col-form-label">{{translate('Add')}}</label>
                                     <div>
@@ -301,7 +306,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

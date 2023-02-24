@@ -496,11 +496,7 @@
                                 <h2 class="text-left">{{translate('Package Info')}}:</h2>
                                 <div data-repeater-list="Package" class="col-lg-12">
                                     <div data-repeater-item class="row align-items-center" style="margin-top: 15px;padding-bottom: 15px;padding-top: 15px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
-
-
-
                                         <div class="col-md-3">
-
                                             <label>{{translate('Package Type')}}:</label>
                                             <select class="form-control kt-select2 package-type-select" name="package_id">
                                                 <option></option>
@@ -515,30 +511,33 @@
                                             <input type="text" placeholder="{{translate('description')}}" class="form-control" name="description">
                                             <div class="mb-2 d-md-none"></div>
                                         </div>
-                                        <div class="col-md-3">
+                                        {{-- <div class="col-md-3">
 
                                             <label>{{translate('Quantity')}}:</label>
 
                                             <input class="kt_touchspin_qty" placeholder="{{translate('Quantity')}}" type="number" min="1" name="qty" class="form-control" value="1" />
                                             <div class="mb-2 d-md-none"></div>
 
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="col-md-3">
+                                        {{-- <div class="col-md-3">
 
                                             <label>{{translate('Weight')}}:</label>
 
                                             <input type="number" min="1" placeholder="{{translate('Weight')}}" name="weight" class="form-control weight-listener kt_touchspin_weight" onchange="calcTotalWeight()" value="1" />
                                             <div class="mb-2 d-md-none"></div>
 
-                                        </div>
+                                        </div> --}}
 
-
-                                        <div class="col-md-12" style="margin-top: 10px;">
+                                        <input type="hidden" name="qty" value="1">
+                                        <input type="hidden" name="weight" value="1">
+                                        <input type="hidden" name="length" value="1">
+                                        <input type="hidden" name="width" value="1">
+                                        <input type="hidden" name="height" value="1">
+                                        {{-- <div class="col-md-12" style="margin-top: 10px;">
                                             <label>{{translate('Dimensions [Length x Width x Height] (cm):')}}:</label>
                                         </div>
                                         <div class="col-md-2">
-
                                             <input class="dimensions_r" type="number" min="1" class="form-control" placeholder="{{translate('Length')}}" name="length" value="1" />
 
                                         </div>
@@ -552,22 +551,19 @@
                                             <input class="dimensions_r" type="number" min="1" class="form-control " placeholder="{{translate('Height')}}" name="height" value="1" />
 
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col-md-12">
-
                                                 <div>
                                                     <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger delete_item">
                                                         <i class="la la-trash-o"></i>{{translate('Delete')}}
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <div class="">
                                     <label class="text-right col-form-label">{{translate('Add')}}</label>
                                     <div>
@@ -576,7 +572,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <hr>
                             <div class="row">

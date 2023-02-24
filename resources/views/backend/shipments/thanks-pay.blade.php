@@ -1,4 +1,4 @@
-<?php 
+<?php
 use \Milon\Barcode\DNS1D;
 $d = new DNS1D();
 ?>
@@ -80,7 +80,7 @@ $d = new DNS1D();
 	<!--end::Layout Themes-->
 	@endif
 	<link href="{{ static_asset('assets/css/custom-style.css?v=7.2.3') }}" rel="stylesheet" type="text/css" />
-	
+
 	@yield('style')
 
 	<script>
@@ -159,9 +159,9 @@ $d = new DNS1D();
 
 				<!--begin::Content-->
 				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-					
 
-					
+
+
 					<!--begin::Entry-->
 					<div class="d-flex flex-column-fluid">
 
@@ -182,7 +182,7 @@ $d = new DNS1D();
                                                     <div class="card card-custom card-stretch gutter-b">
                                                         <div class="pb-20 card-body p-15">
                                                             <div class="row mb-17">
-																
+
 																<div class="col-xxl-5 mb-11 mb-xxl-0">
 																	<h1>{{translate('Payment Gateway')}}: {{$shipment->pay->name}}</h1>
 																	<div class="d-flex justify-content-between">
@@ -216,7 +216,7 @@ $d = new DNS1D();
                                                     <!--end::Engage Widget 14-->
 
                                                     <!--begin::Engage Widget 14-->
-                                                    
+
                                                     <!--end::Engage Widget 14-->
                                                 </div>
                                                 <div class="col-md-5 col-lg-12 col-xxl-5">
@@ -234,7 +234,7 @@ $d = new DNS1D();
                                                         <div class="pt-2 card-body">
                                                             <!--begin::Table-->
                                                             <div class="table-responsive">
-                                                                <div class='text-right font-size-sm font-weight-bold'>{{translate('length x width x height')}}</div>
+                                                                {{-- <div class='text-right font-size-sm font-weight-bold'>{{translate('length x width x height')}}</div> --}}
                                                                 <table class="table mb-0 table-borderless">
                                                                     <tbody>
 
@@ -262,8 +262,8 @@ $d = new DNS1D();
                                                                             <td class="pb-6 align-middle font-size-lg font-weight-bolder text-dark-75 w-100px">{{$package->description}}</td>
 
                                                                             <td class="pb-6 text-right align-middle font-weight-bold text-muted">{{translate('Type')}}: @if(isset($package->package->name)){{$package->package->name}} @endif</td>
-                                                                            <td class="pb-6 text-right align-middle font-weight-bold text-muted">{{translate('Weight')}}: {{$package->weight}}</td>
-                                                                            <td class="pb-6 text-right align-middle font-weight-bolder font-size-lg text-dark-75">{{$package->length."x".$package->width."x".$package->height}} <br> </td>
+                                                                            {{-- <td class="pb-6 text-right align-middle font-weight-bold text-muted">{{translate('Weight')}}: {{$package->weight}}</td>
+                                                                            <td class="pb-6 text-right align-middle font-weight-bolder font-size-lg text-dark-75">{{$package->length."x".$package->width."x".$package->height}} <br> </td> --}}
                                                                         </tr>
                                                                         @endforeach
 
@@ -279,13 +279,13 @@ $d = new DNS1D();
                                                         </div>
                                                         <!--end::Body-->
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                             <!--end::Section-->
                                             <!--begin::Section-->
                                             <!--begin::Advance Table Widget 10-->
-                                            
+
                                             <!--end::Advance Table Widget 10-->
                                             <!--end::Section-->
                                         </div>
@@ -320,7 +320,7 @@ $d = new DNS1D();
 	<!--begin::Scrolltop-->
 	<div id="kt_scrolltop" class="scrolltop">
 		<span class="svg-icon">
-	
+
 			<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Up-2.svg-->
 			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
 				viewBox="0 0 24 24" version="1.1">
@@ -332,7 +332,7 @@ $d = new DNS1D();
 						fill="#000000" fill-rule="nonzero" />
 				</g>
 			</svg>
-	
+
 			<!--end::Svg Icon-->
 		</span>
 	</div>
@@ -437,7 +437,7 @@ $d = new DNS1D();
 		@if ($msg = Session::get('status'))
 			AIZ.plugins.notify('success', '{{ $msg }}');
 		@endif
-		
+
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
