@@ -51,19 +51,20 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        
-        try{	
+
+        try{
 			DB::beginTransaction();
 			$model = new Client();
-			
-			
+
+
 			$model->fill($_POST['Client']);
 			$model->code = -1;
             $model->img = $_POST['img'];
-	      
+
 			if (!$model->save()){
 				throw new \Exception();
 			}
+
             $auth_user = Auth::user();
             if($auth_user->user_type == 'admin'){
                 $model->created_by_type = 'admin';
@@ -75,6 +76,7 @@ class ClientController extends Controller
                 $model->created_by_type = 'branch';
                 $model->created_by =  $auth_user->userBranch->branch_id;
             }
+
 			$model->code = $model->id;
 			if (!$model->save()){
 				throw new \Exception();
@@ -91,7 +93,7 @@ class ClientController extends Controller
                         $client_package->package_name = Package::select('name')->where('id',$package)->first();
                         $client_package->package_name = $client_package->package_name->name;
                         $client_package->package_cost = $request->package_extra[$key];
-                        
+
                         if (!$client_package->save()) {
                             throw new \Exception();
                         }
@@ -100,7 +102,7 @@ class ClientController extends Controller
             }
 
 			$userRegistrationHelper = new UserRegistrationHelper();
-			$userRegistrationHelper->setEmail($model->email); 
+			$userRegistrationHelper->setEmail($model->email);
 			$userRegistrationHelper->setName($model->name);
 			$userRegistrationHelper->setApiToken();
 			if ($_POST['User']['password'] != '' || $_POST['User']['password'] != null){
@@ -123,13 +125,13 @@ class ClientController extends Controller
             if (isset($request->address)) {
                 if (!empty($request->address)) {
                     foreach ($request->address as $address) {
-                        
+
                         if(isset($address['address']) && $address['address'] != null )
                         {
                             $client_address = new AddressClient();
                             $client_address->fill($address);
                             $client_address->client_id = $model->id;
-                            
+
                             if (!$client_address->save()) {
                                 throw new \Exception();
                             }
@@ -147,14 +149,14 @@ class ClientController extends Controller
 			DB::rollback();
 			print_r($e->getMessage());
 			exit;
-			
+
 			flash(translate("Error"))->error();
             return back();
 		}
     }
 
     /**
-     * 
+     *
      * Show the form for register public client.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -173,7 +175,7 @@ class ClientController extends Controller
      */
     public function save(Request $request)
     {
-        try{	
+        try{
             $validator = Validator::make($request->all(), [
 				'name' => 'required',
 				'password' => 'required|required_with:password_confirmation|same:password_confirmation',
@@ -183,23 +185,23 @@ class ClientController extends Controller
 				'condotion_agreement' => 'required',
 			]);
 
-            if ($validator->fails()) 
+            if ($validator->fails())
             {
                 return back()
                 ->withErrors($validator)
                 ->withInput();
             }
-		
+
 			DB::beginTransaction();
 			$model = new Client();
-			
-			
+
+
 			$model->name = $request->name;
 			$model->email = $request->email;
 			$model->responsible_mobile = $request->responsible_mobile;
             $model->is_archived = 1;
 			$model->code = -1;
-	      
+
 			if (!$model->save()){
 				throw new \Exception();
 			}
@@ -213,7 +215,7 @@ class ClientController extends Controller
 				throw new \Exception();
 			}
 			$userRegistrationHelper = new UserRegistrationHelper();
-			$userRegistrationHelper->setEmail($model->email); 
+			$userRegistrationHelper->setEmail($model->email);
 			$userRegistrationHelper->setName($model->name);
 			$userRegistrationHelper->setApiToken();
             $userRegistrationHelper->setPassword($request->password);
@@ -231,7 +233,7 @@ class ClientController extends Controller
 
             event(new AddClient($model));
 			DB::commit();
-            
+
             flash(translate("Your account has been created successfully"))->success();
 
             Auth::loginUsingId($response['user_id']);
@@ -242,7 +244,7 @@ class ClientController extends Controller
 			DB::rollback();
 			print_r($e->getMessage());
 			exit;
-			
+
 			flash(translate("Error"))->error();
             return back();
 		}
@@ -293,15 +295,15 @@ class ClientController extends Controller
             flash(translate('This action is disabled in demo mode'))->error();
             return back();
         }
-        try{	
+        try{
 			DB::beginTransaction();
 			$model = Client::find($client);
-			
-			
+
+
 			$model->fill($_POST['Client']);
 			$model->code = -1;
             $model->img = $_POST['img'];
-	      
+
 			if (!$model->save()){
 				throw new \Exception();
 			}
@@ -316,7 +318,7 @@ class ClientController extends Controller
                     foreach ($request->package_id as $key => $package) {
                         $client_package = ClientPackage::where('client_id',$client)->where('package_id' , $package)->first();
                         $client_package->package_cost = $request->package_extra[$key];
-                        
+
                         if (!$client_package->save()) {
                             throw new \Exception();
                         }
@@ -326,7 +328,7 @@ class ClientController extends Controller
 
             $userId = $model->userClient->user_id;
 			$userRegistrationHelper = new UserRegistrationHelper($userId);
-			$userRegistrationHelper->setEmail($model->email); 
+			$userRegistrationHelper->setEmail($model->email);
 			$userRegistrationHelper->setName($model->name);
 			$userRegistrationHelper->setApiToken();
 			if ($_POST['User']['password'] != '' || $_POST['User']['password'] != null){
@@ -347,14 +349,14 @@ class ClientController extends Controller
                 }
 
                 if(isset($address['address']) && $address['address'] != null && $address['addressess_id'] != null)
-                {   
+                {
                     $updateAdress = $address;
                     unset($updateAdress['addressess_id']);
 
                     $client_address = AddressClient::where('id' , $address['addressess_id'])->first();
                     $client_address->fill($updateAdress);
                     $client_address->client_id = $client;
-                    
+
                     if (!$client_address->save()) {
                         throw new \Exception();
                     }
@@ -370,7 +372,7 @@ class ClientController extends Controller
                     $client_address = new AddressClient();
                     $client_address->fill($newAdress);
                     $client_address->client_id = $client;
-                    
+
                     if (!$client_address->save()) {
                         throw new \Exception();
                     }
@@ -379,7 +381,7 @@ class ClientController extends Controller
                 }
             }
             $deleteOldAddressess = AddressClient::where('client_id', $client)->whereNotIn('id',$updated_address_ids)->delete();
-			
+
 			DB::commit();
             flash(translate("Client updated successfully"))->success();
             $route = 'admin.clients.index';
@@ -388,7 +390,7 @@ class ClientController extends Controller
 			DB::rollback();
 			print_r($e->getMessage());
 			exit;
-			
+
 			flash(translate("Error"))->error();
             return back();
 		}
@@ -402,7 +404,7 @@ class ClientController extends Controller
      */
     public function destroy($client)
     {
-   
+
         if (env('DEMO_MODE') == 'On') {
             flash(translate('This action is disabled in demo mode'))->error();
             return back();
@@ -440,7 +442,7 @@ class ClientController extends Controller
             $client_address->client_lng                = $request->client_lng;
             $client_address->client_url                = $request->client_url;
         }
-        
+
         if (!$client_address->save()) {
             throw new \Exception();
         }
@@ -456,7 +458,7 @@ class ClientController extends Controller
         $address = AddressClient::where('id', $address_id)->get();
         return response()->json($address);
     }
-    
+
     public function addNewAddressAPI(Request $request)
     {
         if($request->is('api/*')){
@@ -470,10 +472,10 @@ class ClientController extends Controller
                     return response()->json('Not Authorized');
                 }
                 $addresses = $this->addNewAddress($request);
-                return response()->json($addresses);    
+                return response()->json($addresses);
             }else{
                 return response()->json('Not Authorizedd');
-            }      
+            }
         }
     }
 
@@ -491,11 +493,11 @@ class ClientController extends Controller
                 }
 
                 $addresses = AddressClient::where('client_id', $_GET['client_id'])->get();
-                return response()->json($addresses);    
+                return response()->json($addresses);
             }else{
                 return response()->json('Not Authorizedd');
-            }      
+            }
         }
-        
+
     }
 }

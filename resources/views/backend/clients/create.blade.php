@@ -28,10 +28,6 @@
                     <label>{{translate('Email')}}:</label>
                     <input id="email-field" type="text" class="form-control" placeholder="{{translate('Email')}}" name="Client[email]">
                 </div>
-
-
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -610,106 +606,104 @@
     selectPlaceholder();
 
 
-    $(document).ready(function() {
+    // $(document).ready(function() {
 
-        FormValidation.formValidation(
-            document.getElementById('kt_form_1'), {
-                fields: {
-                    "Client[name]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
-                    "Client[email]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            },
-                            emailAddress: {
-                                message: '{{translate("This is should be valid email!")}}'
-                            },
-                            remote: {
-                                data: {
-                                    type: 'Client',
-                                },
-                                message: 'The email is already exist',
-                                method: 'GET',
-                                url: '{{ route("user.checkEmail") }}',
-                            }
-                        }
-                    },
-                    "User[password]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
-                    "User[confirm_password]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            },
-                            identical: {
-                                compare: function() {
-                                    return  document.getElementById('kt_form_1').querySelector('[name="User[password]"]').value;
-                                },
-                                message: 'The password and its confirm are not the same'
-                            }
-                        }
-                    },
-                    "Client[responsible_name]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
-                    "Client[responsible_mobile]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
-                    "Client[branch_id]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("Client Branch is required!")}}'
-                            }
-                        }
-                    },
-                    "address": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    }
-
-
-                },
+    //     FormValidation.formValidation(
+    //         document.getElementById('kt_form_1'), {
+    //             fields: {
+    //                 "Client[name]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         }
+    //                     }
+    //                 },
+    //                 "Client[email]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         },
+    //                         emailAddress: {
+    //                             message: '{{translate("This is should be valid email!")}}'
+    //                         },
+    //                         remote: {
+    //                             data: {
+    //                                 type: 'Client',
+    //                             },
+    //                             message: 'The email is already exist',
+    //                             method: 'GET',
+    //                             url: '{{ route("user.checkEmail") }}',
+    //                         }
+    //                     }
+    //                 },
+    //                 "User[password]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         }
+    //                     }
+    //                 },
+    //                 "User[confirm_password]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         },
+    //                         identical: {
+    //                             compare: function() {
+    //                                 return  document.getElementById('kt_form_1').querySelector('[name="User[password]"]').value;
+    //                             },
+    //                             message: 'The password and its confirm are not the same'
+    //                         }
+    //                     }
+    //                 },
+    //                 "Client[responsible_name]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         }
+    //                     }
+    //                 },
+    //                 "Client[responsible_mobile]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         }
+    //                     }
+    //                 },
+    //                 "Client[branch_id]": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("Client Branch is required!")}}'
+    //                         }
+    //                     }
+    //                 },
+    //                 "address": {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: '{{translate("This is required!")}}'
+    //                         }
+    //                     }
+    //                 }
+    //             },
 
 
-                plugins: {
-                    autoFocus: new FormValidation.plugins.AutoFocus(),
-                    trigger: new FormValidation.plugins.Trigger(),
-                    // Bootstrap Framework Integration
-                    bootstrap: new FormValidation.plugins.Bootstrap(),
-                    // Validate fields when clicking the Submit button
-                    submitButton: new FormValidation.plugins.SubmitButton(),
-                    // Submit the form when all fields are valid
-                    defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-                    icon: new FormValidation.plugins.Icon({
-                        valid: 'fa fa-check',
-                        invalid: 'fa fa-times',
-                        validating: 'fa fa-refresh',
-                    }),
-                }
-            }
-        );
-    });
+    //             plugins: {
+    //                 autoFocus: new FormValidation.plugins.AutoFocus(),
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 // Bootstrap Framework Integration
+    //                 bootstrap: new FormValidation.plugins.Bootstrap(),
+    //                 // Validate fields when clicking the Submit button
+    //                 submitButton: new FormValidation.plugins.SubmitButton(),
+    //                 // Submit the form when all fields are valid
+    //                 defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+    //                 icon: new FormValidation.plugins.Icon({
+    //                     valid: 'fa fa-check',
+    //                     invalid: 'fa fa-times',
+    //                     validating: 'fa fa-refresh',
+    //                 }),
+    //             }
+    //         }
+    //     );
+    // });
 </script>
 @endsection
