@@ -127,10 +127,10 @@ $d = new DNS1D();
                             <span class="opacity-70">{{\App\Branch::find($shipment->prev_branch)->name}}</span>
                         </div>
                     @endif
-                    <div class="d-flex flex-column flex-root">
+                    {{-- <div class="d-flex flex-column flex-root">
                         <span class="mb-4 text-dark font-weight-bold">{{translate('Total Weight')}}</span>
                         <span class="text-muted font-weight-bolder font-size-lg">{{$shipment->total_weight}} {{translate('KG')}}</span>
-                    </div>
+                    </div> --}}
                     <div class="d-flex flex-column flex-root">
                         <span class="mb-4 text-dark font-weight-bold">{{translate('Shipping Cost')}}</span>
                         <span class="text-muted font-weight-bolder font-size-lg">{{format_price($shipment->shipping_cost)}}</span>

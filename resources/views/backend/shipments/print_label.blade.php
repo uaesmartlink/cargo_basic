@@ -72,7 +72,7 @@ $d = new DNS1D();
                                                                     <td style="text-align: center; padding-top: 10px;" colspan="1">
                                                                         @if ($shipment->amount_to_be_collected && $shipment->amount_to_be_collected  > 0)
                                                                             <span style="font-size:16px; font-weight:bold; padding:10px;">
-                                                                            {{translate('COD')}}: 
+                                                                            {{translate('COD')}}:
                                                                             @if($shipment->payment_type == \App\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->amount_to_be_collected + $shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}
                                                                             @else
@@ -81,16 +81,16 @@ $d = new DNS1D();
                                                                             </span>
                                                                             <br />
                                                                         @else
-                                                                            {{translate('COD')}}: 
+                                                                            {{translate('COD')}}:
                                                                             @if($shipment->payment_type == \App\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}
                                                                             @endif
                                                                             </span>
                                                                             <br />
                                                                         @endif
-                                                                        <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
+                                                                        /* <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
                                                                             {{translate('Total Weight')}}: {{$shipment->total_weight}} {{translate('Kg')}}
-                                                                        </span>
+                                                                        </span> */
                                                                     </td>
 
                                                                 </tr>
@@ -220,7 +220,7 @@ $d = new DNS1D();
                                                                     <td style="text-align: center; padding-top: 10px;" colspan="1">
                                                                         @if ($shipment->amount_to_be_collected && $shipment->amount_to_be_collected  > 0)
                                                                             <span style="font-size:16px; font-weight:bold; padding:10px;">
-                                                                            {{translate('COD')}}: 
+                                                                            {{translate('COD')}}:
                                                                             @if($shipment->payment_type == \App\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->amount_to_be_collected + $shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}
                                                                             @else
@@ -229,16 +229,16 @@ $d = new DNS1D();
                                                                             </span>
                                                                             <br />
                                                                         @else
-                                                                            {{translate('COD')}}: 
+                                                                            {{translate('COD')}}:
                                                                             @if($shipment->payment_type == \App\Shipment::POSTPAID )
                                                                                 {{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}
                                                                             @endif
                                                                             </span>
                                                                             <br />
                                                                         @endif
-                                                                        <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
+                                                                        /* <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
                                                                             {{translate('Total Weight')}}: {{$shipment->total_weight}} {{translate('Kg')}}
-                                                                        </span>
+                                                                        </span> */
                                                                     </td>
 
                                                                 </tr>

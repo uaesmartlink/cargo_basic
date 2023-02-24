@@ -345,12 +345,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <input type="hidden" name="Shipment[total_weight]" value="1">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{translate('Total Weight')}}:</label>
                                         <input id="kt_touchspin_4" type="text" class="form-control" value="{{$shipment->total_weight}}" value="0" name="Shipment[total_weight]" />
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
 

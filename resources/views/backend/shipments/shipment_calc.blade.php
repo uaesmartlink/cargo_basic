@@ -513,13 +513,13 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-
-                                                                    <div class="chbs-form-field" style="width:50%">
+                                                                    <input type="hidden" name="Shipment[total_weight]" value="1">
+                                                                    {{-- <div class="chbs-form-field" style="width:50%">
                                                                         <div class="error" id="error_weight">{{translate('Enter a valid Weight')}}</div>
                                                                         <div class="error" id="error_weight_country">{{translate('Enter a valid Country')}}</div>
                                                                         <label>{{translate('Total Weight')}}:</label>
                                                                         <input autocomplete="off" id="total_weight" placeholder="{{translate('Total Weight')}}" type="number" min="1" class="total-weight" value="1" name="Shipment[total_weight]" />
-                                                                    </div>
+                                                                    </div> --}}
 
                                                                 </div>
 
