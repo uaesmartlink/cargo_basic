@@ -1379,13 +1379,13 @@
                             }
                         }
                     },
-                    "Shipment[branch_id]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
+                    // "Shipment[branch_id]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
                     "Shipment[client_id]": {
                         validators: {
                             callback: {
@@ -1556,9 +1556,13 @@
                     // Submit the form when all fields are valid
                     defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
                     icon: new FormValidation.plugins.Icon({
-                        valid: '',
+                        valid: 'fa fa-check',
                         invalid: 'fa fa-times',
                         validating: 'fa fa-refresh',
+                    }),
+					 alias: new FormValidation.plugins.Alias({
+                        // The required validator is infact treated as notEmpty validator
+                        chackPhone: 'callback',
                     }),
                 }
             }
