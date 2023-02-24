@@ -668,8 +668,9 @@
         placeholder: "Select Region First",
     });
     $('.select-sort').select2();
-
-    $('#change-country').change(function() {
+    initStetesFrom();
+    function initStetesFrom(){
+    // $('#change-country').change(function() {
         // var id = $(this).val();
         var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
@@ -679,10 +680,12 @@
                 $('select[name ="from_region_id"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
         });
-    });
+    // });
+    }
 
-
-    $('#change-country-to').change(function() {
+    initStetesTo();
+    function initStetesTo(){
+    // $('#change-country-to').change(function() {
         // var id = $(this).val();
         var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
@@ -692,7 +695,8 @@
                 $('select[name ="to_region_id"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
         });
-    });
+    // });
+    }
 
     $('#change-state-from').change(function() {
         var id = $(this).val();

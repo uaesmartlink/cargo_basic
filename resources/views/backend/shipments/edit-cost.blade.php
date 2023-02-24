@@ -124,7 +124,9 @@
         placeholder: "Select a state"
     });
     @if( \App\ShipmentSetting::getVal('fees_type')  == 2)
-    $('#change-country').change(function() {
+    initStetes();
+    function initStetes(){
+    // $('#change-country').change(function() {
         // var id = $(this).val();
         var id = 231;
         $('.select-country-to').select2({
@@ -145,10 +147,13 @@
 
 
         });
-    });
+    // });
+    }
     @elseif( \App\ShipmentSetting::getVal('fees_type')  == 4)
-    $('#change-country').change(function() {
+    // $('#change-country').change(function() {
         // var id = $(this).val();
+    initStetesFrom();
+    function initStetesFrom(){
         var id = 231;
 
 
@@ -164,13 +169,13 @@
 
 
         });
-    });
-    $('#change-country-to').change(function() {
+    // });
+    }
+    initStetesTo();
+    function initStetest=To(){
+    // $('#change-country-to').change(function() {
         // var id = $(this).val();
         var id = 231;
-
-
-
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[to_state_id]"]').empty();
@@ -182,7 +187,8 @@
 
 
         });
-    });
+    // });
+    }
     @endif
     $(document).ready(function() {
         FormValidation.formValidation(

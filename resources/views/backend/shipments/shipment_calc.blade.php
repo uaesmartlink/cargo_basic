@@ -757,8 +757,9 @@
                     return false;
                 })
             });
-
-            $('#change-country').change(function() {
+            initStetesFrom();
+            function initStetesFrom(){
+            // $('#change-country').change(function() {
                 // var id = $(this).val();
                 var id = 231;
                 $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
@@ -769,9 +770,11 @@
                         $('select[name ="Shipment[from_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
                     }
                 });
-            });
-
-            $('#change-country-to').change(function() {
+            // });
+            }
+            initStetesTo();
+            function initStetesTo(){
+            // $('#change-country-to').change(function() {
                 var id = $(this).val();
                 var id = 231;
                 $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
@@ -783,7 +786,8 @@
 
 
                 });
-            });
+            // });
+            }
 
             $(function () {
                 var origin, destination, map;

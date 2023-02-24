@@ -91,9 +91,11 @@
     $('.select-state').select2({
         placeholder: "Select a state"
     });
-    $('#change-country').change(function() {
-        var id = $(this).val();
-
+    // $('#change-country').change(function() {
+    initStetes();
+    function initStetes(){
+        // var id = $(this).val();
+        var id = 231;
         $('.select-country-to').select2({
             placeholder: $(this).find(":selected").text(),
         });
@@ -112,7 +114,8 @@
 
 
         });
-    });
+    // });
+    }
     $(document).ready(function() {
         FormValidation.formValidation(
             document.getElementById('kt_form_1'), {

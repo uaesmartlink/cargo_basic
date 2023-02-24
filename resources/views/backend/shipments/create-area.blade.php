@@ -31,7 +31,7 @@
                         </select>
                     </div>
                 </div>
-               
+
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                 </div>
-              
+
 
             </div>
             <div class="row">
@@ -53,12 +53,12 @@
                         <input type="text" class="form-control" name="Area[name]">
                     </div>
                 </div>
-              
+
 
             </div>
-          
+
             <div class="row">
-              
+
                 <div class="mb-0 text-left form-group col-md-4">
                     <label>{{translate('Save')}}:</label>
                     <div>
@@ -88,9 +88,10 @@
     $('.select-state').select2({
         placeholder: "Select a state"
     });
-    $('#change-country').change(function() {
-        var id = $(this).val();
-
+    initStetes();
+    function initStetes(){
+        // var id = $(this).val();
+        var id = 231;
         $('.select-country-to').select2({
             placeholder: $(this).find(":selected").text(),
         });
@@ -99,17 +100,19 @@
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Area[state_id]"]').empty();
-            
+
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
 
                 $('select[name ="Area[state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
-                
+
             }
 
 
         });
-    });
+    // });
+    }
+
     $(document).ready(function() {
         FormValidation.formValidation(
             document.getElementById('kt_form_1'), {
@@ -136,7 +139,7 @@
                         }
                     }
                 },
-                
+
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),

@@ -167,7 +167,9 @@
     $('.select-state').select2({
         placeholder: "Select a state"
     });
-    $('#change-country').change(function() {
+    initStetes();
+    function initStetes(){
+    // $('#change-country').change(function() {
         // var id = $(this).val();
         var id = 231;
         $('.select-country-to').select2({
@@ -188,7 +190,8 @@
 
 
         });
-    });
+    // });
+    }
     $(document).ready(function() {
         FormValidation.formValidation(
             document.getElementById('kt_form_1'), {

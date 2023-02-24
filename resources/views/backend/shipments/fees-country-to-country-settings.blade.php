@@ -199,12 +199,11 @@
     $('.select-area').select2({
         placeholder: "Select Area"
     });
-
-    $('#change-country').change(function() {
+    initStetesFrom();
+    function initStetesFrom(){
+    // $('#change-country').change(function() {
         // var id = $(this).val();
         var id = 231;
-
-
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             console.log(data[0]);
             $('select[name ="Cost[from_state_id]"]').empty();
@@ -217,8 +216,11 @@
 
 
         });
-    });
-    $('#change-country-to').change(function() {
+    // });
+    }
+    initStetesTo();
+    function initStetesTo(){
+    // $('#change-country-to').change(function() {
         // var id = $(this).val();
         var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
@@ -232,7 +234,8 @@
 
 
         });
-    });
+    // });
+    }
     $('#change-state-from').change(function() {
         var id = $(this).val();
 
