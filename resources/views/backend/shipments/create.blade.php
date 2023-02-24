@@ -254,9 +254,9 @@
                                 </div>
                             </div>
 
-                            <div class="p-3 mb-4 col-md-12" id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
+                            <div class="p-3 mb-4 col-md-12"  id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
                                     <div class="row">
-                                        <input type="hidden" name="country_id" value="231">
+                                        <input type="hidden" id="change-country-client-address" name="country_id" value="231">
                                         {{-- Hide Country For Demo --}}
                                         {{-- <div class="col-md-6">
                                             <div class="form-group">
@@ -353,8 +353,8 @@
 
                         </div>
                         <hr>
-                        <input type="hidden" name="Shipment[from_country_id]" value="231">
-                        <input type="hidden" name="Shipment[to_country_id]" value="231">
+                        <input type="hidden" id="change-country" name="Shipment[from_country_id]" value="231">
+                        <input type="hidden" id="change-country-to" name="Shipment[to_country_id]" value="231">
                         {{-- Hide Country For Demo --}}
                         {{-- <div class="row">
                             <div class="col-md-6">

@@ -28,10 +28,6 @@
                     <label>{{translate('Email')}}:</label>
                     <input id="email-field" type="text" class="form-control" placeholder="{{translate('Email')}}" name="Client[email]">
                 </div>
-
-
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
