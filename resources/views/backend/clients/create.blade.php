@@ -480,6 +480,7 @@
             $(this).slideDown();
 
             // changeCountry();
+            initStetes();
             changeState();
             selectPlaceholder();
         },
@@ -513,16 +514,18 @@
         });
     }
     // changeCountry();
+
     initStetes();
     function initStetes(){
         // var id = $(this).val();
+        console.log("Hello");
         var id = 231;
         $.get("{{route('admin.shipments.get-states-ajax')}}?country_id=" + id, function(data) {
             $('select[name ="state_id"]').empty();
             $('select[name ="state_id"]').append('<option value=""></option>');
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
-
+                console.log(element['name']);
                 $('select[name ="state_id"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
 
