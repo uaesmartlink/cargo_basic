@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-
+                <input type="hidden" name="Client[responsible_branch_id]" value="1">
                 <!-- <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">

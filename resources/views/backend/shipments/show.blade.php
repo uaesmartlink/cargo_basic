@@ -130,7 +130,8 @@ $d = new DNS1D();
                     {{-- <div class="d-flex flex-column flex-root">
                         <span class="mb-4 text-dark font-weight-bold">{{translate('Total Weight')}}</span>
                         <span class="text-muted font-weight-bolder font-size-lg">{{$shipment->total_weight}} {{translate('KG')}}</span>
-                    </div> --}}
+                    </div>
+                    --}}
                     <div class="d-flex flex-column flex-root">
                         <span class="mb-4 text-dark font-weight-bold">{{translate('Shipping Cost')}}</span>
                         <span class="text-muted font-weight-bolder font-size-lg">{{format_price($shipment->shipping_cost)}}</span>

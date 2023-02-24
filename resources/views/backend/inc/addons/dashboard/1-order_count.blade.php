@@ -388,7 +388,7 @@
                 <!--begin::Body-->
                 <div class="card-body">
                     <a href="#" class="mb-0 card-title font-weight-bold text-light-75 text-hover-primary font-size-h5">{{translate('Your Wallet')}}</a>
-                    <div class="mt-0 mb-5 font-weight-bold font-size-h4 text-success mt-9">{{format_price($transactions)}}</div>
+                    <div class="mb-5 font-weight-bold font-size-h4 text-success mt-9">{{format_price($transactions)}}</div>
                     <p class="m-0 text-muted font-weight-bolder font-size-h5">{{translate('The amount you have on your wallet, Which you should deliver to customer or company')}}.</p>
                 </div>
                 <!--end::Body-->

@@ -234,7 +234,7 @@ $d = new DNS1D();
                                                         <div class="pt-2 card-body">
                                                             <!--begin::Table-->
                                                             <div class="table-responsive">
-                                                                <div class='text-right font-size-sm font-weight-bold'>{{translate('length x width x height')}}</div>
+                                                                {{-- <div class='text-right font-size-sm font-weight-bold'>{{translate('length x width x height')}}</div> --}}
                                                                 <table class="table mb-0 table-borderless">
                                                                     <tbody>
 
@@ -262,8 +262,8 @@ $d = new DNS1D();
                                                                             <td class="pb-6 align-middle font-size-lg font-weight-bolder text-dark-75 w-100px">{{$package->description}}</td>
 
                                                                             <td class="pb-6 text-right align-middle font-weight-bold text-muted">{{translate('Type')}}: @if(isset($package->package->name)){{$package->package->name}} @endif</td>
-                                                                            <td class="pb-6 text-right align-middle font-weight-bold text-muted">{{translate('Weight')}}: {{$package->weight}}</td>
-                                                                            <td class="pb-6 text-right align-middle font-weight-bolder font-size-lg text-dark-75">{{$package->length."x".$package->width."x".$package->height}} <br> </td>
+                                                                            {{-- <td class="pb-6 text-right align-middle font-weight-bold text-muted">{{translate('Weight')}}: {{$package->weight}}</td>
+                                                                            <td class="pb-6 text-right align-middle font-weight-bolder font-size-lg text-dark-75">{{$package->length."x".$package->width."x".$package->height}} <br> </td> --}}
                                                                         </tr>
                                                                         @endforeach
 

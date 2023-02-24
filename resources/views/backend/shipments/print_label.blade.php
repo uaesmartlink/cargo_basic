@@ -481,9 +481,9 @@ $d = new DNS1D();
                                         <span class="bold">{{translate('Package type')}}:</span> <span>{{$package->package->name}}</span>
                                     </div>
                                 @endif
-                                <div class="item-info-container">
+                                /* <div class="item-info-container">
                                     <span class="bold">{{translate('Weight x Length x Width x Height')}}:</span> <span>{{$package->weight." ".translate('KG')." x ".$package->length." ".translate('CM')." x ".$package->width." ".translate('CM')." x ".$package->height." ".translate('CM')}}</span>
-                                </div>
+                                </div> */
                                 </br>
                             @endforeach
                         </div>

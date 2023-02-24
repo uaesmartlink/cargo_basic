@@ -80,17 +80,17 @@
 
 
                         <div class="row">
-                            
+
                                 <div class="def_mile_costs form-group col-md-4">
                                     <label>{{translate('Default Mile Cost')}}({{currency_symbol()}}):</label>
                                     <input type="text" min="0" class="form-control" placeholder="{{translate('Default Mile Cost')}}" value="{{\App\ShipmentSetting::getVal('def_mile_cost')}}" name="Setting[def_mile_cost]">
                                 </div>
-                            
+
                                 <div class="def_shiping_costs form-group col-md-4">
                                     <label>{{translate('Default Shipping Cost')}}({{currency_symbol()}}):</label>
                                     <input type="text" min="0" class="form-control" placeholder="{{translate('Default Shipping Cost')}}" value="{{\App\ShipmentSetting::getVal('def_shipping_cost')}}" name="Setting[def_shipping_cost]">
                                 </div>
-                            
+
 
                             <div class="form-group col-md-4">
                                 <label>{{translate('Default Tax')}}%:</label>
@@ -101,17 +101,17 @@
                                 <input type="text" min="0" id="name" class="form-control" placeholder="{{translate('Default Insurance')}}" value="{{\App\ShipmentSetting::getVal('def_insurance')}}" name="Setting[def_insurance]">
                             </div>
 
-                            
+
                                 <div class="def_mile_costs form-group col-md-4">
                                     <label>{{translate('Default Returned Mile Cost')}}({{currency_symbol()}}):</label>
                                     <input type="text" min="0" class="form-control" placeholder="{{translate('Default Returned Mile Cost')}}" value="{{\App\ShipmentSetting::getVal('def_return_mile_cost')}}" name="Setting[def_return_mile_cost]">
                                 </div>
-                            
+
                                 <div class="def_shiping_costs form-group col-md-4">
                                     <label>{{translate('Default Returned Shipment Cost')}}({{currency_symbol()}}):</label>
                                     <input type="text" min="0" class="form-control" placeholder="{{translate('Default Returned Shipment Cost')}}" value="{{\App\ShipmentSetting::getVal('def_return_cost')}}" name="Setting[def_return_cost]">
                                 </div>
-                            
+
                         </div>
                         <hr>
 
@@ -199,8 +199,6 @@
                             <label>{{translate('Configure Costs')}}:</label>
                             <button class="btn btn-primary form-control">{{translate('Configure Selected Countries Costs')}}</button>
                         </div>
-
-
                     </div>
                 @else
                     <div class="row">
@@ -303,7 +301,7 @@
             $(".def_mile_costs").css("display","none");
             $(".def_shiping_costs").css("display","block");
         }
-            
+
     });
     $('.select-country').select2({
         placeholder: "Select country"
