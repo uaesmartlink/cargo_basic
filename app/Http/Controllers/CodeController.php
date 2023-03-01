@@ -26,11 +26,10 @@ class CodeController extends Controller
     public function create()
     {
         $clients = Client::all();
-        $code = Code::all();
+        $code = Code::orderBy('id','desc');
         if($code == null)
             $codeId = 1;
         else{
-            $code->orderBy('sort','desc')->first();
             $codeId = $code->id;
         }
         return view('backend.codes.create', compact('clients','codeId'));
