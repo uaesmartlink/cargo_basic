@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Country;
-use App\State;
-
+use App\Client;
 class CodeController extends Controller
 {
     /**
@@ -25,7 +23,8 @@ class CodeController extends Controller
      */
     public function create()
     {
-        return view('backend.codes.create');
+        $clients = Client::all();
+        return view('backend.codes.create', compact('clients'));
     }
 
     /**

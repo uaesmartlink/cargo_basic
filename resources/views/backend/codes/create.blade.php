@@ -23,9 +23,9 @@
                     <label>{{translate('Customer')}}:</label>
                     <select name="client_id" class="client_name" class="form-control">
 
-                        {{-- @foreach($clients as $client)
+                        @foreach($clients as $client)
                         <option value="{{$client->id}}">{{$client->name}}</option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
             </div>
