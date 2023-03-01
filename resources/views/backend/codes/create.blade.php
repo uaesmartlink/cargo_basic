@@ -38,13 +38,13 @@
             <div class="col-md-4">
                 <label>{{translate('Qunatity')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('10')}}" name="qty" id="qty" autocomplete="off" class="form-control"/>
+                    <input type="number" placeholder="{{translate('10')}}" name="qty" id="qty" autocomplete="off" class="form-control" value="0"/>
                 </div>
             </div>
             <div class="col-md-4">
                 <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="last" id ='last' autocomplete="off" class="form-control" disabled/>
+                    <input type="number" placeholder="{{translate('000000')}}" name="last" id='last' autocomplete="off" class="form-control" disabled/>
                 </div>
             </div>
         </div>
