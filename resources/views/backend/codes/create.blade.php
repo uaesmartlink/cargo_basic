@@ -32,19 +32,19 @@
             <div class="col-md-4">
                 <label>{{translate('From')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="first" autocomplete="off" class="form-control" />
+                    <input type="number" placeholder="{{translate('000000')}}" name="first" id="first" autocomplete="off" class="form-control" />
                 </div>
             </div>
             <div class="col-md-4">
                 <label>{{translate('Qunatity')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('10')}}" name="qty" id= "qty" autocomplete="off" class="form-control" onchange="updateLast(this.value)"/>
+                    <input type="number" placeholder="{{translate('10')}}" name="qty" id="qty" autocomplete="off" class="form-control"/>
                 </div>
             </div>
             <div class="col-md-4">
                 <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="last" id="last" autocomplete="off" class="form-control" disabled/>
+                    <input type="number" placeholder="{{translate('000000')}}" name="last" autocomplete="off" class="form-control" disabled/>
                 </div>
             </div>
         </div>
@@ -69,14 +69,15 @@
             width: '100%',
             placeholder: "Select client",
         });
-        function updateLast(qty){
-            console.log(qty);
+        $('#qty').change(function(){
             var first = document.getElementById('first').value;
+            var qty = document.getElementById('qty').value;
+            console.log(qty);
             console.log(first);
             var last = first + qty - 1;
             console.log(last);
             document.getElementById('last').value = last;
-        };
+        });
         $(document).ready(function() {
             FormValidation.formValidation(
                 document.getElementById('kt_form_1'), {
