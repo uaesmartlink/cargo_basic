@@ -32,7 +32,7 @@
             <div class="col-md-4">
                 <label>{{translate('From')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="first" id="first" autocomplete="off" class="form-control" />
+                    <input type="number" placeholder="{{translate('000000')}}" name="first" id="first" autocomplete="off" class="form-control" value="{{ $code->id + 1}}" />
                 </div>
             </div>
             <div class="col-md-4">
