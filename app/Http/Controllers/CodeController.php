@@ -38,7 +38,7 @@ class CodeController extends Controller
         try{
             $first = $request->first;
             $qty = $request->qty;
-            $last = first + qty - 1;
+            $last = $first + $qty - 1;
             $client_id = $request->client_id;
 
             for($id = $first ; $id <= $last; $id++){
@@ -54,7 +54,7 @@ class CodeController extends Controller
             exit;
 
             flash(translate("Error"))->error();
-            return view('backend.codes.create', compact('clients'));
+            return back();
         }
     }
 
