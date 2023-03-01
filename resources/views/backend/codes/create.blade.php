@@ -38,13 +38,13 @@
             <div class="col-md-4">
                 <label>{{translate('Qunatity')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('10')}}" name="qty" id= "qty" autocomplete="off" class="form-control"/>
+                    <input type="number" placeholder="{{translate('10')}}" name="qty" id= "qty" autocomplete="off" class="form-control" onchange="updateLast(this.value)"/>
                 </div>
             </div>
             <div class="col-md-4">
                 <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="last" autocomplete="off" class="form-control" disabled/>
+                    <input type="number" placeholder="{{translate('000000')}}" name="last" id="last" autocomplete="off" class="form-control" disabled/>
                 </div>
             </div>
         </div>
@@ -69,12 +69,14 @@
             width: '100%',
             placeholder: "Select client",
         });
-        $('#qty').change(function(){
-            var first = document.getElementById('first');
-            var qty = document.getElementById('qty');
+        function updateLast(qty){
+            console.log(qty);
+            var first = document.getElementById('first').value;
+            console.log(first);
             var last = first + qty - 1;
+            console.log(last);
             document.getElementById('last').value = last;
-        });
+        };
         $(document).ready(function() {
             FormValidation.formValidation(
                 document.getElementById('kt_form_1'), {
