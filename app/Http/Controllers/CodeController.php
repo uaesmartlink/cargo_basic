@@ -46,6 +46,7 @@ class CodeController extends Controller
                 $code->client_id = $client_id;
                 $code->save();
             }
+            return view('backend.codes.create', compact('clients'));
 
         }catch (\Exception $e) {
             DB::rollback();
@@ -53,7 +54,7 @@ class CodeController extends Controller
             exit;
 
             flash(translate("Error"))->error();
-            return back();
+            return view('backend.codes.create', compact('clients'));
         }
     }
 
