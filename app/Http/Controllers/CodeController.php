@@ -26,7 +26,8 @@ class CodeController extends Controller
     public function create()
     {
         $clients = Client::all();
-        return view('backend.codes.create', compact('clients'));
+        $code = DB::table('codes')->order_by('id', 'desc')->first();
+        return view('backend.codes.create', compact('clients','code'));
     }
 
     /**
