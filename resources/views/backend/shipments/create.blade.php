@@ -294,7 +294,7 @@
 
                                     <div class="form-group">
                                         <label>{{translate('Address')}}:</label>
-                                        <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control" required/>
+                                        <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control"/>
                                     </div>
                                     @if($checked_google_map->value == 1 )
                                         <div class="location-client">
@@ -998,7 +998,6 @@
             $('select[name ="Shipment[from_state_id]"]').append('<option value=""></option>');
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
-
                 $('select[name ="Shipment[from_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
 
@@ -1019,8 +1018,6 @@
                 const element = data[index];
                 $('select[name ="Shipment[to_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
-
-
         });
     }
     // );
@@ -1063,8 +1060,6 @@
                 const element = data[index];
                 $('select[name ="Shipment[to_area_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
-
-
         });
     });
 
