@@ -9,7 +9,7 @@
                 {{translate('Booking')}}
             </h3>
         </div>
-       
+
     </div>
 
     <div class="card-body">
@@ -18,13 +18,14 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                
-                    
+
+
                     <label>{{translate('Customer')}}:</label>
                     <select name="client_id" class="client_name" class="form-control">
-                        @foreach($clients as $client)
+
+                        {{-- @foreach($clients as $client)
                         <option value="{{$client->id}}">{{$client->name}}</option>
-                        @endforeach
+                        @endforeach --}}
                     </select>
                 </div>
             </div>
@@ -39,7 +40,7 @@
               <div class="col-md-4">
                 <label>{{translate('To:')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('00000')}}" name="last_code" autocomplete="off" class="form-control" id="kt_datepicker_3" disabled/>
+                    <input type="text" placeholder="{{translate('00000')}}" name="last_code" autocomplete="off" class="form-control" id="kt_datepicker_3"/>
                 </div>
             </div>
         </div>
@@ -99,7 +100,7 @@
                             }
                         },
                     },
-                    
+
 
                     plugins: {
                         autoFocus: new FormValidation.plugins.AutoFocus(),
