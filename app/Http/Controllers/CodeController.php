@@ -27,7 +27,11 @@ class CodeController extends Controller
     {
         $clients = Client::all();
         $code = DB::table('codes')->order_by('id', 'desc')->first();
-        return view('backend.codes.create', compact('clients','code'));
+        if($code == null)
+            $codeId = 1;
+        else
+            $codeId = $code->id;
+        return view('backend.codes.create', compact('clients','codeId'));
     }
 
     /**
