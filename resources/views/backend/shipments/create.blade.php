@@ -1453,20 +1453,20 @@
                     //         }
                     //     }
                     // },
-                    "Shipment[delivery_time]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
-                    "Shipment[total_weight]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
+                    // "Shipment[delivery_time]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    // "Shipment[total_weight]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
                     // "Shipment[from_country_id]": {
                     //     validators: {
                     //         notEmpty: {
