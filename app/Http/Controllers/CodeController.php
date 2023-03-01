@@ -26,7 +26,7 @@ class CodeController extends Controller
     public function create()
     {
         $clients = Client::all();
-        $code = DB::table('codes')->order_by('id', 'desc')->first();
+        $code = Code::all()->orderBy('sort','desc')->first();
         if($code == null)
             $codeId = 1;
         else
