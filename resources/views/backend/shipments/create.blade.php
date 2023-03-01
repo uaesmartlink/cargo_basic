@@ -183,6 +183,12 @@
                                 </div>
                             </div> --}}
                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('Code')}}:</label>
+                                    <input type="number" id="code" name="Shipment[code]" autocomplete="off" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
                                 <div class="form-group">
                                     <label>{{translate('Shipping Date')}}:</label>
