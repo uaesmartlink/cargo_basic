@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     protected $guarded = [];
-    
+
     public function userClient(){
       return $this->hasOne('App\UserClient', 'client_id' , 'id');
     }
@@ -16,6 +16,11 @@ class Client extends Model
     }
     public function packages(){
       return $this->hasMany('App\ClientPackage', 'client_id' , 'id');
+    }
+
+    public function codes(): HasMany
+    {
+        return $this->hasMany(Code::class);
     }
 
 }
