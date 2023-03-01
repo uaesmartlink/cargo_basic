@@ -33,13 +33,13 @@
             <div class="col-md-4">
                 <label>{{translate('From')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('000000')}}" name="first_code" autocomplete="off" class="form-control" id="kt_datepicker_3"/>
+                    <input type="text" placeholder="{{translate('000000')}}" name="first_code" autocomplete="off" class="form-control" />
                 </div>
             </div>
               <div class="col-md-4">
                 <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('000000')}}" name="last_code" autocomplete="off" class="form-control" id="kt_datepicker_3"/>
+                    <input type="text" placeholder="{{translate('000000')}}" name="last_code" autocomplete="off" class="form-control"/>
                 </div>
             </div>
         </div>
@@ -63,14 +63,6 @@
         $('.client_name').select2({
             width: '100%',
             placeholder: "Select client",
-        });
-        $('#kt_datepicker_3').datepicker({
-            orientation: "bottom auto",
-            autoclose: true,
-            format: 'yyyy-mm-dd',
-            todayBtn: true,
-            todayHighlight: true,
-            startDate: new Date(),
         });
 
         $(document).ready(function() {
