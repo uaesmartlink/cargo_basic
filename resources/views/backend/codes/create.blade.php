@@ -13,7 +13,7 @@
     </div>
 
     <div class="card-body">
-    <form action="" id="kt_form_1" method="POST">
+    <form action="{{ route('codes.store') }}" id="kt_form_1" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-4">
