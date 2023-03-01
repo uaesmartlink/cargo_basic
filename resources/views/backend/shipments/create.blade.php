@@ -937,7 +937,7 @@
         });
     @endif
 
-    $('#code').change(function(){
+    $('#code').onkeypress(function(){
         var codeId = document.getElementById('code').value;
         console.log(codeId);
     });
