@@ -937,6 +937,10 @@
         });
     @endif
 
+    $('#code').change(function(){
+        var codeId = document.getElementById('code').value;
+        console.log(codeId);
+    });
     $('.select-client').change(function(){
         var client_phone = $(this).find(':selected').data('phone');
         document.getElementById("client_phone").value = client_phone;
