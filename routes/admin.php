@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/codes/store','CodeController@store')->name('codes.store');
 
 Route::get('/admin', 'HomeController@admin_dashboard')->name('admin.dashboard')->middleware(['auth', 'user_role:admin|staff|customer|captain|branch']);
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staff']], function(){
 	//Update Routes
 	Route::get('/codes/create','CodeController@create')->name('codes.create');
 	Route::resource('profile','ProfileController');
+    Route::post('/codes/store','CodeController@store')->name('codes.store');
 
 	Route::post('/update', 'UpdateController@step0')->name('update');
 
