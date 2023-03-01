@@ -36,8 +36,8 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         try{
-            $first = $request->first_code;
-            $last = $request->last_code;
+            $first = $request->first;
+            $last = $request->last;
             $client_id = $request->client_id;
 
             for($id = $first ; $id <= $last; $id++){

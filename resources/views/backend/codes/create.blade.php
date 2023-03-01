@@ -19,9 +19,8 @@
             <div class="col-md-4">
                 <div class="form-group">
 
-
                     <label>{{translate('Customer')}}:</label>
-                    <select name="client_id" class="client_name" class="form-control">
+                    <select id="client_id" name="client_id" class="client_name" class="form-control">
                         @foreach($clients as $client)
                         <option value="{{$client->id}}">{{$client->name}}</option>
                         @endforeach
@@ -33,13 +32,13 @@
             <div class="col-md-4">
                 <label>{{translate('From')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('000000')}}" name="first_code" autocomplete="off" class="form-control" />
+                    <input type="text" placeholder="{{translate('000000')}}" name="first" autocomplete="off" class="form-control" />
                 </div>
             </div>
               <div class="col-md-4">
                 <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('000000')}}" name="last_code" autocomplete="off" class="form-control"/>
+                    <input type="text" placeholder="{{translate('000000')}}" name="last" autocomplete="off" class="form-control"/>
                 </div>
             </div>
         </div>
@@ -69,21 +68,21 @@
             FormValidation.formValidation(
                 document.getElementById('kt_form_1'), {
                     fields: {
-                        "first_code": {
+                        "first": {
                             validators: {
                                 notEmpty: {
                                     message: '{{translate("This is required!")}}'
                                 }
                             }
                         },
-                        "last_code": {
+                        "last": {
                             validators: {
                                 notEmpty: {
                                     message: '{{translate("This is required!")}}'
                                 }
                             }
                         },
-                        "client_name": {
+                        "client_id": {
                             validators: {
                                 notEmpty: {
                                     message: '{{translate("This is required!")}}'
