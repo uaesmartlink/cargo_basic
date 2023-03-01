@@ -54,7 +54,15 @@ class CodeController extends Controller
                 $code->client_id = $client_id;
                 $code->save();
             }
-            return view('backend.codes.create');
+
+            $clients = Client::all();
+            $code = Code::orderBy('id','desc')->first();
+            if($code == null)
+                $codeId = 1;
+            else{
+                $codeId = $code->id + 1;
+            }
+            return view('backend.codes.create', compact('clients','codeId'));
 
         }catch (\Exception $e) {
             DB::rollback();
