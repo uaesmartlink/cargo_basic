@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Client;
 class CodeController extends Controller
@@ -35,7 +35,24 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $first = $request->first_code;
+            $last = $request->last_code;
+            $client_id = $request->client_id;
+
+            for($id = $first ; $id <= $last; $id++){
+                $code = new Code;
+                $code->client_id = $client_id;
+                $code->save();
+            }
+        }catch (\Exception $e) {
+            DB::rollback();
+            print_r($e->getMessage());
+            exit;
+
+            flash(translate("Error"))->error();
+            return back();
+        }
     }
 
     /**

@@ -22,7 +22,6 @@
 
                     <label>{{translate('Customer')}}:</label>
                     <select name="client_id" class="client_name" class="form-control">
-
                         @foreach($clients as $client)
                         <option value="{{$client->id}}">{{$client->name}}</option>
                         @endforeach
@@ -32,15 +31,15 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <label>{{translate('From:')}}:</label>
+                <label>{{translate('From')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('00000')}}" name="first_code" autocomplete="off" class="form-control" id="kt_datepicker_3" disabled/>
+                    <input type="text" placeholder="{{translate('000000')}}" name="first_code" autocomplete="off" class="form-control" id="kt_datepicker_3"/>
                 </div>
             </div>
               <div class="col-md-4">
-                <label>{{translate('To:')}}:</label>
+                <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="text" placeholder="{{translate('00000')}}" name="last_code" autocomplete="off" class="form-control" id="kt_datepicker_3"/>
+                    <input type="text" placeholder="{{translate('000000')}}" name="last_code" autocomplete="off" class="form-control" id="kt_datepicker_3"/>
                 </div>
             </div>
         </div>
