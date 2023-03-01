@@ -36,9 +36,9 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         try{
-            dd($request);
             $first = $request->first;
-            $last = $request->last;
+            $qty = $request->qty;
+            $last = first + qty - 1;
             $client_id = $request->client_id;
 
             for($id = $first ; $id <= $last; $id++){
