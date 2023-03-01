@@ -1357,211 +1357,211 @@
         });
 
 
-        // FormValidation.formValidation(
-        //     document.getElementById('kt_form_1'), {
-        //         fields: {
-        //             "Shipment[type]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[shipping_date]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             // "Shipment[branch_id]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             "Shipment[client_id]": {
-        //                 validators: {
-        //                     callback: {
-        //                         message: '{{translate("This is required!")}}',
-        //                         callback: function(input) {
-        //                             // Get the selected options
-        //                             if ((input.value !== "")) {
-        //                                 $('.client-select').removeClass('has-errors');
-        //                             } else {
-        //                                 $('.client-select').addClass('has-errors');
-        //                             }
-        //                             return (input.value !== "");
-        //                         }
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[client_address]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[client_phone]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[payment_type]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[payment_method_id]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             // "Shipment[tax]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             // "Shipment[insurance]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             // "Shipment[shipping_cost]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             // "Shipment[delivery_time]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             "Shipment[delivery_time]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[total_weight]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             // "Shipment[from_country_id]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             // "Shipment[to_country_id]": {
-        //             //     validators: {
-        //             //         notEmpty: {
-        //             //             message: '{{translate("This is required!")}}'
-        //             //         }
-        //             //     }
-        //             // },
-        //             "Shipment[from_state_id]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[to_state_id]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[from_area_id]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[to_area_id]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[reciver_name]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[reciver_phone]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Shipment[reciver_address]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             },
-        //             "Package[0][package_id]": {
-        //                 validators: {
-        //                     notEmpty: {
-        //                         message: '{{translate("This is required!")}}'
-        //                     }
-        //                 }
-        //             }
+        FormValidation.formValidation(
+            document.getElementById('kt_form_1'), {
+                fields: {
+                    "Shipment[type]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[shipping_date]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    // "Shipment[branch_id]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    "Shipment[client_id]": {
+                        validators: {
+                            callback: {
+                                message: '{{translate("This is required!")}}',
+                                callback: function(input) {
+                                    // Get the selected options
+                                    if ((input.value !== "")) {
+                                        $('.client-select').removeClass('has-errors');
+                                    } else {
+                                        $('.client-select').addClass('has-errors');
+                                    }
+                                    return (input.value !== "");
+                                }
+                            }
+                        }
+                    },
+                    "Shipment[client_address]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[client_phone]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[payment_type]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[payment_method_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    // "Shipment[tax]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    // "Shipment[insurance]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    // "Shipment[shipping_cost]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    // "Shipment[delivery_time]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    "Shipment[delivery_time]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[total_weight]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    // "Shipment[from_country_id]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    // "Shipment[to_country_id]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
+                    "Shipment[from_state_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[to_state_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[from_area_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[to_area_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[reciver_name]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[reciver_phone]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Shipment[reciver_address]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "Package[0][package_id]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    }
 
-        //         },
+                },
 
 
-        //         plugins: {
-        //             autoFocus: new FormValidation.plugins.AutoFocus(),
-        //             trigger: new FormValidation.plugins.Trigger(),
-        //             // Bootstrap Framework Integration
-        //             bootstrap: new FormValidation.plugins.Bootstrap(),
-        //             // Validate fields when clicking the Submit button
-        //             submitButton: new FormValidation.plugins.SubmitButton(),
-        //             // Submit the form when all fields are valid
-        //             defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-        //             icon: new FormValidation.plugins.Icon({
-        //                 valid: 'fa fa-check',
-        //                 invalid: 'fa fa-times',
-        //                 validating: 'fa fa-refresh',
-        //             }),
-		// 			 alias: new FormValidation.plugins.Alias({
-        //                 // The required validator is infact treated as notEmpty validator
-        //                 chackPhone: 'callback',
-        //             }),
-        //         }
-        //     }
-        // );
+                plugins: {
+                    autoFocus: new FormValidation.plugins.AutoFocus(),
+                    trigger: new FormValidation.plugins.Trigger(),
+                    // Bootstrap Framework Integration
+                    bootstrap: new FormValidation.plugins.Bootstrap(),
+                    // Validate fields when clicking the Submit button
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    // Submit the form when all fields are valid
+                    defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+                    icon: new FormValidation.plugins.Icon({
+                        valid: 'fa fa-check',
+                        invalid: 'fa fa-times',
+                        validating: 'fa fa-refresh',
+                    }),
+					 alias: new FormValidation.plugins.Alias({
+                        // The required validator is infact treated as notEmpty validator
+                        chackPhone: 'callback',
+                    }),
+                }
+            }
+        );
     });
 </script>
 @endsection
