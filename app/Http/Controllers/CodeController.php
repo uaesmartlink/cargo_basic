@@ -30,7 +30,7 @@ class CodeController extends Controller
         if($code == null)
             $codeId = 1;
         else{
-            $codeId = $code->id;
+            $codeId = $code->id + 1;
         }
         return view('backend.codes.create', compact('clients','codeId'));
     }
