@@ -30,7 +30,7 @@ class CodeController extends Controller
         if($code == null)
             $codeId = 1;
         else{
-            $codes->orderBy('sort','desc')->first();
+            $code->orderBy('sort','desc')->first();
             $codeId = $code->id;
         }
         return view('backend.codes.create', compact('clients','codeId'));
