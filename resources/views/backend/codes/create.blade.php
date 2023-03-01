@@ -70,8 +70,8 @@
             placeholder: "Select client",
         });
         $('#qty').change(function(){
-            var first = document.getElementById('first').value;
-            var qty = document.getElementById('qty').value;
+            var first = +document.getElementById('first').value;
+            var qty = +document.getElementById('qty').value;
             console.log(qty);
             console.log(first);
             var last = (first + qty - 1);
