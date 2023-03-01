@@ -14,7 +14,7 @@
 Route::get('/admin', 'HomeController@admin_dashboard')->name('admin.dashboard')->middleware(['auth', 'user_role:admin|staff|customer|captain|branch']);
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staff']], function(){
 	//Update Routes
-	Route::get('/codes/create','CodeController@create')->name(codes.create);
+	Route::get('/codes/create','CodeController@create')->name('codes.create');
 	Route::resource('profile','ProfileController');
 
 	Route::post('/update', 'UpdateController@step0')->name('update');
