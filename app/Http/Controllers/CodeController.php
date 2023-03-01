@@ -42,7 +42,7 @@ class CodeController extends Controller
             $client_id = $request->client_id;
 
             for($id = $first ; $id <= $last; $id++){
-                $code = new Code();
+                $code = new Code;
                 $code->client_id = $client_id;
                 $code->save();
             }
