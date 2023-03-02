@@ -270,6 +270,7 @@ class ClientController extends Controller
     public function getClientByCode(Request $request)
     {
         dd($request);
+        return "Hello";
         // $client = $code->client;
 
     }
