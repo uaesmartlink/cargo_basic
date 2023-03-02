@@ -954,7 +954,7 @@
             $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + 'selected">' + element['address'] + '</option>');
 
             $('select[name ="Shipment[client_id]"]').empty();
-            $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + 'selected">' + data['name'] + '</option>');
+            $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + ' selected">' + data['name'] + '</option>');
 
             $.get("{{route('client.get.state')}}?state_id="+element['state_id'], function(state) {
                 $('select[name ="state_id"]').empty();

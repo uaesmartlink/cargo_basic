@@ -1045,6 +1045,8 @@ class ShipmentController extends Controller
      */
     public function store(Request $request)
     {
+
+
         try {
             DB::beginTransaction();
                 $model = $this->storeShipment($request);
@@ -1082,6 +1084,7 @@ class ShipmentController extends Controller
 
     private function storeShipment($request , $token = null)
     {
+        dd($request);
         $model = new Shipment();
 
 
