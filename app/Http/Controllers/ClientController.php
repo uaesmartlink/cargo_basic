@@ -18,6 +18,7 @@ use App\ClientPackage;
 use Carbon\Carbon;
 use App\Package;
 use App\Branch;
+use App\Code;
 
 class ClientController extends Controller
 {
@@ -264,6 +265,13 @@ class ClientController extends Controller
             return view('backend.clients.show',compact('client','shipments'));
         }
         abort(404);
+    }
+
+    public function getClientByCode(Code $code)
+    {
+        $client = $code->client;
+        dd($client);
+
     }
 
     /**

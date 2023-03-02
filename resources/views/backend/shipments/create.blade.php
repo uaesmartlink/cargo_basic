@@ -940,6 +940,9 @@
     $('#code').change(function(){
         var codeId = document.getElementById('code').value;
         console.log(codeId);
+        $.get("{{route('client.get.byBoce', [codeId])}}", function(data) {
+                console.log(data);
+        });
 
     });
     $('.select-client').change(function(){
@@ -1011,8 +1014,6 @@
                 const element = data[index];
                 $('select[name ="Shipment[from_state_id]"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
-
-
         });
     }
     // );

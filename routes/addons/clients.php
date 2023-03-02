@@ -1,4 +1,4 @@
-<?php 
+<?php
 Route::get('client/register','ClientController@register')->name('client.register');
 Route::post('client/register','ClientController@save')->name('client.save');
 Route::post('client/new-address','ClientController@addNewAddress')->name('client.add.new.address');
@@ -9,6 +9,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staf
     Route::resource('clients','ClientController',[
         'as' => 'admin'
     ]);
+    Route::get('/client/get/{id}','ClientController@getClientByCode')->name('client.get.byBoce');
 
 });
 
