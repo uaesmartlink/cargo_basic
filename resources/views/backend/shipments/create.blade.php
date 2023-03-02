@@ -224,7 +224,8 @@
                                         <input type="text" placeholder="" class="form-control" name="client-id" value="{{$auth_user->name}}"  >
                                         <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
                                     @else
-                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]" disabled >
+                                    <input type="hidden" placeholder="" class="form-control" name="client_id" id="client_id" >
+                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]"  >
                                             <option></option>
                                             @foreach($clients as $client)
                                                     <option value="{{$client->id}}" data-phone="{{$client->responsible_mobile}}">{{$client->name}}</option>
@@ -949,6 +950,7 @@
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
             console.log(data);
             document.getElementById("client_phone").value = data['responsible_mobile'];
+            document.getElementById("client_id").value = data['id'];
             $('select[name ="Shipment[client_address]"]').empty();
             const element = data.address;
             $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + '"selected>' + element['address'] + '</option>');
