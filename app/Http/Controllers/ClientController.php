@@ -19,6 +19,8 @@ use Carbon\Carbon;
 use App\Package;
 use App\Branch;
 use App\Code;
+use App\Area;
+use App\State;
 
 class ClientController extends Controller
 {
