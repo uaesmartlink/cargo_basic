@@ -267,10 +267,10 @@ class ClientController extends Controller
         abort(404);
     }
 
-    public function getClientByCode(Code $code)
+    public function getClientByCode(Request $request)
     {
-        dd($code);
-        $client = $code->client;
+        dd($request);
+        // $client = $code->client;
 
     }
 

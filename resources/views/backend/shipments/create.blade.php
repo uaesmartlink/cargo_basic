@@ -940,7 +940,7 @@
     $('#code').change(function(){
         var codeId = document.getElementById('code').value;
         console.log(codeId);
-        $.get("{{route('client.get.byBoce', [codeId])}}", function(data) {
+        $.get("{{route('client.get.byBoce')}}?codeId="codeId, function(data) {
                 console.log(data);
         });
 
