@@ -253,7 +253,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>{{translate('Client Address')}}:</label>
-                                    <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address">
+                                    <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address" disabled>
                                         <option value=""></option>
 
                                     </select>
@@ -941,7 +941,10 @@
         var codeId = document.getElementById('code').value;
         console.log(codeId);
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
-                console.log(data);
+            document.getElementById("client_phone").value = data['responsible_mobile'];
+            $('select[name ="Shipment[client_address]"]').empty();
+            const element = data.address;
+            $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + 'selected">' + element['address'] + '</option>');
         });
 
     });
