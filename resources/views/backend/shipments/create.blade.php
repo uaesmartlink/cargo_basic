@@ -949,15 +949,25 @@
 
             $('select[name ="Shipment[client_id]"]').empty();
             $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + 'selected">' + data['name'] + '</option>');
+
+
             $.get("{{route('client.get.state')}}?state_id="+element['state_id'], function(state) {
-                console.log(state);
+                $('select[name ="Shipment[state_id]"]').empty();
+                $('select[name ="Shipment[state_id]"]').append('<option value="' + state['id'] + 'selected">' + state['name'] + '</option>');
+
+                $('select[name ="Shipment[from_state_id]"]').empty();
+                $('select[name ="Shipment[from_state_id]"]').append('<option value="' + state['id'] + 'selected">' + state['name'] + '</option>');
             });
-            console.log(element['state_id']);
+
 
             $.get("{{route('client.get.area')}}?area_id="+element['area_id'], function(area) {
-                console.log(area);
+                  $('select[name ="Shipment[area_id]"]').empty();
+                  $('select[name ="Shipment[area_id]"]').append('<option value="' + area['id'] + 'selected">' + area['name'] + '</option>');
+
+                  $('select[name ="Shipment[from_area_id]"]').empty();
+                  $('select[name ="Shipment[from_area_id]"]').append('<option value="' + area['id'] + 'selected">' + area['name'] + '</option>');
             });
-            console.log(element['area_id']);
+
 
         });
 
