@@ -244,6 +244,7 @@
                             </div>
                         </div>
                         <div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Phone')}}:</label>
@@ -287,7 +288,6 @@
                                 </div>
 
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -309,9 +309,7 @@
                                 </div>
 
                             </div>
-
                         </div>
-                        <hr>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
