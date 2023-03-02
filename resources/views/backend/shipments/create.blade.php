@@ -219,7 +219,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group client-select">
-                                    <label>{{translate('Client')}}:</label>
+                                    <label>{{translate('Client Name')}}:</label>
                                     @if($auth_user->user_type == "customer")
                                         <input type="text" placeholder="" class="form-control" name="" value="{{$auth_user->name}}" disabled>
                                         <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
@@ -242,6 +242,8 @@
 
                                 </div>
                             </div>
+                        </div>
+                        <div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Phone')}}:</label>
@@ -264,52 +266,54 @@
 
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('From Region')}}:</label>
-                                        <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state" disabled>
-                                            <option value=""></option>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('From Region')}}:</label>
+                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state" disabled>
+                                        <option value=""></option>
 
-                                        </select>
-                                    </div>
+                                    </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('To Region')}}:</label>
-                                        <select id="change-state-to" name="Shipment[to_state_id]" class="form-control select-state">
-                                            <option value=""></option>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('To Region')}}:</label>
+                                    <select id="change-state-to" name="Shipment[to_state_id]" class="form-control select-state">
+                                        <option value=""></option>
 
-                                        </select>
-                                    </div>
-
+                                    </select>
                                 </div>
 
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('From Area')}}:</label>
-                                        <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area" disabled>
-                                            <option value=""></option>
 
-                                        </select>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('From Area')}}:</label>
+                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area" disabled>
+                                        <option value=""></option>
+
+                                    </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('To Area')}}:</label>
-                                        <select name="Shipment[to_area_id]" class="form-control select-area">
-                                            <option value=""></option>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('To Area')}}:</label>
+                                    <select name="Shipment[to_area_id]" class="form-control select-area">
+                                        <option value=""></option>
 
-                                        </select>
-                                    </div>
-
+                                    </select>
                                 </div>
 
                             </div>
-                            <hr>
-                            <div class="col-md-12">
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Address')}}:</label>
                                     <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address" disabled>
@@ -318,72 +322,73 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Receiver Address')}}:</label>
                                     <input type="text" placeholder="{{translate('Receiver Address')}}" name="Shipment[reciver_address]" class="form-control" />
 
                                 </div>
                             </div>
-                            <div class="p-3 mb-4 col-md-12"  id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
-                                    <div class="row">
-                                        <input type="hidden" id="change-country-client-address" name="country_id" value="231">
-                                        {{-- Hide Country For Demo --}}
-                                        {{-- <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>{{translate('Country')}}:</label>
-                                                <select id="change-country-client-address" name="country_id" class="form-control select-country">
-                                                    <option value=""></option>
-                                                    @foreach($countries as $country)
-                                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>{{translate('Region')}}:</label>
-                                                <select id="change-state-client-address" name="state_id" class="form-control select-state" disabled>
-                                                    <option value=""></option>
-
-                                                </select>
-                                            </div>
+                        </div>
+                        <div class="p-3 mb-4 col-md-12"  id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
+                                <div class="row">
+                                    <input type="hidden" id="change-country-client-address" name="country_id" value="231">
+                                    {{-- Hide Country For Demo --}}
+                                    {{-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{translate('Country')}}:</label>
+                                            <select id="change-country-client-address" name="country_id" class="form-control select-country">
+                                                <option value=""></option>
+                                                @foreach($countries as $country)
+                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                    </div> --}}
 
-                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{translate('Region')}}:</label>
+                                            <select id="change-state-client-address" name="state_id" class="form-control select-state" disabled>
+                                                <option value=""></option>
 
-
-                                    <div class="form-group">
-                                        <label>{{translate('Area')}}:</label>
-                                        <select name="area_id" style="display: block !important;" class="form-control select-area" disabled>
-                                            <option value=""></option>
-
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label>{{translate('Address')}}:</label>
-                                        <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control" disabled/>
-                                    </div>
-                                    @if($checked_google_map->value == 1 )
-                                        <div class="location-client">
-                                            <label>{{translate('Location')}}:</label>
-                                            <input type="text" class="form-control address-client " placeholder="{{translate('Location')}}" name="client_street_address_map"  rel="client" value="" />
-                                            <input type="hidden" class="form-control lat" data-client="lat" name="client_lat" />
-                                            <input type="hidden" class="form-control lng" data-client="lng" name="client_lng" />
-                                            <input type="hidden" class="form-control url" data-client="url" name="client_url" />
-
-                                            <div class="mt-2 col-sm-12 map_canvas map-client" style="width:100%;height:300px;"></div>
-                                            <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
+                                            </select>
                                         </div>
-                                    @endif
-                                    <div class="mt-4">
-                                        <button type="button" class="btn btn-primary" onclick="AddNewClientAddress()">{{translate('Save')}}</button>
-                                        <button type="button" class="btn btn-secondary" onclick="closeAddressDiv()">{{translate('Close')}}</button>
                                     </div>
-                            </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>{{translate('Area')}}:</label>
+                                    <select name="area_id" style="display: block !important;" class="form-control select-area" disabled>
+                                        <option value=""></option>
+
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>{{translate('Address')}}:</label>
+                                    <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control" disabled/>
+                                </div>
+                                @if($checked_google_map->value == 1 )
+                                    <div class="location-client">
+                                        <label>{{translate('Location')}}:</label>
+                                        <input type="text" class="form-control address-client " placeholder="{{translate('Location')}}" name="client_street_address_map"  rel="client" value="" />
+                                        <input type="hidden" class="form-control lat" data-client="lat" name="client_lat" />
+                                        <input type="hidden" class="form-control lng" data-client="lng" name="client_lng" />
+                                        <input type="hidden" class="form-control url" data-client="url" name="client_url" />
+
+                                        <div class="mt-2 col-sm-12 map_canvas map-client" style="width:100%;height:300px;"></div>
+                                        <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
+                                    </div>
+                                @endif
+                                <div class="mt-4">
+                                    <button type="button" class="btn btn-primary" onclick="AddNewClientAddress()">{{translate('Save')}}</button>
+                                    <button type="button" class="btn btn-secondary" onclick="closeAddressDiv()">{{translate('Close')}}</button>
+                                </div>
+                        </div>
 
 
 
