@@ -278,12 +278,12 @@ class ClientController extends Controller
     }
 
     public function getState(Request $request){
-        $state = State::finde($request->state_id);
+        $state = State::find($request->state_id);
         return $state;
     }
 
     public function getArea(Request $request){
-        $area = Area::finde($request->area_id);
+        $area = Area::find($request->area_id);
         return $area;
     }
 
