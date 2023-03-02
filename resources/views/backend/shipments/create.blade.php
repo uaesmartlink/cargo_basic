@@ -949,13 +949,16 @@
 
             $('select[name ="Shipment[client_id]"]').empty();
             $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + 'selected">' + data['name'] + '</option>');
-            $.get("{{route('client.get.state')}}?state_id="+codeId, function(state) {
+            $.get("{{route('client.get.state')}}?state_id="+element['state_id'], function(state) {
                 console.log(state);
             });
+            console.log(element['state_id']);
 
-            $.get("{{route('client.get.area')}}?area_id="+codeId, function(area) {
+            $.get("{{route('client.get.area')}}?area_id="+element['area_id'], function(area) {
                 console.log(area);
             });
+            console.log(element['area_id']);
+
         });
 
     });
