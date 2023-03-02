@@ -9,7 +9,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staf
     Route::resource('clients','ClientController',[
         'as' => 'admin'
     ]);
-    Route::get('/client/get/{id}','ClientController@getClientByCode')->name('client.get.byBoce');
+    Route::get('/client/get','ClientController@getClientByCode')->name('client.get.byCode');
 
 });
 
