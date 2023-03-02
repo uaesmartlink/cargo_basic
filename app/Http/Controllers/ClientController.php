@@ -271,7 +271,7 @@ class ClientController extends Controller
     {
 
         $code = Code::find($request->codeId);
-        $client = Client::where($code->client_id)->first();
+        $client = Client::where('id',$code->client_id)->first();
 
         return $client;
     }
