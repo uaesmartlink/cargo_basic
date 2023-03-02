@@ -10,6 +10,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staf
         'as' => 'admin'
     ]);
     Route::get('/client/get','ClientController@getClientByCode')->name('client.get.byCode');
+    Route::get('/client/get/state','ClientController@getState')->name('client.get.state');
+    Route::get('/client/get/area','ClientController@getArea')->name('client.get.area');
 
 });
 

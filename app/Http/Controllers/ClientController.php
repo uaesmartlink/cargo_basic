@@ -271,10 +271,20 @@ class ClientController extends Controller
     {
 
         $code = Code::find($request->codeId);
-        $client = Client::where('id',$code->client_id)->first();
+        $client = Client::finde($code->client_id)->first();
         $client->load('addressess');
         $client->address = $client->addressess[0];
         return $client;
+    }
+
+    public function getState(Request $request){
+        $state = State::finde($request->state_id);
+        return $state;
+    }
+
+    public function getArea(Request $request){
+        $area = Area::finde($request->area_id);
+        return $area;
     }
 
     /**

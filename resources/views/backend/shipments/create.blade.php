@@ -949,7 +949,13 @@
 
             $('select[name ="Shipment[client_id]"]').empty();
             $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + 'selected">' + data['name'] + '</option>');
+            $.get("{{route('client.get.state')}}?state_id="+codeId, function(state) {
+                console.log(state);
+            });
 
+            $.get("{{route('client.get.area')}}?area_id="+codeId, function(area) {
+                console.log(area);
+            });
         });
 
     });
@@ -1004,8 +1010,6 @@
 
                 $('select[name ="state_id"]').append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
             }
-
-
         });
     }
     // );
