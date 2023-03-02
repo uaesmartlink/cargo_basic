@@ -221,10 +221,10 @@
                                 <div class="form-group client-select">
                                     <label>{{translate('Client Name')}}:</label>
                                     @if($auth_user->user_type == "customer")
-                                        <input type="text" placeholder="" class="form-control" name="client-id" value="{{$auth_user->name}}" readonly>
+                                        <input type="text" placeholder="" class="form-control" name="client-id" value="{{$auth_user->name}}"  >
                                         <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
                                     @else
-                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]" readonly>
+                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]"  >
                                             <option></option>
                                             @foreach($clients as $client)
                                                     <option value="{{$client->id}}" data-phone="{{$client->responsible_mobile}}">{{$client->name}}</option>
@@ -272,7 +272,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('From Region')}}:</label>
-                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state" readonly>
+                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state"  >
                                         <option value=""></option>
 
                                     </select>
@@ -293,7 +293,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('From Area')}}:</label>
-                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area" readonly>
+                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area"  >
                                         <option value=""></option>
 
                                     </select>
@@ -314,7 +314,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Address')}}:</label>
-                                    <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address" readonly>
+                                    <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address"  >
                                         <option value=""></option>
 
                                     </select>
@@ -347,7 +347,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{translate('Region')}}:</label>
-                                            <select id="change-state-client-address" name="state_id" class="form-control select-state" readonly>
+                                            <select id="change-state-client-address" name="state_id" class="form-control select-state"  >
                                                 <option value=""></option>
 
                                             </select>
@@ -359,7 +359,7 @@
 
                                 <div class="form-group">
                                     <label>{{translate('Area')}}:</label>
-                                    <select name="area_id" style="display: block !important;" class="form-control select-area" readonly>
+                                    <select name="area_id" style="display: block !important;" class="form-control select-area"  >
                                         <option value=""></option>
 
                                     </select>
@@ -368,7 +368,7 @@
 
                                 <div class="form-group">
                                     <label>{{translate('Address')}}:</label>
-                                    <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control" readonly/>
+                                    <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control"  />
                                 </div>
                                 @if($checked_google_map->value == 1 )
                                     <div class="location-client">
