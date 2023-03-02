@@ -945,6 +945,10 @@
             $('select[name ="Shipment[client_address]"]').empty();
             const element = data.address;
             $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + 'selected">' + element['address'] + '</option>');
+
+            $('select[name ="Shipment[client_id]"]').empty();
+            $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + 'selected">' + element['name'] + '</option>');
+
         });
 
     });
