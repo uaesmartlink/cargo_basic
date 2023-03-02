@@ -273,6 +273,7 @@ class ClientController extends Controller
         $code = Code::find($request->codeId);
         $client = Client::where('id',$code->client_id)->first();
         $client->load('addressess');
+        $client->address = $client->addressess[0];
         return $client;
     }
 
