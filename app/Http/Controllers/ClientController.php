@@ -269,8 +269,8 @@ class ClientController extends Controller
 
     public function getClientByCode(Code $code)
     {
+        dd($code);
         $client = $code->client;
-        dd($client);
 
     }
 
