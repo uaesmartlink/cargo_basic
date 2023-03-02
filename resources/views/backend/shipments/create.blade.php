@@ -279,7 +279,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{translate('Region')}}:</label>
-                                                <select id="change-state-client-address" name="state_id" class="form-control select-state">
+                                                <select id="change-state-client-address" name="state_id" class="form-control select-state" disabled>
                                                     <option value=""></option>
 
                                                 </select>
@@ -291,7 +291,7 @@
 
                                     <div class="form-group">
                                         <label>{{translate('Area')}}:</label>
-                                        <select name="area_id" style="display: block !important;" class="form-control select-area">
+                                        <select name="area_id" style="display: block !important;" class="form-control select-area" disabled>
                                             <option value=""></option>
 
                                         </select>
@@ -300,7 +300,7 @@
 
                                     <div class="form-group">
                                         <label>{{translate('Address')}}:</label>
-                                        <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control"/>
+                                        <input type="text" placeholder="{{translate('Address')}}" name="client_address" class="form-control" disabled/>
                                     </div>
                                     @if($checked_google_map->value == 1 )
                                         <div class="location-client">
@@ -390,7 +390,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('From Region')}}:</label>
-                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state">
+                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state" disabled>
                                         <option value=""></option>
 
                                     </select>
@@ -412,7 +412,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('From Area')}}:</label>
-                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area">
+                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area" disabled>
                                         <option value=""></option>
 
                                     </select>
@@ -952,8 +952,8 @@
 
 
             $.get("{{route('client.get.state')}}?state_id="+element['state_id'], function(state) {
-                $('select[name ="Shipment[state_id]"]').empty();
-                $('select[name ="Shipment[state_id]"]').append('<option value="' + state['id'] + 'selected">' + state['name'] + '</option>');
+                $('select[name ="state_id"]').empty();
+                $('select[name ="state_id"]').append('<option value="' + state['id'] + 'selected">' + state['name'] + '</option>');
 
                 $('select[name ="Shipment[from_state_id]"]').empty();
                 $('select[name ="Shipment[from_state_id]"]').append('<option value="' + state['id'] + 'selected">' + state['name'] + '</option>');
