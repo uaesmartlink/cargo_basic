@@ -269,10 +269,9 @@ class ClientController extends Controller
 
     public function getClientByCode(Request $request)
     {
-        $code = Code::find($request->codeId);
-        return "$code;
-        // $client = $code->client;
 
+        $code = Code::find($request->codeId);
+        return $code;
     }
 
     /**
