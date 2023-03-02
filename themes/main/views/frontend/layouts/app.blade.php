@@ -24,7 +24,7 @@
 
     @yield('meta')
 
-  
+
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ config('app.name', 'Laravel') }}">
     <meta itemprop="description" content="{{ get_setting('meta_description') }}">
@@ -58,8 +58,8 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{asset('vendor/van-ons/laraberg/public/css/laraberg.css')}}">
 
-   
-    
+
+
     <link rel="stylesheet" href="{{ static_asset('themes/main/frontend/vendor/css/bundle.min.css')}}">
     <link rel="stylesheet" href="{{ static_asset('themes/main/frontend/vendor/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ static_asset('themes/main/frontend/vendor/css/jquery.fancybox.min.css')}}">
@@ -68,7 +68,7 @@
     <link rel="stylesheet" href="{{ static_asset('themes/main/frontend/vendor/css/revolution-settings.min.css')}}">
     <link rel="stylesheet" href="{{ static_asset('themes/main/frontend/logistic/css/revolution/navigation.css')}}">
     @if(\App\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
-		
+
 		<link href="https://fonts.googleapis.com/css2?family=Cairo" rel="stylesheet">
         <link rel="stylesheet" href="{{ static_asset('themes/main/frontend/logistic/css/style-rtl.css')}}">
     @else
@@ -141,20 +141,20 @@
 <body>
 
     @if(!get_setting('home_slider_status') && !get_setting('home_banner1_status') && !get_setting('home_section1_status') && !get_setting('home_process_status') && !get_setting('home_msection_status') && !get_setting('home_statistics_status') && !get_setting('home_team_status') && !get_setting('home_clients_status') && !get_setting('home_testimonials_status'))
-        
+
         <div class="container" style="padding-top: 150px;">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">{{translate('Home Page not have content')}}!</h4>
                 <hr>
-                <p>           
-                    {{translate('Please set home page design')}}          
+                <p>
+                    {{translate('Please set home page design')}}
                     <a href="{{route('custom-pages.edit',["id"=>'home', 'lang'=>env('DEFAULT_LANGUAGE'), 'page'=>'home'])}}"
                             style="border-bottom: 1px solid;"
                             target="_blank">{{translate('Here')}}</a>
                 </p>
             </div>
         </div>
-        
+
     @else
         <!--PreLoader-->
         <div class="loader">
@@ -166,8 +166,8 @@
             $main_social_links_name = json_decode( setting()->get('main_social_links_name_'.app()->getLocale()) );
             $main_social_links_icon = json_decode(  setting()->get('main_social_links_icon_'.app()->getLocale()) );
         @endphp
-            
-            @include('frontend.inc.nav')    
+
+            @include('frontend.inc.nav')
 
             @if (get_setting('main_maintenance') == 'on')
                 @yield('maintenance')
@@ -177,7 +177,7 @@
 
             @include('frontend.inc.footer')
 
-        
+
 
             @if (get_setting('show_cookies_agreement') == 'on')
                 <div class="aiz-cookie-alert shadow-xl">
@@ -214,7 +214,7 @@
 
             @yield('modal')
 
-        
+
             <script src="{{ static_asset('themes/main/frontend/vendor/js/bundle.min.js')}}"></script>
         <!--to view items on reach-->
         <script src="{{ static_asset('themes/main/frontend/vendor/js/jquery.appear.js')}}"></script>
@@ -257,13 +257,15 @@
 
 
         <script src="{{ static_asset('assets/js/aiz-core.js') }}" ></script>
-        
+
             @if (get_setting('facebook_chat') == 1)
                 <script type="text/javascript">
                     window.fbAsyncInit = function() {
                         FB.init({
+                        appId            : '600134768629510',
+                        cookie           : true,
                         xfbml            : true,
-                        version          : 'v3.3'
+                        version          : 'v16.0'
                         });
                     };
 
@@ -293,7 +295,7 @@
             <script>
 
                 $(document).ready(function() {
-                
+
                     if ($('#lang-change').length > 0) {
                         $('#lang-change .dropdown-menu a').each(function() {
                             $(this).on('click', function(e){
@@ -308,7 +310,7 @@
                         });
                     }
 
-                    
+
                 });
 
                 $('#search').on('keyup', function(){
@@ -347,7 +349,7 @@
                     }
                 }
 
-        
+
 
             </script>
 
