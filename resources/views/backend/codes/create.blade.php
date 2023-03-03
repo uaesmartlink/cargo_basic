@@ -78,6 +78,7 @@
                     <td></td>
                     <td></td>
                 </tr> --}}
+                {{ $histories }}
             @foreach($histories as $key=>$history)
                 <tr>
                     <td></td>
