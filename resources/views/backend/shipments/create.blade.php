@@ -1596,16 +1596,16 @@
                             }
                         }
                     },
-                    "must_not_empty": {
-                        validators: {
-                            checkHasError: {
-                                message: 'It must be more than 8 characters long',
-                                callback: function(input) {
-                                    return input.value.length > 0;
-                                },
-                            },
-                        }
-                    }
+                    // "must_not_empty": {
+                    //     validators: {
+                    //         checkHasError: {
+                    //             message: 'It must be more than 8 characters long',
+                    //             callback: function(input) {
+                    //                 return input.value.length > 0;
+                    //             },
+                    //         },
+                    //     }
+                    // }
                 },
 
 
