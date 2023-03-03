@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Code;
 use App\Client;
-use App\HistoryCode;
+use App\HistoryCodes;
 
 class CodeController extends Controller
 {
@@ -64,14 +64,14 @@ class CodeController extends Controller
                 $codeId = $code->id + 1;
             }
 
-            $history = new HistoryCode();
+            $history = new HistoryCodes();
             $history->client_id = $client_id;
             $history->first = $first;
             $history->last = $last;
             $history->qty = $qty;
             $history->save();
             $clients = Client::all();
-            $histories = HistoryCode::all();
+            $histories = HistoryCodes::all();
             return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
