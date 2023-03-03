@@ -1084,12 +1084,10 @@ class ShipmentController extends Controller
 
     private function storeShipment($request , $token = null)
     {
-        dd($request);
+        // dd($request);
         $model = new Shipment();
-
-
         $model->fill($request->Shipment);
-        $model->code = -1;
+        // $model->code = -1;
         $model->status_id = Shipment::SAVED_STATUS;
         $date = date_create();
         $today = date("Y-m-d");
@@ -1099,17 +1097,17 @@ class ShipmentController extends Controller
         }
 
 
-        if(ShipmentSetting::getVal('def_shipment_code_type')=='random'){
-            $barcode = ShipmentPRNG::get();
-        }else{
-            $code = '';
-            for($n = 0; $n < ShipmentSetting::getVal('shipment_code_count'); $n++){
-                $code .= '0';
-            }
-            $code       =   substr($code, 0, -strlen($model->id));
-            $barcode    =   $code.$model->id;
-        }
-        $model->barcode = $barcode;
+        // if(ShipmentSetting::getVal('def_shipment_code_type')=='random'){
+        //     $barcode = ShipmentPRNG::get();
+        // }else{
+        //     $code = '';
+        //     for($n = 0; $n < ShipmentSetting::getVal('shipment_code_count'); $n++){
+        //         $code .= '0';
+        //     }
+        //     $code       =   substr($code, 0, -strlen($model->id));
+        //     $barcode    =   $code.$model->id;
+        // }
+        $model->barcode = $code;
         $model->code = ShipmentSetting::getVal('shipment_prefix').$barcode;
 
         if((Auth::user()->user_type ?? "") == 'customer'){
