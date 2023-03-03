@@ -224,8 +224,8 @@
                                         <input type="text" placeholder="" class="form-control" name="client-id" value="{{$auth_user->name}}"  >
                                         <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
                                     @else
-                                    <input type="hidden" placeholder="" class="form-control" name="Shipment[client_id]" id="client_id" >
-                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="client_id"  disabled>
+                                    <input type="hidden" placeholder="" class="form-control" name="client_id" id="client_id"/>
+                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]">
                                             <option></option>
                                             @foreach($clients as $client)
                                                     <option value="{{$client->id}}" data-phone="{{$client->responsible_mobile}}">{{$client->name}}</option>
@@ -955,8 +955,8 @@
             const element = data.address;
             $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + '"selected>' + element['address'] + '</option>');
 
-            $('select[name ="client_id"]').empty();
-            $('select[name ="client_id"]').append('<option value="' + data['id'] + ' " selected>' + data['name'] + '</option>');
+            $('select[name ="Shipment[client_id]"]').empty();
+            $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + ' " selected>' + data['name'] + '</option>');
 
             $.get("{{route('client.get.state')}}?state_id="+element['state_id'], function(state) {
                 $('select[name ="state_id"]').empty();
