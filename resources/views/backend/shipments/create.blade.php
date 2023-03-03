@@ -694,6 +694,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" id="must_not_empty"/>;
         </form>
 
     </div>
@@ -956,7 +957,10 @@
             console.log(data);
             if(data == -1){
                 document.getElementById("message").style.display = "block";
+                document.getElementById("must_not_empty").value = "";
             }else{
+                document.getElementById("must_not_empty").value = "true";
+
                 document.getElementById("message").style.display = "none";
 
                 document.getElementById("client_phone").value = data['responsible_mobile'];
@@ -1590,8 +1594,14 @@
                                 message: '{{translate("This is required!")}}'
                             }
                         }
+                    },
+                    "must_not_empty": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
                     }
-
                 },
 
 
