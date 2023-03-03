@@ -32,7 +32,8 @@
             <div class="col-md-4">
                 <label>{{translate('From')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="first" id="first" autocomplete="off" class="form-control" value="{{ $codeId }}" disabled />
+                    <input type="hidden" name="first" id="first" value="{{ $codeId }}"/>
+                    <input type="number" placeholder="{{translate('000000')}}" name="from" id="from" autocomplete="off" class="form-control" value="{{ $codeId }}" disabled />
                 </div>
             </div>
             <div class="col-md-4">
@@ -44,7 +45,8 @@
             <div class="col-md-4">
                 <label>{{translate('To')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('000000')}}" name="last" id='last' autocomplete="off" class="form-control" disabled/>
+                    <input type="hidden" name="last" id="last"/>
+                    <input type="number" placeholder="{{translate('000000')}}" name="to" id='to' autocomplete="off" class="form-control" disabled/>
                 </div>
             </div>
         </div>
@@ -112,6 +114,7 @@
             var last = (first + qty - 1);
             console.log(last);
             document.getElementById('last').value = last;
+            document.getElementById('to').value = last;
         });
         $(document).ready(function() {
             FormValidation.formValidation(
