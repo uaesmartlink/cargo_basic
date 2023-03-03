@@ -224,8 +224,8 @@
                                         <input type="text" placeholder="" class="form-control" name="client-id" value="{{$auth_user->name}}"  >
                                         <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
                                     @else
-                                    <input type="hidden" placeholder="" class="form-control" name="client_id" id="client_id" >
-                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]"  disabled>
+                                    <input type="hidden" placeholder="" class="form-control" name="Shipment[client_id]" id="client_id" >
+                                        <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="client_id"  disabled>
                                             <option></option>
                                             @foreach($clients as $client)
                                                     <option value="{{$client->id}}" data-phone="{{$client->responsible_mobile}}">{{$client->name}}</option>
