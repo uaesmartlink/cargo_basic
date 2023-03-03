@@ -71,8 +71,8 @@ class CodeController extends Controller
             $history->qty = $qty;
             $history->save();
             $clients = Client::all();
-            $histories = HistoryCodes::all();
-            return view('backend.codes.create', compact('clients','codeId','histories'));
+            // $histories = HistoryCodes::all();
+            return view('backend.codes.create', compact('clients','codeId'));
 
         }catch (\Exception $e) {
             DB::rollback();

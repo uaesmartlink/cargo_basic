@@ -68,9 +68,15 @@
             </tr>
         </thead>
         <tbody>
-
-            @foreach($histories as $key=>$history)
-
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            {{-- @foreach($histories as $key=>$history)
                 <tr>
                     <td></td>
                     <td></td>
@@ -81,7 +87,7 @@
 
                 </tr>
 
-            @endforeach
+            @endforeach --}}
 
         </tbody>
     </table>
