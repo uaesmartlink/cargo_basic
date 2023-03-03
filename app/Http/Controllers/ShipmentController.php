@@ -1084,7 +1084,7 @@ class ShipmentController extends Controller
 
     private function storeShipment($request , $token = null)
     {
-        // dd($request);
+        dd($request);
         $model = new Shipment();
         $model->fill($request->Shipment);
         // $model->code = -1;
