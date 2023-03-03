@@ -1084,10 +1084,11 @@ class ShipmentController extends Controller
 
     private function storeShipment($request , $token = null)
     {
-        dd($request);
+        // dd($request);
         $model = new Shipment();
         $model->fill($request->Shipment);
         // $model->code = -1;
+        $model->client_id = $request->client_id;
         $model->status_id = Shipment::SAVED_STATUS;
         $date = date_create();
         $today = date("Y-m-d");
