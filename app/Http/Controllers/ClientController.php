@@ -271,12 +271,17 @@ class ClientController extends Controller
 
     public function getClientByCode(Request $request)
     {
-
-        $code = Code::find($request->codeId);
-        $client = Client::find($code->client_id);
-        $client->load('addressess');
-        $client->address = $client->addressess[0];
-        return $client;
+        try{
+            $code = Code::find($request->codeId);
+            if($code->status_id != 0)
+                return -1;
+            $client = Client::find($code->client_id);
+            $client->load('addressess');
+            $client->address = $client->addressess[0];
+            return $client;
+        }catch(\Exception $e){
+            return -1;
+        }
     }
 
     public function getState(Request $request){

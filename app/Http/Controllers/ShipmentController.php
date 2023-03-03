@@ -1045,8 +1045,6 @@ class ShipmentController extends Controller
      */
     public function store(Request $request)
     {
-
-
         try {
             DB::beginTransaction();
                 $model = $this->storeShipment($request);
