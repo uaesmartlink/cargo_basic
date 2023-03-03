@@ -34,7 +34,9 @@ class CodeController extends Controller
             $codeId = $code->id + 1;
         }
         $histories = HistoryCodes::all();
-        return view('backend.codes.create', compact('clients','codeId','histories'));
+        if($histories == null)
+            return view('backend.codes.create', compact('clients','codeId','histories'));
+        return view('backend.codes.create', compact('clients','codeId'));
     }
 
     /**
