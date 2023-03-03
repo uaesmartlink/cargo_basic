@@ -34,7 +34,7 @@ class CodeController extends Controller
             $codeId = $code->id + 1;
         }
         $histories = HistoryCodes::orderBy('id','desc');
-        $histories = $histories->with('client');
+        $histories = $histories->with('clients');
         dd($histories);
         return view('backend.codes.create', compact('clients','codeId','histories'));
     }
