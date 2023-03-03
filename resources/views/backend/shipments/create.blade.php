@@ -695,6 +695,7 @@
                     </div>
                 </div>
                 <input type="hidden" id="must_not_empty" name="must_not_empty" value=""/>
+            </div>
         </form>
 
     </div>
