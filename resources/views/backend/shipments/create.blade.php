@@ -186,10 +186,11 @@
                                 <div class="form-group">
                                     <label>{{translate('Code')}}:</label>
                                     <input type="number" id="code" name="Shipment[code]" autocomplete="off" class="form-control"/>
+                                    <span name="message" id="message" style="display: none; color:red; font-size:10px;">
+                                        {{ translate('Invalid code (either used or not available)') }}
+                                    </span>
                                 </div>
-                                <span name="message" id="message" style="display: none; color:red; font-size:10px;">
-                                    {{ translate('Invalid code (either used or not available)') }}
-                                </span>
+
                             </div>
                             <div class="col-md-6">
                                 @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
