@@ -224,7 +224,7 @@
                                         <input type="text" placeholder="" class="form-control" name="client-id" value="{{$auth_user->name}}"  >
                                         <input type="hidden" name="Shipment[client_id]" value="{{$auth_user->userClient->id}}">
                                     @else
-                                    <input type="hidden" placeholder="" class="form-control" name="client_id" id="client_id"/>
+                                        <input type="hidden" placeholder="" class="form-control" name="client_id" id="client_id"/>
                                         <select class="form-control kt-select2 select-client" id="client-id" onchange="selectIsTriggered()" name="Shipment[client_id]">
                                             <option></option>
                                             @foreach($clients as $client)
@@ -232,6 +232,9 @@
                                             @endforeach
 
                                         </select>
+                                        <span name="message" id="message" style="display: none; color:red; font-size:10px;">
+                                            {{ translate('Invalid code (either used or not available)') }}
+                                        </span>
                                     @endif
 
                                 </div>
@@ -950,8 +953,10 @@
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
             console.log(data);
             if(data == -1){
-                console.log('yes');
+                document.getElementById("message").style.display = "show";
             }else{
+                document.getElementById("message").style.display = "none";
+
                 document.getElementById("client_phone").value = data['responsible_mobile'];
                 document.getElementById("client_id").value = data['id'];
                 $('select[name ="Shipment[client_address]"]').empty();
