@@ -1104,9 +1104,9 @@ class ShipmentController extends Controller
             $code .= '0';
         }
         $code       =   substr($code, 0, -strlen($model->code));
-        $barcode    =   $code;
+        $barcode    =   $code.$model->code;
         // }
-        // $barcode = $model->code;
+        $barcode = $model->code;
         $model->barcode = $barcode;
         $model->code = ShipmentSetting::getVal('shipment_prefix').$barcode;
 
