@@ -1107,7 +1107,7 @@ class ShipmentController extends Controller
         //     $code       =   substr($code, 0, -strlen($model->id));
         //     $barcode    =   $code.$model->id;
         // }
-        $model->barcode = $code;
+        $model->barcode = $model->code;
         $model->code = ShipmentSetting::getVal('shipment_prefix').$barcode;
 
         if((Auth::user()->user_type ?? "") == 'customer'){
