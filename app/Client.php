@@ -25,7 +25,7 @@ class Client extends Model
 
     public function historyCode(): HasMany
     {
-        return $this->hasMany(HistoryCode::class);
+        return $this->hasMany(HistoryCodes::class);
     }
 
 }

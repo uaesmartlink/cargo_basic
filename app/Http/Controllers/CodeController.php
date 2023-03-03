@@ -33,7 +33,8 @@ class CodeController extends Controller
         else{
             $codeId = $code->id + 1;
         }
-        return view('backend.codes.create', compact('clients','codeId'));
+        $histories = HistoryCodes::all();
+        return view('backend.codes.create', compact('clients','codeId','histories'));
     }
 
     /**
@@ -71,8 +72,8 @@ class CodeController extends Controller
             $history->qty = $qty;
             $history->save();
             $clients = Client::all();
-            // $histories = HistoryCodes::all();
-            return view('backend.codes.create', compact('clients','codeId'));
+            $histories = HistoryCodes::all();
+            return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
             DB::rollback();
