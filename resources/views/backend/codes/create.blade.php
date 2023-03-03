@@ -68,28 +68,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
 
-            </tr>
-            {{-- @foreach($histories as $key=>$history)
+            @foreach($histories as $key=>$history)
 
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>{{ $history->client->name }}</td>
+                    <td></td>
                     <td>{{ $history->first }}</td>
                     <td>{{ $history->last }}</td>
                     <td>{{ $history->qty }}</td>
 
                 </tr>
 
-            @endforeach --}}
+            @endforeach
 
         </tbody>
     </table>

@@ -57,7 +57,6 @@ class CodeController extends Controller
                 $code->save();
             }
 
-            $clients = Client::all();
             $code = Code::orderBy('id','desc')->first();
             if($code == null)
                 $codeId = 1;
@@ -71,8 +70,9 @@ class CodeController extends Controller
             $history->last = $last;
             $history->qty = $qty;
             $history->save();
-            // $histories = HistoryCode::all();
-            return view('backend.codes.create', compact('clients','codeId'));
+            $clients = Client::all();
+            $histories = HistoryCode::all();
+            return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
             DB::rollback();
