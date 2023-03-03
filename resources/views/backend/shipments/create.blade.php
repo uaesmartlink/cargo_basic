@@ -1598,9 +1598,12 @@
                     },
                     "must_not_empty": {
                         validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
+                            checkHasError: {
+                                message: 'It must be more than 8 characters long',
+                                callback: function(input) {
+                                    return input.value.length > 0;
+                                },
+                            },
                         }
                     }
                 },
@@ -1622,7 +1625,7 @@
                     }),
 					 alias: new FormValidation.plugins.Alias({
                         // The required validator is infact treated as notEmpty validator
-                        chackPhone: 'callback',
+                        checkHasError: 'callback',
                     }),
                 }
             }
