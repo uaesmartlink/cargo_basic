@@ -40,7 +40,7 @@ $user_type = Auth::user()->user_type;
 
                         @endif
 
-                        @if( in_array($user_type,['admin','customer']) || in_array('1107', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
+                        {{-- @if( in_array($user_type,['admin','customer']) || in_array('1107', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                             <li class="menu-item {{ areActiveRoutes(['admin.shipments.add.by.api'])}}"  aria-haspopup="true">
                                 <a href="{{ route('admin.shipments.add.by.api') }}" class="menu-link">
                                     <i class="menu-bullet menu-icon flaticon2-plus" style="font-size: 10px;"></i>
@@ -48,8 +48,16 @@ $user_type = Auth::user()->user_type;
 
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
+                        @if( in_array($user_type,['admin']) || in_array('1107', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
+                            <li class="menu-item {{ areActiveRoutes(['codes.create'])}}"  aria-haspopup="true">
+                                <a href="{{ route('codes.create') }}" class="menu-link">
+                                    <i class="menu-bullet menu-icon flaticon2-plus" style="font-size: 10px;"></i>
+                                    <span class="menu-text">{{translate('Booking')}}</span>
 
+                                </a>
+                            </li>
+                        @endif
                         @if( in_array($user_type,['admin','captain']) || in_array('1109', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                             <li class="menu-item {{ areActiveRoutes(['admin.shipments.barcode.scanner'])}}" aria-haspopup="true">
                                 <a href="{{ route('admin.shipments.barcode.scanner') }}" class="menu-link">

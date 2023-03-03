@@ -1623,10 +1623,10 @@
                         invalid: 'fa fa-times',
                         validating: 'fa fa-refresh',
                     }),
-					 alias: new FormValidation.plugins.Alias({
-                        // The required validator is infact treated as notEmpty validator
-                        checkHasError: 'callback',
-                    }),
+					//  alias: new FormValidation.plugins.Alias({
+                    //     // The required validator is infact treated as notEmpty validator
+                    //     checkHasError: 'callback',
+                    // }),
                 }
             }
         );
