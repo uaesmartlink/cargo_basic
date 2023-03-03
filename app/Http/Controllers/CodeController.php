@@ -72,7 +72,7 @@ class CodeController extends Controller
             $history->qty = $qty;
             $history->save();
             $clients = Client::all();
-            $histories = HistoryCodes::where(1)->orderBy('id','desc');
+            $histories = HistoryCodes::where(1);
             return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
