@@ -33,11 +33,8 @@ class CodeController extends Controller
         else{
             $codeId = $code->id + 1;
         }
-        $histories =  HistoryCodes::whereHas('clinet', function ($query) {
-            return $query->orderBy('id','desc');
-        })->get();
-        // $histories = HistoryCodes::orderBy('id','desc')->get();
-        // $histories = $histories->with('clinets');
+        $histories = HistoryCodes::orderBy('id','desc')->get();
+        $histories = $histories->with('clinet');
 
         return view('backend.codes.create', compact('clients','codeId','histories'));
     }
