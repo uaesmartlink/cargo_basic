@@ -73,6 +73,7 @@ class CodeController extends Controller
             $history->save();
             $clients = Client::all();
             $histories = HistoryCodes::orderBy('id','desc')->get();
+            $histories = $histories->with('clinet');
             return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
