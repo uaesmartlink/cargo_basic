@@ -82,7 +82,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>{{ $history->client_id }}</td>
+                    <td>{{ \App\Client::find($history->client_id)->name }}</td>
                     <td>{{ $history->first }}</td>
                     <td>{{ $history->last }}</td>
                     <td>{{ $history->qty }}</td>
