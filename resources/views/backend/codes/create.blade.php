@@ -56,6 +56,35 @@
             </div>
         </div>
     </form>
+    <table class="table mb-0 aiz-table">
+        <thead>
+            <tr>
+                <th width="3%"></th>
+                <th width="3%">#</th>
+                <th>{{translate('Client')}}</th>
+                <th>{{translate('From')}}</th>
+                <th>{{translate('To')}}</th>
+                <th>{{translate('Qty')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach($histories as $key=>$history)
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>{{ $history->client->name }}</td>
+                    <td>{{ $history->first }}</td>
+                    <td>{{ $history->last }}</td>
+                    <td>{{ $history->qty }}</td>
+
+                </tr>
+
+            @endforeach
+
+        </tbody>
+    </table>
     </div>
 </div>
 @endsection

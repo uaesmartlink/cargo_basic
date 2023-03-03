@@ -53,7 +53,7 @@ $user_type = Auth::user()->user_type;
                             <li class="menu-item {{ areActiveRoutes(['codes.create'])}}"  aria-haspopup="true">
                                 <a href="{{ route('codes.create') }}" class="menu-link">
                                     <i class="menu-bullet menu-icon flaticon2-plus" style="font-size: 10px;"></i>
-                                    <span class="menu-text">{{translate('Booking')}}</span>
+                                    <span class="menu-text">{{translate('Booking Voucher')}}</span>
 
                                 </a>
                             </li>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Code;
 use App\Client;
+use App\HistoryCode;
 
 class CodeController extends Controller
 {
@@ -44,6 +45,7 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         try{
+
             $first = $request->first;
             $qty = $request->qty;
             $last = $first + $qty - 1;
@@ -62,7 +64,15 @@ class CodeController extends Controller
             else{
                 $codeId = $code->id + 1;
             }
-            return view('backend.codes.create', compact('clients','codeId'));
+
+            $history = new HistoryCode();
+            $history->client_id = $client_id;
+            $history->first = $first;
+            $history->last = $last;
+            $history->qty = $qty;
+            $history->save();
+            $histories = HistoryCode::all();
+            return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
             DB::rollback();
