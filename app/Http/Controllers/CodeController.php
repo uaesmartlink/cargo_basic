@@ -33,7 +33,7 @@ class CodeController extends Controller
         else{
             $codeId = $code->id + 1;
         }
-        $histories =  HistoryCodes::whereHas('clinets', function ($query) {
+        $histories =  HistoryCodes::whereHas('clinet', function ($query) {
             return $query->orderBy('id','desc');
         })->get();
         // $histories = HistoryCodes::orderBy('id','desc')->get();
