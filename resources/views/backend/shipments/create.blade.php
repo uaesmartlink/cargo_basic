@@ -187,6 +187,9 @@
                                     <label>{{translate('Code')}}:</label>
                                     <input type="number" id="code" name="Shipment[code]" autocomplete="off" class="form-control"/>
                                 </div>
+                                <span name="message" id="message" style="display: none; color:red; font-size:10px;">
+                                    {{ translate('Invalid code (either used or not available)') }}
+                                </span>
                             </div>
                             <div class="col-md-6">
                                 @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
@@ -232,9 +235,7 @@
                                             @endforeach
 
                                         </select>
-                                        <span name="message" id="message" style="display: none; color:red; font-size:10px;">
-                                            {{ translate('Invalid code (either used or not available)') }}
-                                        </span>
+
                                     @endif
 
                                 </div>
@@ -953,7 +954,7 @@
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
             console.log(data);
             if(data == -1){
-                document.getElementById("message").style.display = "show";
+                document.getElementById("message").style.display = "block";
             }else{
                 document.getElementById("message").style.display = "none";
 
