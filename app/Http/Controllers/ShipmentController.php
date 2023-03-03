@@ -1095,7 +1095,11 @@ class ShipmentController extends Controller
             return response()->json(['message' => new \Exception()] );
         }
 
-
+        $client_code = Code::find($code);
+        $client_code->status_id = 1;
+        if (!$client_code->save()) {
+            return response()->json(['message' => new \Exception()] );
+        }
         // if(ShipmentSetting::getVal('def_shipment_code_type')=='random'){
         //     $barcode = ShipmentPRNG::get();
         // }else{
