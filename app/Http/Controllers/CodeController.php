@@ -33,7 +33,7 @@ class CodeController extends Controller
         else{
             $codeId = $code->id + 1;
         }
-        $histories = HistoryCodes::all();
+        $histories = HistoryCodes::orderBy('id','desc')->get();
         return view('backend.codes.create', compact('clients','codeId','histories'));
     }
 
@@ -72,7 +72,7 @@ class CodeController extends Controller
             $history->qty = $qty;
             $history->save();
             $clients = Client::all();
-            $histories = HistoryCodes::all();
+            $histories = HistoryCodes::orderBy('id','desc')->get();
             return view('backend.codes.create', compact('clients','codeId','histories'));
 
         }catch (\Exception $e) {
