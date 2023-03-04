@@ -263,7 +263,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" style="direction: none;">
                         <label class="col-form-label text-lg-right">{{translate('Default Branch')}}:</label>
                         <select class="form-control kt-select2 def_branch" name="Setting[def_branch]">
                             @foreach(\App\Branch::where('is_archived',0)->get() as $branch)
