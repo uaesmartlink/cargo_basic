@@ -1322,8 +1322,8 @@ class ShipmentController extends Controller
             $model->code = ShipmentSetting::getVal('shipment_prefix').$barcode;
 
             $model->fill($_POST['Shipment']);
-            $model->code = $code;
             $model->barcode = $barcode;
+            $model->code = ShipmentSetting::getVal('shipment_prefix').$barcode;
 
             if (!$model->save()) {
                 throw new \Exception();
