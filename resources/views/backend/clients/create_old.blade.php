@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <div class="col-md-12">
                             <div>
                                 <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
@@ -196,7 +196,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="form-group" style="display: none;">
