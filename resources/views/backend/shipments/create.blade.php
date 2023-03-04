@@ -443,7 +443,7 @@
                             </div>
                         </div> --}}
 
-                        <div class="row">
+                        <div class="row" style="display:hidden;">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Payment Type')}}:</label>
