@@ -96,6 +96,7 @@
                             @if($auth_user->user_type == "customer")
                                 <input type="text" placeholder="" class="form-control" name="" value="{{$auth_user->name}}" disabled>
                             @else
+                                 <input type="hidden" placeholder="" class="form-control" name="client_id" id="client_id"/>
                                 <select class="form-control kt-select2 select-client" id="client-id" name="Shipment[client_id]" disabled>
                                     @foreach($clients as $client)
                                     <option @if($shipment->client_id == $client->id) selected @endif data-phone="{{$client->responsible_mobile}}" value="{{$client->id}}">{{$client->name}}</option>
@@ -505,9 +506,10 @@
     });
 
     $('#code').change(function(){
-        var codeId = document.getElementById('code').value;
-        var old_code = document.getElementById('old_code').value
+        var codeId = +document.getElementById('code').value;
+        var old_code = +document.getElementById('old_code').value
         console.log(codeId);
+        console.log(old_code);
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
             console.log(data);
             if(data == -1 && old_code != codeId){
@@ -519,7 +521,6 @@
                 document.getElementById("must_not_empty").value = "";
 
             }else{
-                console.log(data);
                 document.getElementById("must_not_empty").value = "true";
                 document.getElementById("message").style.display = "none";
 
