@@ -63,6 +63,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <input type="hidden" name="Shipment[old_code]" id="old_code" autocomplete="off" class="form-control" value="{{ (int)$shipment->barcode }}">
                             <label>{{translate('Code')}}:</label>
                             <input type="number" placeholder="000000" id="code" name="Shipment[code]" autocomplete="off" class="form-control" value="{{ (int)$shipment->barcode }}"/>
                             <span name="message" id="message" style="display: none; color:red; font-size:10px;">
@@ -505,14 +506,15 @@
 
     $('#code').change(function(){
         var codeId = document.getElementById('code').value;
+        var old_code = document.getElementById('old_code').value
         console.log(codeId);
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
             console.log(data);
-            if(data == -1){
+            if(data == -1 && old_code != codeId){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("must_not_empty").value = "";
             }
-            else if(data == -2){
+            else if(data == -2 && old_code != codeId){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("must_not_empty").value = "";
 
