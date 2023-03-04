@@ -281,7 +281,6 @@ class ClientController extends Controller
             }
            else
                 return -2;
-
         }catch(\Exception $e){
             return -1;
         }
