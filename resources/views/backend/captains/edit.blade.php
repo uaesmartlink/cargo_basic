@@ -156,19 +156,19 @@
                             }
                         }
                     },
-                    "User[confirm_password]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            },
-                            identical: {
-                                compare: function() {
-                                    return  document.getElementById('kt_form_1').querySelector('[name="User[password]"]').value;
-                                },
-                                message: 'The password and its confirm are not the same'
-                            }
-                        }
-                    }
+                    // "User[confirm_password]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         },
+                    //         identical: {
+                    //             compare: function() {
+                    //                 return  document.getElementById('kt_form_1').querySelector('[name="User[password]"]').value;
+                    //             },
+                    //             message: 'The password and its confirm are not the same'
+                    //         }
+                    //     }
+                    // }
 
                 },
 
