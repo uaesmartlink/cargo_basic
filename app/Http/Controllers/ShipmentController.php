@@ -1299,10 +1299,9 @@ class ShipmentController extends Controller
     public function update(Request $request, $shipment)
     {
         try {
-            dd($request);
             DB::beginTransaction();
             $model = Shipment::find($shipment);
-            $client_code = Code::find($shipment->code);
+            $client_code = Code::find($request->Shipment->code);
             $client_code->status_id = 1;
             if (!$client_code->save()) {
                 return response()->json(['message' => new \Exception()] );
