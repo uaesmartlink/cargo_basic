@@ -64,7 +64,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>{{translate('Code')}}:</label>
-                            <input type="number" placeholder="000000" id="code" name="Shipment[code]" autocomplete="off" class="form-control" value="{{ $shipment->barcode }}"/>
+                            <input type="number" placeholder="000000" id="code" name="Shipment[code]" autocomplete="off" class="form-control" value="{{ (int)$shipment->barcode }}"/>
                             <span name="message" id="message" style="display: none; color:red; font-size:10px;">
                                 {{ translate('Invalid code (either used or not available)') }}
                             </span>
