@@ -215,23 +215,24 @@
                                     </div>
                                 </div>
                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('From Area')}}:</label>
-                                    <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area">
-                                        <option value=""></option>
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{translate('From Area')}}:</label>
+                                        <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{translate('To Area')}}:</label>
+                                        <select name="Shipment[to_area_id]" class="form-control select-area">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('To Area')}}:</label>
-                                    <select name="Shipment[to_area_id]" class="form-control select-area">
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <hr/>
                         <div class="row" style="display: none;">
                             <div class="col-md-6">
