@@ -501,6 +501,50 @@
         });
     });
 
+    $('#code').change(function(){
+        var codeId = document.getElementById('code').value;
+        console.log(codeId);
+        $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
+            console.log(data);
+            if(data == -1){
+                document.getElementById("message").style.display = "block";
+                document.getElementById("must_not_empty").value = "";
+            }else{
+                document.getElementById("must_not_empty").value = "true";
+
+                document.getElementById("message").style.display = "none";
+
+                document.getElementById("client_phone").value = data['responsible_mobile'];
+                document.getElementById("client_id").value = data['id'];
+                $('select[name ="Shipment[client_address]"]').empty();
+                const element = data.address;
+                $('select[name ="Shipment[client_address]"]').append('<option value="' + element['id'] + '"selected>' + element['address'] + '</option>');
+
+                $('select[name ="Shipment[client_id]"]').empty();
+                $('select[name ="Shipment[client_id]"]').append('<option value="' + data['id'] + ' " selected>' + data['name'] + '</option>');
+
+                $.get("{{route('client.get.state')}}?state_id="+element['state_id'], function(state) {
+                    $('select[name ="state_id"]').empty();
+                    $('select[name ="state_id"]').append('<option value="' + state['id'] + '" selected>' + state['name'] + '</option>');
+
+                    $('select[name ="Shipment[from_state_id]"]').empty();
+                    $('select[name ="Shipment[from_state_id]"]').append('<option value="' + state['id'] + '" selected>' + state['name'] + '</option>');
+                });
+
+
+                $.get("{{route('client.get.area')}}?area_id="+element['area_id'], function(area) {
+                    $('select[name ="Shipment[area_id]"]').empty();
+                    $('select[name ="Shipment[area_id]"]').append('<option value="' + area['id'] + '" selected>' + area['name'] + '</option>');
+
+                    $('select[name ="Shipment[from_area_id]"]').empty();
+                    $('select[name ="Shipment[from_area_id]"]').append('<option value="' + area['id'] + '" selected>' + area['name'] + '</option>');
+                });
+
+            }
+        });
+
+    });
+
     function getAdressess(client_id)
     {
         var id = client_id;
