@@ -36,7 +36,7 @@
                         <span class="menu-text">{{translate('Dashboard')}}</span>
                     </a>
                 </li>
-               
+
                 @if(count(\File::files(base_path('resources/views/backend/inc/addons/'))) > 0)
                     <li class="menu-section">
                         <h4 class="menu-text">{{translate('Addons')}}</h4>
@@ -47,7 +47,7 @@
                         @include('backend.inc.addons.'.str_replace('.blade','',pathinfo($path)['filename']))
                     @endforeach
                 @endif
-            
+
 
                 <li class="menu-section">
                     <h4 class="menu-text">{{translate('Administration')}}</h4>
@@ -189,7 +189,7 @@
                                         <span class="menu-text">{{translate('Features activation')}}</span>
                                     </a>
                                 </li>
-                                <li class="menu-item {{ areActiveRoutes(['payment_method.index'])}}" aria-haspopup="true">
+                                <li class="menu-item {{ areActiveRoutes(['payment_method.index'])}}" aria-haspopup="true" style="display: none;">
                                     <a href="{{ route('payment_method.index') }}" class="menu-link">
                                         <i class="menu-bullet menu-bullet-dot">
                                             <span></span>

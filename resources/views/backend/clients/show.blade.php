@@ -144,7 +144,7 @@
                                             {{-- <th>{{translate('Branch')}}</th> --}}
 
                                             <th>{{translate('Shipping Cost')}}</th>
-                                            <th>{{translate('Payment Method')}}</th>
+                                            {{-- <th>{{translate('Payment Method')}}</th> --}}
                                             <th>{{translate('Paid')}}</th>
                                             <th>{{translate('Shipping Date')}}</th>
                                             <th>{{translate('Driver')}}</th>
@@ -167,7 +167,7 @@
                                             {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
 
                                             <td>{{format_price($shipment->shipping_cost)}}</td>
-                                            <td>{{$shipment->pay->name ?? ""}}</td>
+                                            {{-- <td>{{$shipment->pay->name ?? ""}}</td> --}}
                                             <td>@if($shipment->paid == 1) {{translate('Paid')}} @else - @endif</td>
                                             <td>{{$shipment->shipping_date}}</td>
                                             <td>@isset($shipment->captain_id) {{$shipment->captain->name}} @else - @endisset</td>

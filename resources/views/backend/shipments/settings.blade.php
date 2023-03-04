@@ -271,7 +271,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="display: none;">
 
                             <label class="col-form-label text-lg-right">{{translate('Default Payment Type')}}:</label>
                             <select class="form-control kt-select2 def_payment_type" name="Setting[def_payment_type]">
@@ -285,7 +285,7 @@
 
 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="display: none;">
 
                             <label class="col-form-label text-lg-right">{{translate('Default Payment Method')}}:</label>
                             <select class="form-control kt-select2 def_payment_method" name="Setting[def_payment_method]">

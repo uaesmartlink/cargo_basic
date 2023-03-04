@@ -97,10 +97,10 @@
                                                 <td class="w-50 fw-600">{{ translate('Shipping')}}:</td>
                                                 <td>{{ translate('Flat shipping rate')}}</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td class="w-50 fw-600">{{ translate('Payment method')}}:</td>
                                                 <td>{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}</td>
-                                            </tr>
+                                            </tr> --}}
                                         </table>
                                     </div>
                                 </div>

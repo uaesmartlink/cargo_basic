@@ -527,7 +527,7 @@
                         </p>
 
                         <!-- The Modal -->
-                        <div class="modal" id="payments">
+                        <div class="modal" id="payments" style="display: none;">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 

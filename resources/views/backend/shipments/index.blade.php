@@ -278,7 +278,7 @@
                     {{-- @if($auth_user->user_type != "branch") <th>{{translate('Branch')}}</th> @endif --}}
 
                     <th>{{translate('Shipping Cost')}}</th>
-                    <th>{{translate('Payment Method')}}</th>
+                    {{-- <th>{{translate('Payment Method')}}</th> --}}
                     <th>{{translate('Paid')}}</th>
                     <th>{{translate('Shipping Date')}}</th>
                     @if($status == \App\Shipment::CAPTAIN_ASSIGNED_STATUS || $status == \App\Shipment::RECIVED_STATUS)
@@ -334,7 +334,7 @@
                         @endif --}}
 
                         <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                        <td>{{$shipment->pay->name ?? ""}}</td>
+                        {{-- <td>{{$shipment->pay->name ?? ""}}</td> --}}
                         <td>@if($shipment->paid == 1) {{translate('Paid')}} @else - @endif</td>
                         <td>{{$shipment->shipping_date}}</td>
                             @if($status == \App\Shipment::CAPTAIN_ASSIGNED_STATUS || $status == \App\Shipment::RECIVED_STATUS)

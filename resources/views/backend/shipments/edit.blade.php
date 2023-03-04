@@ -144,7 +144,7 @@
 
                         </div>
                         <hr>
-                        <div class="row">
+                        <div class="row" style="display: none;">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Payment Type')}}:</label>

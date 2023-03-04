@@ -232,7 +232,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card shadow-none bg-light">
+                <div class="card shadow-none bg-light" style="display: none;">
                   <div class="card-header">
         						<h6 class="mb-0">{{ translate('Payment Methods Widget ') }}</h6>
         					</div>
