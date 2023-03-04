@@ -22,7 +22,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-
                         <div class="form-group row">
                             <label class="col-2 col-form-label">{{translate('Shipment Type')}}</label>
                             <div class="col-9 col-form-label">
@@ -38,340 +37,205 @@
                                         {{translate("Drop off (For delivery package from branch directly)")}}
                                     </label>
                                 </div>
-
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <input type="hidden" name="Shipment[branch_id]" value="1" >
-                            {{-- Hide For Demo --}}
-                            {{-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Branch')}}:</label>
-                                    <select class="form-control kt-select2 select-branch" id="select-how" name="Shipment[branch_id]">
-
-                                        @foreach($branchs as $branch)
-                                        <option @if($shipment->branch_id == $branch->id) selected @endif value="{{$branch->id}}">{{$branch->name}}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div> --}}
-                            <div class="col-md-6">
-                            @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
-                                <div class="form-group">
-                                    <label>{{translate('Shipping Date')}}:</label>
-                                    <div class="input-group date">
-                                        <input type="text" name="Shipment[shipping_date]" value="{{$shipment->shipping_date}}" class="form-control" id="kt_datepicker_3" />
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">
-                                                <i class="la la-calendar"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                @endif
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Customer/Sender')}}:</label>
-                                    @if($auth_user->user_type == "customer")
-                                        <input type="text" placeholder="" class="form-control" name="" value="{{$auth_user->name}}" disabled>
-                                    @else
-                                        <select class="form-control kt-select2 select-client" id="select-how" name="Shipment[client_id]">
-
-                                            @foreach($clients as $client)
-                                            <option @if($shipment->client_id == $client->id) selected @endif data-phone="{{$client->responsible_mobile}}" value="{{$client->id}}">{{$client->name}}</option>
-                                            @endforeach
-
-                                        </select>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Customer Phone')}}:</label>
-                                    <input name="Shipment[client_phone]" class="form-control" id="client_phone" value="{{$shipment->client_phone}}" id="">
-
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>{{translate('Customer Address')}}:</label>
-                                    <input name="Shipment[client_address]" class="form-control" value="{{$shipment->client_address}}" id="">
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Receiver Name')}}:</label>
-                                    <input type="text" name="Shipment[reciver_name]" class="form-control" value="{{$shipment->reciver_name}}" />
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Receiver Phone')}}:</label>
-                                    <input type="text" name="Shipment[reciver_phone]" class="form-control" value="{{$shipment->reciver_phone}}" />
-
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>{{translate('Receiver Address')}}:</label>
-                                    <input type="text" name="Shipment[reciver_address]" class="form-control" value="{{$shipment->reciver_address}}" />
-
-                                </div>
-                            </div>
-                            @if($checked_google_map->value == 1 )
-                                <div class="col-md-12">
-                                    <div class="location-receiver">
-                                        <label>{{translate('Receiver Location')}}:</label>
-                                        <input type="text" value="{{$shipment->reciver_street_address_map}}" class="form-control address-receiver " placeholder="{{translate('Receiver Location')}}" name="Shipment[reciver_street_address_map]"  rel="receiver" value="" />
-                                        <input type="hidden" value="{{$shipment->reciver_lat}}" class="form-control lat" data-receiver="lat" name="Shipment[reciver_lat]" />
-                                        <input type="hidden" value="{{$shipment->reciver_lng}}" class="form-control lng" data-receiver="lng" name="Shipment[reciver_lng]" />
-                                        <input type="hidden" value="{{$shipment->reciver_url}}" class="form-control url" data-receiver="url" name="Shipment[reciver_url]" />
-
-                                        <div class="mt-2 col-sm-12 map_canvas map-receiver" style="width:100%;height:300px;"></div>
-                                        <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
-                                    </div>
-                                </div>
-                            @endif
-
-                        </div>
-                        <hr>
-                        <div class="row" style="display: none;">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Payment Type')}}:</label>
-                                    <select class="form-control kt-select2" id="select-how" name="Shipment[payment_type]">
-
-
-                                        <option @if($shipment->payment_type == 1) selected @endif value="1">{{translate('Postpaid')}}</option>
-                                        <option @if($shipment->payment_type == 2) selected @endif  value="2">{{translate('Prepaid')}}</option>
-
-
-                                    </select>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Payment Method')}}:</label>
-                                    <select class="form-control kt-select2" id="select-how" name="Shipment[payment_method_id]">
-                                        @forelse (\App\BusinessSetting::where("key","payment_gateway")->where("value","1")->get() as $gateway)
-                                            <option @if($shipment->payment_method_id == $gateway->id) selected @endif value="{{$gateway->id}}">{{$gateway->name}}</option>
-                                        @empty
-                                            <option value="11">{{translate('Cash')}}</option>
-                                        @endforelse
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Order ID')}}:</label>
-                                    <input type="text" placeholder="{{translate('Order ID')}}" name="Shipment[order_id]" class="form-control" value="{{$shipment->order_id}}" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Attachments')}}:</label>
-
-                                    <div class="input-group " data-toggle="aizuploader" data-type="image" data-multiple="true">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse') }}</div>
-                                        </div>
-                                        <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                                        <input type="hidden" name="Shipment[attachments_before_shipping]" class="selected-files" value="{{$shipment->attachments_before_shipping}}" max="3">
-                                    </div>
-                                    <div class="file-preview">
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Attachments After Shipping')}}:</label>
-
-                                    <div class="input-group " data-toggle="aizuploader" data-type="image" data-multiple="true">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse') }}</div>
-                                        </div>
-                                        <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                                        <input type="hidden" name="Shipment[attachments_after_shipping]" class="selected-files" value="{{$shipment->attachments_after_shipping}}" max="3">
-                                    </div>
-                                    <div class="file-preview">
-                                    </div>
-                                </div>
-                            </div> --}}
-                        </div>
-
-                        <hr>
-
-                        <div id="kt_repeater_1">
-                            <div class="row" id="kt_repeater_1">
-                                <h2 class="text-left">{{translate('Package Info')}}:</h2>
-                                <div data-repeater-list="Package" class="col-lg-12">
-                                    @foreach(\App\PackageShipment::where('shipment_id',$shipment->id)->get() as $pack)
-                                    <div data-repeater-item class="row align-items-center" style="margin-top: 15px;padding-bottom: 15px;padding-top: 15px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
-
-
-
-                                        <div class="col-md-3">
-
-                                            <label>{{translate('Category')}}:</label>
-                                            <select class="form-control kt-select2" id="select-how" name="package_id" >
-                                                <option></option>
-                                                @foreach(\App\Package::all() as $package)
-                                                <option @if($pack->package_id == $package->id) selected @endif value="{{$package->id}}">{{$package->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="mb-2 d-md-none"></div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>{{translate('description')}}:</label>
-                                            <input type="text" value="{{$pack->description}}" class="form-control" name="description">
-                                            <div class="mb-2 d-md-none"></div>
-                                        </div>
-                                        <input type="hidden" name="qty" value="1">
-                                        <input type="hidden" name="weight" value="1">
-                                        <input type="hidden" name="length" value="1">
-                                        <input type="hidden" name="width" value="1">
-                                        <input type="hidden" name="height" value="1">
-                                        {{-- <div class="col-md-3">
-
-                                            <label>{{translate('Quantity')}}:</label>
-
-                                            <input id="kt_touchspin_qty" type="text" name="qty" class="form-control" value="{{$pack->qty}}" />
-                                            <div class="mb-2 d-md-none"></div>
-
-                                        </div>
-
-                                        <div class="col-md-3">
-
-                                            <label>{{translate('Weight')}}:</label>
-
-                                            <input id="kt_touchspin_weight" type="text" name="weight" class="form-control" value="{{$pack->weight}}" />
-                                            <div class="mb-2 d-md-none"></div>
-
-                                        </div>
-
-
-                                        <div class="col-md-12" style="margin-top: 10px;">
-                                            <label>{{translate('Dimensions [Length x Width x Height] (cm):')}}:</label>
-                                        </div>
-                                        <div class="col-md-2">
-
-                                            <input class="dimensions_r" type="text" class="form-control" placeholder="{{translate('Length')}}" value="{{$pack->length}}"  name="length"/>
-
-                                        </div>
-                                        <div class="col-md-2">
-
-                                            <input class="dimensions_r" type="text" class="form-control" placeholder="{{translate('Width')}}" value="{{$pack->width}}" name="width" />
-
-                                        </div>
-                                        <div class="col-md-2">
-
-                                            <input class="dimensions_r" type="text" class="form-control " placeholder="{{translate('Height')}}" value="{{$pack->height}}" name="height" />
-
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-
-                                                <div>
-                                                    <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger">
-                                                        <i class="la la-trash-o"></i>{{translate('Delete')}}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    @endforeach
-                                </div>
-                            </div>
-                            {{-- <div class="form-group row">
-                                <div class="">
-                                    <label class="text-right col-form-label">{{translate('Add')}}</label>
-                                    <div>
-                                        <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
-                                            <i class="la la-plus"></i>{{translate('Add')}}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('Tax & Duty')}}:</label>
-
-                                        <input id="kt_touchspin_2" type="text" @if($auth_user->user_type == 'customer') disabled @endif class="form-control" value="{{$shipment->tax}}" name="Shipment[tax]" />
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('Insurance')}}:</label>
-                                        <input id="kt_touchspin_2_2" type="text" @if($auth_user->user_type == 'customer') disabled @endif class="form-control" value="{{$shipment->insurance}}" name="Shipment[insurance]" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('Shipping Cost')}}:</label>
-                                        <input id="kt_touchspin_3" type="text" @if($auth_user->user_type == 'customer') disabled @endif class="form-control" value="{{$shipment->shipping_cost}}" name="Shipment[shipping_cost]" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('Return Cost')}}:</label>
-                                        <input id="kt_touchspin_3_3" type="text" @if($auth_user->user_type == 'customer') disabled @endif class="form-control" value="{{$shipment->return_cost}}" name="Shipment[return_cost]" />
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('Delivery Time')}}:</label>
-                                        <select class="form-control kt-select2" id="select-how" name="Shipment[delivery_time]">
-                                            <option @if($shipment->delivery_time == "1-2 Days") selected @endif value="1-2 Days">{{translate('1-2 Days')}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="Shipment[total_weight]" value="1" id ="kt_touchspin_4">
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{translate('Total Weight')}}:</label>
-                                        <input id="kt_touchspin_4" type="text" class="form-control" value="{{$shipment->total_weight}}" value="0" name="Shipment[total_weight]" />
-                                    </div>
-                                </div> --}}
-
-                            </div>
-
-
-
-
-                        </div>
-
-                    </div>
-
-
-
-                    {!! hookView('shipment_addon',$currentView) !!}
-
-                    <div class="mb-0 text-right form-group">
-                        <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                     </div>
                 </div>
-        </form>
+                <hr>
+                <div class="row">
+                    <input type="hidden" name="Shipment[branch_id]" value="1" >
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Code')}}:</label>
+                            <input type="number" placeholder="000000" id="code" name="Shipment[code]" autocomplete="off" class="form-control"/>
+                            <span name="message" id="message" style="display: none; color:red; font-size:10px;">
+                                {{ translate('Invalid code (either used or not available)') }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
+                            <div class="form-group">
+                                <label>{{translate('Shipping Date')}}:</label>
+                                <div class="input-group date">
+                                    <input type="text" name="Shipment[shipping_date]" value="{{$shipment->shipping_date}}" class="form-control" id="kt_datepicker_3" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="la la-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Customer/Sender')}}:</label>
+                            @if($auth_user->user_type == "customer")
+                                <input type="text" placeholder="" class="form-control" name="" value="{{$auth_user->name}}" disabled>
+                            @else
+                                <select class="form-control kt-select2 select-client" id="select-how" name="Shipment[client_id]">
 
+                                    @foreach($clients as $client)
+                                    <option @if($shipment->client_id == $client->id) selected @endif data-phone="{{$client->responsible_mobile}}" value="{{$client->id}}">{{$client->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Receiver Name')}}:</label>
+                            <input type="text" name="Shipment[reciver_name]" class="form-control" value="{{$shipment->reciver_name}}" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Customer Phone')}}:</label>
+                            <input name="Shipment[client_phone]" class="form-control" id="client_phone" value="{{$shipment->client_phone}}" id="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Receiver Phone')}}:</label>
+                            <input type="text" name="Shipment[reciver_phone]" class="form-control" value="{{$shipment->reciver_phone}}" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Customer Address')}}:</label>
+                            <input name="Shipment[client_address]" class="form-control" value="{{$shipment->client_address}}" id="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Receiver Address')}}:</label>
+                            <input type="text" name="Shipment[reciver_address]" class="form-control" value="{{$shipment->reciver_address}}" />
+                        </div>
+                    </div>
+                </div>
+                    @if($checked_google_map->value == 1 )
+                        <div class="col-md-12">
+                            <div class="location-receiver">
+                                <label>{{translate('Receiver Location')}}:</label>
+                                <input type="text" value="{{$shipment->reciver_street_address_map}}" class="form-control address-receiver " placeholder="{{translate('Receiver Location')}}" name="Shipment[reciver_street_address_map]"  rel="receiver" value="" />
+                                <input type="hidden" value="{{$shipment->reciver_lat}}" class="form-control lat" data-receiver="lat" name="Shipment[reciver_lat]" />
+                                <input type="hidden" value="{{$shipment->reciver_lng}}" class="form-control lng" data-receiver="lng" name="Shipment[reciver_lng]" />
+                                <input type="hidden" value="{{$shipment->reciver_url}}" class="form-control url" data-receiver="url" name="Shipment[reciver_url]" />
+
+                                <div class="mt-2 col-sm-12 map_canvas map-receiver" style="width:100%;height:300px;"></div>
+                                <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
+                            </div>
+                        </div>
+                    @endif
+
+                <div class="row" style="display:none;">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Payment Type')}}:</label>
+                            <select class="form-control kt-select2" id="select-how" name="Shipment[payment_type]">
+                                <option @if($shipment->payment_type == 1) selected @endif value="1">{{translate('Postpaid')}}</option>
+                                <option @if($shipment->payment_type == 2) selected @endif  value="2">{{translate('Prepaid')}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Payment Method')}}:</label>
+                            <select class="form-control kt-select2" id="select-how" name="Shipment[payment_method_id]">
+                                @forelse (\App\BusinessSetting::where("key","payment_gateway")->where("value","1")->get() as $gateway)
+                                    <option @if($shipment->payment_method_id == $gateway->id) selected @endif value="{{$gateway->id}}">{{$gateway->name}}</option>
+                                @empty
+                                    <option value="11">{{translate('Cash')}}</option>
+                                @endforelse
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Order ID')}}:</label>
+                            <input type="text" placeholder="{{translate('Order ID')}}" name="Shipment[order_id]" class="form-control" value="{{$shipment->order_id}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Attachments')}}:</label>
+
+                            <div class="input-group " data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse') }}</div>
+                                </div>
+                                <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                                <input type="hidden" name="Shipment[attachments_before_shipping]" class="selected-files" value="{{$shipment->attachments_before_shipping}}" max="3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div id="kt_repeater_1">
+                    <div class="row" id="kt_repeater_1">
+                        <h2 class="text-left">{{translate('Package Info')}}:</h2>
+                        <div data-repeater-list="Package" class="col-lg-12">
+                            <div data-repeater-item class="row align-items-center" style="margin-top: 15px;padding-bottom: 15px;padding-top: 15px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
+                                <div class="col-md-3">
+                                    <label>{{translate('Package Type')}}:</label>
+                                    <select class="form-control kt-select2" id="select-how" name="package_id" >
+                                        <option></option>
+                                        @foreach(\App\Package::all() as $package)
+                                        <option @if($pack->package_id == $package->id) selected @endif value="{{$package->id}}">{{$package->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="mb-2 d-md-none"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>{{translate('description')}}:</label>
+                                    <input type="text" value="{{$pack->description}}" class="form-control" name="description">
+                                    <div class="mb-2 d-md-none"></div>
+                                </div>
+
+                                <input type="hidden" name="qty" value="1">
+                                <input type="hidden" name="weight" value="1">
+                                <input type="hidden" name="length" value="1">
+                                <input type="hidden" name="width" value="1">
+                                <input type="hidden" name="height" value="1">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Amount to be Collected')}}:</label>
+                            <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" value="0" name="Shipment[amount_to_be_collected]" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Delivery Time')}}:</label>
+                            <select class="form-control kt-select2" id="select-how" name="Shipment[delivery_time]">
+                                <option @if($shipment->delivery_time == "1-2 Days") selected @endif value="1-2 Days">{{translate('1-2 Days')}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="Shipment[total_weight]" value="1" id="kt_touchspin_4">
+            </div>
+        </form>
     </div>
 </div>
 

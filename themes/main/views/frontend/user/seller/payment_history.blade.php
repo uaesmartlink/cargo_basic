@@ -20,7 +20,7 @@
                                             <th>#</th>
                                             <th>{{ translate('Date')}}</th>
                                             <th>{{ translate('Amount')}}</th>
-                                            <th>{{ translate('Payment Method')}}</th>
+                                            {{-- <th>{{ translate('Payment Method')}}</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -33,9 +33,9 @@
                                                 <td>
                                                     {{ single_price($payment->amount) }}
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     {{ ucfirst(str_replace('_', ' ', $payment->payment_method)) }} @if ($payment->txn_code != null) ({{  translate('TRX ID') }} : {{ $payment->txn_code }}) @endif
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>

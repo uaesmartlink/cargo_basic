@@ -110,10 +110,10 @@
                             <td class="w-50 fw-600">{{ translate('Contact')}}:</td>
                             <td>{{ json_decode($order->shipping_address)->phone }}</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td class="w-50 fw-600">{{ translate('Payment method')}}:</td>
                             <td>{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}</td>
-                        </tr>
+                        </tr> --}}
                     </table>
                 </div>
             </div>
