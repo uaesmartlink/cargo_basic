@@ -81,13 +81,13 @@
                             }
                         }
                     },
-                    "branch_id": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            }
-                        }
-                    },
+                    // "branch_id": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         }
+                    //     }
+                    // },
                     "email": {
                         validators: {
                             notEmpty: {
