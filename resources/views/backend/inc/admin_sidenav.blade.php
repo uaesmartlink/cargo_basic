@@ -315,8 +315,7 @@
                     </li>
                 @endif
 
-                {{-- @if($user_type == 'admin' || in_array('21', json_decode(Auth::user()->staff->role->permissions ?? "[]"))) --}}
-                @if($user_type == 'super_admin')
+                @if($user_type == 'super_admin' || in_array('21', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                     <li class="menu-item menu-item-submenu {{ areActiveRoutes(['system_update', 'system_server'])}}" aria-haspopup="true" data-menu-toggle="hover">
                         <a href="javascript:;" class="menu-link menu-toggle">
                             <i class="menu-icon flaticon-information"></i>
