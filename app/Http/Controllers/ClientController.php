@@ -273,12 +273,15 @@ class ClientController extends Controller
     {
         try{
             $code = Code::find($request->codeId);
-            if($code->status_id != 0)
+            if(isset($request->old_code) || $code->status_id != 0){
+                $client = Client::find($code->client_id);
+                $client->load('addressess');
+                $client->address = $client->addressess[0];
+                return $client;
+            }
+           else
                 return -2;
-            $client = Client::find($code->client_id);
-            $client->load('addressess');
-            $client->address = $client->addressess[0];
-            return $client;
+
         }catch(\Exception $e){
             return -1;
         }

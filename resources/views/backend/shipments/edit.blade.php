@@ -510,13 +510,13 @@
         var old_code = +document.getElementById('old_code').value
         console.log(codeId);
         console.log(old_code);
-        $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
+        $.get("{{route('client.get.byCode')}}?codeId="+codeId+"&old_code="+old_code, function(data) {
             console.log(data);
-            if(data == -1 && old_code != codeId){
+            if(data == -1){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("must_not_empty").value = "";
             }
-            else if(data == -2 && old_code != codeId){
+            else if(data == -2){
                 document.getElementById("message").style.display = "block";
                 document.getElementById("must_not_empty").value = "";
 
