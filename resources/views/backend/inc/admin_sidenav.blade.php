@@ -322,7 +322,7 @@
                             <span class="menu-text">{{translate('System')}}</span>
                             <i class="menu-arrow"></i>
                         </a>
-                        <div class="menu-submenu">
+                        {{-- <div class="menu-submenu">
                             <i class="menu-arrow"></i>
                             <ul class="menu-subnav">
                                 <li class="menu-item menu-item-parent" aria-haspopup="true">
@@ -347,7 +347,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </li>
                 @endif
                 <?php if(getConfigValue('is_dev') == 'true') {?>
