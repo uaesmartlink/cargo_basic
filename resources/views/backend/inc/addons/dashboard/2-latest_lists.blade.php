@@ -28,7 +28,7 @@
                                     {{-- <th>{{translate('Branch')}}</th> --}}
 
                                     <th>{{translate('Shipping Cost')}}</th>
-                                    <th>{{translate('Payment Method')}}</th>
+                                    {{-- <th>{{translate('Payment Method')}}</th> --}}
                                     <th>{{translate('Shipping Date')}}</th>
 
                                 </tr>
@@ -61,7 +61,7 @@
                                     @endif --}}
 
                                     <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                                    <td>{{$shipment->pay->name}}</td>
+                                    {{-- <td>{{$shipment->pay->name}}</td> --}}
                                     <td>{{$shipment->shipping_date}}</td>
 
                                 </tr>
@@ -153,7 +153,7 @@
                                     <th>{{translate('Customer')}}</th>
                                     {{-- <th>{{translate('Branch')}}</th> --}}
                                     <th>{{translate('Shipping Cost')}}</th>
-                                    <th>{{translate('Payment Method')}}</th>
+                                    {{-- <th>{{translate('Payment Method')}}</th> --}}
                                     <th>{{translate('Shipping Date')}}</th>
 
                                 </tr>
@@ -186,7 +186,7 @@
                                             <td>{{$shipment->branch->name}}</td>
                                         @endif --}}
                                         <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                                        <td>{{$shipment->pay->name}}</td>
+                                        {{-- <td>{{$shipment->pay->name}}</td> --}}
                                         <td>{{$shipment->shipping_date}}</td>
 
                                     </tr>
@@ -229,7 +229,7 @@
                                     {{--  <th>{{translate('Branch')}}</th>  --}}
 
                                     <th>{{translate('Shipping Cost')}}</th>
-                                    <th>{{translate('Payment Method')}}</th>
+                                    {{-- <th>{{translate('Payment Method')}}</th> --}}
                                     <th>{{translate('Shipping Date')}}</th>
 
                                 </tr>
@@ -251,7 +251,7 @@
                                     {{--  <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>  --}}
 
                                     <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                                    <td>{{$shipment->pay->name}}</td>
+                                    {{-- <td>{{$shipment->pay->name}}</td> --}}
                                     <td>{{$shipment->shipping_date}}</td>
 
                                 </tr>
@@ -339,7 +339,7 @@
                                     <th>{{translate('Customer')}}</th>
                                     {{-- <th>{{translate('Branch')}}</th> --}}
                                     <th>{{translate('Shipping Cost')}}</th>
-                                    <th>{{translate('Payment Method')}}</th>
+                                    {{-- <th>{{translate('Payment Method')}}</th> --}}
                                     <th>{{translate('Shipping Date')}}</th>
 
                                 </tr>
@@ -361,7 +361,7 @@
                                         <td><a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a></td>
                                         {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
                                         <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                                        <td>{{$shipment->pay->name}}</td>
+                                        {{-- <td>{{$shipment->pay->name}}</td> --}}
                                         <td>{{$shipment->shipping_date}}</td>
 
                                     </tr>
@@ -401,7 +401,7 @@
                                 {{-- <th>{{translate('Branch')}}</th> --}}
 
                                 <th>{{translate('Shipping Cost')}}</th>
-                                <th>{{translate('Payment Method')}}</th>
+                                {{-- <th>{{translate('Payment Method')}}</th> --}}
                                 <th>{{translate('Shipping Date')}}</th>
 
                             </tr>
@@ -423,7 +423,7 @@
                                 {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
 
                                 <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                                <td>{{$shipment->pay->name}}</td>
+                                {{-- <td>{{$shipment->pay->name}}</td> --}}
                                 <td>{{$shipment->shipping_date}}</td>
 
                             </tr>
