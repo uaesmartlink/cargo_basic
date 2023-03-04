@@ -4,8 +4,7 @@ use App\Shipment;
 $d = new DNS1D();
 
 ?>
-<style type="text/css">
-	<!--
+{{-- <style type="text/css">
 
 	.txt-align-left {
 		text-align: left;
@@ -17,12 +16,9 @@ $d = new DNS1D();
 		vertical-align: middle;
 	}
 
-	-->
-</style>
-
-
+</style> --}}
 	@php
-		$n = 0;
+	$n = 0;
 	@endphp
 	@foreach ($shipments_ids as $orderId)
 		@php
@@ -87,9 +83,9 @@ $d = new DNS1D();
 																					<span style="font-size:16px; font-weight:bold; padding:10px;">{{translate('COD')}}: {{format_price($model->amount_to_be_collected)}}</span>
 																					<br />
 																				@endif
-																				/* <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
+																				<span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
 																					{{translate('Total Weight')}}: {{$model->total_weight}} {{translate('Kg')}}
-																				</span> */
+																				</span>
 																			</td>
 
 																		</tr>
@@ -214,9 +210,9 @@ $d = new DNS1D();
 																					<span style="font-size:16px; font-weight:bold; padding:10px;">{{translate('COD')}}: {{format_price($model->amount_to_be_collected)}}</span>
 																					<br />
 																				@endif
-																				/* <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
+																				<span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
 																					{{translate('Total Weight')}}: {{$model->total_weight}} {{translate('Kg')}}
-																				</span> */
+																				</span>
 																			</td>
 
 																		</tr>

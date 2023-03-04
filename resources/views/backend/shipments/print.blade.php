@@ -1,4 +1,4 @@
-<?php 
+<?php
 use \Milon\Barcode\DNS1D;
 $d = new DNS1D();
 ?>
@@ -80,9 +80,9 @@ $d = new DNS1D();
                                 <thead>
                                     <tr>
                                         <th class="pl-0 font-weight-bold text-muted text-uppercase">{{translate('Package Items')}}</th>
-                                        <th class="text-right font-weight-bold text-muted text-uppercase">{{translate('Qty')}}</th>
+                                        {{-- <th class="text-right font-weight-bold text-muted text-uppercase">{{translate('Qty')}}</th> --}}
                                         <th class="text-right font-weight-bold text-muted text-uppercase">{{translate('Type')}}</th>
-                                        <th class="pr-0 text-right font-weight-bold text-muted text-uppercase">{{translate('Weight x Length x Width x Height')}}</th>
+                                        {{-- <th class="pr-0 text-right font-weight-bold text-muted text-uppercase">{{translate('Weight x Length x Width x Height')}}</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -91,9 +91,9 @@ $d = new DNS1D();
 
                                         <tr class="font-weight-boldest">
                                             <td class="pl-0 border-0 pt-7 d-flex align-items-center">{{$package->description}}</td>
-                                            <td class="text-right align-middle pt-7">{{$package->qty}}</td>
+                                            {{-- <td class="text-right align-middle pt-7">{{$package->qty}}</td> --}}
                                             <td class="text-right align-middle pt-7">@if(isset($package->package->name)){{$package->package->name}} @else - @endif</td>
-                                            <td class="pr-0 text-right align-middle text-primary pt-7">{{$package->weight." ".translate('KG')." x ".$package->length." ".translate('CM')." x ".$package->width." ".translate('CM')." x ".$package->height." ".translate('CM')}}</td>
+                                            {{-- <td class="pr-0 text-right align-middle text-primary pt-7">{{$package->weight." ".translate('KG')." x ".$package->length." ".translate('CM')." x ".$package->width." ".translate('CM')." x ".$package->height." ".translate('CM')}}</td> --}}
                                         </tr>
                                     @endforeach
 
@@ -110,7 +110,7 @@ $d = new DNS1D();
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="font-weight-bold text-muted text-uppercase">{{translate('PAYMENT TYPE')}}</th>
+                                        {{-- <th class="font-weight-bold text-muted text-uppercase">{{translate('PAYMENT TYPE')}}</th> --}}
                                         <th class="font-weight-bold text-muted text-uppercase">{{translate('PAYMENT STATUS')}}</th>
                                         <th class="font-weight-bold text-muted text-uppercase">{{translate('PAYMENT DATE')}}</th>
                                         <th class="text-right font-weight-bold text-muted text-uppercase">{{translate('TOTAL COST')}}</th>
@@ -118,7 +118,7 @@ $d = new DNS1D();
                                 </thead>
                                 <tbody>
                                     <tr class="font-weight-bolder">
-                                        <td>{{translate($shipment->pay['name'])}} ({{$shipment->getPaymentType()}})</td>
+                                        {{-- <td>{{translate($shipment->pay['name'])}} ({{$shipment->getPaymentType()}})</td> --}}
                                         <td>@if($shipment->paid == 1) {{translate('Paid')}} @else {{translate('Pending')}} @endif</td>
                                         <td>@if($shipment->paid == 1) {{$shipment->payment->payment_date ?? ""}} @else - @endif</td>
                                         <td class="text-right text-primary font-size-h3 font-weight-boldest">{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}<br /><span class="text-muted font-weight-bolder font-size-lg">{{translate('Included tax & insurance')}}</span></td>
