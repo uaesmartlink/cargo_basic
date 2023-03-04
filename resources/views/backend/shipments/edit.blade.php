@@ -27,7 +27,7 @@
             {{ method_field('PATCH') }}
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="form-group row">
                             <label class="col-2 col-form-label">{{translate('Shipment Type')}}</label>
                             <div class="col-9 col-form-label">
@@ -61,7 +61,17 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{translate('Code')}}:</label>
+                            <input type="number" placeholder="000000" id="code" name="Shipment[code]" autocomplete="off" class="form-control" value="{{ $shipment->code }}"/>
+                            <span name="message" id="message" style="display: none; color:red; font-size:10px;">
+                                {{ translate('Invalid code (either used or not available)') }}
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
                     @if(\App\ShipmentSetting::getVal('is_date_required') == '1' || \App\ShipmentSetting::getVal('is_date_required') == null)
                         <div class="form-group">
                             <label>{{translate('Shipping Date')}}:</label>
