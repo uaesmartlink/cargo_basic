@@ -678,6 +678,20 @@
                             }
                         }
                     },
+                    "state_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    }
+                    "area_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
                     "address": {
                         validators: {
                             notEmpty: {

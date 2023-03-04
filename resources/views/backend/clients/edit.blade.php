@@ -758,7 +758,7 @@
                                 message: '{{translate("This is required!")}}'
                             }
                         }
-                    }
+                    },
                     "address": {
                         validators: {
                             notEmpty: {
