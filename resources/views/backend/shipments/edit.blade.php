@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="hidden" name="Shipment[old_code]" id="old_code" autocomplete="off" class="form-control" value="{{ (int)$shipment->barcode }}">
+                            <input type="hidden" name="old_code" id="old_code" autocomplete="off" class="form-control" value="{{ (int)$shipment->barcode }}">
                             <label>{{translate('Code')}}:</label>
                             <input type="number" placeholder="000000" id="code" name="Shipment[code]" autocomplete="off" class="form-control" value="{{ (int)$shipment->barcode }}"/>
                             <span name="message" id="message" style="display: none; color:red; font-size:10px;">
@@ -519,8 +519,8 @@
                 document.getElementById("must_not_empty").value = "";
 
             }else{
+                console.log(data);
                 document.getElementById("must_not_empty").value = "true";
-
                 document.getElementById("message").style.display = "none";
 
                 document.getElementById("client_phone").value = data['responsible_mobile'];
