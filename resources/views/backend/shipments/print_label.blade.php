@@ -2,7 +2,7 @@
 use \Milon\Barcode\DNS1D;
 $d = new DNS1D();
 ?>
-<style type="text/css">
+{{-- <style type="text/css">
 	<!--
 
 	.txt-align-left {
@@ -16,7 +16,7 @@ $d = new DNS1D();
 	}
 
 	-->
-</style>
+</style> --}}
 <div class="page" style="padding-top:0px;">
     <div class="subpage">
         <table border="0" cellpadding="0" cellspacing="0" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; ">
@@ -88,9 +88,9 @@ $d = new DNS1D();
                                                                             </span>
                                                                             <br />
                                                                         @endif
-                                                                        /* <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
+                                                                        <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
                                                                             {{translate('Total Weight')}}: {{$shipment->total_weight}} {{translate('Kg')}}
-                                                                        </span> */
+                                                                        </span>
                                                                     </td>
 
                                                                 </tr>
@@ -236,9 +236,9 @@ $d = new DNS1D();
                                                                             </span>
                                                                             <br />
                                                                         @endif
-                                                                        /* <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
+                                                                        <span style="font-size:16px; font-weight:bold; margin-bottom:10px;padding: 2px;">
                                                                             {{translate('Total Weight')}}: {{$shipment->total_weight}} {{translate('Kg')}}
-                                                                        </span> */
+                                                                        </span>
                                                                     </td>
 
                                                                 </tr>
@@ -481,9 +481,9 @@ $d = new DNS1D();
                                         <span class="bold">{{translate('Package type')}}:</span> <span>{{$package->package->name}}</span>
                                     </div>
                                 @endif
-                                /* <div class="item-info-container">
+                                 <div class="item-info-container">
                                     <span class="bold">{{translate('Weight x Length x Width x Height')}}:</span> <span>{{$package->weight." ".translate('KG')." x ".$package->length." ".translate('CM')." x ".$package->width." ".translate('CM')." x ".$package->height." ".translate('CM')}}</span>
-                                </div> */
+                                </div>
                                 </br>
                             @endforeach
                         </div>
