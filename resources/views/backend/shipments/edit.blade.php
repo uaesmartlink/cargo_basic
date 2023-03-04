@@ -19,7 +19,7 @@
         <form class="form-horizontal" action="{{ route('admin.shipments.update-shipment',['shipment'=>$shipment->id]) }}" id="kt_form_1" method="POST" enctype="multipart/form-data">
             @csrf
             {{ method_field('PATCH') }}
-            <div class="card-body">
+            {{-- <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group row">
@@ -234,7 +234,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="Shipment[total_weight]" value="1" id="kt_touchspin_4">
-            </div>
+            </div> --}}
         </form>
     </div>
 </div>
