@@ -1299,7 +1299,7 @@ class ShipmentController extends Controller
     public function update(Request $request, $shipment)
     {
         try {
-            dd($request->Shipment);
+            dd($request->Shipment['code']);
             DB::beginTransaction();
             $model = Shipment::find($shipment);
             $client_code = Code::find();
