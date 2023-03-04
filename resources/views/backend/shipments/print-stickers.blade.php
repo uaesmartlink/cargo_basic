@@ -59,7 +59,7 @@ $d = new DNS1D();
 																<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 																	<tr>
 																		<td style="padding-left:10px; font-size:14px; font-weight:bold; width:420px">
-																			@if(get_setting('site_name')){{ get_setting('site_name').get_setting('site_motto') ?' | '.get_setting('site_motto'):'' }}{{ translate('Spotlayer Framework') }}@else{{ translate('Spotlayer Framework') }}@endif
+																			@if(get_setting('site_name')){{ get_setting('site_name').get_setting('site_motto') ?' | '.get_setting('site_motto'):'' }}{{ translate('Asya Fawry') }}@else{{ translate('Asya Fawry') }}@endif
 																		</td>
 																		<td nowrap="nowrap">
 																			<span style="font-size:20px; font-weight:bold; padding-right:10px;">{{$model->code}}</span>
@@ -186,7 +186,7 @@ $d = new DNS1D();
 																<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 																	<tr>
 																		<td style="padding-left:10px; font-size:14px; font-weight:bold; width:420px">
-																			@if(get_setting('site_name')){{ get_setting('site_name').get_setting('site_motto') ?' | '.get_setting('site_motto'):'' }}{{ translate('Spotlayer Framework') }}@else{{ translate('Spotlayer Framework') }}@endif
+																			@if(get_setting('site_name')){{ get_setting('site_name').get_setting('site_motto') ?' | '.get_setting('site_motto'):'' }}{{ translate('Asya Fawry') }}@else{{ translate('Asya Fawry') }}@endif
 																		</td>
 																		<td nowrap="nowrap">
 																			<span style="font-size:20px; font-weight:bold; padding-right:10px;">{{$model->code}}</span>

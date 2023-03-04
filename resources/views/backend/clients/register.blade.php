@@ -7,7 +7,7 @@
         <!--begin::Login-->
         <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
             <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('{{ static_asset('assets/dashboard/media/bg/bg-3.jpg') }}');">
-                
+
 
                     <div class="container p-5">
                         <div class="row">
@@ -24,7 +24,7 @@
                                 </div>
                                 <!--end::Login Header-->
                                 <div class="mb-5 text-center">
-                                    <h3>{{ translate('Welcome to') }} @if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Spotlayer Framework') }}  @endif</h3>
+                                    <h3>{{ translate('Welcome to') }} @if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Asya Fawry') }}  @endif</h3>
 								<div class="text-muted font-weight-bold">{{ translate('Create a New Account') }}</div>
                                 </div>
                                 <div class="text-left card">
@@ -88,7 +88,7 @@
                                                         </span>
                                                     @endif
                                                 </div>
-                                                
+
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-lg btn-block">
                                                 {{ translate('Register') }}
@@ -117,10 +117,10 @@
 @section('script')
     <!-- <script type="text/javascript">
 
-    
+
 
         $(document).ready(function() {
-            const form = document.getElementById('kt_login'); 
+            const form = document.getElementById('kt_login');
             FormValidation.formValidation(
                 form, {
                     fields: {

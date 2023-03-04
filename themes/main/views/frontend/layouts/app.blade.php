@@ -13,7 +13,7 @@
 	@if(setting()->get('main_app_name_'.app()->getLocale()))
 		<title>@if(View::hasSection('meta_title')) @yield('meta_title') | @endif {{setting()->get('main_app_name_'.app()->getLocale() )}}</title>
 	@else
-		<title>@if(View::hasSection('meta_title')) @yield('meta_title') | @endif {{ translate('Spotlayer Framework') }}</title>
+		<title>@if(View::hasSection('meta_title')) @yield('meta_title') | @endif {{ translate('Asya Fawry') }}</title>
 	@endif
 
     <meta charset="utf-8">

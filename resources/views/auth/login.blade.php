@@ -22,7 +22,7 @@
 						<!--begin::Login Sign in form-->
 						<div class="login-signin">
 							<div class="mb-20">
-								<h3>{{ translate('Welcome to') }} @if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Spotlayer Framework') }}  @endif</h3>
+								<h3>{{ translate('Welcome to') }} @if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Asya Fawry') }}  @endif</h3>
 								<div class="text-muted font-weight-bold">{{ translate('Login to your account.') }}</div>
 							</div>
 							@if(env('DEMO_MODE') == 'On')

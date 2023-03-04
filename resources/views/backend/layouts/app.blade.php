@@ -24,7 +24,7 @@
 	@if(get_setting('site_name'))
 		<title> @if(View::hasSection('sub_title')) @yield('sub_title') | @endif {{ get_setting('site_name') }}</title>
 	@else
-		<title>@if(View::hasSection('sub_title')) @yield('sub_title') | @endif {{ translate('Spotlayer Framework') }} </title>
+		<title>@if(View::hasSection('sub_title')) @yield('sub_title') | @endif {{ translate('Asya Fawry') }} </title>
 	@endif
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
