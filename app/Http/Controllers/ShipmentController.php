@@ -1305,6 +1305,9 @@ class ShipmentController extends Controller
             $shipment_old_code = $request->old_code;
             $client_code = Code::find($shipment_old_code);
             $client_code->status_id = 0;
+            if (!$client_code->save()) {
+                return response()->json(['message' => new \Exception()] );
+            }
             $client_code = Code::find($shipment_code);
             $client_code->status_id = 1;
             if (!$client_code->save()) {
