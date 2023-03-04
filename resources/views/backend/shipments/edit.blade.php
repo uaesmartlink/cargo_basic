@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{translate('Customer/Sender')}}:</label>
+                                    <label>{{translate('Client')}}:</label>
                                     @if($auth_user->user_type == "customer")
                                         <input type="text" placeholder="" class="form-control" name="" value="{{$auth_user->name}}" disabled>
                                     @else
@@ -95,21 +95,42 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{translate('Customer Phone')}}:</label>
+                                    <label>{{translate('Receiver Name')}}:</label>
+                                    <input type="text" name="Shipment[reciver_name]" class="form-control" value="{{$shipment->reciver_name}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('Client Phone')}}:</label>
                                     <input name="Shipment[client_phone]" class="form-control" id="client_phone" value="{{$shipment->client_phone}}" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('Receiver Phone')}}:</label>
+                                    <input type="text" name="Shipment[reciver_phone]" class="form-control" value="{{$shipment->reciver_phone}}" />
 
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Client Address')}}:</label>
                                     <select id="client-addressess" name="Shipment[client_address]" class="form-control select-address">
                                         <option value=""></option>
-
                                     </select>
                                 </div>
                             </div>
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('Receiver Address')}}:</label>
+                                    <input type="text" name="Shipment[reciver_address]" class="form-control" value="{{$shipment->reciver_address}}" />
+                                </div>
+                            </div>
+                        </div>
                             <div class="p-3 mb-4 col-md-12" id="show_address_div" style="border: 1px solid #e4e6ef; display:none">
                                 <div class="row">
                                     <div class="col-md-6" style="display: none;">
@@ -152,73 +173,52 @@
                                     <button type="button" class="btn btn-secondary" onclick="closeAddressDiv()">{{translate('Close')}}</button>
                                 </div>
                             </div>
-                            <div class="col-md-6" style="display: none;">
-                                <div class="form-group">
-                                    <label>{{translate('From Country')}}:</label>
-                                    <select id="change-country" name="Shipment[from_country_id]" class="form-control select-country">
-                                        <option value=""></option>
-                                        @foreach($countries as $country)
-                                        <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-6" style="display: none;">
+                                    <div class="form-group">
+                                        <label>{{translate('From Country')}}:</label>
+                                        <select id="change-country" name="Shipment[from_country_id]" class="form-control select-country">
+                                            <option value=""></option>
+                                            @foreach($countries as $country)
+                                            <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="display: none;">
+                                    <div class="form-group">
+                                        <label>{{translate('To Country')}}:</label>
+                                        <select id="change-country-to" name="Shipment[to_country_id]" class="form-control select-country">
+                                            <option value=""></option>
+                                            @foreach($countries as $country)
+                                            <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('From Region')}}:</label>
-                                    <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state">
-                                        <option value=""></option>
-                                    </select>
+                           <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{translate('From Region')}}:</label>
+                                        <select id="change-state-from" name="Shipment[from_state_id]" class="form-control select-state">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{translate('To Region')}}:</label>
+                                        <select id="change-state-to" name="Shipment[to_state_id]" class="form-control select-state">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                           </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('From Area')}}:</label>
                                     <select name="Shipment[from_area_id]" id="from_area_id" class="form-control select-area">
-                                        <option value=""></option>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr/>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Receiver Name')}}:</label>
-                                    <input type="text" name="Shipment[reciver_name]" class="form-control" value="{{$shipment->reciver_name}}" />
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('Receiver Phone')}}:</label>
-                                    <input type="text" name="Shipment[reciver_phone]" class="form-control" value="{{$shipment->reciver_phone}}" />
-
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>{{translate('Receiver Address')}}:</label>
-                                    <input type="text" name="Shipment[reciver_address]" class="form-control" value="{{$shipment->reciver_address}}" />
-                                </div>
-                            </div>
-                            <div class="col-md-6" style="display: none;">
-                                <div class="form-group">
-                                    <label>{{translate('To Country')}}:</label>
-                                    <select id="change-country-to" name="Shipment[to_country_id]" class="form-control select-country">
-                                        <option value=""></option>
-                                        @foreach($countries as $country)
-                                        <option value="{{$country->id}}" @if($country->id==231) selected @endif>{{$country->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{translate('To Region')}}:</label>
-                                    <select id="change-state-to" name="Shipment[to_state_id]" class="form-control select-state">
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -233,7 +233,7 @@
                             </div>
                         </div>
                         <hr/>
-                        <div class="row">
+                        <div class="row" style="display: none;">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{translate('Payment Type')}}:</label>
@@ -328,7 +328,7 @@
                                             <input type="text" value="{{$pack->description}}" class="form-control" name="description">
                                             <div class="mb-2 d-md-none"></div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" style="display: none;">
 
                                             <label>{{translate('Quantity')}}:</label>
 
@@ -413,6 +413,12 @@
                                     <input id="kt_touchspin_3" type="text" @if($auth_user->user_type == 'customer') disabled @endif class="form-control" value="{{$shipment->shipping_cost}}" name="Shipment[shipping_cost]" />
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{translate('Amount to be Collected')}}:</label>
+                                    <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" value="{{$shipment->amount_to_be_collected}}" name="Shipment[amount_to_be_collected]" />
+                                </div>
+                            </div>
                             <div class="col-md-6" style="display: none;">
                                 <div class="form-group">
                                     <label>{{translate('Return Cost')}}:</label>
@@ -440,12 +446,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{{translate('Amount to be Collected')}}:</label>
-                                <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" value="{{$shipment->amount_to_be_collected}}" name="Shipment[amount_to_be_collected]" />
-                            </div>
-                        </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- <label>{{translate('Delivery Time')}}:</label> -->
