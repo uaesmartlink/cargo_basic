@@ -509,8 +509,15 @@
         $.get("{{route('client.get.byCode')}}?codeId="+codeId, function(data) {
             console.log(data);
             if(data == -1){
+                document.getElementById("message").value = "Invalid code (Code is not available)"
                 document.getElementById("message").style.display = "block";
                 document.getElementById("must_not_empty").value = "";
+            }
+            else if(data == -2){
+                document.getElementById("message").value = "Invalid code (Code is used)"
+                document.getElementById("message").style.display = "block";
+                document.getElementById("must_not_empty").value = "";
+
             }else{
                 document.getElementById("must_not_empty").value = "true";
 
