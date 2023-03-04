@@ -1303,7 +1303,7 @@ class ShipmentController extends Controller
             $model = Shipment::find($shipment);
             $shipment_code = $request->Shipment['code'];
             $shipment_old_code = $request->old_code;
-            $client_code = Code::find($old_code);
+            $client_code = Code::find($shipment_old_code);
             $client_code->status_id = 0;
             $client_code = Code::find($shipment_code);
             $client_code->status_id = 1;
