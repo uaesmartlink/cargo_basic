@@ -269,12 +269,12 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                     <label>{{translate('National ID')}}:</label>
                     <input type="text" class="form-control" placeholder="{{translate('Here')}}" value="{{$client->national_id}}" name="Client[national_id]">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                     <label>{{translate('Customer Source')}}:</label>
                     <select class="form-control kt-select2" id="select-how" name="Client[how_know_us]">
                         <option></option>

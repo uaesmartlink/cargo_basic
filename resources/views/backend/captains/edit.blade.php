@@ -88,7 +88,7 @@
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                     <label>{{translate('National ID')}}:</label>
                     <input type="text" class="form-control" placeholder="{{translate('Here')}}" value="{{$captain->national_id}}" name="Captain[national_id]">
                 </div>
