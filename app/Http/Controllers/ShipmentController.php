@@ -1301,7 +1301,8 @@ class ShipmentController extends Controller
         try {
             DB::beginTransaction();
             $model = Shipment::find($shipment);
-            $client_code = Code::find($request->Shipment['code']);
+            $shipment_code = $request->Shipment['code'];
+            $client_code = Code::find($shipment_code);
             $client_code->status_id = 1;
             if (!$client_code->save()) {
                 return response()->json(['message' => new \Exception()] );
@@ -1313,13 +1314,9 @@ class ShipmentController extends Controller
             for($n = 0; $n < ShipmentSetting::getVal('shipment_code_count'); $n++){
                 $code .= '0';
             }
-            $code       =   substr($code, 0, -strlen($client_code));
-            $barcode    =   $code.$client_code;
+            $code       =   substr($code, 0, -strlen($shipment_code));
+            $barcode    =   $code.$shipment_code;
 
-            // }
-            // $barcode = $code;
-            $model->barcode = $barcode;
-            $model->code = ShipmentSetting::getVal('shipment_prefix').$barcode;
 
             $model->fill($_POST['Shipment']);
             $model->barcode = $barcode;
