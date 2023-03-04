@@ -214,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-
+--}}
                 <hr
                 <div class="row">
                     <div class="col-md-6">
@@ -232,7 +232,7 @@
                             </select>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <input type="hidden" name="Shipment[total_weight]" value="1" id="kt_touchspin_4">
             </div>
         </form>
