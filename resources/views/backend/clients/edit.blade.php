@@ -714,16 +714,16 @@
                             }
                         }
                     },
-                    "Client[email]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            },
-                            emailAddress: {
-                                message: '{{translate("This is should be valid email!")}}'
-                            }
-                        }
-                    },
+                    // "Client[email]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         },
+                    //         emailAddress: {
+                    //             message: '{{translate("This is should be valid email!")}}'
+                    //         }
+                    //     }
+                    // },
                     "Client[responsible_name]": {
                         validators: {
                             notEmpty: {
@@ -745,6 +745,20 @@
                             }
                         }
                     },
+                    "state_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    }
+                    "area_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    }
                     "address": {
                         validators: {
                             notEmpty: {

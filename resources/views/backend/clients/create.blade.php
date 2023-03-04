@@ -144,7 +144,6 @@
                                         <label>{{translate('Region')}}:</label>
                                         <select  name="state_id" class="change-state-client-address form-control select-state">
 											<option value=""></option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -164,7 +163,7 @@
 
 
                             <label>{{translate('Address')}}:</label>
-                            <input type="text" class="form-control" placeholder="{{translate('Address')}}" required name="address">
+                            <input type="text" class="form-control" placeholder="{{translate('Address')}}" name="address">
 
                             @if($checked_google_map->value == 1 )
                                 <div class="mt-2 location-client">
@@ -179,13 +178,13 @@
                                 </div>
                             @endif
 
-                            <div class="mt-3 mb-3 row">
+                            {{-- <div class="mt-3 mb-3 row">
                                 <div class="col-md-12">
                                     <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger delete_item">
                                         <i class="la la-trash-o"></i>{{translate('Delete')}}
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -584,24 +583,24 @@
                             }
                         }
                     },
-                    "Client[email]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            },
-                            emailAddress: {
-                                message: '{{translate("This is should be valid email!")}}'
-                            },
-                            remote: {
-                                data: {
-                                    type: 'Client',
-                                },
-                                message: 'The email is already exist',
-                                method: 'GET',
-                                url: '{{ route("user.checkEmail") }}',
-                            }
-                        }
-                    },
+                    // "Client[email]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         },
+                    //         emailAddress: {
+                    //             message: '{{translate("This is should be valid email!")}}'
+                    //         },
+                    //         remote: {
+                    //             data: {
+                    //                 type: 'Client',
+                    //             },
+                    //             message: 'The email is already exist',
+                    //             method: 'GET',
+                    //             url: '{{ route("user.checkEmail") }}',
+                    //         }
+                    //     }
+                    // },
                     "User[password]": {
                         validators: {
                             notEmpty: {
@@ -643,7 +642,20 @@
 
                         }
                     },
-
+                    "state_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    }
+                    "area_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    }
                     "address": {
                         validators: {
                             notEmpty: {

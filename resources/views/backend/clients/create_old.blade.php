@@ -619,24 +619,24 @@
                             }
                         }
                     },
-                    "Client[email]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("This is required!")}}'
-                            },
-                            emailAddress: {
-                                message: '{{translate("This is should be valid email!")}}'
-                            },
-                            remote: {
-                                data: {
-                                    type: 'Client',
-                                },
-                                message: 'The email is already exist',
-                                method: 'GET',
-                                url: '{{ route("user.checkEmail") }}',
-                            }
-                        }
-                    },
+                    // "Client[email]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         },
+                    //         emailAddress: {
+                    //             message: '{{translate("This is should be valid email!")}}'
+                    //         },
+                    //         remote: {
+                    //             data: {
+                    //                 type: 'Client',
+                    //             },
+                    //             message: 'The email is already exist',
+                    //             method: 'GET',
+                    //             url: '{{ route("user.checkEmail") }}',
+                    //         }
+                    //     }
+                    // },
                     "User[password]": {
                         validators: {
                             notEmpty: {
