@@ -130,13 +130,13 @@
                             }
                         }
                     },
-                    "Captain[branch_id]": {
-                        validators: {
-                            notEmpty: {
-                                message: '{{translate("Captain Branch is required!")}}'
-                            }
-                        }
-                    },
+                    // "Captain[branch_id]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("Captain Branch is required!")}}'
+                    //         }
+                    //     }
+                    // },
                     "Captain[email]": {
                         validators: {
                             notEmpty: {
