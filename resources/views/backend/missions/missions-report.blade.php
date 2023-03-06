@@ -28,7 +28,7 @@
 
     <div class="card-body">
         <!--begin::Search Form-->
-        <form method="POST" action="{{route('admin.shipments.post.report')}}" >
+        <form method="POST" action="{{route('admin.missions.post.get-report')}}" >
             @csrf
             <div class="mb-7">
                 <div class="row align-items-center">
@@ -88,7 +88,7 @@
                                         <select name="status" class="form-control status">
                                         <option value="">{{translate('All')}}</option>
                                             @foreach(\App\Mission::getStatus() as $status_info)
-                                            <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
+                                            {{-- <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option> --}}
                                             @endforeach
                                         </select>
                                     </div>
