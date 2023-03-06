@@ -5,21 +5,7 @@
     $staff_permission = json_decode(Auth::user()->staff->role->permissions ?? "[]");
 @endphp
 
-@section('content')
 
-<div class="mt-2 mb-3 text-left aiz-titlebar">
-    <div class="row align-items-center">
-        <div class="col-md-6">
-            <h1 class="h3">{{translate('Missions Report')}}</h1>
-        </div>
-    </div>
-</div>
-
-<!--begin::Card-->
-
-{!! hookView('shipment_addon',$currentView) !!}
-
-@endsection
 
 @section('modal')
     @include('modals.delete_modal')
