@@ -132,73 +132,10 @@
 
                 </div>
             </div>
-            </form>
 
-            <table class="table mb-0 aiz-table">
-                <thead>
-                    <tr>
-                        <th width="3%"></th>
-                        <th width="3%">#</th>
-                        <th>{{translate('Mission Code')}}</th>
-                        <th>{{translate('Shipment Code')}}</th>
-                        <th>{{translate('Phone')}}</th>
-                        <th>{{translate('Address')}}</th>
-                        <th>{{translate('Status')}}</th>
-                        <th>{{translate('Driver')}}</th>
-                        <th>{{translate('Type')}}</th>
+        </form>
 
-                        <th>{{translate('Amount')}}</th>
-                        @if(isset($show_due_date)) <th>{{translate('Due Date') ?? translate('Due Date') }}</th> @endif
 
-                        <th class="text-center">{{translate('Options')}}</th>
-                        {{-- <th class="text-center">Actions</th> --}}
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($missions as $key=>$mission)
-
-                    <tr>
-                        <td><label class="checkbox checkbox-success"><input class="ms-check" type="checkbox" name="checked_ids[]" value="{{$mission->id}}" /><span></span></label></td>
-                        @if($user_type == 'admin' || in_array('1100', $staff_permission) || in_array('1008', $staff_permission) )
-                            <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</a></td>
-                            <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
-                            <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
-                        @else
-                            <td width="3%">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</td>
-                            <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
-                            <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
-                        @endif
-                        <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
-                                            <td>{{ $mission->getOriginal('type') == 1 ? $mission->address : $mission->shipment_mission[0]->shipment->reciver_address }}
-
-                        <td><span class="btn btn-sm btn-{{\App\Mission::getStatusColor($mission->status_id)}}">{{$mission->getStatus()}}</span></td>
-                        @if ($mission->captain_id)
-                            @if($user_type == 'admin' || in_array('1007', $staff_permission) )
-                                <td><a href="{{route('admin.captains.show', $mission->captain->id)}}">{{$mission->captain->name}}</a></td>
-                            @else
-                                <td>{{$mission->captain->name}}</td>
-                            @endif
-                        @else
-                            <td>{{translate('No Driver')}}</td>
-                        @endif
-                        <td>{{$mission->type}}</td>
-                        @php
-                            $helper = new \App\Http\Helpers\TransactionHelper();
-                            $shipment_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
-                        @endphp
-
-                        <td>{{format_price($shipment_cost)}}</td>
-                        @if(isset($show_due_date)) <td>{{$mission->due_date ?? "-"}}</td> @endif
-
-                        <td class="text-center">
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
-                                <i class="las la-eye"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
         <!--end::Search Form-->
 
