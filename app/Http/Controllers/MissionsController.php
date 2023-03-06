@@ -293,6 +293,7 @@ class MissionsController extends Controller
         // }
 
         $missions = $missions->orderBy('id','DESC')->paginate(20);
+        dd($missions);
         $actions = new ShipmentActionHelper();
         $actions = $actions->get('all');
         $page_name = translate('Missions Report');
