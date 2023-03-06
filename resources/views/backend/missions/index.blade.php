@@ -500,11 +500,6 @@
 
     }
 
-    function change_captain_id(){
-        var captain_id = document.getElementById("captain_id").value;
-        document.getElementById("selected_captain_id").value        = captain_id;
-
-    }
     function openAjexedModel(element,event)
     {
         event.preventDefault();
