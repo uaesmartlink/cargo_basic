@@ -385,12 +385,12 @@ $addon = \App\Addon::where('unique_identifier', 'spot-cargo-shipment-addon')->fi
                                 <span class="menu-text">{{translate('Shipments Report')}}</span>
                             </a>
                         </li>
-                        <li class="menu-item {{ areActiveRoutes(['admin.missions.index'])}}" aria-haspopup="true">
+                        {{-- <li class="menu-item {{ areActiveRoutes(['admin.missions.index'])}}" aria-haspopup="true">
                             <a href="{{ route('admin.missions.report') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot" style="font-size: 10px;"></i>
                                 <span class="menu-text">{{translate('Missions Report')}}</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </li>
