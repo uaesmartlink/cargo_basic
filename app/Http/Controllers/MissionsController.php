@@ -263,43 +263,42 @@ class MissionsController extends Controller
 
     }
 
-    public function missionsReport(Request $request)
-    {
-        $missions = new Mission();
-        $type = null;
-        if (isset($_GET)) {
-            if (isset($_GET['code']) && !empty($_GET['code'])) {
-                $missions = $missions->where('code', $_GET['code']);
-            }
-            if (isset($_GET['client_id']) && !empty($_GET['client_id'])) {
-                $missions = $missions->where('client_id', $_GET['client_id']);
-            }
-            if (isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
-                $missions = $missions->where('branch_id', $_GET['branch_id']);
-            }
-            if (isset($_GET['type']) && !empty($_GET['type'])) {
-                $missions = $missions->where('type', $_GET['type']);
-            }
-            if (isset($_GET['captain_id']) && !empty($_GET['captain_id'])) {
-                $missions = $missions->where('type', $_GET['captain_id']);
-            }
+    // public function missionsReport(Request $request)
+    // {
+    //     $missions = new Mission();
+    //     $type = null;
+    //     if (isset($_GET)) {
+    //         if (isset($_GET['code']) && !empty($_GET['code'])) {
+    //             $missions = $missions->where('code', $_GET['code']);
+    //         }
+    //         if (isset($_GET['client_id']) && !empty($_GET['client_id'])) {
+    //             $missions = $missions->where('client_id', $_GET['client_id']);
+    //         }
+    //         if (isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
+    //             $missions = $missions->where('branch_id', $_GET['branch_id']);
+    //         }
+    //         if (isset($_GET['type']) && !empty($_GET['type'])) {
+    //             $missions = $missions->where('type', $_GET['type']);
+    //         }
+    //         if (isset($_GET['captain_id']) && !empty($_GET['captain_id'])) {
+    //             $missions = $missions->where('type', $_GET['captain_id']);
+    //         }
 
-        }
+    //     }
 
-        // if(Auth::user()->user_type == 'customer'){
-        //     $shipments = $shipments->where('client_id', Auth::user()->userClient->client_id);
-        // }elseif(Auth::user()->user_type == 'branch'){
-        //     $shipments = $shipments->where('branch_id', Auth::user()->userBranch->branch_id);
-        // }
+    //     // if(Auth::user()->user_type == 'customer'){
+    //     //     $shipments = $shipments->where('client_id', Auth::user()->userClient->client_id);
+    //     // }elseif(Auth::user()->user_type == 'branch'){
+    //     //     $shipments = $shipments->where('branch_id', Auth::user()->userBranch->branch_id);
+    //     // }
 
-        $missions = $missions->orderBy('id','DESC')->paginate(20);
-        dd($missions);
-        $actions = new ShipmentActionHelper();
-        $actions = $actions->get('all');
-        $page_name = translate('Missions Report');
-        $status = 'all';
-        return view('backend.missions.missions-report', compact('missions', 'page_name', 'type', 'actions', 'status'));
-    }
+    //     $missions = $missions->orderBy('id','DESC')->paginate(20);
+    //     dd($missions);
+    //     $actions = $actions->get('all');
+    //     $page_name = translate('Missions Report');
+    //     $status = 'all';
+    //     return view('backend.missions.missions-report', compact('missions', 'page_name', 'type', 'actions', 'status'));
+    // }
 
     /**
      * Show the form for creating a new resource.
