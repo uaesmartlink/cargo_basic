@@ -89,6 +89,17 @@
                             </div> --}}
                             <div class="my-2 col-md-4 my-md-5">
                                 <div class="d-flex align-items-center">
+                                    <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
+                                    <select name="captain" class="form-control">
+                                    <option value="">{{translate('All')}}</option>
+                                    @foreach(\App\Captain::where(1)->get() as $captain)
+                                    <option @if(isset($_POST['captain']) && $_POST['captain'] == $captain)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="my-2 col-md-4 my-md-5">
+                                <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
                                     <select name="status" class="form-control status">
                                     <option value="">{{translate('All')}}</option>
