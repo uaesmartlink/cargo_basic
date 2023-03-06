@@ -374,6 +374,12 @@
                Swal.fire("{{translate('Please Select Missions')}}", "", "error");
             }
     }
+    function set_driver_mission_id(mission_id , mission_type){
+        var captain_id = document.getElementById("captain_id").value;
+        document.getElementById("selected_captain_mission_id").value        = mission_id;
+        document.getElementById("selected_captain_id").value        = captain_id;
+        document.getElementById("mission_driver_body").style.display = "block";
+    }
     function openAjexedModel(element,event)
     {
         event.preventDefault();
