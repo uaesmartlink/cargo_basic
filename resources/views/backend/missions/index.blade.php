@@ -493,6 +493,18 @@
         document.getElementById("selected_captain_id").value        = captain_id;
         document.getElementById("mission_driver_body").style.display = "block";
     }
+
+    function change_captain_id(){
+        var captain_id = document.getElementById("captain_id").value;
+        document.getElementById("selected_captain_id").value        = captain_id;
+
+    }
+
+    function change_captain_id(){
+        var captain_id = document.getElementById("captain_id").value;
+        document.getElementById("selected_captain_id").value        = captain_id;
+
+    }
     function openAjexedModel(element,event)
     {
         event.preventDefault();
