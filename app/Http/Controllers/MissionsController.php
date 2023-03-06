@@ -67,10 +67,23 @@ class MissionsController extends Controller
             $missions = Mission::orderBy('id','DESC')->paginate(20);
         }
         $dashboard_active_links = true;
-        
+
         return view('backend.missions.index',compact('missions','dashboard_active_links','page_name'));
     }
 
+    public function switch(Request $request){
+        try{
+            $mission = Mission::where('id',$request->mission_id)->first();
+            $mission->captain_id = $request->captain_id;
+            $mission->save();
+            // TODO:
+            flash(translate("Driver has been successfully switched"))->success();
+            return back();
+		}catch(\Exception $e){
+			flash(translate("Error"))->error();
+            return back();
+		}
+    }
     public function statusIndex($status,$type=null)
     {
         $dashboard_active_links = false;
@@ -103,9 +116,9 @@ class MissionsController extends Controller
         if(isset($request->checked_ids))
         {
             $mission = Mission::where('id',$request->checked_ids[0])->first();
-            
+
             $params = array();
-           
+
             if($to == Mission::DONE_STATUS)
             {
 
@@ -175,7 +188,7 @@ class MissionsController extends Controller
                     }
                 }
 
-                
+
 
                 if(in_array($mission->type,[Mission::getType(Mission::PICKUP_TYPE),Mission::getType(Mission::DELIVERY_TYPE)])){
 
@@ -194,7 +207,7 @@ class MissionsController extends Controller
                         // $shipment_ids = $mission->shipment_mission->pluck('shipment_id');
                         $shipment_ids = [$request->shipment_id];
                     }
-                    
+
                     $shipments = Shipment::whereIn("id",$shipment_ids)->where('payment_method_id',$payment_method_id)->where('payment_type',$payment_type)->get();
                     foreach ($shipments as $shipment) {
                         $payment = new Payment();
@@ -214,10 +227,10 @@ class MissionsController extends Controller
             {
                 $params['amount'] = $request->amount;
             }
-            
+
             $action = new MissionStatusManagerHelper();
             $response = $action->change_mission_status($request->checked_ids,$to,null,$params);
-            
+
             if($response['success'])
             {
                 event(new MissionAction($to,$request->checked_ids));

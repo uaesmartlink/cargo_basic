@@ -1192,8 +1192,7 @@ class ShipmentController extends Controller
 
     public function shipmentsReport(Request $request)
     {
-        $mission = Mission::where(1)->first();
-        $shipment_ids = $mission->shipment_mission->pluck('shipment_id');
+        $shipments = new Shipment();
         $type = null;
         if (isset($_GET)) {
             if (isset($_GET['code']) && !empty($_GET['code'])) {
