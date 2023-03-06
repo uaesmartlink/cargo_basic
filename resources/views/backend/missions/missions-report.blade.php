@@ -28,7 +28,97 @@
 
     <div class="card-body">
         <!--begin::Search Form-->
+        <form method="POST" action="{{route('admin.shipments.post.report')}}" >
+            @csrf
+            <div class="mb-7">
+                <div class="row align-items-center">
 
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="row align-items-center">
+                                        @if($user_type == 'customer')
+                                            @php
+                                                $user  = App\Client::where('id',Auth::user()->userClient->client_id)->first();
+                                            @endphp
+                                            <input type="hidden" name="client_id" value="{{$user->id}}" />
+                                        @else
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center">
+                                                <label class="mb-0 mr-3 d-none d-md-block">{{translate('Customer')}}:</label>
+                                                <select name="client_id" class="form-control client" id="kt_datatable_search_status">
+                                                    <option value="">{{translate('All')}}</option>
+                                                    @foreach(\App\Client::where('is_archived',0)->get() as $client)
+                                                     <option @if(isset($_POST['client_id']) && $_POST['client_id'] == $client->id)  selected @endif value="{{$client->id}}">{{$client->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        @endif
+
+
+
+                            </div>
+                            <div class="row align-items-center">
+                                <input type="hidden" name="branch_id" value="1" >
+                                {{-- Hide For Demo --}}
+                                {{-- <div class="my-2 col-md-4 my-md-5">
+                                    <div class="d-flex align-items-center">
+                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Branch')}}:</label>
+                                        <select name="branch_id" class="form-control branch" id="kt_datatable_search_type">
+                                        <option value="">{{translate('All')}}</option>
+                                            @foreach(\App\Branch::where('is_archived',0)->get() as $Branch)
+                                            <option @if(isset($_POST['branch_id']) && $_POST['branch_id'] == $Branch->id)  selected @endif value="{{$Branch->id}}">{{$Branch->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
+                                        <select name="captain" class="form-control">
+                                        <option value="">{{translate('All')}}</option>
+                                        @foreach(\App\Captain::where('is_archived',0)->get() as $captain)
+                                            <option @if(isset($_POST['captain_id']) && $_POST['captain_id'] == $captain->id)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
+                                        <select name="status" class="form-control status">
+                                        <option value="">{{translate('All')}}</option>
+                                            @foreach(\App\Shipment::status_info() as $status_info)
+                                            <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+
+                                <div class="my-2 col-md-4 my-md-5">
+                                    <div class="d-flex align-items-center">
+                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('From Date')}}:</label>
+                                        <input type="text" name="from_date" value="<?php if(isset($_POST['from_date'])){echo $_POST['from_date'];}?>" class="form-control datepicker" placeholder="{{translate('Created From Date')}}" id="kt_datatable_search_query" />
+                                    </div>
+                                </div>
+                                <div class="my-2 col-md-4 my-md-5">
+                                    <div class="d-flex align-items-center">
+                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('From Date')}}:</label>
+                                        <input type="text" name="to_date" value="<?php if(isset($_POST['to_date'])){echo $_POST['to_date'];}?>" class="form-control datepicker" placeholder="{{translate('Created To Date')}}" id="kt_datatable_search_query" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5 col-lg-3 col-xl-4 mt-lg-0">
+                            <button type="submit" class="px-6 btn btn-light-primary font-weight-bold">{{translate('Get Report')}}</button>
+                            <input type="submit" class="px-6 btn btn-light-primary font-weight-bold" name="excel" value="{{translate('Export Excel Sheet')}}" />
+                        </div>
+
+
+            </div>
+            </div>
+            </form>
 
             <table class="table mb-0 aiz-table">
                 <thead>
@@ -95,8 +185,11 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
         <!--end::Search Form-->
+
+    </div>
 </div>
 {!! hookView('shipment_addon',$currentView) !!}
 
