@@ -22,7 +22,7 @@
 @endsection
 
 @section('modal')
-@include('modals.delete_modal')
+    @include('modals.delete_modal')
 @endsection
 
 @section('script')
@@ -83,33 +83,6 @@ $('.datepicker').datepicker({
         placeholder: "Status",
     });
 
-    $('.branch').select2({
-        placeholder: 'Branch',
-        language: {
-          noResults: function() {
-            return `<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.branchs.create')}}"
-              class="btn btn-primary" >Manage {{translate('Branchs')}}</a>
-              </li>`;
-          },
-        },
-        escapeMarkup: function(markup) {
-          return markup;
-        },
-    });
-
-    $('.client').select2({
-        placeholder: 'Client',
-        language: {
-          noResults: function() {
-            return `<li style='list-style: none; padding: 10px;'><a style="width: 100%" href="{{route('admin.clients.create')}}"
-              class="btn btn-primary" >Manage {{translate('Customers')}}</a>
-              </li>`;
-          },
-        },
-        escapeMarkup: function(markup) {
-          return markup;
-        },
-    });
 
     $(document).ready(function() {
         $('.action-caller').on('click', function(e) {
