@@ -109,131 +109,129 @@
     <div class="card-body">
     <form id="tableForm">
                 @csrf()
-		<div class="table-responsive">
-        <table class="table mb-0 aiz-table">
-            <thead>
-                <tr>
-                    <th width="3%"></th>
-                    <th width="3%">#</th>
-                    <th>{{translate('Mission Code')}}</th>
-                    <th>{{translate('Shipment Code')}}</th>
-					<th>{{translate('Phone')}}</th>
-					<th>{{translate('Address')}}</th>
-                    <th>{{translate('Status')}}</th>
-                    <th>{{translate('Driver')}}</th>
-                    <th>{{translate('Type')}}</th>
+                <table class="table mb-0 aiz-table">
+                    <thead>
+                        <tr>
+                            <th width="3%"></th>
+                            <th width="3%">#</th>
+                            <th>{{translate('Mission Code')}}</th>
+                            <th>{{translate('Shipment Code')}}</th>
+                            <th>{{translate('Phone')}}</th>
+                            <th>{{translate('Address')}}</th>
+                            <th>{{translate('Status')}}</th>
+                            <th>{{translate('Driver')}}</th>
+                            <th>{{translate('Type')}}</th>
 
-                    <th>{{translate('Amount')}}</th>
-                    @if(isset($show_due_date)) <th>{{translate('Due Date') ?? translate('Due Date') }}</th> @endif
+                            <th>{{translate('Amount')}}</th>
+                            @if(isset($show_due_date)) <th>{{translate('Due Date') ?? translate('Due Date') }}</th> @endif
 
-                    <th class="text-center">{{translate('Options')}}</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
+                            <th class="text-center">{{translate('Options')}}</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                @foreach($missions as $key=>$mission)
+                        @foreach($missions as $key=>$mission)
 
-                <tr>
-                    <td><label class="checkbox checkbox-success"><input class="ms-check" type="checkbox" name="checked_ids[]" value="{{$mission->id}}" /><span></span></label></td>
-                    @if($user_type == 'admin' || in_array('1100', $staff_permission) || in_array('1008', $staff_permission) )
-                        <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</a></td>
-                        <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
-                        <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
-                    @else
-                        <td width="3%">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</td>
-                        <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
-                        <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
-                    @endif
-                    <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
-					                    <td>{{ $mission->getOriginal('type') == 1 ? $mission->address : $mission->shipment_mission[0]->shipment->reciver_address }}
-
-                    <td><span class="btn btn-sm btn-{{\App\Mission::getStatusColor($mission->status_id)}}">{{$mission->getStatus()}}</span></td>
-                    @if ($mission->captain_id)
-                        @if($user_type == 'admin' || in_array('1007', $staff_permission) )
-                            <td><a href="{{route('admin.captains.show', $mission->captain->id)}}">{{$mission->captain->name}}</a></td>
-                        @else
-                            <td>{{$mission->captain->name}}</td>
-                        @endif
-
-                    @else
-                        <td>{{translate('No Driver')}}</td>
-                    @endif
-                    <td>{{$mission->type}}</td>
-                    @php
-                        $helper = new \App\Http\Helpers\TransactionHelper();
-                        $shipment_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
-                    @endphp
-
-                    <td>{{format_price($shipment_cost)}}</td>
-                    @if(isset($show_due_date)) <td>{{$mission->due_date ?? "-"}}</td> @endif
-
-                    <td class="text-center">
-                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
-                            <i class="las la-eye"></i>
-                        </a>
-
-                    </td>
-                    <td class="text-right text-danger no-print">
-						   @if(isset($status))
-                            @if($user_type == 'admin')
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#driverSwitch" title="{{ translate('Driver Switch') }}" onclick="set_driver_mission_id({{$mission->id}} , {{$mission->getOriginal('type')}})">
-                                {{ translate('Driver Switch') }}
-                            </button>
+                        <tr>
+                            <td><label class="checkbox checkbox-success"><input class="ms-check" type="checkbox" name="checked_ids[]" value="{{$mission->id}}" /><span></span></label></td>
+                            @if($user_type == 'admin' || in_array('1100', $staff_permission) || in_array('1008', $staff_permission) )
+                                <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</a></td>
+                                <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
+                                <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
+                            @else
+                                <td width="3%">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</td>
+                                <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
+                                <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
                             @endif
-                            @if($status == \App\Mission::APPROVED_STATUS)
-                                {{-- @if(Auth::user()->user_type == 'admin' || in_array(1030, json_decode(Auth::user()->staff->role->permissions ?? "[]"))) --}}
-                                {{-- <a class="btn btn-success btn-sm" data-url="{{route('admin.missions.action.confirm_amount',['mission_id'=>$mission->id])}}" data-action="POST" onclick="openAjexedModel(this,event)" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
-                                <i class="fa fa-check"></i> {{translate('Receive Mission')}}
-                                </a> --}}
-                                {{-- @endif --}}
-								 @if($user_type == 'captain')
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="{{ translate('Receive Mission') }}" onclick="set_mission_id({{$mission->id}} , {{$shipment_cost}} , {{$mission->getOriginal('type')}})">
-                                    {{ translate('Receive Mission') }}
-                                </button>
-								@endif
-                            @endif
-                            @if($status == \App\Mission::RECIVED_STATUS)
-                                @if($user_type == 'captain' || $mission->getOriginal('type') == \App\Mission::SUPPLY_TYPE)
+                            <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
+                                                <td>{{ $mission->getOriginal('type') == 1 ? $mission->address : $mission->shipment_mission[0]->shipment->reciver_address }}
 
-                                    @if($mission->getOriginal('type') != \App\Mission::DELIVERY_TYPE)
+                            <td><span class="btn btn-sm btn-{{\App\Mission::getStatusColor($mission->status_id)}}">{{$mission->getStatus()}}</span></td>
+                            @if ($mission->captain_id)
+                                @if($user_type == 'admin' || in_array('1007', $staff_permission) )
+                                    <td><a href="{{route('admin.captains.show', $mission->captain->id)}}">{{$mission->captain->name}}</a></td>
+                                @else
+                                    <td>{{$mission->captain->name}}</td>
+                                @endif
+
+                            @else
+                                <td>{{translate('No Driver')}}</td>
+                            @endif
+                            <td>{{$mission->type}}</td>
+                            @php
+                                $helper = new \App\Http\Helpers\TransactionHelper();
+                                $shipment_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
+                            @endphp
+
+                            <td>{{format_price($shipment_cost)}}</td>
+                            @if(isset($show_due_date)) <td>{{$mission->due_date ?? "-"}}</td> @endif
+
+                            <td class="text-center">
+                                <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
+                                    <i class="las la-eye"></i>
+                                </a>
+
+                            </td>
+                            <td class="text-right text-danger no-print">
+                                   @if(isset($status))
+                                    @if($user_type == 'admin')
+                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#driverSwitch" title="{{ translate('Driver Switch') }}" onclick="set_driver_mission_id({{$mission->id}} , {{$mission->getOriginal('type')}})">
+                                        {{ translate('Driver Switch') }}
+                                    </button>
+                                    @endif
+                                    @if($status == \App\Mission::APPROVED_STATUS)
                                         {{-- @if(Auth::user()->user_type == 'admin' || in_array(1030, json_decode(Auth::user()->staff->role->permissions ?? "[]"))) --}}
-                                        <a class="mb-2 btn btn-success btn-sm" data-url="{{route('admin.missions.action.confirm_amount',['mission_id'=>$mission->id])}}" data-action="POST" onclick="openAjexedModel(this,event)" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
-                                            <i class="fa fa-check"></i> {{translate('Confirm Mission / Done')}}
+                                        {{-- <a class="btn btn-success btn-sm" data-url="{{route('admin.missions.action.confirm_amount',['mission_id'=>$mission->id])}}" data-action="POST" onclick="openAjexedModel(this,event)" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
+                                        <i class="fa fa-check"></i> {{translate('Receive Mission')}}
+                                        </a> --}}
+                                        {{-- @endif --}}
+                                         @if($user_type == 'captain')
+                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="{{ translate('Receive Mission') }}" onclick="set_mission_id({{$mission->id}} , {{$shipment_cost}} , {{$mission->getOriginal('type')}})">
+                                            {{ translate('Receive Mission') }}
+                                        </button>
+                                        @endif
+                                    @endif
+                                    @if($status == \App\Mission::RECIVED_STATUS)
+                                        @if($user_type == 'captain' || $mission->getOriginal('type') == \App\Mission::SUPPLY_TYPE)
+
+                                            @if($mission->getOriginal('type') != \App\Mission::DELIVERY_TYPE)
+                                                {{-- @if(Auth::user()->user_type == 'admin' || in_array(1030, json_decode(Auth::user()->staff->role->permissions ?? "[]"))) --}}
+                                                <a class="mb-2 btn btn-success btn-sm" data-url="{{route('admin.missions.action.confirm_amount',['mission_id'=>$mission->id])}}" data-action="POST" onclick="openAjexedModel(this,event)" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
+                                                    <i class="fa fa-check"></i> {{translate('Confirm Mission / Done')}}
+                                                </a>
+                                                {{-- @endif --}}
+                                            @endif
+
+                                        @endif
+
+                                    @endif
+                                @endif
+                                @if(in_array($mission->status_id , [\App\Mission::APPROVED_STATUS,\App\Mission::REQUESTED_STATUS,\App\Mission::RECIVED_STATUS]) && $mission->id != null)
+                                    <!-- Button trigger modal -->
+                                    @if($mission->status_id == \App\Mission::RECIVED_STATUS)
+                                        @if($user_type == 'captain' && $mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
+                                        {{-- @if(Auth::user()->user_type == 'admin' || in_array(1030, json_decode(Auth::user()->staff->role->permissions ?? "[]"))) --}}
+
+                                        <a class="mb-2 btn btn-success btn-sm" data-url="{{route('admin.missions.action.confirm_amount', ['mission_id' => $mission->id , 'shipment_id' => $mission->shipment_mission[0]->shipment->id ])}}" data-action="POST" onclick="openAjexedModel(this,event)" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
+                                            <i class="fa fa-check"></i> {{translate('Confirm / Done')}}
                                         </a>
                                         {{-- @endif --}}
+                                        @endif
                                     @endif
 
+
+
+                                @else
+                                    {{translate('No actions')}}
                                 @endif
+                            </td>
+                        </tr>
 
-                            @endif
-                        @endif
-                        @if(in_array($mission->status_id , [\App\Mission::APPROVED_STATUS,\App\Mission::REQUESTED_STATUS,\App\Mission::RECIVED_STATUS]) && $mission->id != null)
-                            <!-- Button trigger modal -->
-                            @if($mission->status_id == \App\Mission::RECIVED_STATUS)
-                                @if($user_type == 'captain' && $mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
-                                {{-- @if(Auth::user()->user_type == 'admin' || in_array(1030, json_decode(Auth::user()->staff->role->permissions ?? "[]"))) --}}
+                        @endforeach
 
-                                <a class="mb-2 btn btn-success btn-sm" data-url="{{route('admin.missions.action.confirm_amount', ['mission_id' => $mission->id , 'shipment_id' => $mission->shipment_mission[0]->shipment->id ])}}" data-action="POST" onclick="openAjexedModel(this,event)" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
-                                    <i class="fa fa-check"></i> {{translate('Confirm / Done')}}
-                                </a>
-                                {{-- @endif --}}
-                                @endif
-                            @endif
-
-
-
-                        @else
-                            {{translate('No actions')}}
-                        @endif
-                    </td>
-                </tr>
-
-                @endforeach
-
-            </tbody>
-        </table>
-		</div>
+                    </tbody>
+                </table>
         <div class="aiz-pagination">
             {{ $missions->appends(request()->input())->links() }}
         </div>
@@ -303,9 +301,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-			@if($user_type == 'captain')
           <h5 class="modal-title" id="exampleModalLabel">{{translate('Confirm Receive Mission')}}</h5>
-			@endif
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -328,106 +324,7 @@
       </div>
     </div>
 </div>
-<div class="modal fade" id="driverSwitch" tabindex="-1" role="dialog" aria-labelledby="driverModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="driverModalLabel">{{translate('Driver Switch')}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
 
-            <div class="modal-body" id="mission_driver_body" style="display:none">
-                <h5 class="mb-2 modal-title" id="driverModalLabel">{{translate('Select Driver')}}</h5>
-                <div class="form-group">
-                    <label>{{translate('Driver')}}:</label>
-
-                    <select name="DriverMission[captain_id]" id="captain_id" class="form-control captain_id kt-select2" onchange="change_captain_id()">
-                        @foreach(\App\Captain::all() as $captain)
-                        <option value="{{$captain->id}}">{{$captain->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <form action="{{route('admin.missions.switch')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="mission_id"  id="selected_captain_mission_id" />
-                    <input type="hidden" name="captain_id"  id="selected_captain_id" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translate('Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{translate('Confirm')}}</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@foreach($missions as $key=>$mission)
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter-{{$mission->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle-{{$mission->id}}">
-                    {{--
-                    @if($mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
-                        {{translate('Return Shipment')}}
-                    @else
-
-
-                         @if($user_type != 'captain')
-							{{translate('Remove From')}} {{ $mission->code}}
-						@endif
-
-                    @endif
-                    --}}
-
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modal_close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('admin.shipments.delete-shipment-from-mission') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="mission_id" value="{{$mission->id}}">
-                <input type="hidden" name="shipment_id" id="delete_shipment_id" value="">
-                <div class="text-left modal-body">
-                    @isset($reasons)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>{{translate('Reason')}}:</label>
-
-                                <select name="reason" class="form-control captain_id kt-select2" required>
-                                    @foreach ($reasons as $reason)
-                                        <option value="{{$reason->id}}">{{$reason->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    @endisset
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translate('Close')}}</button>
-                   {{--
-                    <button type="submit" class="btn btn-danger btn-sm">
-                    @if($mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
-                        {{translate('Return')}}
-                    @else
-                        {{translate('Remove')}}
-                    @endif
-                    </button>
-                    --}}
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-@endforeach
 
 @endsection
 
@@ -451,18 +348,6 @@
         document.getElementById("amount_pickup").value              = mission_amount;
         document.getElementById("selected_mission_amount").value    = mission_amount;
         document.getElementById("mission_modal_body").style.display = "block";
-    }
-    function set_driver_mission_id(mission_id , mission_type){
-        var captain_id = document.getElementById("captain_id").value;
-        document.getElementById("selected_captain_mission_id").value        = mission_id;
-        document.getElementById("selected_captain_id").value        = captain_id;
-        document.getElementById("mission_driver_body").style.display = "block";
-    }
-
-    function change_captain_id(){
-        var captain_id = document.getElementById("captain_id").value;
-        document.getElementById("selected_captain_id").value        = captain_id;
-
     }
     function show_ajax_loder_in_button(element){
         $(element).bind('ajaxStart', function(){
@@ -488,6 +373,12 @@
             {
                Swal.fire("{{translate('Please Select Missions')}}", "", "error");
             }
+    }
+      function set_driver_mission_id(mission_id , mission_type){
+        var captain_id = document.getElementById("captain_id").value;
+        document.getElementById("selected_captain_mission_id").value        = mission_id;
+        document.getElementById("selected_captain_id").value        = captain_id;
+        document.getElementById("mission_driver_body").style.display = "block";
     }
     function openAjexedModel(element,event)
     {
@@ -559,37 +450,6 @@
                 }
             }
         );
-    });
-    function set_shipment_id(shipment_id){
-        document.getElementById('delete_shipment_id').value = shipment_id;
-    }
-    function openAjexedModel(element,event)
-    {
-        event.preventDefault();
-
-        show_ajax_loder_in_button(element);
-        $.ajax({
-            url: $(element).data('url'),
-            type: 'get',
-            success: function(response){
-            // Add response in Modal body
-            $('#ajaxed-model .modal-content').html(response);
-            // Display Modal
-            $('#ajaxed-model').modal('toggle');
-            }
-        });
-    }
-    function show_ajax_loder_in_button(element){
-        $(element).bind('ajaxStart', function(){
-            $(this).addClass('spinner spinner-darker-success spinner-left mr-3');
-            $(this).attr('disabled','disabled');
-        }).bind('ajaxStop', function(){
-            $(this).removeClass('spinner spinner-darker-success spinner-left mr-3');
-            $(this).removeAttr('disabled');
-        });
-    }
-    ('#ajaxed-model').on('hidden.bs.modal', function () {
-        $('#ajaxed-model .modal-content').empty();
     });
 </script>
 
