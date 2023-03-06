@@ -28,7 +28,7 @@
 
     <div class="card-body">
         <!--begin::Search Form-->
-        <form method="POST" action="{{route('admin.missions.post.get-report')}}" >
+        <form method="POST" action="{{route('admin.missions.post.get.report')}}" >
             @csrf
             <div class="mb-7">
                 <div class="row align-items-center">
