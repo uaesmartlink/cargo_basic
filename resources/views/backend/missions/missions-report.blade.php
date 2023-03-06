@@ -87,7 +87,7 @@
                                         <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
                                         <select name="status" class="form-control status">
                                         <option value="">{{translate('All')}}</option>
-                                            @foreach(\App\Shipment::getStatus() as $status_info)
+                                            @foreach(\App\Mission::getStatus() as $status_info)
                                             <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
                                             @endforeach
                                         </select>
