@@ -330,6 +330,7 @@ class MissionsController extends Controller
     public function show($id)
     {
         $mission = Mission::find($id);
+        dd($mission);
         $reasons = Reason::where("type","remove_shipment_from_mission")->get();
         $due_date = ($mission->status_id != Mission::REQUESTED_STATUS) ? $mission->due_date : null;
         $helper = new TransactionHelper();
