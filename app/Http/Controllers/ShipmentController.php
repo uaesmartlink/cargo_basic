@@ -363,11 +363,7 @@ class ShipmentController extends Controller
                         $shipment->mission_id = $model->id;
                         $shipment->save();
                     }
-                    $model->client_id = \App\Shipment::find($shipment_id)->clinet_id;
-                    dd($model);
-                    if (!$model->save()) {
-                        throw new \Exception();
-                    }
+
                 }
             }
 
