@@ -155,7 +155,9 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    @php
+                        dd($missions);
+                    @endphp
                     @foreach($missions as $key=>$mission)
 
                     <tr>
