@@ -10,34 +10,13 @@
 <div class="mt-2 mb-3 text-left aiz-titlebar">
     <div class="row align-items-center">
         <div class="col-md-6">
-            <h1 class="h3">{{translate('Shipments Report')}}</h1>
+            <h1 class="h3">{{translate('Missions Report')}}</h1>
         </div>
     </div>
 </div>
 
 <!--begin::Card-->
-<div class="card card-custom gutter-b">
-    <div class="flex-wrap py-3 card-header">
-        <div class="card-title">
-            <h3 class="card-label">
-                {{$page_name}}
-            </h3>
-        </div>
 
-    </div>
-
-    <div class="card-body">
-        <!--begin::Search Form-->
-
-
-
-
-
-        </div>
-        <!--end::Search Form-->
-
-    </div>
-</div>
 {!! hookView('shipment_addon',$currentView) !!}
 
 @endsection
