@@ -263,7 +263,7 @@ class MissionsController extends Controller
 
     }
 
-    public function MissionsReport(Request $request)
+    public function missionsReport(Request $request)
     {
         $missions = new Mission();
         $type = null;

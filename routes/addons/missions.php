@@ -1,4 +1,4 @@
-<?php 
+<?php
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staff|captain|branch']], function(){
     Route::post('missions/action/{to}','MissionsController@change')->name('admin.missions.action');
     Route::post('missions/action/approve/{to}','MissionsController@approveAndAssign')->name('admin.mission.action.approve');
@@ -7,7 +7,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staf
     Route::post('missions/manifests/order','MissionsController@ajax_change_order')->name('admin.missions.manifests.order');
     Route::post('missions/manifest-profile','MissionsController@getManifestProfile')->name('admin.missions.get.manifest');
     Route::post('missions/reschedule','MissionsController@reschedule')->name('admin.missions.reschedule');
-    
+    Route::post('missions/missions-report','MissionsController@missionsReport')->name('admin.missions.report');
+
     Route::resource('missions','MissionsController',[
         'as' => 'admin'
     ]);
