@@ -163,12 +163,12 @@
                     <tr>
                         <td><label class="checkbox checkbox-success"><input class="ms-check" type="checkbox" name="checked_ids[]" value="{{$mission->id}}" /><span></span></label></td>
                         @if($user_type == 'admin' || in_array('1100', $staff_permission) || in_array('1008', $staff_permission) )
-                            {{-- <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</a></td> --}}
-                            {{-- <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td> --}}
+                            <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</a></td>
+                            <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
                             <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
                         @else
                             <td width="3%">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</td>
-                            {{-- <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td> --}}
+                            <td width="5%"><a href="{{route('admin.missions.show', $mission->id)}}">{{$mission->code}}</a></td>
                             <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
                         @endif
                         <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
@@ -194,9 +194,9 @@
                         @if(isset($show_due_date)) <td>{{$mission->due_date ?? "-"}}</td> @endif
 
                         <td class="text-center">
-                            {{-- <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
                                 <i class="las la-eye"></i>
-                            </a> --}}
+                            </a>
                         </td>
                     </tr>
 
