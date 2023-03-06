@@ -298,6 +298,7 @@ class MissionsController extends Controller
         }
         $dashboard_active_links = true;
 
+        dd($missions);
         return view('backend.missions.missions-report',compact('missions','page_name'));
     }
     // public function missionsReport(Request $request)
