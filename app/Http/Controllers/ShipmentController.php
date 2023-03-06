@@ -363,6 +363,7 @@ class ShipmentController extends Controller
                         $shipment->mission_id = $model->id;
                         $shipment->save();
                     }
+                    $model->client_id = \App\Shipment::find($shipment_id)->clinet_id;
                 }
             }
 
@@ -1208,9 +1209,7 @@ class ShipmentController extends Controller
             if (isset($_GET['type']) && !empty($_GET['type'])) {
                 $shipments = $shipments->where('type', $_GET['type']);
             }
-            if (isset($_GET['captain_id']) && !empty($_GET['captain_id'])) {
-                $missions = $missions->where('captain_id', $_GET['captain_id']);
-            }
+
         }
 
         if(Auth::user()->user_type == 'customer'){
@@ -1226,6 +1225,7 @@ class ShipmentController extends Controller
         $status = 'all';
         return view('backend.shipments.shipments-report', compact('shipments', 'page_name', 'type', 'actions', 'status'));
     }
+
     public function exportShipmentsReport(Request $request)
     {
 
