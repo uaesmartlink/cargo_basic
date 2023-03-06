@@ -97,8 +97,6 @@
             </table>
         </div>
         <!--end::Search Form-->
-
-    </div>
 </div>
 {!! hookView('shipment_addon',$currentView) !!}
 
