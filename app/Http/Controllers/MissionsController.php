@@ -262,7 +262,44 @@ class MissionsController extends Controller
         }
 
     }
+    public function report(Request $request)
+    {
+        if(isset($request->status) && !empty($request->status)) {
+            if($request->status == 'all')
+            {
+                $missions = Mission::where('id', '!=' , null);
+            }else{
+                $missions = Mission::whereIn('status_id', $request->status );
+            }
+        }
+        if(isset($request->type) && !empty($request->type)) {
+            if(isset($missions)){
+                $missions = $missions->whereIn('type', $request->type );
+            }else{
+                $missions = Mission::whereIn('type', $request->type );
+            }
+        }
+        if(isset($request->captain_id) && !empty($request->captain_id)) {
+            if(isset($missions)){
+                $missions = $missions->where('captain_id', $request->captain_id );
+            }else{
+                $missions = Mission::where('captain_id', $request->captain_id );
+            }
+        }
+        if(isset($request->page_name) && !empty($request->page_name)) {
+            $page_name = $request->page_name;
+        }else {
+            $page_name = translate('All Missions');
+        }
+        if(isset($missions)){
+            $missions = $missions->orderBy('id','DESC')->paginate(20);
+        }else{
+            $missions = Mission::orderBy('id','DESC')->paginate(20);
+        }
+        $dashboard_active_links = true;
 
+        return view('backend.missions.missions-report',compact('missions','dashboard_active_links','page_name'));
+    }
     // public function missionsReport(Request $request)
     // {
     //     $missions = new Mission();
