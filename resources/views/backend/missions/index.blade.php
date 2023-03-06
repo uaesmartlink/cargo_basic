@@ -369,72 +369,68 @@
 </div>
 @foreach($missions as $key=>$mission)
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter-{{$mission->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle-{{$mission->id}}">
-                    {{--
-                    @if($mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
-                        {{translate('Return Shipment')}}
-                    @else
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter-{{$mission->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle-{{$mission->id}}">
+                        {{--
+                        @if($mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
+                            {{translate('Return Shipment')}}
+                        @else
 
 
-                         @if($user_type != 'captain')
-							{{translate('Remove From')}} {{ $mission->code}}
-						@endif
+                            @if($user_type != 'captain')
+                                {{translate('Remove From')}} {{ $mission->code}}
+                            @endif
 
-                    @endif
-                    --}}
+                        @endif
+                        --}}
 
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modal_close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('admin.shipments.delete-shipment-from-mission') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="mission_id" value="{{$mission->id}}">
-                <input type="hidden" name="shipment_id" id="delete_shipment_id" value="">
-                <div class="text-left modal-body">
-                    @isset($reasons)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>{{translate('Reason')}}:</label>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modal_close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.shipments.delete-shipment-from-mission') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="mission_id" value="{{$mission->id}}">
+                    <input type="hidden" name="shipment_id" id="delete_shipment_id" value="">
+                    <div class="text-left modal-body">
+                        @isset($reasons)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>{{translate('Reason')}}:</label>
 
-                                <select name="reason" class="form-control captain_id kt-select2" required>
-                                    @foreach ($reasons as $reason)
-                                        <option value="{{$reason->id}}">{{$reason->name}}</option>
-                                    @endforeach
-                                </select>
+                                    <select name="reason" class="form-control captain_id kt-select2" required>
+                                        @foreach ($reasons as $reason)
+                                            <option value="{{$reason->id}}">{{$reason->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
+                        @endisset
                     </div>
-                    @endisset
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translate('Close')}}</button>
-                   {{--
-                    <button type="submit" class="btn btn-danger btn-sm">
-                    @if($mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
-                        {{translate('Return')}}
-                    @else
-                        {{translate('Remove')}}
-                    @endif
-                    </button>
-                    --}}
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translate('Close')}}</button>
+                    {{--
+                        <button type="submit" class="btn btn-danger btn-sm">
+                        @if($mission->getOriginal('type') == \App\Mission::DELIVERY_TYPE)
+                            {{translate('Return')}}
+                        @else
+                            {{translate('Remove')}}
+                        @endif
+                        </button>
+                        --}}
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
-
-
-
-
+@endforeach
 
 
 
