@@ -1,4 +1,3 @@
-@extends('backend.layouts.app')
 
 @php
     $user_type = Auth::user()->user_type;
