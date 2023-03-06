@@ -50,7 +50,7 @@
                                             <select name="client_id" class="form-control client" id="kt_datatable_search_status">
                                                 <option value="">{{translate('All')}}</option>
                                                 @foreach(\App\Client::where('is_archived',0)->get() as $client)
-                                                <option @if(isset($_POST['client_id']) && $_POST['client_id'] == $client->id)  selected @endif value="{{$client->id}}">{{$client->name}}</option>
+                                                 <option @if(isset($_POST['client_id']) && $_POST['client_id'] == $client->id)  selected @endif value="{{$client->id}}">{{$client->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -92,9 +92,9 @@
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
                                     <select name="captain" class="form-control">
                                     <option value="">{{translate('All')}}</option>
-                                    @foreach(\App\Captain::where(1)->get() as $captain)
-                                    <option @if(isset($_POST['captain']) && $_POST['captain'] == $captain)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
-                                        @endforeach
+                                    @foreach(\App\Captain::where('is_archived',0)->get() as $captain)
+                                        <option @if(isset($_POST['captain_id']) && $_POST['captain_id'] == $captain->id)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>
