@@ -44,7 +44,7 @@
                                         @endphp
                                         <input type="hidden" name="client_id" value="{{$user->id}}" />
                                     @else
-                                    <div class="my-2 col-md-4 my-md-0">
+                                    <div class="col-md-4">
                                         <div class="d-flex align-items-center">
                                             <label class="mb-0 mr-3 d-none d-md-block">{{translate('Customer')}}:</label>
                                             <select name="client_id" class="form-control client" id="kt_datatable_search_status">
@@ -57,7 +57,7 @@
                                     </div>
                                     @endif
 
-                            <div @if($user_type == 'customer') class="my-2 col-md-8 my-md-0" @else class="my-2 col-md-4 my-md-0" @endif>
+                            <div @if($user_type == 'customer') class="col-md-8" @else class="col-md-4" @endif>
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Type')}}:</label>
                                     <select name="type" class="form-control type" >
@@ -87,7 +87,7 @@
                                     </select>
                                 </div>
                             </div> --}}
-                            <div class="my-2 col-md-4 my-md-5">
+                            <div class="col-md-4">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
                                     <select name="captain" class="form-control">
@@ -98,7 +98,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="my-2 col-md-4 my-md-5">
+                            <div class="col-md-4">
                                 <div class="d-flex align-items-center">
                                     <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
                                     <select name="status" class="form-control status">

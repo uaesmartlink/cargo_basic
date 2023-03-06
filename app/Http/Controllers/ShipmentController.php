@@ -1192,11 +1192,11 @@ class ShipmentController extends Controller
 
     public function shipmentsReport(Request $request)
     {
-        $shipments = new Shipment();
+        $mission = Mission::where(1)->first();
+        $shipment_ids = $mission->shipment_mission->pluck('shipment_id');
         $type = null;
         if (isset($_GET)) {
             if (isset($_GET['code']) && !empty($_GET['code'])) {
-
                 $shipments = $shipments->where('code', $_GET['code']);
             }
             if (isset($_GET['client_id']) && !empty($_GET['client_id'])) {
@@ -1209,12 +1209,17 @@ class ShipmentController extends Controller
             if (isset($_GET['type']) && !empty($_GET['type'])) {
                 $shipments = $shipments->where('type', $_GET['type']);
             }
+            if (isset($_GET['captain_id']) && !empty($_GET['captain_id'])) {
+                $missions = $missions->where('captain_id', $_GET['captain_id']);
+            }
         }
+
         if(Auth::user()->user_type == 'customer'){
             $shipments = $shipments->where('client_id', Auth::user()->userClient->client_id);
         }elseif(Auth::user()->user_type == 'branch'){
             $shipments = $shipments->where('branch_id', Auth::user()->userBranch->branch_id);
         }
+
         $shipments = $shipments->orderBy('id','DESC')->paginate(20);
         $actions = new ShipmentActionHelper();
         $actions = $actions->get('all');
