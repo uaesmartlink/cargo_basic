@@ -9,7 +9,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'user_role:admin|staf
     Route::post('missions/manifests/order','MissionsController@ajax_change_order')->name('admin.missions.manifests.order');
     Route::post('missions/manifest-profile','MissionsController@getManifestProfile')->name('admin.missions.get.manifest');
     Route::post('missions/reschedule','MissionsController@reschedule')->name('admin.missions.reschedule');
-    Route::get('missions/missions-report','MissionsController@report ')->name('admin.missions.report');
+    Route::get('missions/missions-report','MissionsController@report')->name('admin.missions.report');
 
     Route::resource('missions','MissionsController',[
         'as' => 'admin'
