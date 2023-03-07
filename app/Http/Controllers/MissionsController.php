@@ -305,7 +305,6 @@ class MissionsController extends Controller
     public function subReport(Request $request)
     {
 
-        dd($request);
         $missions = new Mission();
         $type = null;
         if (isset($_POST)) {
@@ -334,6 +333,7 @@ class MissionsController extends Controller
         $missions = $missions->orderBy('id','DESC')->paginate(20);
         $page_name = translate('Missions Report');
         $status = 'all';
+        dd($mission);
         return view('backend.missions.missions-report', compact('missions', 'page_name', 'status'));
     }
 
