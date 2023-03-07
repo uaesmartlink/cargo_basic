@@ -308,16 +308,17 @@ class MissionsController extends Controller
         $missions = new Mission();
         $type = null;
         if (isset($_POST)) {
-            dd($request);
-            if (isset($_POST['client_id']) && !empty($_POST['client_id'])) {
-                $missions = $missions->where('client_id', $_POST['client_id']);
+
+            if (isset($request->client_id) && !empty($request->client_id)) {
+                $missions = $missions->where('client_id', $request->status_id);
             }
 
-            if (isset($_POST['status_id']) && !empty($_POST['status'])) {
-                $missions = $missions->where('status_id', $_POST['status']);
+            if (isset($request->status_id) && !empty($request->status_id)) {
+                dd($request);
+                $missions = $missions->where('status_id', $request->status_id);
             }
-            if (isset($_POST['captain_id']) && !empty($_POST['captain_id'])) {
-                $missions = $missions->where('captain_id', $_POST['captain_id']);
+            if (isset($request->captain_id) && !empty($request->captain_id)) {
+                $missions = $missions->where('captain_id', $request->captain_id);
             }
 
         }
