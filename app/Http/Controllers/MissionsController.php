@@ -314,8 +314,8 @@ class MissionsController extends Controller
                 $missions = $missions->where('client_id', $_POST['client_id']);
             }
 
-            if (isset($_GET['status']) && !empty($_GET['status'])) {
-                $missions = $missions->where('status_id', $_GET['status']);
+            if (isset($_POST['status']) && !empty($_POST['status'])) {
+                $missions = $missions->where('status_id', $_POST['status']);
             }
             if (isset($_POST['captain_id']) && !empty($_POST['captain_id'])) {
                 $missions = $missions->where('captain_id', $_POST['captain_id']);
