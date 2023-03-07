@@ -80,11 +80,11 @@ class ShipmentController extends Controller
                 $shipments = $shipments->where('from_state_id', $_GET['from_region_id']);
             }
 
-            if (isset($_GET['to_region_id']) && !empty($_GET['to_region_id'])) {
-                $shipments = $shipments->where('to_state_id', $_GET['to_region_id'] && $_GET['to_region_id'] != "Select Region");
+
+            if (isset($_GET['to_region_id']) && !empty($_GET['to_region_id']) && $_GET['to_region_id'] != "Select Region") {
+                $shipments = $shipments->where('to_state_id', $_GET['to_region_id'] );
             }
 
-            dd($shipments->get());
 
             if (isset($_GET['from_area_id']) && !empty($_GET['from_area_id'])) {
                 $shipments = $shipments->where('from_area_id', $_GET['from_area_id']);
