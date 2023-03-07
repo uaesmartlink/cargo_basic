@@ -141,7 +141,7 @@
                             <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
                         @endif
                         <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
-                        <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->from_area_id: $mission->shipment_mission[0]->shipment->to_area_id }}
+                        <td>{{ $mission->getOriginal('type') == 1 ? \App\Area::find($mission->shipment_mission[0]->shipment->from_area_id): \App\Area::find($mission->shipment_mission[0]->shipment->to_area_id) }}
 
                         @if ($mission->captain_id)
                             @if($user_type == 'admin' || in_array('1007', $staff_permission) )
