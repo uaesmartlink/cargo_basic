@@ -297,13 +297,15 @@ class MissionsController extends Controller
             $missions = Mission::orderBy('id','DESC')->paginate(20);
         }
         $dashboard_active_links = true;
-
-        return view('backend.missions.missions-report',compact('missions','page_name'));
+        $status = 'all';
+        return view('backend.missions.missions-report', compact('missions', 'page_name', 'status'));
     }
 
 
     public function subReport(Request $request)
     {
+
+        dd($request);
         $missions = new Mission();
         $type = null;
         if (isset($_POST)) {
