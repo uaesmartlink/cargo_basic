@@ -115,8 +115,9 @@
                         <th>{{translate('Shipment Code')}}</th>
                         <th>{{translate('Phone')}}</th>
                         <th>{{translate('Address')}}</th>
+                        <th>{{translate('Client')}}</th>
+
                         <th>{{translate('Driver')}}</th>
-                        <th>{{translate('Type')}}</th>
 
                         <th>{{translate('Amount')}}</th>
                         <th>{{translate('Status')}}</th>
@@ -143,6 +144,8 @@
                         <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
                         <td>{{ $mission->getOriginal('type') == 1 ? \App\Area::find($mission->shipment_mission[0]->shipment->from_area_id)->name: \App\Area::find($mission->shipment_mission[0]->shipment->to_area_id)->name }}
 
+                        <td><a href="{{route('admin.clintes.show', $mission->shipment_mission[0]->shipment->client_id)}}">{{\App\Client::find($mission->shipment_mission[0]->shipment->client_id)->name}}</a></td>
+
                         @if ($mission->captain_id)
                             @if($user_type == 'admin' || in_array('1007', $staff_permission) )
                                 <td><a href="{{route('admin.captains.show', $mission->captain->id)}}">{{$mission->captain->name}}</a></td>
@@ -152,7 +155,6 @@
                         @else
                             <td>{{translate('No Driver')}}</td>
                         @endif
-                        <td>{{$mission->type}}</td>
                         @php
                             $helper = new \App\Http\Helpers\TransactionHelper();
                             $shipment_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
