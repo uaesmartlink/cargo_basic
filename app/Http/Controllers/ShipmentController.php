@@ -68,7 +68,7 @@ class ShipmentController extends Controller
             if (isset($_GET['type']) && !empty($_GET['type'])) {
                 $shipments = $shipments->where('type', $_GET['type']);
             }
-            if (isset($_GET['from_country_id']) && !empty($_GET['from_country_id']) &&) {
+            if (isset($_GET['from_country_id']) && !empty($_GET['from_country_id'])) {
                 $shipments = $shipments->where('from_country_id', $_GET['from_country_id']);
             }
             if (isset($_GET['to_country_id']) && !empty($_GET['to_country_id'])) {
