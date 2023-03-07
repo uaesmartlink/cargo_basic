@@ -35,24 +35,42 @@
 
                         <div class="col-lg-12 col-xl-12">
                             <div class="row align-items-center">
-                                @if($user_type == 'customer')
-                                    @php
-                                        $user  = App\Client::where('id',Auth::user()->userClient->client_id)->first();
-                                    @endphp
-                                    <input type="hidden" name="client_id" value="{{$user->id}}" />
-                                @else
-                                <div class="col-md-4">
+                                        @if($user_type == 'customer')
+                                            @php
+                                                $user  = App\Client::where('id',Auth::user()->userClient->client_id)->first();
+                                            @endphp
+                                            <input type="hidden" name="client_id" value="{{$user->id}}" />
+                                        @else
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center">
+                                                <label class="mb-0 mr-3 d-none d-md-block">{{translate('Customer')}}:</label>
+                                                <select name="client_id" class="form-control client" id="kt_datatable_search_status">
+                                                    <option value="">{{translate('All')}}</option>
+                                                    @foreach(\App\Client::where('is_archived',0)->get() as $client)
+                                                     <option @if(isset($_POST['client_id']) && $_POST['client_id'] == $client->id)  selected @endif value="{{$client->id}}">{{$client->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        @endif
+
+
+
+                            </div>
+                            <div class="row align-items-center">
+                                <input type="hidden" name="branch_id" value="1" >
+                                {{-- Hide For Demo --}}
+                                {{-- <div class="my-2 col-md-4 my-md-5">
                                     <div class="d-flex align-items-center">
-                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Customer')}}:</label>
-                                        <select name="client_id" class="form-control client" id="kt_datatable_search_status">
-                                            <option value="">{{translate('All')}}</option>
-                                            @foreach(\App\Client::where('is_archived',0)->get() as $client)
-                                                <option @if(isset($_POST['client_id']) && $_POST['client_id'] == $client->id)  selected @endif value="{{$client->id}}">{{$client->name}}</option>
+                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Branch')}}:</label>
+                                        <select name="branch_id" class="form-control branch" id="kt_datatable_search_type">
+                                        <option value="">{{translate('All')}}</option>
+                                            @foreach(\App\Branch::where('is_archived',0)->get() as $Branch)
+                                            <option @if(isset($_POST['branch_id']) && $_POST['branch_id'] == $Branch->id)  selected @endif value="{{$Branch->id}}">{{$Branch->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                @endif
+                                </div> --}}
                                 <div class="col-md-4">
                                     <div class="d-flex align-items-center">
                                         <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
@@ -75,11 +93,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                <input type="hidden" name="branch_id" value="1" >
-
                             </div>
-
                             <div class="row align-items-center">
+
                                 <div class="my-2 col-md-4 my-md-5">
                                     <div class="d-flex align-items-center">
                                         <label class="mb-0 mr-3 d-none d-md-block">{{translate('From Date')}}:</label>
