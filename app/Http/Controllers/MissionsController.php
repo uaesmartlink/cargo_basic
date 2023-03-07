@@ -330,10 +330,9 @@ class MissionsController extends Controller
         // }
 
         $missions = $missions->orderBy('id','DESC')->paginate(20);
-        $actions = $actions->get('all');
         $page_name = translate('Missions Report');
         $status = 'all';
-        return view('backend.missions.missions-report', compact('missions', 'page_name', 'type', 'actions', 'status'));
+        return view('backend.missions.missions-report', compact('missions', 'page_name', 'status'));
     }
 
     /**
