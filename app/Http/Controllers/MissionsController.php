@@ -314,7 +314,6 @@ class MissionsController extends Controller
             }
 
             if (isset($request->status_id) && !empty($request->status_id)) {
-                dd($request);
                 $missions = $missions->where('status_id', $request->status_id);
             }
             if (isset($request->captain_id) && !empty($request->captain_id)) {
@@ -332,6 +331,7 @@ class MissionsController extends Controller
         $missions = $missions->orderBy('id','DESC')->paginate(20);
         $page_name = translate('Missions Report');
         $status = 'all';
+        dd($missions);
         return view('backend.missions.missions-report', compact('missions', 'page_name', 'status'));
     }
 
