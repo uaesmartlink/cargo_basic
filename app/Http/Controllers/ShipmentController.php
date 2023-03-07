@@ -62,7 +62,6 @@ class ShipmentController extends Controller
             if (isset($_GET['client_id']) && !empty($_GET['client_id'])) {
                 $shipments = $shipments->where('client_id', $_GET['client_id']);
             }
-            dd($shipments);
 
             if (isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
                 $shipments = $shipments->where('branch_id', $_GET['branch_id']);
@@ -82,6 +81,8 @@ class ShipmentController extends Controller
             if (isset($_GET['to_region_id']) && !empty($_GET['to_region_id'])) {
                 $shipments = $shipments->where('to_state_id', $_GET['to_region_id'] && $_GET['to_region_id'] != "Select Region");
             }
+            dd($shipments);
+
             if (isset($_GET['from_area_id']) && !empty($_GET['from_area_id'])) {
                 $shipments = $shipments->where('from_area_id', $_GET['from_area_id']);
             }
