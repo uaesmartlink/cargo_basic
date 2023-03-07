@@ -94,13 +94,15 @@ class ShipmentController extends Controller
             if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
                 $shipments = $shipments->where('order_id', $_GET['order_id']);
             }
+
+            dd($shipments->get());
+
             if (isset($_GET['sort_by']) && !empty($_GET['sort_by'])) {
                 if($_GET['sort_by'] == Shipment::OLDEST)
                 {
                     $shipments = $shipments->orderBy('created_at','asc');
                 }
             }
-            dd($shipments->get());
 
             if (isset($_GET['status']) && !empty($_GET['status'])) {
                 $shipments = $shipments->whereIn('status_id', $_GET['status']);
