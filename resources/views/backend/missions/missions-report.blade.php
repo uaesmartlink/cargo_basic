@@ -35,7 +35,7 @@
 
                         <div class="col-lg-12 col-xl-12">
                             <div class="row align-items-center">
-                                        @if($user_type == 'customer')
+                                        {{-- @if($user_type == 'customer')
                                             @php
                                                 $user  = App\Client::where('id',Auth::user()->userClient->client_id)->first();
                                             @endphp
@@ -52,7 +52,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        @endif
+                                        @endif --}}
                                         <div class="col-md-4">
                                             <div class="d-flex align-items-center">
                                                 <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
@@ -70,7 +70,7 @@
                                                 <select name="status_id" class="form-control status">
                                                 <option value="">{{translate('All')}}</option>
                                                     @foreach(\App\Mission::status_info() as $status_info)
-                                                    <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
+                                                    <option @if(isset($_POST['status_id']) && $_POST['status_id'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

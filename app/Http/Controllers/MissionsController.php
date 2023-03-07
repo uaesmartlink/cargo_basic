@@ -311,7 +311,6 @@ class MissionsController extends Controller
 
             if (isset($request->client_id) && !empty($request->client_id)) {
                 $missions = $missions->where('client_id', $request->status_id);
-                dd($missions);
             }
 
             if (isset($request->status_id) && !empty($request->status_id)) {
