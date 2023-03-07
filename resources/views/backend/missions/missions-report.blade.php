@@ -53,47 +53,34 @@
                                             </div>
                                         </div>
                                         @endif
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center">
+                                                <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
+                                                <select name="captain_id" class="form-control">
+                                                <option value="">{{translate('All')}}</option>
+                                                @foreach(\App\Captain::all() as $captain)
+                                                    <option @if(isset($_POST['captain_id']) && $_POST['captain_id'] == $captain->id)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center">
+                                                <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
+                                                <select name="status_id" class="form-control status">
+                                                <option value="">{{translate('All')}}</option>
+                                                    @foreach(\App\Mission::status_info() as $status_info)
+                                                    <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="branch_id" value="1" >
 
 
 
                             </div>
-                            <div class="row align-items-center">
-                                <input type="hidden" name="branch_id" value="1" >
-                                {{-- Hide For Demo --}}
-                                {{-- <div class="my-2 col-md-4 my-md-5">
-                                    <div class="d-flex align-items-center">
-                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Branch')}}:</label>
-                                        <select name="branch_id" class="form-control branch" id="kt_datatable_search_type">
-                                        <option value="">{{translate('All')}}</option>
-                                            @foreach(\App\Branch::where('is_archived',0)->get() as $Branch)
-                                            <option @if(isset($_POST['branch_id']) && $_POST['branch_id'] == $Branch->id)  selected @endif value="{{$Branch->id}}">{{$Branch->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
-                                        <select name="captain_id" class="form-control">
-                                        <option value="">{{translate('All')}}</option>
-                                        @foreach(\App\Captain::all() as $captain)
-                                            <option @if(isset($_POST['captain_id']) && $_POST['captain_id'] == $captain->id)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="d-flex align-items-center">
-                                        <label class="mb-0 mr-3 d-none d-md-block">{{translate('Status')}}:</label>
-                                        <select name="status_id" class="form-control status">
-                                        <option value="">{{translate('All')}}</option>
-                                            @foreach(\App\Mission::status_info() as $status_info)
-                                            <option @if(isset($_POST['status']) && $_POST['status'] == $status_info['status'])  selected @endif value="{{$status_info['status']}}">{{$status_info['text']}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row align-items-center">
 
                                 <div class="my-2 col-md-4 my-md-5">
