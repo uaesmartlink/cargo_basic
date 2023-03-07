@@ -115,13 +115,13 @@
                         <th>{{translate('Shipment Code')}}</th>
                         <th>{{translate('Phone')}}</th>
                         <th>{{translate('Address')}}</th>
-                        <th>{{translate('Status')}}</th>
                         <th>{{translate('Driver')}}</th>
                         <th>{{translate('Type')}}</th>
 
                         <th>{{translate('Amount')}}</th>
-                        @if(isset($show_due_date)) <th>{{translate('Due Date') ?? translate('Due Date') }}</th> @endif
+                        <th>{{translate('Status')}}</th>
 
+                        {{-- @if(isset($show_due_date)) <th>{{translate('Due Date') ?? translate('Due Date') }}</th> @endif --}}
                         <th class="text-center">{{translate('Options')}}</th>
                         {{-- <th class="text-center">Actions</th> --}}
                     </tr>
@@ -141,9 +141,8 @@
                             <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
                         @endif
                         <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
-                                            <td>{{ $mission->getOriginal('type') == 1 ? $mission->address : $mission->shipment_mission[0]->shipment->reciver_address }}
+                        <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->from_area_id: $mission->shipment_mission[0]->shipment->to_area_id }}
 
-                        <td><span class="btn btn-sm btn-{{\App\Mission::getStatusColor($mission->status_id)}}">{{$mission->getStatus()}}</span></td>
                         @if ($mission->captain_id)
                             @if($user_type == 'admin' || in_array('1007', $staff_permission) )
                                 <td><a href="{{route('admin.captains.show', $mission->captain->id)}}">{{$mission->captain->name}}</a></td>
@@ -160,8 +159,8 @@
                         @endphp
 
                         <td>{{format_price($shipment_cost)}}</td>
-                        @if(isset($show_due_date)) <td>{{$mission->due_date ?? "-"}}</td> @endif
-
+                        {{-- @if(isset($show_due_date)) <td>{{$mission->due_date ?? "-"}}</td> @endif --}}
+                        <td><span class="btn btn-sm btn-{{\App\Mission::getStatusColor($mission->status_id)}}">{{$mission->getStatus()}}</span></td>
                         <td class="text-center">
                             <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.missions.show', $mission->id)}}" title="{{ translate('Show') }}">
                                 <i class="las la-eye"></i>
