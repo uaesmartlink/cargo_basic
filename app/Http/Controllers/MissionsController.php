@@ -308,9 +308,7 @@ class MissionsController extends Controller
         $missions = new Mission();
         $type = null;
         if (isset($_POST)) {
-            if (isset($_POST['code']) && !empty($_POST['code'])) {
-                $missions = $missions->where('code', $_POST['code']);
-            }
+            dd($request);
             if (isset($_POST['client_id']) && !empty($_POST['client_id'])) {
                 $missions = $missions->where('client_id', $_POST['client_id']);
             }
@@ -333,7 +331,6 @@ class MissionsController extends Controller
         $missions = $missions->orderBy('id','DESC')->paginate(20);
         $page_name = translate('Missions Report');
         $status = 'all';
-        dd($missions);
         return view('backend.missions.missions-report', compact('missions', 'page_name', 'status'));
     }
 
