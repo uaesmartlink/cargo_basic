@@ -256,7 +256,7 @@
 
                         <div>
                             <button type="submit" class="px-6 btn btn-light-primary font-weight-bold">{{translate('Search')}}</button>
-                            <button id="reset_search" class="px-6 btn btn-light-primary font-weight-bold">{{translate('Reset')}}</button>
+                            {{-- <button id="reset_search" class="px-6 btn btn-light-primary font-weight-bold">{{translate('Reset')}}</button> --}}
                         </div>
                         <a href="{{route('admin.shipments.export', $status)}}" class="ml-auto px-6 btn btn-light-primary font-weight-bold">{{translate('Export Shipments')}}</a>
                     </div>
