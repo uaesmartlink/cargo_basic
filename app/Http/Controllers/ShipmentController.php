@@ -56,9 +56,8 @@ class ShipmentController extends Controller
         $type = null;
         $sort_by = null;
         if (isset($_GET)) {
+            dd($_GET);
             if (isset($_GET['code']) && !empty($_GET['code'])) {
-                dd($_GET);
-
                 $shipments = $shipments->where('code', $_GET['code']);
             }
             if (isset($_GET['client_id']) && !empty($_GET['client_id'])) {
