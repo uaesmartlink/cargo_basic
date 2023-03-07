@@ -333,7 +333,7 @@ class MissionsController extends Controller
         $missions = $missions->orderBy('id','DESC')->paginate(20);
         $page_name = translate('Missions Report');
         $status = 'all';
-        dd($mission);
+        dd($missions);
         return view('backend.missions.missions-report', compact('missions', 'page_name', 'status'));
     }
 
