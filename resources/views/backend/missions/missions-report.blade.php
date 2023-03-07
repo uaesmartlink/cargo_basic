@@ -76,8 +76,8 @@
                                         <label class="mb-0 mr-3 d-none d-md-block">{{translate('Driver')}}:</label>
                                         <select name="captain_id" class="form-control">
                                         <option value="">{{translate('All')}}</option>
-                                        @foreach(\App\Captain::where(1)->get() as $captain)
-                                            {{-- <option @if(isset($_POST['captain_id']) && $_POST['captain_id'] == $captain->id)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option> --}}
+                                        @foreach(\App\Captain::where('1')->get() as $captain)
+                                            <option @if(isset($_POST['captain_id']) && $_POST['captain_id'] == $captain->id)  selected @endif value="{{$captain->id}}">{{$captain->name}}</option>
                                         @endforeach
                                         </select>
                                     </div>
