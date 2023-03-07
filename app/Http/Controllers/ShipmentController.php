@@ -59,6 +59,7 @@ class ShipmentController extends Controller
             if (isset($_GET['code']) && !empty($_GET['code'])) {
                 $shipments = $shipments->where('code', $_GET['code']);
             }
+            dd($shipments);
             if (isset($_GET['client_id']) && !empty($_GET['client_id'])) {
                 $shipments = $shipments->where('client_id', $_GET['client_id']);
             }
