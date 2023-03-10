@@ -462,47 +462,39 @@
                                     <th width="3%"></th>
                                     <th width="3%">#</th>
                                     <th>{{translate('Code')}}</th>
-                                    <th>{{translate('Status')}}</th>
+                                    <th>{{translate('Shipment Code')}}</th>
+                                    <th>{{translate('Phone')}}</th>
                                     <th>{{translate('Type')}}</th>
-                                    <th>{{translate('Customer')}}</th>
-                                    <th>{{translate('Branch')}}</th>
-
-                                    <th>{{translate('Shipping Cost')}}</th>
-                                    <th>{{translate('Payment Method')}}</th>
-                                    <th>{{translate('Shipping Date')}}</th>
-
+                                    <th>{{translate('Amount')}}</th>
+                                    <th>{{translate('Name')}}</th>
+                                    <th>{{translate('Address')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @php
-                                    $count      = (App\ShipmentSetting::getVal('latest_shipment_count') ? App\ShipmentSetting::getVal('latest_shipment_count') : 10 );
-                                    $shipments  = App\Shipment::limit($count)->orderBy('id','desc')->get();
+                                    $missions = App\Mission::where('captain_id',Auth::user()->userCaptain->captain_id)->whereNotIn('status_id',[3,4])->get();
                                 @endphp
-                                @foreach($shipments as $key=>$shipment)
+                                @foreach($missions as $key=>$mission)
 
                                 <tr>
                                     <td></td>
                                     <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{($key+1)}}</a></td>
-                                    <td width="5%"><a href="{{route('admin.shipments.show',$shipment->id)}}">{{$shipment->barcode}}</a></td>
-                                    <td>{{$shipment->getStatus()}}</td>
-                                    <td>{{$shipment->type}}</td>
-                                    <td>
-                                        @if($user_type == 'admin' || in_array('1100', $staff_permission) || in_array('1005', $staff_permission) )
-                                            <a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a>
-                                        @else
-                                            {{$shipment->client->name}}
-                                        @endif
-                                    </td>
-                                    @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
-                                        <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
-                                    @else
-                                        <td>{{$shipment->branch->name}}</td>
-                                    @endif
 
-                                    <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
-                                    <td>{{$shipment->pay->name}}</td>
-                                    <td>{{$shipment->shipping_date}}</td>
+                                    <td><a href="{{route('admin.missions.show',$mission->id)}}">{{$mission->code}}</a></td>
+                                   <!-- <td>{{$mission->getStatus()}}</td> -->
+                                   <td><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
+                                   <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}</td>
+
+                                   <td>{{$mission->type}}</td>
+                                    @php
+                                        $helper = new \App\Http\Helpers\TransactionHelper();
+                                        $mission_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
+                                    @endphp
+                                    <td>{{format_price($mission_cost)}}</td>
+                                      <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client->name : $mission->shipment_mission[0]->shipment->reciver_name }}</td>
+                                     <td>{{ $mission->getOriginal('type') == 1 ? $mission->address : $mission->shipment_mission[0]->shipment->reciver_address }}</td>
+
 
                                 </tr>
 
