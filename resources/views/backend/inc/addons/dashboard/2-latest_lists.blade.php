@@ -456,37 +456,53 @@
                     @endphp
 
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table mb-0 aiz-table">
                             <thead>
                                 <tr>
                                     <th width="3%"></th>
+                                    <th width="3%">#</th>
                                     <th>{{translate('Code')}}</th>
+                                    <th>{{translate('Status')}}</th>
                                     <th>{{translate('Type')}}</th>
-                                    <th>{{translate('Amount')}}</th>
-                                    <th>{{translate('Address')}}</th>
-                                    <th>{{translate('Arrived')}}</th>
+                                    <th>{{translate('Customer')}}</th>
+                                    <th>{{translate('Branch')}}</th>
 
+                                    <th>{{translate('Shipping Cost')}}</th>
+                                    <th>{{translate('Payment Method')}}</th>
+                                    <th>{{translate('Shipping Date')}}</th>
 
                                 </tr>
                             </thead>
-                            <tbody id="profile_manifest">
+                            <tbody>
 
-                                @foreach($missions as $key=>$mission)
+                                @php
+                                    $count      = (App\ShipmentSetting::getVal('latest_shipment_count') ? App\ShipmentSetting::getVal('latest_shipment_count') : 10 );
+                                    $shipments  = App\Shipment::limit($count)->orderBy('id','desc')->get();
+                                @endphp
+                                @foreach($shipments as $key=>$shipment)
 
-                                <tr style="background-color:tomatom">
+                                <tr>
                                     <td></td>
-                                    <td width="5%">{{$mission->code}}</td>
-                                    <td>{{$mission->type}}</td>
-                                    @php
-                                        $helper = new \App\Http\Helpers\TransactionHelper();
-                                        $mission_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
-                                    @endphp
-                                    <td>{{format_price($mission_cost)}}</td>
-                                    <td>{{$mission->address}}</td>
+                                    <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{($key+1)}}</a></td>
+                                    <td width="5%"><a href="{{route('admin.shipments.show',$shipment->id)}}">{{$shipment->barcode}}</a></td>
+                                    <td>{{$shipment->getStatus()}}</td>
+                                    <td>{{$shipment->type}}</td>
                                     <td>
-                                        <div style="width: 55%;height: 30px;border: 1px solid;border-radius: 3px;"></div>
+                                        @if($user_type == 'admin' || in_array('1100', $staff_permission) || in_array('1005', $staff_permission) )
+                                            <a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a>
+                                        @else
+                                            {{$shipment->client->name}}
+                                        @endif
                                     </td>
+                                    @if( in_array($user_type ,['admin','customer']) || in_array('1100', $staff_permission) || in_array('1006', $staff_permission) )
+                                        <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td>
+                                    @else
+                                        <td>{{$shipment->branch->name}}</td>
+                                    @endif
 
+                                    <td>{{format_price($shipment->tax + $shipment->shipping_cost + $shipment->insurance) }}</td>
+                                    <td>{{$shipment->pay->name}}</td>
+                                    <td>{{$shipment->shipping_date}}</td>
 
                                 </tr>
 
