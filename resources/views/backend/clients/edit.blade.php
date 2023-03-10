@@ -274,12 +274,12 @@
                     </div> --}}
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label>{{translate('National ID')}}:</label>
                     <input type="text" class="form-control" placeholder="{{translate('Here')}}" value="{{$client->national_id}}" name="Client[national_id]">
-                </div>
+                </div> --}}
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label>{{translate('Customer Source')}}:</label>
                     <select class="form-control kt-select2" id="select-how" name="Client[how_know_us]">
                         <option></option>
@@ -290,7 +290,7 @@
                         <option <?php if(isset($client->how_know_us) && $client->how_know_us == "Google"){echo "selected";} ?>  value="Google">{{translate('Google')}}</option>
 
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="mt-5 card" style="display:none;">
                     <div class="card-header">
