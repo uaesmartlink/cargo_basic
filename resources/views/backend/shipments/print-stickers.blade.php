@@ -33,10 +33,10 @@ $d = new DNS1D();
 						<td>
 							<table width="450px" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
 								<tr>
-									<td height="21px" colspan="3" style="padding-left:5px; padding-bottom:5px;">
-										<table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
+									<td height="21px" colspan="3" style="padding: auto;">
+										<table width="50%" adding: auto; border="0" align="center" cellpadding="0" cellspacing="0">
 											<tr>
-												<td valign="middle" style="padding-left:5px; height: 90px;">
+												<td valign="middle" style="padding-left:5px; height: 50px;">
 
 													@if(get_setting('system_logo_white') != null)
 														<img src="{{ uploaded_asset(get_setting('system_logo_white')) }}">
