@@ -165,7 +165,7 @@ $d = new DNS1D();
                         </tr>
                     </table>
                 </td>
-                <td valign="top" style="padding:0px;">
+                {{-- <td valign="top" style="padding:0px;">
                     <img src="{{ static_asset('assets/img/cut-line.gif') }}" alt="" />
                 </td>
 
@@ -312,7 +312,7 @@ $d = new DNS1D();
                             </td>
                         </tr>
                     </table>
-                </td>
+                </td> --}}
 			</tr>
         </table>
     </div>
