@@ -85,35 +85,6 @@
                         </div>
                     </div>
                 </div>
-                <!--
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{{-- translate('FollowupName') --}} :</label>
-                            <input type="text" class="form-control" id="followup_name" placeholder="{{-- translate('FollowupName') --}}" name="Client[follow_up_name]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{{-- translate('FollowupPhone') --}}:</label>
-                            <input type="text" class="form-control" placeholder="{{-- translate('FollowupPhone') --}}" name="Client[follow_up_mobile]">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>{{-- translate('Branch') --}}:</label>
-                    <select class="form-control kt-select2 branch" id="branch_id" name="Client[branch_id]">
-                        <option></option>
-                     {{--  @foreach($branchs as $branch)
-                        <option value="{{$branch->id}}">{{$branch->name}}</option>
-                        @endforeach
-                         --}}
-
-                    </select>
-                </div>
-                -->
 
                 <div class="form-group" id="kt_repeater_1">
                     <div data-repeater-list="address">
@@ -170,47 +141,15 @@
                                 <label>{{translate('Address')}}:</label>
                                 <input type="text" class="form-control" value="{{$address->address}}" required placeholder="{{translate('Address')}}" name="Client[address]">
                                 <input type="hidden" value="{{$address->id}}" name='Client[addressess_id]'>
-                                {{--
-                                    @if($checked_google_map->value == 1 )
-                                        <div class="location-client location-client-{{$address->id}} mt-2">
-                                            <label>{{translate('Location')}}:</label>
-                                            <input type="text" value="{{$address->client_street_address_map}}" class="form-control address address-client-{{$address->id}} " placeholder="{{translate('Location')}}" name="Client[client_street_address_map]"  rel="client" value="" />
-                                            <input type="hidden" value="{{$address->client_lat}}" class="form-control lat" data-client="lat" name="Client[client_lat]" />
-                                            <input type="hidden" value="{{$address->client_lng}}" class="form-control lng" data-client="lng" name="Client[client_lng]" />
-                                            <input type="hidden" value="{{$address->client_url}}" class="form-control url" data-client="url" name="Client[client_url]" />
 
-                                            <div class="mt-2 col-sm-12 map_canvas map_canvas_{{$address->id}} map-client map-client_{{$address->id}}" style="width:100%;height:300px;"></div>
-                                            <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
-                                        </div>
-                                    @endif
-                                 --}}
 
-                                <div class="mt-3 mb-3 row">
-                                    <div class="col-md-12">
-                                        <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger delete_item">
-                                            <i class="la la-trash-o"></i>{{translate('Delete')}}
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         @empty
                             <div data-repeater-item class="data-repeater-item-count">
 
                                  <div class="row myRow" style="display: none;">
                                     <input type="hidden" name="country_id" value="231">
-                                    {{--
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>{{translate('Country')}}:</label>
-                                            <select name="country_id" class="change-country-client-address form-control select-country">
-                                                <option value=""></option>
-                                                @foreach($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    --}}
+
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -251,46 +190,12 @@
                                         <span class="form-text text-muted">{{'Change the pin to select the right location'}}</span>
                                     </div>
                                 @endif
-
-                                {{-- <div class="mt-3 mb-3 row">
-                                    <div class="col-md-12">
-                                        <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger delete_item">
-                                            <i class="la la-trash-o"></i>{{translate('Delete')}}
-                                        </a>
-                                    </div>
-                                </div> --}}
                             </div>
                         @endforelse
                     </div>
-
-                    {{-- <div class="form-group row">
-                        <div class="col-md-12">
-                            <div>
-                                <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
-                                    <i class="la la-plus"></i>{{translate('Add Another Address')}}
-                                </a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
 
-                {{-- <div class="form-group">
-                    <label>{{translate('National ID')}}:</label>
-                    <input type="text" class="form-control" placeholder="{{translate('Here')}}" value="{{$client->national_id}}" name="Client[national_id]">
-                </div> --}}
 
-                {{-- <div class="form-group">
-                    <label>{{translate('Customer Source')}}:</label>
-                    <select class="form-control kt-select2" id="select-how" name="Client[how_know_us]">
-                        <option></option>
-                        <option  <?php if(isset($client->how_know_us) && $client->how_know_us == "Facebook"){echo "selected";} ?>  value="Facebook">{{translate('Facebook')}}</option>
-                        <option  <?php if(isset($client->how_know_us) && $client->how_know_us == "Website"){echo "selected";} ?> value="Website">{{translate('ًWebsite')}}</option>
-                        <option <?php if(isset($client->how_know_us) && $client->how_know_us == "Friend"){echo "selected";} ?>  value="Friend">{{translate('Friend')}}</option>
-                        <option <?php if(isset($client->how_know_us) && $client->how_know_us == "Sales Team"){echo "selected";} ?>  value="Sales Team">{{translate('Sales Team')}}</option>
-                        <option <?php if(isset($client->how_know_us) && $client->how_know_us == "Google"){echo "selected";} ?>  value="Google">{{translate('Google')}}</option>
-
-                    </select>
-                </div> --}}
 
                 <div class="mt-5 card" style="display:none;">
                     <div class="card-header">
