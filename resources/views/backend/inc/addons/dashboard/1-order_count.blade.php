@@ -122,7 +122,7 @@
                 <!--end::Stats Widget 30-->
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-3">
                 <!--begin::Stats Widget 30-->
                 <div class="card card-custom bg-dark card-stretch gutter-b">
@@ -200,7 +200,7 @@
                 </div>
                 <!--end::Stats Widget 30-->
             </div>
-        </div>
+        </div> --}}
     @endif
 
 
