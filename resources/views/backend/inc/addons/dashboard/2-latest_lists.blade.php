@@ -5,8 +5,43 @@
 
 @if($user_type == 'admin' || in_array('1101', $staff_permission) || in_array('1007', $staff_permission) || in_array('1108', $staff_permission))
 
+    @php
+    $captains = App\Captain::withCount(['transaction AS wallet' => function ($query) { $query->select(DB::raw("SUM(value)")); }])->get();
+    @endphp
+    <div class="mt-20 row">
+    <div class="col-md-12">
+        <div class="card card-custom card-stretch">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3 class="card-label">{{translate('Drivers Wallet')}}</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table mb-0 aiz-table">
+                    <thead>
+                        <tr>
+                            <th>{{translate('Name')}}</th>
+                            <th>{{translate('Delivery Orders')}}</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($captains as $key=>$captain)
+                            <tr>
+                                <td>{{$captain->name}}</td>
+                                <td>{{ \App\Mission::whereIn('status_id',array(1,2,3)).count() }}</td>
+                            </tr>
+                        @endforeach
 
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <!--end::Card-->
+
+    </div>
+</div>
 
 @elseif($user_type == 'branch')
 
