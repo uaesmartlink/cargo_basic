@@ -839,6 +839,7 @@ class ShipmentController extends Controller
 
     public function createMissionAPI(Request $request)
     {
+
         if($request->is('api/*')){
             $token = $request->header('token');
             if(isset($token))
@@ -875,6 +876,8 @@ class ShipmentController extends Controller
 
     public function applyShipmentCost($request,$packages)
     {
+        dd($request);
+
         $client_costs = Client::where('id', $request['client_id'] )->first();
 
         $from_country_id = $request['from_country_id'];
@@ -893,7 +896,14 @@ class ShipmentController extends Controller
         $package_extras = 0;
         foreach ($packages as $pack) {
             $total_weight += isset($pack['weight']) ? $pack['weight'] : 1;
-            $extra = Package::find($pack['package_id'])->cost;
+            // Hide For Demo Cost
+            // $extra = Package::find($pack['package_id'])->cost;
+            if($request['client_id'] == 0){
+            	$extra = Package::find($pack['package_id'])->cost;
+			}
+			else{
+				$extra = ClientPackage::where('package_id',$pack['package_id'])->where('client_id', $request['client_id'] )->first()->package_cost;
+			}
             $package_extras += $extra;
         }
 
