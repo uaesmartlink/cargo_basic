@@ -876,7 +876,7 @@ class ShipmentController extends Controller
 
     public function applyShipmentCost($request,$packages)
     {
-        dd($request);
+        // dd($request);
 
         $client_costs = Client::where('id', $request['client_id'] )->first();
 
