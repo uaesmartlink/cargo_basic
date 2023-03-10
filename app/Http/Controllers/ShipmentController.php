@@ -743,12 +743,12 @@ class ShipmentController extends Controller
         ]);
         $costs = $this->applyShipmentCost($request,$request->package_ids);
         dd($request);
-        // $formated_cost['amount'] = format_price();
+        $formated_cost['amount'] = format_price($request->amount);
         $formated_cost["tax"] = format_price($costs["tax"]);
         $formated_cost["insurance"] = format_price($costs["insurance"]);
         $formated_cost["return_cost"] = format_price($costs["return_cost"]);
         $formated_cost["shipping_cost"] = format_price($costs["shipping_cost"]);
-        $formated_cost["total_cost"] = format_price($costs["shipping_cost"] + $costs["tax"] + $costs["insurance"]);
+        $formated_cost["total_cost"] = format_price($costs["shipping_cost"] + $costs["tax"] + $costs["insurance"] + $request->amount);
 
         return $formated_cost;
     }

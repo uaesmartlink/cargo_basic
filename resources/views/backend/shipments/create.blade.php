@@ -1143,6 +1143,7 @@
         var to_state_id = document.getElementsByName("Shipment[to_state_id]")[0].value;
         var from_area_id = document.getElementsByName("Shipment[from_area_id]")[0].value;
         var to_area_id = document.getElementsByName("Shipment[to_area_id]")[0].value;
+        var amount = document.getElementsByName("Shipment[amount_to_be_collected]")[0].value;
         @if($user_type == 'customer')
             var client_id = {{$user_client}};
         @else
@@ -1169,10 +1170,10 @@
                                 from_area_id : from_area_id,
                                 to_area_id : to_area_id,
                                 client_id : client_id,
+                                amount: amount,
                             };
         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
-            var amount = +(document.getElementsByName("Shipment[amount_to_be_collected]")[0].value);
-            document.getElementById("amountToCollect").innerHTML = amount;
+            document.getElementById("amountToCollect").innerHTML = response.amount;
             if({{$is_def_mile_or_fees}} =='2')
             {
                 document.getElementById("shipping_cost").innerHTML = response.shipping_cost;
@@ -1182,12 +1183,10 @@
                 document.getElementById("mile_cost").innerHTML = response.shipping_cost;
                 document.getElementById("return_mile_cost").innerHTML = response.return_cost;
             }
-            console.log(typeof response.total_cost);
-            console.log(typeof parseFloat(response.total_cost));
 
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
-            document.getElementById("total_cost").innerHTML = (parseFloat(response.total_cost) + amount);
+            document.getElementById("total_cost").innerHTML = response.total_cost;
             document.getElementById('modal_open').click();
             console.log(response);
         });
