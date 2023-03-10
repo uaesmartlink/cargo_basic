@@ -153,14 +153,6 @@ class Shipment extends Model
             ],
 
             [
-                'status' => Self::CAPTAIN_ASSIGNED_STATUS,
-                'text' => translate('Assigned'),
-                'route_name' => 'admin.shipments.assigned.index',
-                'permissions' => 1018,
-                'route_url' => 'assigned'
-            ],
-
-            [
                 'status' => Self::RECIVED_STATUS,
                 'text' => translate('Received'),
                 'route_name' => 'admin.shipments.captain.given.index',
@@ -174,13 +166,13 @@ class Shipment extends Model
                 'permissions' => 1020,
                 'route_url' => 'delivred'
             ],
-            [
-                'status' => Self::SUPPLIED_STATUS,
-                'text' => translate('Supplied'),
-                'route_name' => 'admin.shipments.supplied.index',
-                'permissions' => 1041,
-                'route_url' => 'supplied'
-            ],
+            // [
+            //     'status' => Self::SUPPLIED_STATUS,
+            //     'text' => translate('Supplied'),
+            //     'route_name' => 'admin.shipments.supplied.index',
+            //     'permissions' => 1041,
+            //     'route_url' => 'supplied'
+            // ],
 
             [
                 'status' => Self::RETURNED_STATUS,
