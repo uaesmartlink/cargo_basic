@@ -132,7 +132,54 @@
                             <!--begin::Table-->
                             <div class="table-responsive">
 
+                                <table class="table mb-0 aiz-table">
+                                    <thead>
+                                        <tr>
+                                            <th width="3%"></th>
+                                            <th width="3%">#</th>
+                                            <th>{{translate('Code')}}</th>
+                                            <th>{{translate('Status')}}</th>
+                                            <th>{{translate('Type')}}</th>
+                                            <th>{{translate('Customer')}}</th>
+                                            {{-- <th>{{translate('Branch')}}</th> --}}
 
+                                            <th>{{translate('Shipping Cost')}}</th>
+                                            {{-- <th>{{translate('Payment Method')}}</th> --}}
+                                            {{-- <th>{{translate('Paid')}}</th> --}}
+                                            <th>{{translate('Shipping Date')}}</th>
+                                            <th>{{translate('Driver')}}</th>
+                                            <th>{{translate('Mission')}}</th>
+                                            <th class="text-center">{{translate('Created At')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach($shipments as $key=>$shipment)
+
+                                        <tr>
+                                            <td><label class="checkbox checkbox-success"><input data-clientaddress="{{$shipment->client_address}}" data-clientid="{{$shipment->client->id}}" data-branchid="{{$shipment->branch_id}}" data-branchname="{{$shipment->branch->name}}"  type="checkbox" class="sh-check" name="checked_ids[]" value="{{$shipment->id}}" /><span></span></label></td>
+                                            <td width="3%"><a href="{{route('admin.shipments.show', ['shipment'=>$shipment->id])}}">{{ ($key+1) + ($shipments->currentPage() - 1)*$shipments->perPage() }}</a></td>
+                                            <td width="5%"><a href="{{route('admin.shipments.show', ['shipment'=>$shipment->id])}}">{{$shipment->barcode}}</a></td>
+                                            <td>{{$shipment->getStatus()}}</td>
+                                            <td>{{$shipment->type}}</td>
+                                            <td><a href="{{route('admin.clients.show',$shipment->client_id)}}">{{$shipment->client->name}}</a></td>
+                                            {{-- <td><a href="{{route('admin.branchs.show',$shipment->branch_id)}}">{{$shipment->branch->name}}</a></td> --}}
+
+                                            <td>{{format_price($shipment->shipping_cost)}}</td>
+                                            {{-- <td>{{$shipment->pay->name ?? ""}}</td> --}}
+                                            {{-- <td>@if($shipment->paid == 1) {{translate('Paid')}} @else - @endif</td> --}}
+                                            <td>{{$shipment->shipping_date}}</td>
+                                            <td>@isset($shipment->captain_id) {{$shipment->captain->name}} @else - @endisset</td>
+                                            <td>@isset($shipment->current_mission->id) {{$shipment->current_mission->code}} @else - @endisset</td>
+                                            <td class="text-center">
+                                                {{$shipment->created_at->format('Y-m-d')}}
+                                            </td>
+                                        </tr>
+
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
 
                             </div>
                             <!--end::Table-->
