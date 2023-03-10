@@ -108,7 +108,7 @@
 		<!--begin::Logo-->
         <a href="{{ route('admin.dashboard') }}">
             @if(get_setting('system_logo_white') != null)
-                 <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;" alt="{{ get_setting('site_name') }}">
+                 <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:25%;height:auto;" alt="{{ get_setting('site_name') }}">
             @else
                 <img src="{{ static_asset('assets/img/logo.svg') }}" alt="{{ get_setting('site_name') }}">
             @endif

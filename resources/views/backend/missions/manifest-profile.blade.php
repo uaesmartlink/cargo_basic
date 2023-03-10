@@ -39,7 +39,7 @@
                         <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
                             <h1 class="display-4 font-weight-boldest mb-10">
                                 @if(get_setting('system_logo_white') != null)
-                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;" class="d-block mb-5">
+                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:25%;height:auto;" class="d-block mb-5">
                                 @else
                                     <img src="{{ static_asset('assets/img/logo.svg') }}" class="d-block mb-5">
                                 @endif

@@ -29,7 +29,7 @@ $d = new DNS1D();
                         <div class="pb-10 d-flex justify-content-between pb-md-20 flex-column flex-md-row">
                             <h1 class="mb-10 display-4 font-weight-boldest">
                                 @if(get_setting('system_logo_white') != null)
-                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;" class="mb-5 d-block">
+                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:25%;height:auto;" class="mb-5 d-block">
                                 @else
                                     <img src="{{ static_asset('assets/img/logo.svg') }}" class="mb-5 d-block">
                                 @endif
