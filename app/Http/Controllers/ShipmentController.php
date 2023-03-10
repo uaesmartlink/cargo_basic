@@ -1071,7 +1071,10 @@ class ShipmentController extends Controller
                 $model = $this->storeShipment($request);
             DB::commit();
             flash(translate("Shipment added successfully"))->success();
-            return redirect()->route('admin.shipments.show', $model->id);
+            $branchs = Branch::where('is_archived', 0)->get();
+            $clients = Client::where('is_archived', 0)->get();
+            return view('backend.shipments.create', compact('branchs', 'clients'));
+            // return redirect()->route('admin.shipments.show', $model->id);
         } catch (\Exception $e) {
             DB::rollback();
             print_r($e->getMessage());
