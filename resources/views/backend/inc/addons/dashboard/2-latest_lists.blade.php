@@ -484,7 +484,7 @@
 
                                     <td><a href="{{route('admin.missions.show',$mission->id)}}">{{$mission->code}}</a></td>
                                    <!-- <td>{{$mission->getStatus()}}</td> -->
-                                   <td><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
+                                   <td>$mission->shipment_mission[0]->shipment->code</a></td>
                                    <td>
                                     <a href="tel:{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
                                     {{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}
@@ -494,7 +494,7 @@
                                             <i class="fab fa-whatsapp" style="color:green;"></i>
                                         </a>
                                     </td>
-                                </td>
+                                    </td>
 
                                    <td>{{$mission->type}}</td>
                                     @php
