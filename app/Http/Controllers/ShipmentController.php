@@ -25,7 +25,6 @@ use Excel;
 use App\BusinessSetting;
 use App\State;
 use App\ClientPackage;
-
 use App\Transaction;
 use App\ShipmentReason;
 use Illuminate\Http\Request;
@@ -743,10 +742,10 @@ class ShipmentController extends Controller
             'total_weight' => 'required|integer|min:0',
         ]);
         $costs = $this->applyShipmentCost($request,$request->package_ids);
+        dd($request);
+        // $formated_cost['amount'] = format_price();
         $formated_cost["tax"] = format_price($costs["tax"]);
         $formated_cost["insurance"] = format_price($costs["insurance"]);
-
-
         $formated_cost["return_cost"] = format_price($costs["return_cost"]);
         $formated_cost["shipping_cost"] = format_price($costs["shipping_cost"]);
         $formated_cost["total_cost"] = format_price($costs["shipping_cost"] + $costs["tax"] + $costs["insurance"]);
