@@ -1187,7 +1187,7 @@
 
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
-            document.getElementById("total_cost").innerHTML = (parseFloat(response.total_cost) +  Number.parseFloat(amount).toFixed(3));
+            document.getElementById("total_cost").innerHTML = (parseFloat(response.total_cost) + amount);
             document.getElementById('modal_open').click();
             console.log(response);
         });
