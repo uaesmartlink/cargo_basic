@@ -32,7 +32,7 @@ $d = new DNS1D();
                                             @if(get_setting('system_logo_white') != null)
                                                 <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}">
                                             @else
-                                                <img src="{{ static_asset('assets/img/logo.svg') }}">
+                                                {{-- <img src="{{ static_asset('assets/img/logo.svg') }}"> --}}
                                             @endif
                                         </td>
                                     </tr>
