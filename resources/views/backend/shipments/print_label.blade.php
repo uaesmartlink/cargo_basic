@@ -24,11 +24,11 @@ $d = new DNS1D();
                 <td>
                     <table width="450px" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
                         <tr>
-                            <td height="21px" colspan="3" style="padding-left:50%; padding-bottom:auto;">
+                            <td colspan="3" style="padding-left:25%; padding-bottom:auto;">
                                 @if(get_setting('system_logo_white') != null)
                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;">
                                 @else
-                                    <img src="{{ static_asset('assets/img/logo.svg') }} style="width:30px;height:auto;"">
+                                    <img src="{{ static_asset('assets/img/logo.svg') }} style="width:30px;height:auto;">
                                 @endif
 
                             </td>
