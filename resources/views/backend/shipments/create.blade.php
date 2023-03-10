@@ -653,12 +653,12 @@
                                         </button>
                                     </div>
                                     <div class="text-left modal-body">
-
                                         <div class="row">
-                                            <div class="row">
-                                                <div class="col-6">{{translate('Amount')}} :</div>
-                                                <div class="col-6" id="amountToCollect"></div>
-                                            </div>
+                                            <div class="col-6">{{translate('Amount')}} :</div>
+                                            <div class="col-6" id="amountToCollect"></div>
+                                        </div>
+                                        <div class="row">
+
                                             @if($is_def_mile_or_fees=='2')
                                                 <div class="col-6">{{translate('Shipping Cost')}} :</div>
                                                 <div class="col-6" id="shipping_cost"></div>
@@ -1187,7 +1187,7 @@
 
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
-            document.getElementById("total_cost").innerHTML = (response.total_cost + amount);
+            document.getElementById("total_cost").innerHTML = (Number(response.total_cost) + amount);
             document.getElementById('modal_open').click();
             console.log(response);
         });
