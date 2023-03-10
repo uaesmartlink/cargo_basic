@@ -1171,7 +1171,7 @@
                                 client_id : client_id,
                             };
         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
-            int amount = +(document.getElementsByName("Shipment[amount_to_be_collected]")[0].value);
+            var amount = +(document.getElementsByName("Shipment[amount_to_be_collected]")[0].value);
             document.getElementById("amountToCollect").innerHTML = amount;
             if({{$is_def_mile_or_fees}} =='2')
             {
@@ -1182,9 +1182,12 @@
                 document.getElementById("mile_cost").innerHTML = response.shipping_cost;
                 document.getElementById("return_mile_cost").innerHTML = response.return_cost;
             }
+            console.log(typeof response.total_cost);
+            console.log(typeof amount);
+
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
-            document.getElementById("total_cost").innerHTML = (Number(response.total_cost) + Number(amount));
+            document.getElementById("total_cost").innerHTML = (response.total_cost + amount);
             document.getElementById('modal_open').click();
             console.log(response);
         });
