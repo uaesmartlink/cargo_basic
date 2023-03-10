@@ -1183,7 +1183,7 @@
                 document.getElementById("return_mile_cost").innerHTML = response.return_cost;
             }
             console.log(typeof response.total_cost);
-            console.log(typeof amount);
+            console.log(typeof parseFloat(response.total_cost));
 
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
