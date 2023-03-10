@@ -68,11 +68,13 @@
                                         <th width="3%"></th>
                                         <th width="3%">#</th>
                                         <th>{{translate('Code')}}</th>
+                                        <th>{{translate('Shipment Code')}}</th>
+                                        <th>{{translate('Phone')}}</th>
+                                        <th></th>
                                         <th>{{translate('Type')}}</th>
                                         <th>{{translate('Amount')}}</th>
+                                        <th>{{translate('Name')}}</th>
                                         <th>{{translate('Address')}}</th>
-                                        <th></th>
-
 
                                     </tr>
                                 </thead>
@@ -80,22 +82,32 @@
 
                                     @foreach($missions as $key=>$mission)
 
-                                    <tr data-missionid="{{$mission->id}}" class="mission" style="background-color:tomatom">
+                                    <tr>
                                         <td></td>
                                         <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{($key+1)}}</a></td>
-                                        <td width="5%">{{$mission->code}}</td>
-                                        <td>{{$mission->type}}</td>
+
+                                        <td><a href="{{route('admin.missions.show',$mission->id)}}">{{$mission->code}}</a></td>
+                                       <!-- <td>{{$mission->getStatus()}}</td> -->
+                                       <td><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>
+                                       <td>
+                                        <a href="tel:{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
+                                        {{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}
+                                        </a>
+                                        <td>
+                                            <a href="https://wa.me/{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
+                                                <i class="fab fa-whatsapp" style="color:green;"></i>
+                                            </a>
+                                        </td>
+                                        </td>
+
+                                       <td>{{$mission->type}}</td>
                                         @php
                                             $helper = new \App\Http\Helpers\TransactionHelper();
                                             $mission_cost = $helper->calcMissionShipmentsAmount($mission->getOriginal('type'),$mission->id);
                                         @endphp
                                         <td>{{format_price($mission_cost)}}</td>
-                                        <td>{{$mission->address}}</td>
-                                        <td>
-                                            <div style="width: 30px;height: 30px;border: 1px solid;border-radius: 3px;"></div>
-                                        </td>
-
-
+                                          <td>{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client->name : $mission->shipment_mission[0]->shipment->reciver_name }}</td>
+                                         <td>{{ $mission->getOriginal('type') == 1 ? $mission->address : $mission->shipment_mission[0]->shipment->reciver_address }}</td>
                                     </tr>
 
                                     @endforeach

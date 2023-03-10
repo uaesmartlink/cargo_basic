@@ -520,8 +520,8 @@
 
         </div>
     </div>
-
-    <div class="mt-20 row">
+    {{-- Hide For Demo Manifest --}}
+    {{-- <div class="mt-20 row">
         <div class="col-md-12">
             <div class="card card-custom card-stretch">
                 <div class="card-header">
@@ -569,5 +569,5 @@
             <!--end::Card-->
 
         </div>
-    </div>
+    </div> --}}
 @endif
