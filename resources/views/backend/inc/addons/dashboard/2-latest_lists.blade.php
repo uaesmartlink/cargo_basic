@@ -29,7 +29,7 @@
                         @foreach($captains as $key=>$captain)
                             <tr>
                                 <td>{{$captain->name}}</td>
-                                <td>{{ \App\Mission::whereIn('status_id',array(1,2,3)).count() }}</td>
+                                <td>{{ \App\Mission::whereIn('status_id',array(1,2,3))->get()->count() }}</td>
                             </tr>
                         @endforeach
 
