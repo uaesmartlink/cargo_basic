@@ -491,7 +491,7 @@
                                     </a>
                                     <td>
                                         <a href="https://wa.me/{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
-                                            <i class="fab fa-whatsapp"></i>
+                                            <i class="fab fa-whatsapp" style="color:green;"></i>
                                         </a>
                                     </td>
                                 </td>
