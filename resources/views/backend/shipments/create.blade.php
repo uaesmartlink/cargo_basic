@@ -597,7 +597,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{translate('Amount to be Collected')}}:</label>
-                                        <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" id= "amount_to_be_collected" value="0" name="Shipment[amount_to_be_collected]" />
+                                        <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" id="amount_to_be_collected" value="0" name="Shipment[amount_to_be_collected]" />
                                     </div>
                                 </div>
                             </div>
@@ -1171,7 +1171,7 @@
                                 client_id : client_id,
                             };
         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
-            var amount = document.getElementById("amount_to_be_collected").value;
+            var amount = +document.getElementById("amount_to_be_collected").value;
             document.getElementById("amountToCollect").innerHTML = amount;
             if({{$is_def_mile_or_fees}} =='2')
             {
