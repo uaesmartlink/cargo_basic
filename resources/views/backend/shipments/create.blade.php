@@ -634,7 +634,7 @@
 
                     {!! hookView('shipment_addon',$currentView) !!}
 
-                    <div class="mb-0 text-right form-group">
+                    <div class="mb-0 text-right form-group" style="padding-left: 40%; width: 20%;">
                         <button type="button" class="btn btn-sm btn-primary" onclick="get_estimation_cost()">{{translate('Save')}}</button>
 
                         <!-- Button trigger modal -->
