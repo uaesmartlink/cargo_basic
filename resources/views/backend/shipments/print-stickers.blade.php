@@ -39,7 +39,6 @@ $d = new DNS1D();
                                         @else
                                             <img src="{{ static_asset('assets/img/logo.svg') }} style="width:30px;height:auto;">
                                         @endif
-
                                     </td>
                                 </tr>
 								<tr>
