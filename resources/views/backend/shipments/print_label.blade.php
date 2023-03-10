@@ -24,19 +24,13 @@ $d = new DNS1D();
                 <td>
                     <table width="450px" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
                         <tr>
-                            <td height="21px" colspan="3" style="padding: 60px;">
-                                <table style="padding: auto;" border="0" align="center" cellpadding="0" cellspacing="0">
-                                    <tr>
-                                        <td valign="middle" style="padding: 60px;">
+                            <td height="21px" colspan="3" style="padding-left:5px; padding-bottom:5px;">
+                                @if(get_setting('system_logo_white') != null)
+                                    <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:30px;height:auto;">
+                                @else
+                                    <img src="{{ static_asset('assets/img/logo.svg') }} style="width:30px;height:auto;"">
+                                @endif
 
-                                            @if(get_setting('system_logo_white') != null)
-                                                <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}">
-                                            @else
-                                                <img src="{{ static_asset('assets/img/logo.svg') }} " width="50px" height="50px">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </table>
                             </td>
                         </tr>
                         <tr>
