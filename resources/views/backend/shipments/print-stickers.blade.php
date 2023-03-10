@@ -28,26 +28,20 @@ $d = new DNS1D();
 
 		<div class="page" style="padding-top:0px;">
 			<div class="subpage">
-				<table border="0" cellpadding="0" cellspacing="0" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; ">
-					<tr>
-						<td>
-							<table width="450px" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
-								<tr>
-									<td height="21px" colspan="3" style="padding: auto;">
-										<table width="50%" adding: auto; border="0" align="center" cellpadding="0" cellspacing="0">
-											<tr>
-												<td valign="middle" style="padding-left:5px; height: 50px;">
+                <table border="0" cellpadding="0" cellspacing="0" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; ">
+                    <tr>
+                        <td>
+                            <table width="450px" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
+                                <tr>
+                                    <td colspan="3" style="padding-left:35%; padding-bottom:auto;">
+                                        @if(get_setting('system_logo_white') != null)
+                                            <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;">
+                                        @else
+                                            <img src="{{ static_asset('assets/img/logo.svg') }} style="width:30px;height:auto;">
+                                        @endif
 
-													@if(get_setting('system_logo_white') != null)
-														<img src="{{ uploaded_asset(get_setting('system_logo_white')) }}">
-													@else
-														<img src="{{ static_asset('assets/img/logo.svg') }}">
-													@endif
-												</td>
-											</tr>
-										</table>
-									</td>
-								</tr>
+                                    </td>
+                                </tr>
 								<tr>
 									<td height="21px" colspan="3" style="border-top:#000000  1px solid;border-bottom:#000000 1px solid;">
 										<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
