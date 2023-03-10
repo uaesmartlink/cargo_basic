@@ -58,7 +58,7 @@ $user_type = Auth::user()->user_type;
                                 </a>
                             </li>
                         @endif
-                        @if( in_array($user_type,['admin','captain']) || in_array('1109', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
+                        {{-- @if( in_array($user_type,['admin','captain']) || in_array('1109', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                             <li class="menu-item {{ areActiveRoutes(['admin.shipments.barcode.scanner'])}}" aria-haspopup="true">
                                 <a href="{{ route('admin.shipments.barcode.scanner') }}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
@@ -67,7 +67,7 @@ $user_type = Auth::user()->user_type;
                                     <span class="menu-text">{{translate('Barcode Scanner')}}</span>
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
                         @if(\App\ShipmentSetting::getVal('is_shipping_calc_required')=='1')
                             <li class="menu-item {{ areActiveRoutes(['shipment-calc'])}}" aria-haspopup="true">
                                 <a href="{{ route('shipment-calc') }}" class="menu-link">
@@ -199,14 +199,14 @@ $user_type = Auth::user()->user_type;
         @endif
     @endif
 @endif
-@if( in_array($user_type,['captain']) || in_array('1109', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
+{{-- @if( in_array($user_type,['captain']) || in_array('1109', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
     <li class="menu-item {{ areActiveRoutes(['admin.shipments.barcode.scanner'])}}" aria-haspopup="true">
         <a href="{{ route('admin.shipments.barcode.scanner') }}" class="menu-link">
             <i class="menu-icon fas fa-barcode"></i>
             <span class="menu-text">{{ translate('Barcode Scanner') }}</span>
         </a>
     </li>
-@endif
+@endif --}}
 <!-- Clients-->
 @php
 $addon = \App\Addon::where('unique_identifier', 'spot-cargo-shipment-addon')->first();

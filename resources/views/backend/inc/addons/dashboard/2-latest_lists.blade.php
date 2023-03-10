@@ -13,7 +13,7 @@
         <div class="card card-custom card-stretch">
             <div class="card-header">
                 <div class="card-title">
-                    <h3 class="card-label">{{translate('Drivers Wallet')}}</h3>
+                    <h3 class="card-label">{{translate('Drivers Orders')}}</h3>
                 </div>
             </div>
             <div class="card-body">
@@ -29,7 +29,7 @@
                         @foreach($captains as $key=>$captain)
                             <tr>
                                 <td>{{$captain->name}}</td>
-                                <td>{{ \App\Mission::where('captain_id',$captain->id)->whereIn('status_id',array(1,2,3))->get()->count() }}</td>
+                                <td>{{ \App\Mission::where('captain_id',$captain->id)->whereIn('status_id',array(1,2))->get()->count() }}</td>
                             </tr>
                         @endforeach
 
@@ -113,7 +113,7 @@
                 <div class="card card-custom card-stretch">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3 class="card-label">{{translate('Drivers Wallet')}}</h3>
+                            <h3 class="card-label">{{translate('Driver Orders')}}</h3>
                         </div>
                     </div>
                     <div class="card-body">
