@@ -98,7 +98,7 @@
                     </li>
                 @endif
 
-                @if($user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
+                {{-- @if($user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                     <li class="menu-item menu-item-submenu   {{ areActiveRoutes(['support_ticket.admin_index','website.pages','custom-pages.create','custom-pages.edit','website.menu.index','website.container.index','website.theme.index','website.theme.option.index'])}}" aria-haspopup="true" data-menu-toggle="hover">
                         <a href="javascript:;" class="menu-link menu-toggle">
                             <i class="menu-icon flaticon2-website"></i>
@@ -156,7 +156,7 @@
                             </ul>
                         </div>
                     </li>
-                @endif
+                @endif --}}
 
                 @if($user_type == 'admin' || in_array('14', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                     <li class="menu-item menu-item-submenu {{ areActiveRoutes(['general_setting.index','activation.index', 'notifications.index', 'email_settings.index','sms_gateways.index', 'languages.index', 'languages.import', 'languages.export', 'languages.import_parse', 'languages.create', 'languages.store', 'languages.show', 'languages.edit','file_system.index','google_analytics.index','facebook_chat.index','google_recaptcha.index','currency.index', 'currency.create', 'currency.store', 'currency.show', 'currency.edit'])}}" aria-haspopup="true" data-menu-toggle="hover">
