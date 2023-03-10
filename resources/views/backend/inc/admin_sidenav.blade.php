@@ -54,14 +54,14 @@
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
 
-                <li class="menu-item {{ areActiveRoutes(['uploaded-files.index', 'uploaded-files.info', 'uploaded-files.create'])}}">
+                {{-- <li class="menu-item {{ areActiveRoutes(['uploaded-files.index', 'uploaded-files.info', 'uploaded-files.create'])}}">
                     <a href="{{ route('uploaded-files.index') }}" class="menu-link">
                         <i class="menu-icon flaticon2-image-file"></i>
                         <span class="menu-text">{{ translate('Media') }}</span>
                     </a>
-                </li>
+                </li> --}}
 
-                @if($user_type == 'admin' || in_array('12', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
+                {{-- @if($user_type == 'admin' || in_array('12', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                     <li class="menu-item menu-item-submenu  {{ areActiveRoutes(['support_ticket.admin_index','support_ticket.admin_show'])}}" aria-haspopup="true" data-menu-toggle="hover">
                         <a href="javascript:;" class="menu-link menu-toggle">
                             <i class="menu-icon flaticon-support"></i>
@@ -96,7 +96,7 @@
                             </ul>
                         </div>
                     </li>
-                @endif
+                @endif --}}
 
                 {{-- @if($user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions ?? "[]")))
                     <li class="menu-item menu-item-submenu   {{ areActiveRoutes(['support_ticket.admin_index','website.pages','custom-pages.create','custom-pages.edit','website.menu.index','website.container.index','website.theme.index','website.theme.option.index'])}}" aria-haspopup="true" data-menu-toggle="hover">
