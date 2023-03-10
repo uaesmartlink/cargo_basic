@@ -597,7 +597,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{translate('Amount to be Collected')}}:</label>
-                                        <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" value="0" name="Shipment[amount_to_be_collected]" />
+                                        <input id="kt_touchspin_3" placeholder="{{translate('Amount to be Collected')}}" type="text" min="0" class="form-control" id= "amount_to_be_collected" value="0" name="Shipment[amount_to_be_collected]" />
                                     </div>
                                 </div>
                             </div>
@@ -653,7 +653,12 @@
                                         </button>
                                     </div>
                                     <div class="text-left modal-body">
+
                                         <div class="row">
+                                            <div class="row">
+                                                <div class="col-6">{{translate('Amount to be Collected')}} :</div>
+                                                <div class="col-6" id="amountToCollect"></div>
+                                            </div>
                                             @if($is_def_mile_or_fees=='2')
                                                 <div class="col-6">{{translate('Shipping Cost')}} :</div>
                                                 <div class="col-6" id="shipping_cost"></div>
@@ -1166,7 +1171,8 @@
                                 client_id : client_id,
                             };
         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
-
+            var amount = document.getElementById("amount_to_be_collected").value;
+            document.getElementById("amountToCollect").innerHTML = amount;
             if({{$is_def_mile_or_fees}} =='2')
             {
                 document.getElementById("shipping_cost").innerHTML = response.shipping_cost;
@@ -1178,7 +1184,7 @@
             }
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
-            document.getElementById("total_cost").innerHTML = response.total_cost;
+            document.getElementById("total_cost").innerHTML = (response.total_cost + amount);
             document.getElementById('modal_open').click();
             console.log(response);
         });
