@@ -39,7 +39,7 @@
                         <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
                             <h1 class="display-4 font-weight-boldest mb-10">
                                 @if(get_setting('system_logo_white') != null)
-                                    <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" class="d-block mb-5">
+                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;" class="d-block mb-5">
                                 @else
                                     <img src="{{ static_asset('assets/img/logo.svg') }}" class="d-block mb-5">
                                 @endif
@@ -85,7 +85,6 @@
                                     <tr>
                                         <td></td>
                                         <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{($key+1)}}</a></td>
-
                                         <td><a href="{{route('admin.missions.show',$mission->id)}}">{{$mission->code}}</a></td>
                                        <!-- <td>{{$mission->getStatus()}}</td> -->
                                        <td><a href="{{route('admin.shipments.show', ['shipment'=>$mission->shipment_mission[0]->shipment->id])}}">{{$mission->shipment_mission[0]->shipment->code}}</a></td>

@@ -10,7 +10,7 @@
         <!--begin::Logo-->
         <a href="{{ route('admin.dashboard') }}" class="brand-logo">
             @if(get_setting('system_logo_white') != null)
-                <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:100%;max-height: 25px;" alt="@if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Asya Fawry') }} @endif">
+                 <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;" style="width:100%;max-height: 25px;" alt="@if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Asya Fawry') }} @endif">
             @else
                 <img src="{{ static_asset('assets/img/logo.svg') }}" style="max-height: 25px;" alt="@if(get_setting('site_name')) {{ get_setting('site_name') }} @else {{ translate('Asya Fawry') }} @endif">
             @endif

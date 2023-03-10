@@ -26,7 +26,7 @@ $d = new DNS1D();
                         <tr>
                             <td colspan="3" style="padding-left:35%; padding-bottom:auto;">
                                 @if(get_setting('system_logo_white') != null)
-                                    <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;">
+                                     <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;" style="width:50%;height:auto;">
                                 @else
                                     <img src="{{ static_asset('assets/img/logo.svg') }} style="width:30px;height:auto;">
                                 @endif
@@ -172,7 +172,7 @@ $d = new DNS1D();
                                         <td valign="middle" style="padding-left:5px; height: 90px;">
 
                                             @if(get_setting('system_logo_white') != null)
-                                                <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}">
+                                                 <img src="{{ uploaded_asset(get_setting('system_logo_white')) }}" style="width:50%;height:auto;">
                                             @else
                                                 <img src="{{ static_asset('assets/img/logo.svg') }}">
                                             @endif
