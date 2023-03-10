@@ -22,7 +22,7 @@ $d = new DNS1D();
         <table border="0" cellpadding="0" cellspacing="0" style="font-size:10px;font-family:Arial, Helvetica, sans-serif; ">
             <tr>
                 <td>
-                    <table width="450px" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
+                    <table width="200" border="0" cellpadding="0" cellspacing="0" style="font-size:16px;font-family:Arial, Helvetica, sans-serif;">
                         <tr>
                             <td height="21px" colspan="3" style="padding: auto;">
                                 <table style="padding: auto;" border="0" align="center" cellpadding="0" cellspacing="0">
