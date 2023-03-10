@@ -197,17 +197,20 @@
                             <div data-repeater-item class="data-repeater-item-count">
 
                                  <div class="row myRow" style="display: none;">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>{{translate('Country')}}:</label>
-                                                <select name="country_id" class="change-country-client-address form-control select-country">
-                                                    <option value=""></option>
-                                                    @foreach($countries as $country)
-                                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    <input type="hidden" name="country_id" value="231">
+                                    {{--
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{translate('Country')}}:</label>
+                                            <select name="country_id" class="change-country-client-address form-control select-country">
+                                                <option value=""></option>
+                                                @foreach($countries as $country)
+                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                    </div>
+                                    --}}
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -249,18 +252,18 @@
                                     </div>
                                 @endif
 
-                                <div class="mt-3 mb-3 row">
+                                {{-- <div class="mt-3 mb-3 row">
                                     <div class="col-md-12">
                                         <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger delete_item">
                                             <i class="la la-trash-o"></i>{{translate('Delete')}}
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         @endforelse
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <div class="col-md-12">
                             <div>
                                 <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
@@ -268,7 +271,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="form-group">
@@ -653,13 +656,41 @@
                             }
                         }
                     },
-                    "Client[email]": {
+                    // "Client[email]": {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: '{{translate("This is required!")}}'
+                    //         },
+                    //         emailAddress: {
+                    //             message: '{{translate("This is should be valid email!")}}'
+                    //         },
+                    //         remote: {
+                    //             data: {
+                    //                 type: 'Client',
+                    //             },
+                    //             message: 'The email is already exist',
+                    //             method: 'GET',
+                    //             url: '{{ route("user.checkEmail") }}',
+                    //         }
+                    //     }
+                    // },
+                    "User[password]": {
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
+                            }
+                        }
+                    },
+                    "User[confirm_password]": {
                         validators: {
                             notEmpty: {
                                 message: '{{translate("This is required!")}}'
                             },
-                            emailAddress: {
-                                message: '{{translate("This is should be valid email!")}}'
+                            identical: {
+                                compare: function() {
+                                    return  document.getElementById('kt_form_1').querySelector('[name="User[password]"]').value;
+                                },
+                                message: 'The password and its confirm are not the same'
                             }
                         }
                     },
@@ -675,20 +706,27 @@
                             notEmpty: {
                                 message: '{{translate("This is required!")}}'
                             },
-                            chackPhone:{
+							  chackPhone:{
                                 message: '{{translate("unvalid phone")}}',
                                 callback: function(input) {
-                                    return input.value.search(/((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})/) >= 0;
+                                    return input.value.search(/^((05)[0-9]{8})|((009715)[0-9]{8})|((\+9715)[0-9]{8})$/) >= 0;
                                 },
+                            }
+
+                        }
+                    },
+                    "state_id":{
+                        validators: {
+                            notEmpty: {
+                                message: '{{translate("This is required!")}}'
                             }
                         }
                     },
-                    "Client[branch_id]": {
+                    "area_id":{
                         validators: {
                             notEmpty: {
-                                message: '{{translate("Client Branch is required!")}}'
-                            },
-
+                                message: '{{translate("This is required!")}}'
+                            }
                         }
                     },
                     "address": {
@@ -701,7 +739,6 @@
 
 
                 },
-
 
                 plugins: {
                     autoFocus: new FormValidation.plugins.AutoFocus(),
