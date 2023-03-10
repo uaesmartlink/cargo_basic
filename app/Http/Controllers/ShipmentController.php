@@ -742,7 +742,7 @@ class ShipmentController extends Controller
             'total_weight' => 'required|integer|min:0',
         ]);
         $costs = $this->applyShipmentCost($request,$request->package_ids);
-        dd($request);
+        // dd($request);
         $formated_cost['amount'] = format_price($request->amount);
         $formated_cost["tax"] = format_price($costs["tax"]);
         $formated_cost["insurance"] = format_price($costs["insurance"]);
