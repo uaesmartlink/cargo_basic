@@ -464,6 +464,7 @@
                                     <th>{{translate('Code')}}</th>
                                     <th>{{translate('Shipment Code')}}</th>
                                     <th>{{translate('Phone')}}</th>
+                                    <th></th>
                                     <th>{{translate('Type')}}</th>
                                     <th>{{translate('Amount')}}</th>
                                     <th>{{translate('Name')}}</th>
@@ -488,9 +489,11 @@
                                     <a href="tel:{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
                                     {{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}
                                     </a>
-                                    <a href="https://wa.me/{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
+                                    <td>
+                                        <a href="https://wa.me/{{ $mission->getOriginal('type') == 1 ? $mission->shipment_mission[0]->shipment->client_phone : $mission->shipment_mission[0]->shipment->reciver_phone }}">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                    </td>
                                 </td>
 
                                    <td>{{$mission->type}}</td>
