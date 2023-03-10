@@ -656,7 +656,7 @@
 
                                         <div class="row">
                                             <div class="row">
-                                                <div class="col-6">{{translate('Amount to be Collected')}} :</div>
+                                                <div class="col-6">{{translate('Amount')}} :</div>
                                                 <div class="col-6" id="amountToCollect"></div>
                                             </div>
                                             @if($is_def_mile_or_fees=='2')
@@ -1171,7 +1171,7 @@
                                 client_id : client_id,
                             };
         $.post('{{ route('admin.shipments.get-estimation-cost') }}', request_data, function(response){
-            var amount = +document.getElementsByName("Shipment[amount_to_be_collected]")[0].value;
+            int amount = +(document.getElementsByName("Shipment[amount_to_be_collected]")[0].value);
             document.getElementById("amountToCollect").innerHTML = amount;
             if({{$is_def_mile_or_fees}} =='2')
             {
@@ -1184,7 +1184,7 @@
             }
             document.getElementById("tax_duty").innerHTML = response.tax;
             document.getElementById("insurance").innerHTML = response.insurance;
-            document.getElementById("total_cost").innerHTML = (response.total_cost + amount);
+            document.getElementById("total_cost").innerHTML = (Number(response.total_cost) + Number(amount));
             document.getElementById('modal_open').click();
             console.log(response);
         });
