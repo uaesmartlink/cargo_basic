@@ -66,7 +66,6 @@
                                 <thead>
                                     <tr>
                                         <th width="3%"></th>
-                                         <th width="3%">#</th>
                                         <th>{{translate('Code')}}</th>
                                         <th>{{translate('Type')}}</th>
                                         <th>{{translate('Amount')}}</th>
@@ -82,7 +81,6 @@
 
                                     <tr data-missionid="{{$mission->id}}" class="mission" style="background-color:tomatom">
                                         <td></td>
-                                        <td width="3%"><a href="{{route('admin.missions.show', $mission->id)}}">{{ ($key+1) + ($missions->currentPage() - 1)*$missions->perPage() }}</a></td>
                                         <td width="5%">{{$mission->code}}</td>
                                         <td>{{$mission->type}}</td>
                                         @php
