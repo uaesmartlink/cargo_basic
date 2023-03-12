@@ -54,16 +54,13 @@ class CodeController extends Controller
             $client_id = $request->client_id;
 
             for($id = $first ; $id <= $last; $id++){
-                $code = Code::where('code',$id)->get();
-                if($code != null)
+                $count = Code::where('code',$id)->count();
+                if($count > 0)
                     throw new \Exception("there is code Reserved for another customer");
 
 
             }
             for($id = $first ; $id <= $last; $id++){
-                $code = Code::where('code',$id)->get();
-                if($code != null)
-                    throw new \Exception("there is code Reserved for another customer");
                 $code = new Code();
                 $code->client_id = $client_id;
                 $code->code = $id;
