@@ -1270,7 +1270,6 @@ class ShipmentController extends Controller
 		$object->type = $_POST['type'];
 		$object->status = $_POST['status'];
         if(isset($_POST['excel'])){
-            dd($object);
             $fileName='Shipments_'.date("Y-m-d").'.xlsx';
             return Excel::download($object, $fileName);
         }else
