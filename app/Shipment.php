@@ -295,7 +295,6 @@ class Shipment extends Model
         }
         $shipments = $shipments->get();
         $data = array();
-        dd($shipments);
         foreach ($shipments as $record) {
             $order['code'] = $record->code;
             $order['status'] = $record->getStatus();
