@@ -108,12 +108,14 @@
         });
 
         $('#qty').change(function(){
-            var first = +document.getElementById('first').value;
+            var from = +document.getElementById('from').value;
             var qty = +document.getElementById('qty').value;
             console.log(qty);
-            console.log(first);
-            var last = (first + qty - 1);
+            console.log(from);
+            var last = (from + qty - 1);
             console.log(last);
+            document.getElementById('from').value = from;
+            document.getElementById('first').value = from;
             document.getElementById('last').value = last;
             document.getElementById('to').value = last;
         });
@@ -125,7 +127,8 @@
             console.log(from);
             var last = (from + qty - 1);
             console.log(last);
-            document.getElementById('from').first = from;
+            document.getElementById('from').value = from;
+            document.getElementById('first').value = from;
             document.getElementById('last').value = last;
             document.getElementById('to').value = last;
         });
