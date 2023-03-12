@@ -33,7 +33,7 @@
                 <label>{{translate('From')}}:</label>
                 <div class="form-group">
                     <input type="hidden" name="first" id="first" value="{{ $codeId }}"/>
-                    <input type="number" placeholder="{{translate('000000')}}" name="from" id="from" autocomplete="off" class="form-control" value="{{ $codeId }}" disabled />
+                    <input type="number" placeholder="{{translate('000000')}}" name="from" id="from" autocomplete="off" class="form-control" value="{{ $codeId }}" />
                 </div>
             </div>
             <div class="col-md-4">
