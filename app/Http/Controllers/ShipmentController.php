@@ -1252,21 +1252,9 @@ class ShipmentController extends Controller
 
         $object = new \App\Services\ShipmentsExport;
         $shipments = new Shipment();
-
-        if (isset($_POST['status']) && !empty($_POST['status'])) {
-            $shipments = $shipments->where('status_id', $_POST['status']);
-        }
-        if (isset($_POST['client_id']) && !empty($_POST['client_id'])) {
-
-            $shipments = $shipments->where('client_id', $_POST['client_id']);
-        }
-        if (isset($_POST['branch_id']) && !empty($_POST['branch_id'])) {
-            $shipments = $shipments->where('branch_id', $_POST['branch_id']);
-        }
-        if (isset($_POST['type']) && !empty($_POST['type'])) {
-            $shipments = $shipments->where('type', $_POST['type']);
-        }
-
+		$object->client_id = $_POST['client_id'];
+		$object->type = $_POST['type'];
+		$object->status = $_POST['status'];
         if(isset($_POST['excel'])){
             $fileName='Shipments_'.date("Y-m-d").'.xlsx';
             return Excel::download($object, $fileName);
