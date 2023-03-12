@@ -273,7 +273,7 @@ class ClientController extends Controller
     public function getClientByCode(Request $request)
     {
         try{
-            $code = Code::find($request->codeId);
+            $code = Code::find('code',$request->codeId);
             if(isset($request->old_code) || ($code->status_id == 0)){
                 $client = Client::find($code->client_id);
                 $client->load('addressess');
