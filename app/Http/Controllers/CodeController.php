@@ -56,6 +56,7 @@ class CodeController extends Controller
             for($id = $first ; $id <= $last; $id++){
                 $code = new Code();
                 $code->client_id = $client_id;
+                $code->code = $id;
                 $code->save();
             }
 
@@ -63,7 +64,7 @@ class CodeController extends Controller
             if($code == null)
                 $codeId = 1;
             else{
-                $codeId = $code->id + 1;
+                $codeId = $code->code + 1;
             }
 
             $history = new HistoryCodes();
