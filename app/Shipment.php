@@ -289,22 +289,20 @@ class Shipment extends Model
 
             $shipments = $shipments->where('client_id', $client_id);
         }
-        if (isset($branch_id) && !empty($branch_id)) {
-            $shipments = $shipments->where('branch_id', $branch_id);
-        }
+
         if (isset($type) && !empty($type)) {
             $shipments = $shipments->where('type', $type);
         }
         $shipments = $shipments->get();
         $data = array();
-
+        dd($shipments);
         foreach ($shipments as $record) {
-            $order['branch'] = $record->branch->name;
-            $order['client_id'] = $record->client->name;
-
-            $order['type'] = $record->type;
+            $order['code'] = $record->code;
             $order['status'] = $record->getStatus();
-
+            $order['client_id'] = $record->client->name;
+            $order['shipping_cost'] = $record->shipping_cost;
+            $order['amount_to_be_collected'] = $record->amount_to_be_collected;
+            $order['data'] = $record->created_at;
             $data[] = $order;
             $order = array();
         }
