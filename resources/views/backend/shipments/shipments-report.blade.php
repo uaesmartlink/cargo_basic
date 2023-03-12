@@ -147,6 +147,7 @@
                         {{-- <th>{{translate('Branch')}}</th> --}}
 
                         <th>{{translate('Shipping Cost')}}</th>
+                        <th>{{translate('Amount')}}</th>
                         {{-- <th>{{translate('Payment Method')}}</th> --}}
                         <th>{{translate('Shipping Date')}}</th>
                         @if($status == \App\Shipment::CAPTAIN_ASSIGNED_STATUS || $status == \App\Shipment::RECIVED_STATUS)
@@ -181,6 +182,7 @@
                         @endif --}}
 
                         <td>{{$shipment->shipping_cost}}</td>
+                        <td>{{$shipment->amount_to_be_collected}}</td>
                         {{-- <td>{{$shipment->pay->name ?? ""}}</td> --}}
                         <td>{{$shipment->shipping_date}}</td>
                         @if($status == \App\Shipment::CAPTAIN_ASSIGNED_STATUS || $status == \App\Shipment::RECIVED_STATUS)
