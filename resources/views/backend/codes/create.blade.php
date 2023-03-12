@@ -39,7 +39,7 @@
             <div class="col-md-4">
                 <label>{{translate('Qunatity')}}:</label>
                 <div class="form-group">
-                    <input type="number" placeholder="{{translate('10')}}" name="qty" id="qty" autocomplete="off" class="form-control" value="0"/>
+                    <input type="number" placeholder="{{translate('10')}}" name="qty" id="qty" autocomplete="off" class="form-control" value="1"/>
                 </div>
             </div>
             <div class="col-md-4">
