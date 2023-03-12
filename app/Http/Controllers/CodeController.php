@@ -58,6 +58,12 @@ class CodeController extends Controller
                 if($code != null)
                     throw new \Exception("there is code Reserved for another customer");
 
+
+            }
+            for($id = $first ; $id <= $last; $id++){
+                $code = Code::where('code',$id)->get();
+                if($code != null)
+                    throw new \Exception("there is code Reserved for another customer");
                 $code = new Code();
                 $code->client_id = $client_id;
                 $code->code = $id;
