@@ -1251,6 +1251,8 @@ class ShipmentController extends Controller
     {
 
         $object = new \App\Services\ShipmentsExport;
+        $shipments = new Shipment();
+
         if (isset($_POST['status']) && !empty($_POST['status'])) {
             $shipments = $shipments->where('status_id', $_POST['status']);
         }
