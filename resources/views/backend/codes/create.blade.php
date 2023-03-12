@@ -106,6 +106,7 @@
             width: '100%',
             placeholder: "Select client",
         });
+
         $('#qty').change(function(){
             var first = +document.getElementById('first').value;
             var qty = +document.getElementById('qty').value;
@@ -113,6 +114,18 @@
             console.log(first);
             var last = (first + qty - 1);
             console.log(last);
+            document.getElementById('last').value = last;
+            document.getElementById('to').value = last;
+        });
+
+        $('#from').change(function(){
+            var from = +document.getElementById('from').value;
+            var qty = +document.getElementById('qty').value;
+            console.log(qty);
+            console.log(from);
+            var last = (from + qty - 1);
+            console.log(last);
+            document.getElementById('from').first = from;
             document.getElementById('last').value = last;
             document.getElementById('to').value = last;
         });
