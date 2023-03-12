@@ -50,9 +50,11 @@ class CodeController extends Controller
 
             $first = $request->first;
             if($first <= 0)
-            throw new \Exception("Voucher Can not be less than 0");
+                throw new \Exception("Voucher Can not be less than 0");
 
             $qty = $request->qty;
+            if($qty <= 0)
+                throw new \Exception("qty Can not be less than 0");
             $last = $first + $qty - 1;
             $client_id = $request->client_id;
 
