@@ -11,7 +11,7 @@ class ShipmentsExport implements FromCollection,WithHeadings {
   public $client_id;
   public $type;
   public $status;
- 
+
   public function headings(): array {
      // "رقم العمليه","الملاحظه","نوع الحركه","اسم العميل"
     return [
@@ -19,7 +19,7 @@ class ShipmentsExport implements FromCollection,WithHeadings {
 
        //"رقم العمليه","الملاحظه","نوع الحركه","اسم العميل","قيمه الورقه","المبلغ المورد الفعلي","تاريخ العمليه"
 
-     "Branch","Client","Type","Status"
+     "Code","Status","Customer","Shipping Cost","Amount","Shipping Date"
     ];
   }
 
