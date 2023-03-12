@@ -49,6 +49,9 @@ class CodeController extends Controller
         try{
 
             $first = $request->first;
+            if($first <= 0)
+            throw new \Exception("Voucher Can not be less than 0");
+
             $qty = $request->qty;
             $last = $first + $qty - 1;
             $client_id = $request->client_id;
@@ -57,8 +60,6 @@ class CodeController extends Controller
                 $count = Code::where('code',$id)->count();
                 if($count > 0)
                     throw new \Exception("there is code Reserved for another customer");
-
-
             }
             for($id = $first ; $id <= $last; $id++){
                 $code = new Code();
