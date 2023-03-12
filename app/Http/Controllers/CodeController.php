@@ -56,7 +56,7 @@ class CodeController extends Controller
             for($id = $first ; $id <= $last; $id++){
                 $count = Code::where('code',$id)->count();
                 if($count > 0)
-                    throw new \Exception("there is code Reserved for another customer");
+                    throw new \Exception();
 
 
             }
