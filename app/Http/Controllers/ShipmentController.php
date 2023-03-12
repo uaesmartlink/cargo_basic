@@ -749,7 +749,7 @@ class ShipmentController extends Controller
         $formated_cost["insurance"] = format_price($costs["insurance"]);
         $formated_cost["return_cost"] = format_price($costs["return_cost"]);
         $formated_cost["shipping_cost"] = format_price($costs["shipping_cost"]);
-        $formated_cost["total_cost"] = format_price($costs["shipping_cost"] + $costs["tax"] + $costs["insurance"] + $request->amount);
+        $formated_cost["total_cost"] = format_price($costs["tax"] + $costs["insurance"] + $request->amount);
 
         return $formated_cost;
     }
