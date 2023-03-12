@@ -31,7 +31,7 @@ class CodeController extends Controller
         if($code == null)
             $codeId = 1;
         else{
-            $codeId = $code->id + 1;
+            $codeId = $code->code + 1;
         }
         $histories = HistoryCodes::orderBy('id','desc')->get();
 
