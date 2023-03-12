@@ -54,6 +54,10 @@ class CodeController extends Controller
             $client_id = $request->client_id;
 
             for($id = $first ; $id <= $last; $id++){
+                $code = Code::where('code',$id)->get();
+                if($code != null)
+                    throw new \Exception("there is code Reserved for another customer");
+
                 $code = new Code();
                 $code->client_id = $client_id;
                 $code->code = $id;
@@ -81,7 +85,6 @@ class CodeController extends Controller
             DB::rollback();
             print_r($e->getMessage());
             exit;
-
             flash(translate("Error"))->error();
             return back();
         }
