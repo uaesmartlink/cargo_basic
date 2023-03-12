@@ -1387,7 +1387,6 @@ class ShipmentController extends Controller
             DB::rollback();
             print_r($e->getMessage());
             exit;
-
             flash(translate("Error"))->error();
             return back();
         }
