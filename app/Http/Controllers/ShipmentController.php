@@ -1178,7 +1178,7 @@ class ShipmentController extends Controller
                         $package_shipment = new PackageShipment();
                         $package_shipment->fill($package);
                         $package_shipment->shipment_id = $model->id;
-                        $model->amount_to_be_collected = $model->amount_to_be_collected - $request->shipping_cost[$counter];
+                        // $model->amount_to_be_collected = $model->amount_to_be_collected - $request->shipping_cost[$counter];
                         if (!$model->save()) {
                             throw new \Exception();
                         }
